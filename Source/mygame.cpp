@@ -324,18 +324,30 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	const char KEY_LEFT  = 0x25; // keyboard左箭頭
-	const char KEY_UP    = 0x26; // keyboard上箭頭
+	const char KEY_LEFT = 0x25; // keyboard左箭頭
+	const char KEY_UP = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
-	const char KEY_DOWN  = 0x28; // keyboard下箭頭
+	const char KEY_DOWN = 0x28; // keyboard下箭頭
 	if (nChar == KEY_LEFT)
+	{
 		eraser.SetMovingLeft(false);
+		eraser.Set_format_state(3);
+	}
 	if (nChar == KEY_RIGHT)
+	{
 		eraser.SetMovingRight(false);
+		eraser.Set_format_state(4);
+	}
 	if (nChar == KEY_UP)
+	{
 		eraser.SetMovingUp(false);
+		eraser.Set_format_state(1);
+	}
 	if (nChar == KEY_DOWN)
+	{
 		eraser.SetMovingDown(false);
+		eraser.Set_format_state(2);
+	}
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作

@@ -21,8 +21,18 @@ namespace game_framework {
 		void SetMovingRight(bool flag); // 設定是否正在往右移動
 		void SetMovingUp(bool flag);	// 設定是否正在往上移動
 		void SetXY(int nx, int ny);		// 設定擦子左上角座標
+		void what_format_show();		// 顯示哪個方向
+		void Set_format_state(int x);		// 設定方向
 	protected:
-		CAnimation animation;		// 擦子的動畫
+		CAnimation animation1;		// 擦子的動畫
+		CAnimation animation2;		// 擦子的動畫
+		CAnimation animation3;		// 擦子的動畫
+		CAnimation animation4;		// 擦子的動畫
+		CMovingBitmap start_fomat;  // 開始人物位置
+		CMovingBitmap right_fomat;  // 右靜止位置
+		CMovingBitmap left_fomat;	// 左靜止位置
+		CMovingBitmap up_fomat;		// 上靜止位置
+		int format_state;			// 靜止方向(1上2下3左4右)
 		int x, y;					// 擦子左上角座標
 		bool isMovingDown;			// 是否正在往下移動
 		bool isMovingLeft;			// 是否正在往左移動

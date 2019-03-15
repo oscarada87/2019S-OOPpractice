@@ -173,4 +173,33 @@
       <Filter>MFC</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\bitmap3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\down.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\left.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\movedown.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\moveleft.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\moveright.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\moveup.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\right.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\up.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
