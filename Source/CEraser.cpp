@@ -161,15 +161,15 @@ namespace game_framework {
 			animation4.SetTopLeft(x, y);
 			animation4.OnShow();
 		}
-		else if (isMovingUp)
-		{
-			animation1.SetTopLeft(x, y);
-			animation1.OnShow();
-		}
 		else if (isMovingDown)
 		{
 			animation2.SetTopLeft(x, y);
 			animation2.OnShow();
+		}
+		else if (isMovingUp)
+		{
+			animation1.SetTopLeft(x, y);
+			animation1.OnShow();
 		}
 	}
 }
