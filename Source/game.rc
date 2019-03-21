@@ -104,29 +104,29 @@ IDB_HELP                BITMAP                  "..\\res\\help.bmp"
 
 IDB_LOADING             BITMAP                  "..\\res\\loading.bmp"
 
-IDB_DOWN                BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\down.bmp"
+IDB_DOWN                BITMAP                  "..\\res\\down.bmp"
 
-IDB_LEFT                BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\left.bmp"
+IDB_LEFT                BITMAP                  "..\\res\\left.bmp"
 
-IDB_MOVEDOWN            BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\movedown.bmp"
+IDB_MOVEDOWN            BITMAP                  "..\\res\\movedown.bmp"
 
-IDB_MOVELEFT            BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\moveleft.bmp"
+IDB_MOVELEFT            BITMAP                  "..\\res\\moveleft.bmp"
 
-IDB_MOVERIGHT           BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\moveright.bmp"
+IDB_MOVERIGHT           BITMAP                  "..\\res\\moveright.bmp"
 
-IDB_MOVEUP              BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\moveup.bmp"
+IDB_MOVEUP              BITMAP                  "..\\res\\moveup.bmp"
 
-IDB_RIGHT               BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\right.bmp"
+IDB_RIGHT               BITMAP                  "..\\res\\right.bmp"
 
-IDB_UP                  BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\up.bmp"
+IDB_UP                  BITMAP                  "..\\res\\up.bmp"
 
-IDB_BACKGROUND1         BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\black.bmp"
+IDB_BACKGROUND1         BITMAP                  "..\\res\\black.bmp"
 
-IDB_BACKGROUND0         BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\white.bmp"
+IDB_BACKGROUND0         BITMAP                  "..\\res\\white.bmp"
 
-IDB_BACKGROUND2         BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\well.bmp"
+IDB_BACKGROUND2         BITMAP                  "..\\res\\well.bmp"
 
-IDB_BACKGROUND3         BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\wwell.bmp"
+IDB_BACKGROUND3         BITMAP                  "..\\res\\wwell.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////
