@@ -201,5 +201,17 @@
     <Image Include="RES\up.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\black.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\white.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\well.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\wwell.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

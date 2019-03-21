@@ -120,6 +120,14 @@ IDB_RIGHT               BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\201
 
 IDB_UP                  BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\up.bmp"
 
+IDB_BACKGROUND1         BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\black.bmp"
+
+IDB_BACKGROUND0         BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\white.bmp"
+
+IDB_BACKGROUND2         BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\well.bmp"
+
+IDB_BACKGROUND3         BITMAP                  "C:\\Users\\¹ù±å§»\\Desktop\\2019S-OOPpractice\\RES\\wwell.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

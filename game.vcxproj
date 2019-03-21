@@ -326,6 +326,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\bitmap3.bmp" />
+    <Image Include="RES\black.bmp" />
     <Image Include="RES\down.bmp" />
     <Image Include="RES\left.bmp" />
     <Image Include="RES\movedown.bmp" />
@@ -334,6 +335,9 @@
     <Image Include="RES\moveup.bmp" />
     <Image Include="RES\right.bmp" />
     <Image Include="RES\up.bmp" />
+    <Image Include="RES\well.bmp" />
+    <Image Include="RES\white.bmp" />
+    <Image Include="RES\wwell.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

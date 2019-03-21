@@ -246,7 +246,8 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	// 移動擦子
 	//
-	eraser.OnMove();
+	gamemap.OnMove();//地圖
+	eraser.OnMove(&gamemap);
 	//
 	// 判斷擦子是否碰到球
 	//
@@ -284,6 +285,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	for (i = 0; i < NUMBALLS; i++)	
 		ball[i].LoadBitmap();								// 載入第i個球的圖形
 	eraser.LoadBitmap();
+	gamemap.LoadBitmap();	//地圖
 	background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
 	//
 	// 完成部分Loading動作，提高進度
@@ -391,7 +393,8 @@ void CGameStateRun::OnShow()
 	for (int i=0; i < NUMBALLS; i++)
 		ball[i].OnShow();				// 貼上第i號球
 	bball.OnShow();						// 貼上彈跳的球
-	eraser.OnShow();					// 貼上擦子
+	gamemap.OnShow();				//地圖
+	eraser.OnShow(&gamemap);					// 貼上擦子
 	//
 	//  貼上左上及右下角落的圖
 	//
