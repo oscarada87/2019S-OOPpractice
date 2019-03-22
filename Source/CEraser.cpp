@@ -188,6 +188,17 @@ namespace game_framework {
 		x = X_POS;
 		y = Y_POS;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
+		speed = 5;
+	}
+
+	void CEraser::SpeedUp() 
+	{
+		speed = 15;
+	}
+
+	void CEraser::SpeedInit()
+	{
+		speed = 5;
 	}
 
 	void CEraser::LoadBitmap()
@@ -212,15 +223,14 @@ namespace game_framework {
 
 	void CEraser::OnMove(CGameMap * m)
 	{
-		const int STEP_SIZE = 2;
 		//animation.OnMove();
 		if (isMovingLeft)
 		{
 			animation3.OnMove();
 			if (m->IsEmpty(x - 1, y)) {
-				x -= STEP_SIZE;
+				x -= speed;
 				if (m->GetSX() > 0) {
-					m->SetSX(-STEP_SIZE);
+					m->SetSX(-speed);
 				}
 			}
 		}
@@ -228,9 +238,9 @@ namespace game_framework {
 		{
 			animation4.OnMove();
 			if (m->IsEmpty(x + 1, y)) {
-				x += STEP_SIZE;
+				x += speed;
 				if (m->GetSX() < m->Getmapx() - SIZE_X) {
-					m->SetSX(STEP_SIZE);
+					m->SetSX(speed);
 				}
 			}
 		}
@@ -238,9 +248,9 @@ namespace game_framework {
 		{
 			animation1.OnMove();
 			if (m->IsEmpty(x, y - 1)) {
-				y -= STEP_SIZE;
+				y -= speed;
 				if (m->GetSY() > 0) {
-					m->SetSY(-STEP_SIZE);
+					m->SetSY(-speed);
 				}
 			}
 		}
@@ -248,9 +258,9 @@ namespace game_framework {
 		{
 			animation2.OnMove();
 			if (m->IsEmpty(x, y + 1)) {
-				y += STEP_SIZE;
+				y += speed;
 				if (m->GetSY() < m->Getmapy() - SIZE_Y) {
-					m->SetSY(STEP_SIZE);
+					m->SetSY(speed);
 				}
 			}
 		}

@@ -45,6 +45,8 @@ namespace game_framework {
 		void SetXY(int nx, int ny);		// 設定擦子左上角座標
 		void what_format_show(int x, int y);		// 顯示哪個方向
 		void Set_format_state(int x);		// 設定方向
+		void SpeedUp();					// 加速
+		void SpeedInit();				// 回到原本
 	protected:
 		CAnimation animation1;		// 擦子的動畫
 		CAnimation animation2;		// 擦子的動畫
@@ -56,6 +58,7 @@ namespace game_framework {
 		CMovingBitmap up_fomat;		// 上靜止位置
 		int format_state;			// 靜止方向(1上2下3左4右)
 		int x, y;					// 擦子左上角座標
+		int speed;					// 移動速度
 		bool isMovingDown;			// 是否正在往下移動
 		bool isMovingLeft;			// 是否正在往左移動
 		bool isMovingRight;			// 是否正在往右移動
