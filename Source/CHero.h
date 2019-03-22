@@ -1,43 +1,24 @@
+#ifndef CHERO_H
+#define CHERO_H
+
+#include "CGameMap.h"
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// 這個class提供可以用鍵盤或滑鼠控制的擦子
 	// 看懂就可以改寫成自己的程式了
 	/////////////////////////////////////////////////////////////////////////////
-	class CGameMap {
-	public:
-		CGameMap();
-		void LoadBitmap();
-		void OnMove();
-		void OnShow();
-		void SetSX(int nx);
-		void SetSY(int ny);
-		int GetSX();
-		int GetSY();
-		int Getmapx();
-		int Getmapy();
-		int ScreenX(int x);
-		int ScreenY(int y);
-		bool IsEmpty(int x, int y);
-	private:
-		CMovingBitmap background0;
-		CMovingBitmap background1;
-		CMovingBitmap background2;
-		CMovingBitmap background3;
-		int map[40][40];
-		int sx, sy; // (sx, sy)為螢幕(的左上角)在地圖上的點座標
-	};
-	class CEraser
+	class CHero
 	{
 	public:
-		CEraser();
+		CHero();
+		void OnMove(CGameMap * m);					// 移動擦子
+		void OnShow(CGameMap * m);					// 將擦子圖形貼到畫面
 		int  GetX1();					// 擦子左上角 x 座標
 		int  GetY1();					// 擦子左上角 y 座標
 		int  GetX2();					// 擦子右下角 x 座標
 		int  GetY2();					// 擦子右下角 y 座標
 		void Initialize();				// 設定擦子為初始值
 		void LoadBitmap();				// 載入圖形
-		void OnMove(CGameMap * m);					// 移動擦子
-		void OnShow(CGameMap * m);					// 將擦子圖形貼到畫面
 		void SetMovingDown(bool flag);	// 設定是否正在往下移動
 		void SetMovingLeft(bool flag);	// 設定是否正在往左移動
 		void SetMovingRight(bool flag); // 設定是否正在往右移動
@@ -65,3 +46,5 @@ namespace game_framework {
 		bool isMovingUp;			// 是否正在往上移動
 	};
 }
+
+#endif

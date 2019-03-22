@@ -22,7 +22,7 @@
  *      1. Add CGameStateInit, CGameStateRun, and CGameStateOver to
  *         demonstrate the use of states.
  *   2005-09-13
- *      Rewrite the codes for CBall and CEraser.
+ *      Rewrite the codes for CBall and CHero.
  *   2005-09-20 V4.2Beta1.
  *   2005-09-29 V4.2Beta2.
  *   2006-02-08 V4.2
@@ -38,7 +38,8 @@
  *      3. Use ShowInitProgress(percent) to display loading progress.
 */
 
-#include "CEraser.h"
+#include "CGameMap.h"
+#include "CHero.h"
 #include "CBall.h"
 #include "CBouncingBall.h"
 
@@ -94,14 +95,14 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		const int		NUMBALLS;	// 球的總數
-		CMovingBitmap	background;	// 背景圖
-		CMovingBitmap	help;		// 說明圖
+		CMovingBitmap	background;	
+		CMovingBitmap	help;		
 		CBall			*ball;		// 球的陣列
+		CGameMap        gamemap;    // 背景圖
 		CMovingBitmap	corner;		// 角落圖
-		CEraser			eraser;		// 拍子
+		CHero			eraser;		// 拍子
 		CInteger		hits_left;	// 剩下的撞擊數
 		CBouncingBall   bball;		// 反覆彈跳的球
-		CGameMap        gamemap;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
