@@ -130,6 +130,7 @@ namespace game_framework {
 	}
 	int CGameMap::GetSX()
 	{
+		
 		return sx;
 	}
 
@@ -139,18 +140,19 @@ namespace game_framework {
 	}
 	int CGameMap::Getmapx()
 	{
-		return background0.Width() * 50;
+		return background0.Width() * 40;
 	}
 
 	int CGameMap::Getmapy()
 	{
-		return background0.Height() * 50;
+		return background0.Height() * 40;
 	}
 	bool CGameMap::IsEmpty(int x, int y) // (x, y) 為地圖的點座標
 	{
-		int gx = x / 50; // 轉換為格座標(整數除法)
-		int gy = y / 50; // 轉換為格座標(整數除法)
-		return map[gx][gy] == 0; // 0 代表空的
+		int gx = (x + 48) / 50; // 轉換為格座標(整數除法)
+		int gy = (y + 90) / 50; // 轉換為格座標(整數除法)
+		int ox = x / 50;
+		return map[gx][gy] == 0 && map[ox][gy] == 0;// 0 代表空的
 	}
 
 	CEraser::CEraser()
