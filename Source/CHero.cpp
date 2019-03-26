@@ -81,7 +81,7 @@ namespace game_framework {
 		if (isMovingLeft)
 		{
 			animation3.OnMove();
-			if (m->IsEmpty(x - 1, y)) {
+			if (m->IsEmpty(x - speed, y)) {
 				x -= speed;
 				if (m->GetSX() > 0) {
 					m->SetSX(-speed);
@@ -91,7 +91,7 @@ namespace game_framework {
 		if (isMovingRight)
 		{
 			animation4.OnMove();
-			if (m->IsEmpty(x + 1, y)) {
+			if (m->IsEmpty(x + speed, y)) {
 				x += speed;
 				if (m->GetSX() < m->Getmapx() - SIZE_X) {
 					m->SetSX(speed);
@@ -101,7 +101,7 @@ namespace game_framework {
 		if (isMovingUp)
 		{
 			animation1.OnMove();
-			if (m->IsEmpty(x, y - 1)) {
+			if (m->IsEmpty(x, y - speed)) {
 				y -= speed;
 				if (m->GetSY() > 0) {
 					m->SetSY(-speed);
@@ -111,7 +111,7 @@ namespace game_framework {
 		if (isMovingDown)
 		{
 			animation2.OnMove();
-			if (m->IsEmpty(x, y + 1)) {
+			if (m->IsEmpty(x, y + speed)) {
 				y += speed;
 				if (m->GetSY() < m->Getmapy() - SIZE_Y) {
 					m->SetSY(speed);

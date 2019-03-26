@@ -7,7 +7,7 @@ namespace game_framework {
 	public:
 		CMonster() 
 		{
-			throw("This Monster Don't Have HP!");
+			//throw("This Monster Don't Have HP!");
 		};
 		CMonster(int HP) 
 		{

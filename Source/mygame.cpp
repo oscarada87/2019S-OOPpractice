@@ -190,6 +190,7 @@ void CGameStateOver::OnShow()
 CGameStateRun::CGameStateRun(CGame *g)
 : CGameState(g), NUMBALLS(28)
 {
+	
 	ball = new CBall [NUMBALLS];
 }
 
@@ -225,6 +226,8 @@ void CGameStateRun::OnBeginState()
 	CAudio::Instance()->Play(AUDIO_NTUT, true);			// 撥放 MIDI
 	*/
 	eraser.Initialize();
+	slime.Initialize();
+	
 }
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
@@ -250,6 +253,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	gamemap.OnMove();//地圖
 	eraser.OnMove(&gamemap);
+	slime.OnMove(eraser.GetX1(), eraser.GetY1(), &gamemap);
 	//
 	// 判斷擦子是否碰到球
 	//
@@ -290,6 +294,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//	ball[i].LoadBitmap();								// 載入第i個球的圖形
 	eraser.LoadBitmap();
 	gamemap.LoadBitmap();	//地圖
+	slime.LoadBitmap();
 	//background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
 	//
 	// 完成部分Loading動作，提高進度
@@ -405,6 +410,7 @@ void CGameStateRun::OnShow()
 	//bball.OnShow();						// 貼上彈跳的球
 	gamemap.OnShow();				//地圖
 	eraser.OnShow(&gamemap);					// 貼上擦子
+	slime.OnShow(eraser.GetX1(), eraser.GetY1(), &gamemap);
 	//
 	//  貼上左上及右下角落的圖
 	//
