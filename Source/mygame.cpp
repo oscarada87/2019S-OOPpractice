@@ -191,11 +191,13 @@ CGameStateRun::CGameStateRun(CGame *g)
 : CGameState(g), NUMBALLS(28)
 {
 	ball = new CBall [NUMBALLS];
+	spells = new FireBall(350, 350);
 }
 
 CGameStateRun::~CGameStateRun()
 {
 	delete [] ball;
+	delete [] spells;
 }
 
 void CGameStateRun::OnBeginState()
@@ -288,6 +290,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//int i;
 	//for (i = 0; i < NUMBALLS; i++)	
 	//	ball[i].LoadBitmap();								// 載入第i個球的圖形
+
 	eraser.LoadBitmap();
 	gamemap.LoadBitmap();	//地圖
 	//background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
@@ -303,7 +306,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//corner.LoadBitmap(IDB_CORNER);							// 載入角落圖形
 	//corner.ShowBitmap(background);							// 將corner貼到background
 	//bball.LoadBitmap();										// 載入圖形
-	//hits_left.LoadBitmap();									
+	//hits_left.LoadBitmap();			
+	spells[0].LoadBitmap();
 	CAudio::Instance()->Load(AUDIO_DING,  "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
 	CAudio::Instance()->Load(AUDIO_LAKE,  "sounds\\lake.mp3");	// 載入編號1的聲音lake.mp3
 	CAudio::Instance()->Load(AUDIO_NTUT,  "sounds\\ntut.mid");	// 載入編號2的聲音ntut.mid
@@ -318,7 +322,8 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_UP    = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
-	const char KEY_SHIFT  = 0x10; // keyboard SHIFT
+	const char KEY_SHIFT  = 0x10; // keyboard Shift 加速
+	const char KEY_SPACE = 0x20; //keyboard Space 火球
 	if (nChar == KEY_LEFT)
 		eraser.SetMovingLeft(true);
 	if (nChar == KEY_RIGHT)
@@ -329,6 +334,13 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		eraser.SetMovingDown(true);
 	if (nChar == KEY_SHIFT)
 		eraser.SpeedUp();
+	if (nChar == KEY_SPACE)
+	{
+		int tempX = (eraser.GetX1() + eraser.GetX2()) / 2;
+		int tempY = (eraser.GetY1() + eraser.GetY2()) / 2;
+		spells = new FireBall(tempX, tempY);
+		spells[0].LoadBitmap();
+	}
 }
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -403,9 +415,18 @@ void CGameStateRun::OnShow()
 	//for (int i=0; i < NUMBALLS; i++)
 	//	ball[i].OnShow();				// 貼上第i號球
 	//bball.OnShow();						// 貼上彈跳的球
+
 	gamemap.OnShow();				//地圖
 	eraser.OnShow(&gamemap);					// 貼上擦子
-	//
+	try 
+	{
+		spells[0].OnShow();
+	}
+	catch (...)
+	{
+	
+	}
+			//
 	//  貼上左上及右下角落的圖
 	//
 	//corner.SetTopLeft(0,0);

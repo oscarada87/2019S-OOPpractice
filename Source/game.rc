@@ -62,7 +62,7 @@ END
 // Bitmap
 //
 
-IDB_BALL                BITMAP                  "..\\res\\ball.bmp"
+IDB_FIREBALL            BITMAP                  "..\\res\\ball.bmp"
 
 IDB_ERASER1             BITMAP                  "..\\res\\eraser1.bmp"
 

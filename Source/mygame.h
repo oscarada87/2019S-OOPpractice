@@ -41,7 +41,16 @@
 #include "CGameMap.h"
 #include "CHero.h"
 #include "CBall.h"
+#include "CMonster.h"
+#include "CSpell.h"
 #include "CBouncingBall.h"
+
+//法術
+#include "FireBall.h"
+
+
+//怪物
+#include "Slime.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
@@ -98,6 +107,7 @@ namespace game_framework {
 		CMovingBitmap	background;	
 		CMovingBitmap	help;		
 		CBall			*ball;		// 球的陣列
+		CSpell          *spells;    // 法術陣列
 		CGameMap        gamemap;    // 背景圖
 		CMovingBitmap	corner;		// 角落圖
 		CHero			eraser;		// 拍子
