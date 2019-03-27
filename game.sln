@@ -9,6 +9,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "gameSetup.vdproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTests", "UnitTests\UnitTests.vcxproj", "{AEDB8838-4B06-460D-B2A3-945985AD294A}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{85D3699B-4D05-4A4E-BC9E-BD11390FD40A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -38,6 +40,10 @@ Global
 		{AEDB8838-4B06-460D-B2A3-945985AD294A}.Release|Win32.Build.0 = Release|Win32
 		{AEDB8838-4B06-460D-B2A3-945985AD294A}.Release|x64.ActiveCfg = Release|x64
 		{AEDB8838-4B06-460D-B2A3-945985AD294A}.Release|x64.Build.0 = Release|x64
+		{85D3699B-4D05-4A4E-BC9E-BD11390FD40A}.Debug|Win32.ActiveCfg = Debug
+		{85D3699B-4D05-4A4E-BC9E-BD11390FD40A}.Debug|x64.ActiveCfg = Debug
+		{85D3699B-4D05-4A4E-BC9E-BD11390FD40A}.Release|Win32.ActiveCfg = Release
+		{85D3699B-4D05-4A4E-BC9E-BD11390FD40A}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
