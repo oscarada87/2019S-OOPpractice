@@ -229,5 +229,32 @@
     <Image Include="RES\wwell.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\monster\bmp1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slime2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slime3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slime1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slimejump1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slimejump2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slimejump3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slimejump4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slimejump5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

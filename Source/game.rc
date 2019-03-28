@@ -128,6 +128,22 @@ IDB_BACKGROUND2         BITMAP                  "..\\res\\well.bmp"
 
 IDB_BACKGROUND3         BITMAP                  "..\\res\\wwell.bmp"
 
+IDB_SLIME1              BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slime1.bmp"
+
+IDB_SLIME2              BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slime2.bmp"
+
+IDB_SLIME3              BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slime3.bmp"
+
+IDB_SLIMEJUMP1          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimejump1.bmp"
+
+IDB_SLIMEJUMP2          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimejump2.bmp"
+
+IDB_SLIMEJUMP3          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimejump3.bmp"
+
+IDB_SLIMEJUMP4          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimejump4.bmp"
+
+IDB_SLIMEJUMP5          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimejump5.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

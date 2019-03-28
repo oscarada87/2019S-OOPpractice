@@ -25,15 +25,22 @@ namespace game_framework {
 
 	void Slime::LoadBitmap()
 	{
-		move.AddBitmap(IDB_ERASER1, RGB(255, 255, 255));
-		move.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
-		move.AddBitmap(IDB_ERASER3, RGB(255, 255, 255));
-		move.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
+		still.AddBitmap(IDB_SLIME1, RGB(255, 255, 255));
+		still.AddBitmap(IDB_SLIME2, RGB(255, 255, 255));
+		still.AddBitmap(IDB_SLIME3, RGB(255, 255, 255));
+		move.AddBitmap(IDB_SLIMEJUMP1, RGB(255, 255, 255));
+		move.AddBitmap(IDB_SLIMEJUMP2, RGB(255, 255, 255));
+		move.AddBitmap(IDB_SLIMEJUMP3, RGB(255, 255, 255));
+		move.AddBitmap(IDB_SLIMEJUMP4, RGB(255, 255, 255));
+		move.AddBitmap(IDB_SLIMEJUMP5, RGB(255, 255, 255));
+		//move.SetDelayCount(1000);
+		//move.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
 	}
 	void Slime::OnMove(int x, int y, CGameMap * m)
 	{
 		int speed = 2;
 		if (ismove) {
+			move.OnMove();
 			if (x > _x && m->IsEmpty(_x + speed, _y)) {
 				_x += speed;
 			}
@@ -47,19 +54,22 @@ namespace game_framework {
 				_y -= speed;
 			}
 		}
+		else {
+			still.OnMove();
+		}
 	}
 	void Slime::OnShow(int x,int y, CGameMap * m)
 	{
 		if (_HP != 0) {
 			if (abs(x - _x) < 200 && abs(y - _y) < 200) {
+				ismove = true;
 				move.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				move.OnShow();
-				ismove = true;
 			}
 			else  {
 				ismove = false;
-				move.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-				move.OnShow();
+				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				still.OnShow();
 			}
 		}
 	}

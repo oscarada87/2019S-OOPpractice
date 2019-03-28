@@ -14,6 +14,7 @@ namespace game_framework {
 		void OnShow(int x,int y, CGameMap * m);    //主角現在位置x y
 		void OnMove(int x, int y, CGameMap * m);
 	protected:
+		CAnimation still;			 // 不動
 		CAnimation move;			 //移動攻擊
 		bool ismove;
 	};
