@@ -22,7 +22,15 @@ namespace game_framework {
 	{
 	
 	}
+	int Slime::GetX2()
+	{
+		return _x + move.Width();
+	}
 
+	int Slime::GetY2()
+	{
+		return _y + move.Height();
+	}
 	void Slime::LoadBitmap()
 	{
 		still.AddBitmap(IDB_SLIME1, RGB(255, 255, 255));

@@ -144,6 +144,15 @@ namespace game_framework {
 	{
 		x = nx; y = ny;
 	}
+	bool CHero::HitSomething(int tx1, int ty1, int tx2, int ty2)	//GetX,GetY,GetX2,GetY2
+	{
+		int x1 = x ;				// 左上角x座標
+		int y1 = y ;				// 左上角y座標
+		int x2 = x1 + animation1.Width();	// 右下角x座標
+		int y2 = y1 + animation1.Height();	// 右下角y座標
+
+		return (tx2 >= x1 && tx1 <= x2 && ty2 >= y1 && ty1 <= y2);
+	}
 	void CHero::what_format_show(int x,int y)
 	{
 		if (format_state == 1)

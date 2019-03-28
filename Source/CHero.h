@@ -28,6 +28,7 @@ namespace game_framework {
 		void Set_format_state(int x);		// 設定方向
 		void SpeedUp();					// 加速
 		void SpeedInit();				// 回到原本
+		bool HitSomething(int tx1, int ty1, int tx2, int ty2);	// 是否碰到東西(輸入左上右下座標)
 	protected:
 		CAnimation animation1;		// 擦子的動畫
 		CAnimation animation2;		// 擦子的動畫
