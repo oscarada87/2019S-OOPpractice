@@ -14,7 +14,7 @@ namespace game_framework {
 		const int Y_POS = 500;
 		_x = X_POS;
 		_y = Y_POS;
-		ismove = false;
+		ismove = isHitted = false;
 		//_HP = 100;
 	}
 	
@@ -31,6 +31,7 @@ namespace game_framework {
 	{
 		return _y + move.Height();
 	}
+
 	void Slime::LoadBitmap()
 	{
 		still.AddBitmap(IDB_SLIME1, RGB(255, 255, 255));
@@ -41,9 +42,10 @@ namespace game_framework {
 		move.AddBitmap(IDB_SLIMEJUMP3, RGB(255, 255, 255));
 		move.AddBitmap(IDB_SLIMEJUMP4, RGB(255, 255, 255));
 		move.AddBitmap(IDB_SLIMEJUMP5, RGB(255, 255, 255));
-		//move.SetDelayCount(1000);
-		//move.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
+		move.SetDelayCount(5);
+		hitted.LoadBitmap(IDB_SLIME_HIT, RGB(255, 255, 255));
 	}
+
 	void Slime::OnMove(int x, int y, CGameMap * m)
 	{
 		int speed = 2;
@@ -66,19 +68,33 @@ namespace game_framework {
 			still.OnMove();
 		}
 	}
+
 	void Slime::OnShow(int x,int y, CGameMap * m)
 	{
-		if (_HP != 0) {
-			if (abs(x - _x) < 200 && abs(y - _y) < 200) {
+		if (!isHitted) 
+		{
+			if (abs(x - _x) < 200 && abs(y - _y) < 200) 
+			{
 				ismove = true;
 				move.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				move.OnShow();
 			}
-			else  {
+			else  
+			{
 				ismove = false;
 				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				still.OnShow();
 			}
 		}
+		else
+		{
+			hitted.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+			hitted.ShowBitmap();
+		}
+	}
+
+	void Slime::SetHitted(bool flag)
+	{
+		isHitted = flag;
 	}
 }

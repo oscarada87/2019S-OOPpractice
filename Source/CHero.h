@@ -29,15 +29,21 @@ namespace game_framework {
 		void SpeedUp();					// 加速
 		void SpeedInit();				// 回到原本
 		bool HitSomething(int tx1, int ty1, int tx2, int ty2);	// 是否碰到東西(輸入左上右下座標)
+		void SetHit(bool flag);
+		void Hit();						// 攻擊
 	protected:
 		CAnimation animation1;		// 擦子的動畫
 		CAnimation animation2;		// 擦子的動畫
 		CAnimation animation3;		// 擦子的動畫
 		CAnimation animation4;		// 擦子的動畫
-		CMovingBitmap start_fomat;  // 開始人物位置
-		CMovingBitmap right_fomat;  // 右靜止位置
-		CMovingBitmap left_fomat;	// 左靜止位置
-		CMovingBitmap up_fomat;		// 上靜止位置
+		CMovingBitmap down_format;  // 開始人物位置
+		CMovingBitmap right_format;  // 右靜止位置
+		CMovingBitmap left_format;	// 左靜止位置
+		CMovingBitmap up_format;		// 上靜止位置
+		CMovingBitmap up_hit_format;// 上攻擊位置
+		CMovingBitmap down_hit_format;// 下攻擊位置
+		CMovingBitmap left_hit_format;// 左攻擊位置
+		CMovingBitmap right_hit_format;// 右攻擊位置
 		int format_state;			// 靜止方向(1上2下3左4右)
 		int x, y;					// 擦子左上角座標
 		int speed;					// 移動速度
@@ -45,6 +51,7 @@ namespace game_framework {
 		bool isMovingLeft;			// 是否正在往左移動
 		bool isMovingRight;			// 是否正在往右移動
 		bool isMovingUp;			// 是否正在往上移動
+		bool isHitting;				// 是否正在攻擊
 	};
 }
 

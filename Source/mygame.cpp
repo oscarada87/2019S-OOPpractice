@@ -324,6 +324,17 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
 	const char KEY_SHIFT  = 0x10; // keyboard SHIFT
+	const char KEY_Z = 0x5A; //keyboard Z
+
+
+	if (nChar == KEY_Z)
+	{
+		eraser.SetHit(true);
+		if (eraser.HitSomething(slime.GetX(), slime.GetY(), slime.GetX2(), slime.GetY2()))
+		{
+			slime.SetHitted(true);
+		}
+	}
 	if (nChar == KEY_LEFT)
 		eraser.SetMovingLeft(true);
 	if (nChar == KEY_RIGHT)
@@ -343,6 +354,14 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN = 0x28; // keyboard下箭頭
 	const char KEY_SHIFT = 0x10; // keyboard SHIFT
+	const char KEY_Z = 0x5A; //keyboard Z
+
+
+	if (nChar == KEY_Z)
+	{
+		eraser.SetHit(false);
+		slime.SetHitted(false);
+	}
 	if (nChar == KEY_LEFT)
 	{
 		eraser.SetMovingLeft(false);

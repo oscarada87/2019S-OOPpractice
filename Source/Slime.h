@@ -15,9 +15,12 @@ namespace game_framework {
 		void OnMove(int x, int y, CGameMap * m);
 		int GetX2();					//右下角座標
 		int GetY2();
+		void SetHitted(bool flag);
 	protected:
 		CAnimation still;			 // 不動
 		CAnimation move;			 //移動攻擊
+		CMovingBitmap hitted;
+		bool isHitted;
 		bool ismove;
 	};
 }

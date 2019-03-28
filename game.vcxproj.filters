@@ -70,9 +70,6 @@
     <None Include="RES\eraser3.bmp">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="res\game.ico">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="res\game.rc2">
       <Filter>Resource Files</Filter>
     </None>
@@ -254,6 +251,24 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="RES\monster\slimejump5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\down_hit.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\left_hit.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\right_hit.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\up_hit.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slimehit.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\game.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

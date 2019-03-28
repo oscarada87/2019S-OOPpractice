@@ -144,6 +144,16 @@ IDB_SLIMEJUMP4          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code
 
 IDB_SLIMEJUMP5          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimejump5.bmp"
 
+IDB_DOWN_HIT            BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\hero\\down_hit.bmp"
+
+IDB_LEFT_HIT            BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\hero\\left_hit.bmp"
+
+IDB_RIGHT_HIT           BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\hero\\right_hit.bmp"
+
+IDB_UP_HIT              BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\hero\\up_hit.bmp"
+
+IDB_SLIME_HIT           BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimehit.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -151,6 +161,16 @@ IDB_SLIMEJUMP5          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code
 //
 
 IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\game.ico"
 
 #endif    // 中文 (繁體，台灣) resources
 /////////////////////////////////////////////////////////////////////////////

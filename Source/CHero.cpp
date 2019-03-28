@@ -41,7 +41,7 @@ namespace game_framework {
 		const int Y_POS = 350;
 		x = X_POS;
 		y = Y_POS;
-		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
+		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = isHitting = false;
 		speed = 5;
 	}
 
@@ -57,10 +57,6 @@ namespace game_framework {
 
 	void CHero::LoadBitmap()
 	{
-		//animation.AddBitmap(IDB_ERASER1, RGB(255, 255, 255));
-		//animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
-		//animation.AddBitmap(IDB_ERASER3, RGB(255, 255, 255));
-		//animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
 		animation1.AddBitmap(IDB_UP, RGB(255, 255, 255));
 		animation1.AddBitmap(IDB_MOVEUP, RGB(255, 255, 255));
 		animation2.AddBitmap(IDB_DOWN, RGB(255, 255, 255));
@@ -69,10 +65,14 @@ namespace game_framework {
 		animation3.AddBitmap(IDB_MOVELEFT, RGB(255, 255, 255));
 		animation4.AddBitmap(IDB_RIGHT, RGB(255, 255, 255));
 		animation4.AddBitmap(IDB_MOVERIGHT, RGB(255, 255, 255));
-		start_fomat.LoadBitmap(IDB_DOWN, RGB(255, 255, 255));
-		right_fomat.LoadBitmap(IDB_RIGHT, RGB(255, 255, 255));
-		left_fomat.LoadBitmap(IDB_LEFT, RGB(255, 255, 255));
-		up_fomat.LoadBitmap(IDB_UP, RGB(255, 255, 255));
+		down_format.LoadBitmap(IDB_DOWN, RGB(255, 255, 255));
+		right_format.LoadBitmap(IDB_RIGHT, RGB(255, 255, 255));
+		left_format.LoadBitmap(IDB_LEFT, RGB(255, 255, 255));
+		up_format.LoadBitmap(IDB_UP, RGB(255, 255, 255));
+		right_hit_format.LoadBitmap(IDB_RIGHT_HIT, RGB(255, 255, 255));
+		left_hit_format.LoadBitmap(IDB_LEFT_HIT, RGB(255, 255, 255));
+		down_hit_format.LoadBitmap(IDB_DOWN_HIT, RGB(255, 255, 255));
+		up_hit_format.LoadBitmap(IDB_UP_HIT, RGB(255, 255, 255));
 	}
 
 	void CHero::OnMove(CGameMap * m)
@@ -144,6 +144,17 @@ namespace game_framework {
 	{
 		x = nx; y = ny;
 	}
+
+	void CHero::SetHit(bool flag)
+	{
+		isHitting = flag;
+	}
+
+	void CHero::Hit()
+	{
+		isHitting = true;
+	}
+
 	bool CHero::HitSomething(int tx1, int ty1, int tx2, int ty2)	//GetX,GetY,GetX2,GetY2
 	{
 		int x1 = x ;				// ¥ª¤W¨¤x®y¼Ð
@@ -155,25 +166,53 @@ namespace game_framework {
 	}
 	void CHero::what_format_show(int x,int y)
 	{
-		if (format_state == 1)
+		if (!isHitting) 
 		{
-			up_fomat.SetTopLeft(x,y);
-			up_fomat.ShowBitmap();
+			if (format_state == 1)
+			{
+				up_format.SetTopLeft(x, y);
+				up_format.ShowBitmap();
+			}
+			if (format_state == 2)
+			{
+				down_format.SetTopLeft(x, y);
+				down_format.ShowBitmap();
+			}
+			if (format_state == 3)
+			{
+				left_format.SetTopLeft(x, y);
+				left_format.ShowBitmap();
+			}
+			if (format_state == 4)
+			{
+				right_format.SetTopLeft(x, y);
+				right_format.ShowBitmap();
+			}
 		}
-		if (format_state == 2)
+		else if (isHitting)
 		{
-			start_fomat.SetTopLeft(x, y);
-			start_fomat.ShowBitmap();
-		}
-		if (format_state == 3)
-		{
-			left_fomat.SetTopLeft(x, y);
-			left_fomat.ShowBitmap();
-		}
-		if (format_state == 4)
-		{
-			right_fomat.SetTopLeft(x, y);
-			right_fomat.ShowBitmap();
+			if (format_state == 1)
+			{
+				up_hit_format.SetTopLeft(x, y);
+				up_hit_format.ShowBitmap();
+			}
+			if (format_state == 2)
+			{
+				down_hit_format.SetTopLeft(x, y);
+				down_hit_format.ShowBitmap();
+			}
+			if (format_state == 3)
+			{
+				left_hit_format.SetTopLeft(x, y);
+				left_hit_format.ShowBitmap();
+			}
+			if (format_state == 4)
+			{
+				right_hit_format.SetTopLeft(x, y);
+				right_hit_format.ShowBitmap();
+			}
+			//Sleep(500);
+			//isHitting = false;
 		}
 	}
 	void CHero::Set_format_state(int x)

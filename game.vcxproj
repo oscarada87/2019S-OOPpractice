@@ -22,7 +22,7 @@
     <ProjectGuid>{DDD280D7-4B85-4B03-BBC4-C46CA9BECCCB}</ProjectGuid>
     <RootNamespace>game</RootNamespace>
     <Keyword>MFCProj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <ProjectName />
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -249,7 +249,6 @@
     <None Include="RES\eraser1.bmp" />
     <None Include="RES\eraser2.bmp" />
     <None Include="RES\eraser3.bmp" />
-    <None Include="res\game.ico" />
     <None Include="res\game.rc2" />
     <None Include="RES\gamecurs.cur" />
     <None Include="res\gameDoc.ico" />
@@ -334,11 +333,17 @@
     <Image Include="res\bitmap3.bmp" />
     <Image Include="RES\black.bmp" />
     <Image Include="RES\down.bmp" />
+    <Image Include="RES\game.ico" />
+    <Image Include="RES\hero\down_hit.bmp" />
+    <Image Include="RES\hero\left_hit.bmp" />
+    <Image Include="RES\hero\right_hit.bmp" />
+    <Image Include="RES\hero\up_hit.bmp" />
     <Image Include="RES\left.bmp" />
     <Image Include="RES\monster\bmp1.bmp" />
     <Image Include="RES\monster\slime1.bmp" />
     <Image Include="RES\monster\slime2.bmp" />
     <Image Include="RES\monster\slime3.bmp" />
+    <Image Include="RES\monster\slimehit.bmp" />
     <Image Include="RES\monster\slimejump1.bmp" />
     <Image Include="RES\monster\slimejump2.bmp" />
     <Image Include="RES\monster\slimejump3.bmp" />
