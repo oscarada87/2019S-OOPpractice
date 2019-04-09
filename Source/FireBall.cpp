@@ -17,6 +17,7 @@ namespace game_framework {
 		_speed = 2;
 		_damage = 2;
 		_duration = 3;
+		_direction = "right";
 	}
 	void FireBall::LoadBitmap()
 	{
@@ -27,6 +28,10 @@ namespace game_framework {
 	{
 		if (_duration > 0)
 		{
+			if (_direction == "right") 
+			{
+				_initX = _initX + _speed;
+			}
 			_start_img.SetTopLeft(_initX, _initY);
 			_start_img.ShowBitmap();
 		}

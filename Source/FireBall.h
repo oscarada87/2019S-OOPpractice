@@ -12,6 +12,8 @@ namespace game_framework {
 		void Initialize();
 		void OnShow();
 		void OnMove();
+	private:
+		string _direction;
 	};
 
 }

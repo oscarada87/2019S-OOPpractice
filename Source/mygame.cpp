@@ -191,7 +191,7 @@ CGameStateRun::CGameStateRun(CGame *g)
 : CGameState(g), NUMBALLS(28)
 {
 	ball = new CBall [NUMBALLS];
-	spells = new FireBall(350, 350);
+	spells = new FireBall(0, 0);
 }
 
 CGameStateRun::~CGameStateRun()
