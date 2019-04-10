@@ -225,6 +225,10 @@ void CGameStateRun::OnBeginState()
 	CAudio::Instance()->Play(AUDIO_DING, false);		// 撥放 WAVE
 	CAudio::Instance()->Play(AUDIO_NTUT, true);			// 撥放 MIDI
 	*/
+	const int HITS_LEFT_X = 590;
+	const int HITS_LEFT_Y = 0;
+	hp_left.SetInteger(slime.GetHP());
+	hp_left.SetTopLeft(HITS_LEFT_X, HITS_LEFT_Y);
 	eraser.Initialize();
 	slime.Initialize();
 	
@@ -308,7 +312,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//corner.LoadBitmap(IDB_CORNER);							// 載入角落圖形
 	//corner.ShowBitmap(background);							// 將corner貼到background
 	//bball.LoadBitmap();										// 載入圖形
-	//hits_left.LoadBitmap();									
+	//hits_left.LoadBitmap();			
+	hp_left.LoadBitmapA();
 	CAudio::Instance()->Load(AUDIO_DING,  "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
 	CAudio::Instance()->Load(AUDIO_LAKE,  "sounds\\lake.mp3");	// 載入編號1的聲音lake.mp3
 	CAudio::Instance()->Load(AUDIO_NTUT,  "sounds\\ntut.mid");	// 載入編號2的聲音ntut.mid
@@ -330,7 +335,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == KEY_Z)
 	{
 		eraser.SetHit(true);
-		if (eraser.HitSomething(slime.GetX(), slime.GetY(), slime.GetX2(), slime.GetY2()))
+		if (eraser.HitMonster(&slime))
 		{
 			slime.SetHitted(true);
 		}
@@ -359,8 +364,13 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_Z)
 	{
+		slime.DmgToSlime(1);
 		eraser.SetHit(false);
 		slime.SetHitted(false);
+		if (slime.GetHP() <= 0)
+			GotoGameState(GAME_STATE_OVER);
+		else
+			hp_left.SetInteger(slime.GetHP());
 	}
 	if (nChar == KEY_LEFT)
 	{
@@ -424,6 +434,7 @@ void CGameStateRun::OnShow()
 	//background.ShowBitmap();			// 貼上背景圖
 	//help.ShowBitmap();					// 貼上說明圖
 	//hits_left.ShowBitmap();
+	hp_left.ShowBitmap();
 	//for (int i=0; i < NUMBALLS; i++)
 	//	ball[i].OnShow();				// 貼上第i號球
 	//bball.OnShow();						// 貼上彈跳的球

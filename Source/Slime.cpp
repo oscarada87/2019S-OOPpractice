@@ -15,7 +15,7 @@ namespace game_framework {
 		_x = X_POS;
 		_y = Y_POS;
 		ismove = isHitted = false;
-		//_HP = 100;
+		_hp = 5;
 	}
 	
 	void Slime::Attack()
@@ -96,5 +96,10 @@ namespace game_framework {
 	void Slime::SetHitted(bool flag)
 	{
 		isHitted = flag;
+	}
+
+	void Slime::DmgToSlime(int dmg)
+	{
+		_hp -= dmg;
 	}
 }

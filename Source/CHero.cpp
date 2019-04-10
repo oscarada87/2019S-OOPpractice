@@ -155,6 +155,13 @@ namespace game_framework {
 		isHitting = true;
 	}
 
+	bool CHero::HitMonster(CMonster *monster)
+	{
+		// 檢測英雄是否打到怪物
+		return HitSomething(monster->GetX1(), monster->GetY1(),
+			monster->GetX2(), monster->GetY2());
+	}
+
 	bool CHero::HitSomething(int tx1, int ty1, int tx2, int ty2)	//GetX,GetY,GetX2,GetY2
 	{
 		int x1 = x ;				// 左上角x座標
@@ -164,6 +171,7 @@ namespace game_framework {
 
 		return (tx2 >= x1 && tx1 <= x2 && ty2 >= y1 && ty1 <= y2);
 	}
+
 	void CHero::what_format_show(int x,int y)
 	{
 		if (!isHitting) 

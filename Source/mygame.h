@@ -103,6 +103,7 @@ namespace game_framework {
 		CMovingBitmap	corner;		// 角落圖
 		CHero			eraser;		// 拍子
 		CInteger		hits_left;	// 剩下的撞擊數
+		CInteger        hp_left;
 		CBouncingBall   bball;		// 反覆彈跳的球
 		Slime           slime;		// 史萊姆
 	};
