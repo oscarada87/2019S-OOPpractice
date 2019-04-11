@@ -98,6 +98,11 @@ namespace game_framework {
 		isHitted = flag;
 	}
 
+	bool Slime::GetHitted()
+	{
+		return isHitted;
+	}
+
 	void Slime::DmgToSlime(int dmg)
 	{
 		_hp -= dmg;

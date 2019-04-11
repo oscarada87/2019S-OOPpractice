@@ -225,13 +225,12 @@ void CGameStateRun::OnBeginState()
 	CAudio::Instance()->Play(AUDIO_DING, false);		// 撥放 WAVE
 	CAudio::Instance()->Play(AUDIO_NTUT, true);			// 撥放 MIDI
 	*/
-	const int HITS_LEFT_X = 590;
+	const int HITS_LEFT_X = 0;
 	const int HITS_LEFT_Y = 0;
-	hp_left.SetInteger(slime.GetHP());
 	hp_left.SetTopLeft(HITS_LEFT_X, HITS_LEFT_Y);
 	eraser.Initialize();
 	slime.Initialize();
-	
+	hp_left.SetInteger(slime.GetHP());
 }
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
@@ -364,13 +363,16 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_Z)
 	{
-		slime.DmgToSlime(1);
+		if (slime.GetHitted()) 
+		{
+			slime.DmgToSlime(1);
+			slime.SetHitted(false);
+			if (slime.GetHP() <= 0)
+				GotoGameState(GAME_STATE_OVER);
+			else
+				hp_left.SetInteger(slime.GetHP());
+		}
 		eraser.SetHit(false);
-		slime.SetHitted(false);
-		if (slime.GetHP() <= 0)
-			GotoGameState(GAME_STATE_OVER);
-		else
-			hp_left.SetInteger(slime.GetHP());
 	}
 	if (nChar == KEY_LEFT)
 	{
@@ -434,13 +436,13 @@ void CGameStateRun::OnShow()
 	//background.ShowBitmap();			// 貼上背景圖
 	//help.ShowBitmap();					// 貼上說明圖
 	//hits_left.ShowBitmap();
-	hp_left.ShowBitmap();
 	//for (int i=0; i < NUMBALLS; i++)
 	//	ball[i].OnShow();				// 貼上第i號球
 	//bball.OnShow();						// 貼上彈跳的球
 	gamemap.OnShow();				//地圖
 	eraser.OnShow(&gamemap);					// 貼上擦子
 	slime.OnShow(eraser.GetX1(), eraser.GetY1(), &gamemap);
+	hp_left.ShowBitmap();
 	//
 	//  貼上左上及右下角落的圖
 	//
