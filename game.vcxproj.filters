@@ -271,5 +271,11 @@
     <Image Include="RES\game.ico">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\heart.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\emptyheart.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

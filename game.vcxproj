@@ -333,7 +333,9 @@
     <Image Include="res\bitmap3.bmp" />
     <Image Include="RES\black.bmp" />
     <Image Include="RES\down.bmp" />
+    <Image Include="RES\emptyheart.bmp" />
     <Image Include="RES\game.ico" />
+    <Image Include="RES\heart.bmp" />
     <Image Include="RES\hero\down_hit.bmp" />
     <Image Include="RES\hero\left_hit.bmp" />
     <Image Include="RES\hero\right_hit.bmp" />

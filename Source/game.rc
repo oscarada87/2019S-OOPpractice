@@ -154,6 +154,10 @@ IDB_UP_HIT              BITMAP                  "D:\\Users\\Oscar\\Desktop\\code
 
 IDB_SLIME_HIT           BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimehit.bmp"
 
+IDB_HEART               BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\heart.bmp"
+
+IDB_EMPTY_HEART         BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\emptyheart.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

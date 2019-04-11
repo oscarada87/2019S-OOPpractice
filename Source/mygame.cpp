@@ -59,6 +59,7 @@
 #include "gamelib.h"
 #include "mygame.h"
 
+#include <vector>
 namespace game_framework {
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的遊戲開頭畫面物件
@@ -197,6 +198,7 @@ CGameStateRun::CGameStateRun(CGame *g)
 CGameStateRun::~CGameStateRun()
 {
 	delete [] ball;
+	heart.clear();
 }
 
 void CGameStateRun::OnBeginState()
@@ -225,12 +227,16 @@ void CGameStateRun::OnBeginState()
 	CAudio::Instance()->Play(AUDIO_DING, false);		// 撥放 WAVE
 	CAudio::Instance()->Play(AUDIO_NTUT, true);			// 撥放 MIDI
 	*/
-	const int HITS_LEFT_X = 0;
-	const int HITS_LEFT_Y = 0;
-	hp_left.SetTopLeft(HITS_LEFT_X, HITS_LEFT_Y);
+	//hp_left.SetTopLeft(HITS_LEFT_X, HITS_LEFT_Y);
 	eraser.Initialize();
 	slime.Initialize();
-	hp_left.SetInteger(slime.GetHP());
+	//hp_left.SetInteger(slime.GetHP());
+	for (int i = 0; i != slime.GetHP(); i++)
+	{
+		heart.push_back(new CMovingBitmap());
+		heart.at(i)->LoadBitmap(IDB_HEART, RGB(255, 255, 255));
+		heart.at(i)->SetTopLeft(0 + 28 * i, 0);
+	}
 }
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
@@ -312,7 +318,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//corner.ShowBitmap(background);							// 將corner貼到background
 	//bball.LoadBitmap();										// 載入圖形
 	//hits_left.LoadBitmap();			
-	hp_left.LoadBitmapA();
+	//hp_left.LoadBitmap();
 	CAudio::Instance()->Load(AUDIO_DING,  "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
 	CAudio::Instance()->Load(AUDIO_LAKE,  "sounds\\lake.mp3");	// 載入編號1的聲音lake.mp3
 	CAudio::Instance()->Load(AUDIO_NTUT,  "sounds\\ntut.mid");	// 載入編號2的聲音ntut.mid
@@ -370,7 +376,10 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 			if (slime.GetHP() <= 0)
 				GotoGameState(GAME_STATE_OVER);
 			else
-				hp_left.SetInteger(slime.GetHP());
+			{
+				//hp_left.SetInteger(slime.GetHP());
+				heart.pop_back();
+			}
 		}
 		eraser.SetHit(false);
 	}
@@ -442,7 +451,11 @@ void CGameStateRun::OnShow()
 	gamemap.OnShow();				//地圖
 	eraser.OnShow(&gamemap);					// 貼上擦子
 	slime.OnShow(eraser.GetX1(), eraser.GetY1(), &gamemap);
-	hp_left.ShowBitmap();
+	//hp_left.ShowBitmap();
+	for (auto it = heart.begin(); it != heart.end(); it++)
+	{
+		(*it)->ShowBitmap();	
+	}
 	//
 	//  貼上左上及右下角落的圖
 	//
