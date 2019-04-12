@@ -350,6 +350,14 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_SHIFT = 0x10; // keyboard SHIFT
 	const char KEY_SPACE = 0x20; //keyboard Space 火球
 
+	if (nChar == KEY_SPACE)
+	{
+		int tempX = (eraser.GetX1() + eraser.GetX2()) / 2;
+		int tempY = (eraser.GetY1() + eraser.GetY2()) / 2;
+		spells.push_back(new FireBall(eraser.GetX1(), eraser.GetY1()));
+		spells.back()->LoadBitmap();
+	}
+
 	if (nChar == KEY_LEFT)
 	{
 		eraser.SetMovingLeft(false);
@@ -372,13 +380,6 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 	if (nChar == KEY_SHIFT)
 		eraser.SpeedInit();
-	if (nChar == KEY_SPACE)
-	{
-		int tempX = (eraser.GetX1() + eraser.GetX2()) / 2;
-		int tempY = (eraser.GetY1() + eraser.GetY2()) / 2;
-		spells.push_back(new FireBall(eraser.GetX1(), eraser.GetY1()));
-		spells.back()->LoadBitmap();
-	}
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
@@ -426,7 +427,7 @@ void CGameStateRun::OnShow()
 	gamemap.OnShow();				//地圖
 	eraser.OnShow(&gamemap);					// 貼上擦子
 	for (auto it = spells.begin(); it != spells.end(); it++) {
-		(*it)->OnShow();
+		(*it)->OnShow(&gamemap);
 	}
 
 	//

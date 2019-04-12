@@ -6,8 +6,6 @@
 #include "gamelib.h"
 
 #include "FireBall.h"
-#include "CHero.h"
-#include "CMonster.h"
 
 namespace game_framework {
 	FireBall::FireBall(int x, int y):CSpell(x, y)
@@ -27,8 +25,9 @@ namespace game_framework {
 		_start_img.LoadBitmapA(IDB_FIREBALL, RGB(255, 255, 255));
 	}
 
-	void FireBall::OnShow()
+	void FireBall::OnShow(CGameMap * m)
 	{
+		_start_img.SetTopLeft(m->ScreenX(_initX), m->ScreenY(_initY));
 		_start_img.ShowBitmap();
 	}
 
@@ -40,7 +39,6 @@ namespace game_framework {
 			{
 				_initX = _initX + _speed;
 			}
-			_start_img.SetTopLeft(_initX, _initY);
 		}
 	}
 

@@ -3,7 +3,6 @@
 
 #include "CSpell.h"
 
-
 namespace game_framework {
 	class FireBall : public CSpell 
 	{
@@ -11,12 +10,12 @@ namespace game_framework {
 		FireBall(int x, int y);
 		void LoadBitmap();
 		void Initialize();
-		void OnShow();
+		void OnShow(CGameMap * m);
 		void OnMove();
 		bool HitSomething(CHero *hero);
+		bool HitRectangle(int tx1, int ty1, int tx2, int ty2);
 		//bool HitSomething(CMonster *monster);
 	private:
-		bool HitRectangle(int tx1, int ty1, int tx2, int ty2);
 		string _direction;
 	};
 
