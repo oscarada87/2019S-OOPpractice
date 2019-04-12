@@ -11,8 +11,8 @@ namespace game_framework {
 		void Initialize();
 		void LoadBitmap();
 		void Attack();
-		int GetX2();
-		int GetY2();
+		//int GetX2();
+		//int GetY2();
 	};
 }
 

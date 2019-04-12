@@ -252,6 +252,9 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	gamemap.OnMove();//地圖
 	eraser.OnMove(&gamemap);
+	for (auto it = spells.begin(); it != spells.end(); it++) {
+		(*it)->OnMove();
+	}
 	//
 	// 判斷擦子是否碰到球
 	//
