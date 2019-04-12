@@ -18,6 +18,8 @@ namespace game_framework {
 		virtual void Initialize() = 0;
 		virtual void OnShow() = 0;
 		virtual void OnMove() = 0;
+		virtual bool HitSomething(CHero *hero) = 0;
+		virtual bool HitSomething(CMonster *monster) = 0;
 	protected :
 		int _initX;
 	    int _initY;

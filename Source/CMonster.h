@@ -19,12 +19,14 @@ namespace game_framework {
 		virtual void LoadBitmap() = 0;				// 載入圖形
 		int GetHP() { return _HP; };
 		void SetHP(int HP) { _HP = HP; };
-		int GetX() { return _x; };
-		void SetX(int x) { _x = x; };
-		int GetY() { return _y; };
-		void SetY(int y) { _y = y; };
+		int GetX1() { return _x; };
+		void SetX1(int x) { _x = x; };
+		int GetY1() { return _y; };
+		void SetY1(int y) { _y = y; };
 		int GetSpeed() { return _speed; };
 		void SetSpeed(int speed) { _speed = speed; };
+		virtual int GetX2() = 0;
+		virtual int GetY2() = 0;
 
 	protected:
 		int _HP;					// 血量
