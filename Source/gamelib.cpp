@@ -528,7 +528,7 @@ void CGame::OnDraw()
 		// 如果在暫停狀態，則顯示Ctrl-Q...
 		//
 		CMovingBitmap bmp;
-		bmp.LoadBitmap(IDB_CONTINUE);
+		bmp.LoadBitmap(IDB_PAUSE);
 		bmp.SetTopLeft(0,0);
 		bmp.ShowBitmap();
 	}

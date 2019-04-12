@@ -52,7 +52,15 @@ namespace game_framework {
 	enum AUDIO_ID {				// 定義各種音效的編號
 		AUDIO_DING,				// 0
 		AUDIO_LAKE,				// 1
-		AUDIO_NTUT				// 2
+		AUDIO_NTUT,				// 2
+		AUDIO_STARTOST,			// 3
+		AUDIO_HELP,
+		AUDIO_END,
+		AUDIO_EARTH,
+		AUDIO_STEP,
+		AUDIO_RUN,
+		AUDIO_KNIFE,
+		AUDIO_KNIFEHIT
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -65,12 +73,15 @@ namespace game_framework {
 		CGameStateInit(CGame *g);
 		void OnInit();  								// 遊戲的初值及圖形設定
 		void OnBeginState();							// 設定每次重玩所需的變數
+		void OnKeyDown(UINT, UINT, UINT);
 		void OnKeyUp(UINT, UINT, UINT); 				// 處理鍵盤Up的動作
 		void OnLButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 	protected:
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
-		CMovingBitmap logo;								// csie的logo
+		CMovingBitmap gamestart;								// mainpage
+		CMovingBitmap helpbar;									// help
+		bool help;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -101,8 +112,10 @@ namespace game_framework {
 		CBall			*ball;		// 球的陣列
 		CGameMap        gamemap;    // 背景圖
 		CMovingBitmap	corner;		// 角落圖
+		vector<CMovingBitmap*> heart; // 生命
 		CHero			eraser;		// 拍子
 		CInteger		hits_left;	// 剩下的撞擊數
+		CInteger        hp_left;
 		CBouncingBall   bball;		// 反覆彈跳的球
 		Slime           slime;		// 史萊姆
 	};
@@ -117,11 +130,13 @@ namespace game_framework {
 		CGameStateOver(CGame *g);
 		void OnBeginState();							// 設定每次重玩所需的變數
 		void OnInit();
+		void OnKeyUp(UINT, UINT, UINT);
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		int counter;	// 倒數之計數器
+		CMovingBitmap gameend;
 	};
 
 }

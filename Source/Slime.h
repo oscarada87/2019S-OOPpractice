@@ -16,6 +16,8 @@ namespace game_framework {
 		int GetX2();					//右下角座標
 		int GetY2();
 		void SetHitted(bool flag);
+		bool GetHitted();
+		void DmgToSlime(int dmg);
 	protected:
 		CAnimation still;			 // 不動
 		CAnimation move;			 //移動攻擊

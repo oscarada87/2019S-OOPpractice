@@ -271,5 +271,137 @@
     <Image Include="RES\game.ico">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\hero\movedown_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\movedown_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\movedown_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\movedown_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\movedown_4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveleft_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveleft_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveleft_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveleft_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveleft_4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveleft_5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveright_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveright_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveright_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveright_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveright_4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveright_5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveup_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveup_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveup_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveup_3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\moveup_4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hero\down.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hero\left.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hero\right.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hero\up.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\down_hit_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\down_hit_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\down_hit_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\right_hit_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\right_hit_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\right_hit_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\left_hit_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\left_hit_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\left_hit_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\up_hit_0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\up_hit_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\up_hit_2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\start-1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\pause.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\helpbar.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\emptyheart.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\heart.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

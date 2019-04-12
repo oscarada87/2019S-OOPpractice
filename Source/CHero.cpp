@@ -57,30 +57,93 @@ namespace game_framework {
 
 	void CHero::LoadBitmap()
 	{
-		animation1.AddBitmap(IDB_UP, RGB(255, 255, 255));
-		animation1.AddBitmap(IDB_MOVEUP, RGB(255, 255, 255));
-		animation2.AddBitmap(IDB_DOWN, RGB(255, 255, 255));
-		animation2.AddBitmap(IDB_MOVEDOWN, RGB(255, 255, 255));
-		animation3.AddBitmap(IDB_LEFT, RGB(255, 255, 255));
-		animation3.AddBitmap(IDB_MOVELEFT, RGB(255, 255, 255));
-		animation4.AddBitmap(IDB_RIGHT, RGB(255, 255, 255));
-		animation4.AddBitmap(IDB_MOVERIGHT, RGB(255, 255, 255));
+		animation1.AddBitmap(IDB_MOVEUP0, RGB(255, 255, 255));
+		animation1.AddBitmap(IDB_MOVEUP1, RGB(255, 255, 255));
+		animation1.AddBitmap(IDB_MOVEUP2, RGB(255, 255, 255));
+		animation1.AddBitmap(IDB_MOVEUP3, RGB(255, 255, 255));
+		animation1.AddBitmap(IDB_MOVEUP4, RGB(255, 255, 255));
+
+		animation2.AddBitmap(IDB_MOVEDOWN0, RGB(255, 255, 255));
+		animation2.AddBitmap(IDB_MOVEDOWN1, RGB(255, 255, 255));
+		animation2.AddBitmap(IDB_MOVEDOWN2, RGB(255, 255, 255));
+		animation2.AddBitmap(IDB_MOVEDOWN3, RGB(255, 255, 255));
+		animation2.AddBitmap(IDB_MOVEDOWN4, RGB(255, 255, 255));
+
+		animation3.AddBitmap(IDB_MOVELEFT0, RGB(255, 255, 255));
+		animation3.AddBitmap(IDB_MOVELEFT1, RGB(255, 255, 255));
+		animation3.AddBitmap(IDB_MOVELEFT2, RGB(255, 255, 255));
+		animation3.AddBitmap(IDB_MOVELEFT3, RGB(255, 255, 255));
+		animation3.AddBitmap(IDB_MOVELEFT4, RGB(255, 255, 255));
+		animation3.AddBitmap(IDB_MOVELEFT5, RGB(255, 255, 255));
+
+		animation4.AddBitmap(IDB_MOVERIGHT0, RGB(255, 255, 255));
+		animation4.AddBitmap(IDB_MOVERIGHT1, RGB(255, 255, 255));
+		animation4.AddBitmap(IDB_MOVERIGHT2, RGB(255, 255, 255));
+		animation4.AddBitmap(IDB_MOVERIGHT3, RGB(255, 255, 255));
+		animation4.AddBitmap(IDB_MOVERIGHT4, RGB(255, 255, 255));
+		animation4.AddBitmap(IDB_MOVERIGHT5, RGB(255, 255, 255));
+
+		animation1.SetDelayCount(5);
+		animation2.SetDelayCount(5);
+		animation3.SetDelayCount(5);
+		animation4.SetDelayCount(5);
+
 		down_format.LoadBitmap(IDB_DOWN, RGB(255, 255, 255));
 		right_format.LoadBitmap(IDB_RIGHT, RGB(255, 255, 255));
 		left_format.LoadBitmap(IDB_LEFT, RGB(255, 255, 255));
 		up_format.LoadBitmap(IDB_UP, RGB(255, 255, 255));
-		right_hit_format.LoadBitmap(IDB_RIGHT_HIT, RGB(255, 255, 255));
-		left_hit_format.LoadBitmap(IDB_LEFT_HIT, RGB(255, 255, 255));
-		down_hit_format.LoadBitmap(IDB_DOWN_HIT, RGB(255, 255, 255));
-		up_hit_format.LoadBitmap(IDB_UP_HIT, RGB(255, 255, 255));
+
+		right_hit_format.AddBitmap(IDB_RIGHT_HIT0, RGB(255, 255, 255));
+		right_hit_format.AddBitmap(IDB_RIGHT_HIT1, RGB(255, 255, 255));
+		right_hit_format.AddBitmap(IDB_RIGHT_HIT2, RGB(255, 255, 255));
+
+		left_hit_format.AddBitmap(IDB_LEFT_HIT0, RGB(255, 255, 255));
+		left_hit_format.AddBitmap(IDB_LEFT_HIT1, RGB(255, 255, 255));
+		left_hit_format.AddBitmap(IDB_LEFT_HIT2, RGB(255, 255, 255));
+
+		down_hit_format.AddBitmap(IDB_DOWN_HIT0, RGB(255, 255, 255));
+		down_hit_format.AddBitmap(IDB_DOWN_HIT1, RGB(255, 255, 255));
+		down_hit_format.AddBitmap(IDB_DOWN_HIT2, RGB(255, 255, 255));
+
+		up_hit_format.AddBitmap(IDB_UP_HIT0, RGB(255, 255, 255));
+		up_hit_format.AddBitmap(IDB_UP_HIT1, RGB(255, 255, 255));
+		up_hit_format.AddBitmap(IDB_UP_HIT2, RGB(255, 255, 255));
+
+		right_hit_format.SetDelayCount(5);
+		left_hit_format.SetDelayCount(5);
+		up_hit_format.SetDelayCount(5);
+		down_hit_format.SetDelayCount(5);
 	}
 
 	void CHero::OnMove(CGameMap * m)
 	{
 		//animation.OnMove();
-		if (isMovingLeft)
+		if (isMovingUp == false && isMovingDown == false && isMovingLeft == false && isMovingRight == false && isHitting == true)
 		{
-			animation3.OnMove();
+			if (format_state == 1)
+			{
+				up_hit_format.OnMove();
+			}
+			if (format_state == 2)
+			{
+				down_hit_format.OnMove();
+			}
+			if (format_state == 3)
+			{
+				left_hit_format.OnMove();
+			}
+			if (format_state == 4)
+			{
+				right_hit_format.OnMove();
+			}
+		}
+		if (isMovingLeft){
+			if (isHitting) {
+				left_hit_format.OnMove();
+			}
+			else {
+				animation3.OnMove();
+			}
 			if (m->IsEmpty(x - speed, y)) {
 				x -= speed;
 				if (m->GetSX() > 0) {
@@ -88,9 +151,13 @@ namespace game_framework {
 				}
 			}
 		}
-		if (isMovingRight)
-		{
-			animation4.OnMove();
+		if (isMovingRight){
+			if (isHitting) {
+				right_hit_format.OnMove();
+			}
+			else {
+				animation4.OnMove();
+			}
 			if (m->IsEmpty(x + speed, y)) {
 				x += speed;
 				if (m->GetSX() < m->Getmapx() - SIZE_X) {
@@ -98,9 +165,13 @@ namespace game_framework {
 				}
 			}
 		}
-		if (isMovingUp)
-		{
-			animation1.OnMove();
+		if (isMovingUp){
+			if (isHitting) {
+				up_hit_format.OnMove();
+			}
+			else {
+				animation1.OnMove();
+			}
 			if (m->IsEmpty(x, y - speed)) {
 				y -= speed;
 				if (m->GetSY() > 0) {
@@ -108,9 +179,13 @@ namespace game_framework {
 				}
 			}
 		}
-		if (isMovingDown)
-		{
-			animation2.OnMove();
+		if (isMovingDown){
+			if (isHitting){
+				down_hit_format.OnMove();
+			}
+			else {
+				animation2.OnMove();
+			}
 			if (m->IsEmpty(x, y + speed)) {
 				y += speed;
 				if (m->GetSY() < m->Getmapy() - SIZE_Y) {
@@ -155,6 +230,12 @@ namespace game_framework {
 		isHitting = true;
 	}
 
+	bool CHero::HitMonster(CMonster *monster)
+	{
+		// 檢測英雄是否打到怪物
+		return HitSomething(monster->GetX1(), monster->GetY1(),
+			monster->GetX2(), monster->GetY2());
+	}
 	bool CHero::HitSomething(int tx1, int ty1, int tx2, int ty2)	//GetX,GetY,GetX2,GetY2
 	{
 		int x1 = x ;				// 左上角x座標
@@ -164,6 +245,7 @@ namespace game_framework {
 
 		return (tx2 >= x1 && tx1 <= x2 && ty2 >= y1 && ty1 <= y2);
 	}
+
 	void CHero::what_format_show(int x,int y)
 	{
 		if (!isHitting) 
@@ -194,22 +276,22 @@ namespace game_framework {
 			if (format_state == 1)
 			{
 				up_hit_format.SetTopLeft(x, y);
-				up_hit_format.ShowBitmap();
+				up_hit_format.OnShow();
 			}
 			if (format_state == 2)
 			{
 				down_hit_format.SetTopLeft(x, y);
-				down_hit_format.ShowBitmap();
+				down_hit_format.OnShow();
 			}
 			if (format_state == 3)
 			{
 				left_hit_format.SetTopLeft(x, y);
-				left_hit_format.ShowBitmap();
+				left_hit_format.OnShow();
 			}
 			if (format_state == 4)
 			{
 				right_hit_format.SetTopLeft(x, y);
-				right_hit_format.ShowBitmap();
+				right_hit_format.OnShow();
 			}
 			//Sleep(500);
 			//isHitting = false;
@@ -229,23 +311,51 @@ namespace game_framework {
 		}
 		if (isMovingLeft)
 		{
-			animation3.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
-			animation3.OnShow();
+			if (isHitting) 
+			{
+				left_hit_format.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
+				left_hit_format.OnShow();
+			}
+			else {
+				animation3.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
+				animation3.OnShow();
+			}
 		}
 		else if (isMovingRight)
 		{
-			animation4.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
-			animation4.OnShow();
+			if (isHitting) 
+			{
+				right_hit_format.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
+				right_hit_format.OnShow();
+			}
+			else {
+				animation4.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
+				animation4.OnShow();
+			}
 		}
 		else if (isMovingDown)
 		{
-			animation2.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
-			animation2.OnShow();
+			if (isHitting) 
+			{
+				down_hit_format.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
+				down_hit_format.OnShow();
+			}
+			else {
+				animation2.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
+				animation2.OnShow();
+			}
 		}
 		else if (isMovingUp)
 		{
-			animation1.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
-			animation1.OnShow();
+			if (isHitting) 
+			{
+				up_hit_format.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
+				up_hit_format.OnShow();
+			}
+			else {
+				animation1.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
+				animation1.OnShow();
+			}
 		}
 	}
 }

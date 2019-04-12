@@ -2,6 +2,7 @@
 #define CHERO_H
 
 #include "CGameMap.h"
+#include "CMonster.h"
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// 這個class提供可以用鍵盤或滑鼠控制的擦子
@@ -28,6 +29,7 @@ namespace game_framework {
 		void Set_format_state(int x);		// 設定方向
 		void SpeedUp();					// 加速
 		void SpeedInit();				// 回到原本
+		bool HitMonster(CMonster *monster);
 		bool HitSomething(int tx1, int ty1, int tx2, int ty2);	// 是否碰到東西(輸入左上右下座標)
 		void SetHit(bool flag);
 		void Hit();						// 攻擊
@@ -40,10 +42,10 @@ namespace game_framework {
 		CMovingBitmap right_format;  // 右靜止位置
 		CMovingBitmap left_format;	// 左靜止位置
 		CMovingBitmap up_format;		// 上靜止位置
-		CMovingBitmap up_hit_format;// 上攻擊位置
-		CMovingBitmap down_hit_format;// 下攻擊位置
-		CMovingBitmap left_hit_format;// 左攻擊位置
-		CMovingBitmap right_hit_format;// 右攻擊位置
+		CAnimation up_hit_format;// 上攻擊位置
+		CAnimation down_hit_format;// 下攻擊位置
+		CAnimation left_hit_format;// 左攻擊位置
+		CAnimation right_hit_format;// 右攻擊位置
 		int format_state;			// 靜止方向(1上2下3左4右)
 		int x, y;					// 擦子左上角座標
 		int speed;					// 移動速度

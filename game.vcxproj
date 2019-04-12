@@ -22,7 +22,7 @@
     <ProjectGuid>{DDD280D7-4B85-4B03-BBC4-C46CA9BECCCB}</ProjectGuid>
     <RootNamespace>game</RootNamespace>
     <Keyword>MFCProj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
     <ProjectName />
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -333,11 +333,52 @@
     <Image Include="res\bitmap3.bmp" />
     <Image Include="RES\black.bmp" />
     <Image Include="RES\down.bmp" />
+    <Image Include="RES\emptyheart.bmp" />
     <Image Include="RES\game.ico" />
+    <Image Include="RES\heart.bmp" />
+    <Image Include="RES\helpbar.bmp" />
+    <Image Include="res\hero\down.bmp" />
     <Image Include="RES\hero\down_hit.bmp" />
+    <Image Include="RES\hero\down_hit_0.bmp" />
+    <Image Include="RES\hero\down_hit_1.bmp" />
+    <Image Include="RES\hero\down_hit_2.bmp" />
+    <Image Include="res\hero\left.bmp" />
     <Image Include="RES\hero\left_hit.bmp" />
+    <Image Include="RES\hero\left_hit_0.bmp" />
+    <Image Include="RES\hero\left_hit_1.bmp" />
+    <Image Include="RES\hero\left_hit_2.bmp" />
+    <Image Include="RES\hero\movedown_0.bmp" />
+    <Image Include="RES\hero\movedown_1.bmp" />
+    <Image Include="RES\hero\movedown_2.bmp" />
+    <Image Include="RES\hero\movedown_3.bmp" />
+    <Image Include="RES\hero\movedown_4.bmp" />
+    <Image Include="RES\hero\moveleft_0.bmp" />
+    <Image Include="RES\hero\moveleft_1.bmp" />
+    <Image Include="RES\hero\moveleft_2.bmp" />
+    <Image Include="RES\hero\moveleft_3.bmp" />
+    <Image Include="RES\hero\moveleft_4.bmp" />
+    <Image Include="RES\hero\moveleft_5.bmp" />
+    <Image Include="RES\hero\moveright_0.bmp" />
+    <Image Include="RES\hero\moveright_1.bmp" />
+    <Image Include="RES\hero\moveright_2.bmp" />
+    <Image Include="RES\hero\moveright_3.bmp" />
+    <Image Include="RES\hero\moveright_4.bmp" />
+    <Image Include="RES\hero\moveright_5.bmp" />
+    <Image Include="RES\hero\moveup_0.bmp" />
+    <Image Include="RES\hero\moveup_1.bmp" />
+    <Image Include="RES\hero\moveup_2.bmp" />
+    <Image Include="RES\hero\moveup_3.bmp" />
+    <Image Include="RES\hero\moveup_4.bmp" />
+    <Image Include="res\hero\right.bmp" />
     <Image Include="RES\hero\right_hit.bmp" />
+    <Image Include="RES\hero\right_hit_0.bmp" />
+    <Image Include="RES\hero\right_hit_1.bmp" />
+    <Image Include="RES\hero\right_hit_2.bmp" />
+    <Image Include="res\hero\up.bmp" />
     <Image Include="RES\hero\up_hit.bmp" />
+    <Image Include="RES\hero\up_hit_0.bmp" />
+    <Image Include="RES\hero\up_hit_1.bmp" />
+    <Image Include="RES\hero\up_hit_2.bmp" />
     <Image Include="RES\left.bmp" />
     <Image Include="RES\monster\bmp1.bmp" />
     <Image Include="RES\monster\slime1.bmp" />
@@ -353,7 +394,10 @@
     <Image Include="RES\moveleft.bmp" />
     <Image Include="RES\moveright.bmp" />
     <Image Include="RES\moveup.bmp" />
+    <Image Include="RES\over.bmp" />
+    <Image Include="RES\pause.bmp" />
     <Image Include="RES\right.bmp" />
+    <Image Include="RES\start-1.bmp" />
     <Image Include="RES\up.bmp" />
     <Image Include="RES\well.bmp" />
     <Image Include="RES\white.bmp" />

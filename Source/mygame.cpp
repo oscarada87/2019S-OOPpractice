@@ -58,15 +58,16 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "mygame.h"
-
+#include <vector>
 namespace game_framework {
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的遊戲開頭畫面物件
 /////////////////////////////////////////////////////////////////////////////
 
 CGameStateInit::CGameStateInit(CGame *g)
-: CGameState(g)
+	: CGameState(g)
 {
+	help = false;
 }
 
 void CGameStateInit::OnInit()
@@ -79,8 +80,12 @@ void CGameStateInit::OnInit()
 	//
 	// 開始載入資料
 	//
-	//logo.LoadBitmap(IDB_BACKGROUND);
+	gamestart.LoadBitmap(IDB_GAMESTART);
+	helpbar.LoadBitmap(IDB_HELPBAR);
 	Sleep(100);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
+	CAudio::Instance()->Load(AUDIO_HELP, "sounds\\HELP.mp3");
+	if (CAudio::Instance()->Load(AUDIO_STARTOST, "sounds\\startost.mp3"))
+		CAudio::Instance()->Play(AUDIO_STARTOST, true);
 	//
 	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
 	//
@@ -89,66 +94,94 @@ void CGameStateInit::OnInit()
 void CGameStateInit::OnBeginState()
 {
 }
-
+void CGameStateInit::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	const char KEY_W = 0x57;
+	if (nChar == KEY_W)
+	{
+		CAudio::Instance()->Play(AUDIO_HELP, true);
+		if (help) {
+			help = false;
+		}
+		else {
+			help = true;
+		}
+	}
+}
 void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	const char KEY_ESC = 27;
 	const char KEY_SPACE = ' ';
-	if (nChar == KEY_SPACE)
+	const char KEY_W = 0x57;
+
+	if (nChar == KEY_W)
+		CAudio::Instance()->Stop(AUDIO_HELP);
+	if (nChar == KEY_SPACE) {
+		CAudio::Instance()->Stop(AUDIO_STARTOST);
 		GotoGameState(GAME_STATE_RUN);						// 切換至GAME_STATE_RUN
+	}
 	else if (nChar == KEY_ESC)								// Demo 關閉遊戲的方法
-		PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE,0,0);	// 關閉遊戲
+		PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE, 0, 0);	// 關閉遊戲
 }
 
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
+	//CAudio::Instance()->Stop(AUDIO_STARTOST);
+	//GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
 }
 
 void CGameStateInit::OnShow()
 {
 	//
-	// 貼上logo
-	//
-	//logo.SetTopLeft((SIZE_X - logo.Width())/2, SIZE_Y/8);
-	//logo.ShowBitmap();
-	//
 	// Demo螢幕字型的使用，不過開發時請盡量避免直接使用字型，改用CMovingBitmap比較好
 	//
-	CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
-	CFont f,*fp;
-	f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
-	fp=pDC->SelectObject(&f);					// 選用 font f
-	pDC->SetBkColor(RGB(0,0,0));
-	pDC->SetTextColor(RGB(255,255,0));
-	pDC->TextOut(120,220,"Please click mouse or press SPACE to begin.");
-	pDC->TextOut(5,395,"Press Ctrl-F to switch in between window mode and full screen mode.");
-	if (ENABLE_GAME_PAUSE)
-		pDC->TextOut(5,425,"Press Ctrl-Q to pause the Game.");
-	pDC->TextOut(5,455,"Press Alt-F4 or ESC to Quit.");
-	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
-}								
+	//CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
+	//CFont f,*fp;
+	//f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
+	//fp=pDC->SelectObject(&f);					// 選用 font f
+	//pDC->SetBkColor(RGB(0,0,0));
+	//pDC->SetTextColor(RGB(255,255,0));
+	//pDC->TextOut(120,220,"Please click mouse or press SPACE to begin.");
+	//pDC->TextOut(5,395,"Press Ctrl-F to switch in between window mode and full screen mode.");
+	//if (ENABLE_GAME_PAUSE)
+	//	pDC->TextOut(5,425,"Press Ctrl-Q to pause the Game.");
+	//pDC->TextOut(5,455,"Press Alt-F4 or ESC to Quit.");
+	//pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
+	//CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
+	//
+	//gamestart
+	//
+	gamestart.SetTopLeft(0, 0);
+	gamestart.ShowBitmap();
+	if (help) {
+		helpbar.SetTopLeft(0, 80);
+		helpbar.ShowBitmap();
+	}
+}
 
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的結束狀態(Game Over)
 /////////////////////////////////////////////////////////////////////////////
 
 CGameStateOver::CGameStateOver(CGame *g)
-: CGameState(g)
+	: CGameState(g)
 {
 }
 
 void CGameStateOver::OnMove()
 {
+	/*
 	counter--;
 	if (counter < 0)
 		GotoGameState(GAME_STATE_INIT);
+	*/
 }
 
 void CGameStateOver::OnBeginState()
 {
-	counter = 30 * 5; // 5 seconds
+	//counter = 30 * 5; // 5 seconds
+	if (CAudio::Instance()->Load(AUDIO_END, "sounds\\end.mp3"))
+		CAudio::Instance()->Play(AUDIO_END, true);
 }
 
 void CGameStateOver::OnInit()
@@ -161,26 +194,40 @@ void CGameStateOver::OnInit()
 	//
 	// 開始載入資料
 	//
+	gameend.LoadBitmap(IDB_ENDMUSIC);
+
 	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	//
 	// 最終進度為100%
 	//
 	ShowInitProgress(100);
 }
-
+void CGameStateOver::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	const char KEY_SPACE = ' ';
+	if (nChar == KEY_SPACE) {
+		CAudio::Instance()->Stop(AUDIO_END);
+		GotoGameState(GAME_STATE_INIT);						// 切換至GAME_STATE_INIT
+	}
+}
 void CGameStateOver::OnShow()
 {
+	/*
 	CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
-	CFont f,*fp;
-	f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
-	fp=pDC->SelectObject(&f);					// 選用 font f
-	pDC->SetBkColor(RGB(0,0,0));
-	pDC->SetTextColor(RGB(255,255,0));
+	CFont f, *fp;
+	f.CreatePointFont(160, "Times New Roman");	// 產生 font f; 160表示16 point的字
+	fp = pDC->SelectObject(&f);					// 選用 font f
+	pDC->SetBkColor(RGB(0, 0, 0));
+	pDC->SetTextColor(RGB(255, 255, 0));
 	char str[80];								// Demo 數字對字串的轉換
 	sprintf(str, "Game Over ! (%d)", counter / 30);
-	pDC->TextOut(240,210,str);
+	pDC->TextOut(240, 210, str);
 	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
 	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
+	*/
+
+	gameend.SetTopLeft(0, 0);
+	gameend.ShowBitmap();
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -188,15 +235,15 @@ void CGameStateOver::OnShow()
 /////////////////////////////////////////////////////////////////////////////
 
 CGameStateRun::CGameStateRun(CGame *g)
-: CGameState(g), NUMBALLS(28)
+	: CGameState(g), NUMBALLS(28)
 {
-	
-	ball = new CBall [NUMBALLS];
+	ball = new CBall[NUMBALLS];
 }
 
 CGameStateRun::~CGameStateRun()
 {
-	delete [] ball;
+	delete[] ball;
+	heart.clear();
 }
 
 void CGameStateRun::OnBeginState()
@@ -225,9 +272,18 @@ void CGameStateRun::OnBeginState()
 	CAudio::Instance()->Play(AUDIO_DING, false);		// 撥放 WAVE
 	CAudio::Instance()->Play(AUDIO_NTUT, true);			// 撥放 MIDI
 	*/
+	//hp_left.SetTopLeft(HITS_LEFT_X, HITS_LEFT_Y);
 	eraser.Initialize();
 	slime.Initialize();
-	
+	//hp_left.SetInteger(slime.GetHP());
+	for (int i = 0; i != slime.GetHP(); i++)
+	{
+		heart.push_back(new CMovingBitmap());
+		heart.at(i)->LoadBitmap(IDB_HEART, RGB(255, 255, 255));
+		heart.at(i)->SetTopLeft(0 + 28 * i, 0);
+	}
+	if (CAudio::Instance()->Load(AUDIO_EARTH, "sounds\\earth.mp3"))
+		CAudio::Instance()->Play(AUDIO_EARTH, true);
 }
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
@@ -292,9 +348,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//int i;
 	//for (i = 0; i < NUMBALLS; i++)	
 	//	ball[i].LoadBitmap();								// 載入第i個球的圖形
-	eraser.LoadBitmap();
-	gamemap.LoadBitmap();	//地圖
-	slime.LoadBitmap();
+
 	//background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
 	//
 	// 完成部分Loading動作，提高進度
@@ -308,10 +362,18 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//corner.LoadBitmap(IDB_CORNER);							// 載入角落圖形
 	//corner.ShowBitmap(background);							// 將corner貼到background
 	//bball.LoadBitmap();										// 載入圖形
-	//hits_left.LoadBitmap();									
-	CAudio::Instance()->Load(AUDIO_DING,  "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
-	CAudio::Instance()->Load(AUDIO_LAKE,  "sounds\\lake.mp3");	// 載入編號1的聲音lake.mp3
-	CAudio::Instance()->Load(AUDIO_NTUT,  "sounds\\ntut.mid");	// 載入編號2的聲音ntut.mid
+	//hits_left.LoadBitmap();	
+	//hp_left.LoadBitmap();
+	eraser.LoadBitmap();
+	gamemap.LoadBitmap();	//地圖
+	slime.LoadBitmap();
+	CAudio::Instance()->Load(AUDIO_DING, "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
+	CAudio::Instance()->Load(AUDIO_LAKE, "sounds\\lake.mp3");	// 載入編號1的聲音lake.mp3
+	CAudio::Instance()->Load(AUDIO_NTUT, "sounds\\ntut.mid");	// 載入編號2的聲音ntut.mid
+	CAudio::Instance()->Load(AUDIO_STEP, "sounds\\step.mp3");
+	CAudio::Instance()->Load(AUDIO_RUN, "sounds\\run.mp3");
+	CAudio::Instance()->Load(AUDIO_KNIFE, "sounds\\knife.mp3");
+	CAudio::Instance()->Load(AUDIO_KNIFEHIT, "sounds\\knifehit.mp3");
 	//
 	// 此OnInit動作會接到CGameStaterOver::OnInit()，所以進度還沒到100%
 	//
@@ -319,32 +381,50 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-	const char KEY_LEFT  = 0x25; // keyboard左箭頭
-	const char KEY_UP    = 0x26; // keyboard上箭頭
+	const char KEY_LEFT = 0x25; // keyboard左箭頭
+	const char KEY_UP = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
-	const char KEY_DOWN  = 0x28; // keyboard下箭頭
-	const char KEY_SHIFT  = 0x10; // keyboard SHIFT
+	const char KEY_DOWN = 0x28; // keyboard下箭頭
+	const char KEY_SHIFT = 0x10; // keyboard SHIFT
 	const char KEY_Z = 0x5A; //keyboard Z
 
 
 	if (nChar == KEY_Z)
 	{
+		CAudio::Instance()->Play(AUDIO_KNIFE, true);
 		eraser.SetHit(true);
-		if (eraser.HitSomething(slime.GetX(), slime.GetY(), slime.GetX2(), slime.GetY2()))
+		if (eraser.HitMonster(& slime))
 		{
+			CAudio::Instance()->Play(AUDIO_KNIFEHIT, true);
 			slime.SetHitted(true);
 		}
 	}
 	if (nChar == KEY_LEFT)
+	{
+		CAudio::Instance()->Play(AUDIO_STEP, true);
 		eraser.SetMovingLeft(true);
+	}
 	if (nChar == KEY_RIGHT)
+	{
+		CAudio::Instance()->Play(AUDIO_STEP, true);
 		eraser.SetMovingRight(true);
+	}
 	if (nChar == KEY_UP)
+	{
+		CAudio::Instance()->Play(AUDIO_STEP, true);
 		eraser.SetMovingUp(true);
+	}
 	if (nChar == KEY_DOWN)
+	{
+		CAudio::Instance()->Play(AUDIO_STEP, true);
 		eraser.SetMovingDown(true);
+	}
 	if (nChar == KEY_SHIFT)
+	{
+		CAudio::Instance()->Play(AUDIO_RUN, true);
 		eraser.SpeedUp();
+
+	}
 }
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -359,31 +439,51 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_Z)
 	{
+		CAudio::Instance()->Stop(AUDIO_KNIFE);
+		CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
+		if (slime.GetHitted())
+		{
+			slime.DmgToSlime(1);
+			slime.SetHitted(false);
+			if (slime.GetHP() <= 0)
+				GotoGameState(GAME_STATE_OVER);
+			else
+			{
+				//hp_left.SetInteger(slime.GetHP());
+				heart.pop_back();
+			}
+		}
 		eraser.SetHit(false);
-		slime.SetHitted(false);
 	}
 	if (nChar == KEY_LEFT)
 	{
+		CAudio::Instance()->Stop(AUDIO_STEP);
 		eraser.SetMovingLeft(false);
 		eraser.Set_format_state(3);
 	}
 	if (nChar == KEY_RIGHT)
 	{
+		CAudio::Instance()->Stop(AUDIO_STEP);
 		eraser.SetMovingRight(false);
 		eraser.Set_format_state(4);
 	}
 	if (nChar == KEY_UP)
 	{
+		CAudio::Instance()->Stop(AUDIO_STEP);
 		eraser.SetMovingUp(false);
 		eraser.Set_format_state(1);
 	}
 	if (nChar == KEY_DOWN)
 	{
+		CAudio::Instance()->Stop(AUDIO_STEP);
 		eraser.SetMovingDown(false);
 		eraser.Set_format_state(2);
 	}
 	if (nChar == KEY_SHIFT)
+	{
+		CAudio::Instance()->Stop(AUDIO_RUN);
 		eraser.SpeedInit();
+	}
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
@@ -430,6 +530,11 @@ void CGameStateRun::OnShow()
 	gamemap.OnShow();				//地圖
 	eraser.OnShow(&gamemap);					// 貼上擦子
 	slime.OnShow(eraser.GetX1(), eraser.GetY1(), &gamemap);
+	//hp_left.ShowBitmap();
+	for (auto it = heart.begin(); it != heart.end(); it++)
+	{
+		(*it)->ShowBitmap();
+	}
 	//
 	//  貼上左上及右下角落的圖
 	//

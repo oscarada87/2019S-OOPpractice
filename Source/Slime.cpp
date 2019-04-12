@@ -15,13 +15,22 @@ namespace game_framework {
 		_x = X_POS;
 		_y = Y_POS;
 		ismove = isHitted = false;
-		//_HP = 100;
+		_hp = 5;
 	}
 	
 	void Slime::Attack()
 	{
-	
 	}
+	bool Slime::GetHitted()
+	{
+		return isHitted;
+	}
+
+	void Slime::DmgToSlime(int dmg)
+	{
+		_hp -= dmg;
+	}
+
 	int Slime::GetX2()
 	{
 		return _x + move.Width();
