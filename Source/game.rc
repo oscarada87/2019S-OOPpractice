@@ -128,35 +128,35 @@ IDB_BACKGROUND2         BITMAP                  "..\\res\\well.bmp"
 
 IDB_BACKGROUND3         BITMAP                  "..\\res\\wwell.bmp"
 
-IDB_SLIME1              BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slime1.bmp"
+IDB_SLIME1              BITMAP                  "..\RES\\monster\\slime1.bmp"
 
-IDB_SLIME2              BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slime2.bmp"
+IDB_SLIME2              BITMAP                  "..\\RES\\monster\\slime2.bmp"
 
-IDB_SLIME3              BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slime3.bmp"
+IDB_SLIME3              BITMAP                  "..\\RES\\monster\\slime3.bmp"
 
-IDB_SLIMEJUMP1          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimejump1.bmp"
+IDB_SLIMEJUMP1          BITMAP                  "..\\RES\\monster\\slimejump1.bmp"
 
-IDB_SLIMEJUMP2          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimejump2.bmp"
+IDB_SLIMEJUMP2          BITMAP                  "..\\RES\\monster\\slimejump2.bmp"
 
-IDB_SLIMEJUMP3          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimejump3.bmp"
+IDB_SLIMEJUMP3          BITMAP                  "..\\RES\\monster\\slimejump3.bmp"
 
-IDB_SLIMEJUMP4          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimejump4.bmp"
+IDB_SLIMEJUMP4          BITMAP                  "..\\RES\\monster\\slimejump4.bmp"
 
-IDB_SLIMEJUMP5          BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimejump5.bmp"
+IDB_SLIMEJUMP5          BITMAP                  "..\\RES\\monster\\slimejump5.bmp"
 
-IDB_DOWN_HIT            BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\hero\\down_hit.bmp"
+IDB_DOWN_HIT            BITMAP                  "..\\RES\\hero\\down_hit.bmp"
 
-IDB_LEFT_HIT            BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\hero\\left_hit.bmp"
+IDB_LEFT_HIT            BITMAP                  "..\\RES\\hero\\left_hit.bmp"
 
-IDB_RIGHT_HIT           BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\hero\\right_hit.bmp"
+IDB_RIGHT_HIT           BITMAP                  "..\\RES\\hero\\right_hit.bmp"
 
-IDB_UP_HIT              BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\hero\\up_hit.bmp"
+IDB_UP_HIT              BITMAP                  "..\\RES\\hero\\up_hit.bmp"
 
-IDB_SLIME_HIT           BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\monster\\slimehit.bmp"
+IDB_SLIME_HIT           BITMAP                  "..\\RES\\monster\\slimehit.bmp"
 
-IDB_HEART               BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\heart.bmp"
+IDB_HEART               BITMAP                  "..\\RES\\heart.bmp"
 
-IDB_EMPTY_HEART         BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\emptyheart.bmp"
+IDB_EMPTY_HEART         BITMAP                  "..\\RES\\emptyheart.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -174,7 +174,7 @@ IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_ICON1               ICON                    "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\game.ico"
+IDI_ICON1               ICON                    "..\\RES\\game.ico"
 
 #endif    // 中文 (繁體，台灣) resources
 /////////////////////////////////////////////////////////////////////////////
