@@ -22,7 +22,7 @@
     <ProjectGuid>{DDD280D7-4B85-4B03-BBC4-C46CA9BECCCB}</ProjectGuid>
     <RootNamespace>game</RootNamespace>
     <Keyword>MFCProj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
     <ProjectName />
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -337,6 +337,20 @@
     <Image Include="RES\black.bmp" />
     <Image Include="RES\down.bmp" />
     <Image Include="RES\emptyheart.bmp" />
+    <Image Include="RES\feature\aman.bmp" />
+    <Image Include="RES\feature\box.bmp" />
+    <Image Include="RES\feature\candle.bmp" />
+    <Image Include="RES\feature\feature2.bmp" />
+    <Image Include="RES\feature\feature5.bmp" />
+    <Image Include="RES\feature\feature7.bmp" />
+    <Image Include="RES\feature\hill.bmp" />
+    <Image Include="RES\feature\sfire.bmp" />
+    <Image Include="RES\feature\stone1.bmp" />
+    <Image Include="RES\feature\stone2.bmp" />
+    <Image Include="RES\feature\stone3.bmp" />
+    <Image Include="RES\feature\store2.bmp" />
+    <Image Include="RES\feature\stree.bmp" />
+    <Image Include="RES\feature\tree.bmp" />
     <Image Include="RES\game.ico" />
     <Image Include="RES\heart.bmp" />
     <Image Include="RES\helpbar.bmp" />

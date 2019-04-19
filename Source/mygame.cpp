@@ -180,8 +180,7 @@ void CGameStateOver::OnMove()
 void CGameStateOver::OnBeginState()
 {
 	//counter = 30 * 5; // 5 seconds
-	if (CAudio::Instance()->Load(AUDIO_END, "sounds\\end.mp3"))
-		CAudio::Instance()->Play(AUDIO_END, true);
+	CAudio::Instance()->Play(AUDIO_END, true);
 }
 
 void CGameStateOver::OnInit()
@@ -195,7 +194,7 @@ void CGameStateOver::OnInit()
 	// 開始載入資料
 	//
 	gameend.LoadBitmap(IDB_ENDMUSIC);
-
+	CAudio::Instance()->Load(AUDIO_END, "sounds\\end.mp3");
 	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	//
 	// 最終進度為100%
@@ -249,30 +248,7 @@ CGameStateRun::~CGameStateRun()
 
 void CGameStateRun::OnBeginState()
 {
-	/*
-	const int BALL_GAP = 90;
-	const int BALL_XY_OFFSET = 45;
-	const int BALL_PER_ROW = 7;
-	const int HITS_LEFT = 10;
-	const int HITS_LEFT_X = 590;
-	const int HITS_LEFT_Y = 0;
-	const int BACKGROUND_X = 60;
-	const int ANIMATION_SPEED = 15;
-	for (int i = 0; i < NUMBALLS; i++) {				// 設定球的起始座標
-		int x_pos = i % BALL_PER_ROW;
-		int y_pos = i / BALL_PER_ROW;
-		ball[i].SetXY(x_pos * BALL_GAP + BALL_XY_OFFSET, y_pos * BALL_GAP + BALL_XY_OFFSET);
-		ball[i].SetDelay(x_pos);
-		ball[i].SetIsAlive(true);
-	}
-	background.SetTopLeft(BACKGROUND_X,0);				// 設定背景的起始座標
-	help.SetTopLeft(0, SIZE_Y - help.Height());			// 設定說明圖的起始座標
-	hits_left.SetInteger(HITS_LEFT);					// 指定剩下的撞擊數
-	hits_left.SetTopLeft(HITS_LEFT_X,HITS_LEFT_Y);		// 指定剩下撞擊數的座標
-	CAudio::Instance()->Play(AUDIO_LAKE, true);			// 撥放 WAVE
-	CAudio::Instance()->Play(AUDIO_DING, false);		// 撥放 WAVE
-	CAudio::Instance()->Play(AUDIO_NTUT, true);			// 撥放 MIDI
-	*/
+
 	//hp_left.SetTopLeft(HITS_LEFT_X, HITS_LEFT_Y);
 	eraser.Initialize();
 	slime.Initialize();
@@ -283,8 +259,7 @@ void CGameStateRun::OnBeginState()
 		heart.at(i)->LoadBitmap(IDB_HEART, RGB(255, 255, 255));
 		heart.at(i)->SetTopLeft(0 + 28 * i, 0);
 	}
-	if (CAudio::Instance()->Load(AUDIO_EARTH, "sounds\\earth.mp3"))
-		CAudio::Instance()->Play(AUDIO_EARTH, true);
+	CAudio::Instance()->Play(AUDIO_EARTH, true);
 }
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
@@ -294,49 +269,15 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	// SetCursor(AfxGetApp()->LoadCursor(IDC_GAMECURSOR));
 	//
-	// 移動背景圖的座標
-	//
-	//if (background.Top() > SIZE_Y)
-	//	background.SetTopLeft(60 ,-background.Height());
-	//background.SetTopLeft(background.Left(),background.Top()+1);
-	//
-	// 移動球
-	//
-	//int i;
-	//for (i=0; i < NUMBALLS; i++)
-	//	ball[i].OnMove();
-	//
-	// 移動擦子
-	//
+
 	gamemap.OnMove();//地圖
+	
 	eraser.OnMove(&gamemap);
 	slime.OnMove(eraser.GetX1(), eraser.GetY1(), &gamemap);
 	for (auto it = spells.begin(); it != spells.end(); it++) {
 		(*it)->OnMove();
 	}
-	//
-	// 判斷擦子是否碰到球
-	//
-	/*
-	for (i=0; i < NUMBALLS; i++)
-		if (ball[i].IsAlive() && ball[i].HitEraser(&eraser)) {
-			ball[i].SetIsAlive(false);
-			CAudio::Instance()->Play(AUDIO_DING);
-			hits_left.Add(-1);
-			//
-			// 若剩餘碰撞次數為0，則跳到Game Over狀態
-			//
-			if (hits_left.GetInteger() <= 0) {
-				CAudio::Instance()->Stop(AUDIO_LAKE);	// 停止 WAVE
-				CAudio::Instance()->Stop(AUDIO_NTUT);	// 停止 MIDI
-				GotoGameState(GAME_STATE_OVER);
-			}
-		}
-	*/
-	//
-	// 移動彈跳的球
-	//
-	//bball.OnMove();
+
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -349,12 +290,6 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//
 	// 開始載入資料
 	//
-	//int i;
-	//for (i = 0; i < NUMBALLS; i++)	
-	//	ball[i].LoadBitmap();								// 載入第i個球的圖形
-
-	//background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
-	//
 	// 完成部分Loading動作，提高進度
 	//
 	ShowInitProgress(50);
@@ -363,15 +298,18 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	// 繼續載入其他資料
 	//
 	//help.LoadBitmap(IDB_HELP,RGB(255,255,255));				// 載入說明的圖形
-	//corner.LoadBitmap(IDB_CORNER);							// 載入角落圖形
-	//corner.ShowBitmap(background);							// 將corner貼到background
 	//bball.LoadBitmap();										// 載入圖形
 	//hits_left.LoadBitmap();	
 	//hp_left.LoadBitmap();
 
 	eraser.LoadBitmap();
+	aman.LoadBitmap(IDB_aman, RGB(255, 255, 255));
+	tree.LoadBitmap(IDB_tree, RGB(255, 255, 255));
+	treepot.LoadBitmap(IDB_pottree, RGB(255, 255, 255));
+	candle.LoadBitmap(IDB_candle, RGB(255, 255, 255));
 	gamemap.LoadBitmap();	//地圖
 	slime.LoadBitmap();
+	store.LoadBitmap(IDB_STORE, RGB(255, 255, 255));
 	CAudio::Instance()->Load(AUDIO_DING, "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
 	CAudio::Instance()->Load(AUDIO_LAKE, "sounds\\lake.mp3");	// 載入編號1的聲音lake.mp3
 	CAudio::Instance()->Load(AUDIO_NTUT, "sounds\\ntut.mid");	// 載入編號2的聲音ntut.mid
@@ -379,6 +317,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	CAudio::Instance()->Load(AUDIO_RUN, "sounds\\run.mp3");
 	CAudio::Instance()->Load(AUDIO_KNIFE, "sounds\\knife.mp3");
 	CAudio::Instance()->Load(AUDIO_KNIFEHIT, "sounds\\knifehit.mp3");
+	CAudio::Instance()->Load(AUDIO_EARTH, "sounds\\earth.mp3");
 
 	for (auto it = spells.begin(); it != spells.end(); it++) {
 		(*it)->LoadBitmap();
@@ -534,23 +473,41 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 void CGameStateRun::OnShow()
 {
-	//
-	//  注意：Show裡面千萬不要移動任何物件的座標，移動座標的工作應由Move做才對，
-	//        否則當視窗重新繪圖時(OnDraw)，物件就會移動，看起來會很怪。換個術語
-	//        說，Move負責MVC中的Model，Show負責View，而View不應更動Model。
-	//
-	//
-	//  貼上背景圖、撞擊數、球、擦子、彈跳的球
-	//
-	//background.ShowBitmap();			// 貼上背景圖
-	//help.ShowBitmap();					// 貼上說明圖
-	//hits_left.ShowBitmap();
-	//for (int i=0; i < NUMBALLS; i++)
-	//	ball[i].OnShow();				// 貼上第i號球
-	//bball.OnShow();						// 貼上彈跳的球
+
 
 	gamemap.OnShow();				//地圖
+
+	//商店//
+	store.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+	store.ShowBitmap();
+	
 	eraser.OnShow(&gamemap);					// 貼上擦子
+	// aman tree//
+	aman.SetTopLeft(gamemap.ScreenX(550), gamemap.ScreenY(1800));
+	aman.ShowBitmap();
+	aman.SetTopLeft(gamemap.ScreenX(400), gamemap.ScreenY(1800));
+	aman.ShowBitmap();
+	aman.SetTopLeft(gamemap.ScreenX(250), gamemap.ScreenY(1800));
+	aman.ShowBitmap();
+	aman.SetTopLeft(gamemap.ScreenX(100), gamemap.ScreenY(1800));
+	aman.ShowBitmap();
+	tree.SetTopLeft(gamemap.ScreenX(1650), gamemap.ScreenY(1350));
+	tree.ShowBitmap();
+	treepot.SetTopLeft(gamemap.ScreenX(1600), gamemap.ScreenY(1650));
+	treepot.ShowBitmap();
+	candle.SetTopLeft(gamemap.ScreenX(950), gamemap.ScreenY(1550));
+	candle.ShowBitmap();
+	candle.SetTopLeft(gamemap.ScreenX(1050), gamemap.ScreenY(1550));
+	candle.ShowBitmap();
+	candle.SetTopLeft(gamemap.ScreenX(1150), gamemap.ScreenY(1550));
+	candle.ShowBitmap();
+	candle.SetTopLeft(gamemap.ScreenX(1000), gamemap.ScreenY(1550));
+	candle.ShowBitmap();
+	candle.SetTopLeft(gamemap.ScreenX(1100), gamemap.ScreenY(1550));
+	candle.ShowBitmap();
+	candle.SetTopLeft(gamemap.ScreenX(900), gamemap.ScreenY(1550));
+	candle.ShowBitmap();
+
 	slime.OnShow(eraser.GetX1(), eraser.GetY1(), &gamemap);
 	//hp_left.ShowBitmap();
 	for (auto it = heart.begin(); it != heart.end(); it++)
@@ -561,12 +518,5 @@ void CGameStateRun::OnShow()
 		(*it)->OnShow(&gamemap);
 	}
 
-	//
-	//  貼上左上及右下角落的圖
-	//
-	//corner.SetTopLeft(0,0);
-	//corner.ShowBitmap();
-	//corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
-	//corner.ShowBitmap();
 }
 }

@@ -22,6 +22,14 @@ namespace game_framework {
 		CMovingBitmap background1;
 		CMovingBitmap background2;
 		CMovingBitmap background3;
+		CMovingBitmap hill;
+		CMovingBitmap stone1;
+		CMovingBitmap stone2;
+		CMovingBitmap stone3;
+		CMovingBitmap arrowright;
+		CMovingBitmap arrowleft;
+		CMovingBitmap box;
+		CMovingBitmap candle;
 		int map[40][40];
 		int sx, sy; // (sx, sy)為螢幕(的左上角)在地圖上的點座標
 	};

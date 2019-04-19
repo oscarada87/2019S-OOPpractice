@@ -38,7 +38,7 @@ namespace game_framework {
 	void CHero::Initialize()
 	{
 		const int X_POS = 300;
-		const int Y_POS = 350;
+		const int Y_POS = 1600;
 		x = X_POS;
 		y = Y_POS;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = isHitting = false;
@@ -93,19 +93,19 @@ namespace game_framework {
 		left_format.LoadBitmap(IDB_LEFT, RGB(255, 255, 255));
 		up_format.LoadBitmap(IDB_UP, RGB(255, 255, 255));
 
-		right_hit_format.AddBitmap(IDB_RIGHT_HIT0, RGB(255, 255, 255));
+		//right_hit_format.AddBitmap(IDB_RIGHT_HIT0, RGB(255, 255, 255));
 		right_hit_format.AddBitmap(IDB_RIGHT_HIT1, RGB(255, 255, 255));
 		right_hit_format.AddBitmap(IDB_RIGHT_HIT2, RGB(255, 255, 255));
 
-		left_hit_format.AddBitmap(IDB_LEFT_HIT0, RGB(255, 255, 255));
+		//left_hit_format.AddBitmap(IDB_LEFT_HIT0, RGB(255, 255, 255));
 		left_hit_format.AddBitmap(IDB_LEFT_HIT1, RGB(255, 255, 255));
 		left_hit_format.AddBitmap(IDB_LEFT_HIT2, RGB(255, 255, 255));
 
-		down_hit_format.AddBitmap(IDB_DOWN_HIT0, RGB(255, 255, 255));
+		//down_hit_format.AddBitmap(IDB_DOWN_HIT0, RGB(255, 255, 255));
 		down_hit_format.AddBitmap(IDB_DOWN_HIT1, RGB(255, 255, 255));
 		down_hit_format.AddBitmap(IDB_DOWN_HIT2, RGB(255, 255, 255));
 
-		up_hit_format.AddBitmap(IDB_UP_HIT0, RGB(255, 255, 255));
+		//up_hit_format.AddBitmap(IDB_UP_HIT0, RGB(255, 255, 255));
 		up_hit_format.AddBitmap(IDB_UP_HIT1, RGB(255, 255, 255));
 		up_hit_format.AddBitmap(IDB_UP_HIT2, RGB(255, 255, 255));
 

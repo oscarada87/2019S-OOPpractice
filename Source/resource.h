@@ -96,6 +96,20 @@
 #define IDB_EMPTY_HEART                 229
 #define IDB_BITMAP5                     230
 #define IDB_HEART                       230
+#define IDB_STORE                       233
+#define IDB_hill                        235
+#define IDB_aman                        236
+#define IDB_stone1                      237
+#define IDB_stone2                      238
+#define IDB_stone3                      239
+#define IDB_bigbox                      240
+#define IDB_cpot                        241
+#define IDB_arrowright                  242
+#define IDB_arrowleft                   243
+#define IDB_pottree                     245
+#define IDB_tree                        246
+#define IDB_BITMAP3                     247
+#define IDB_candle                      247
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -108,7 +122,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        231
+#define _APS_NEXT_RESOURCE_VALUE        248
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

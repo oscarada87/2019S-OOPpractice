@@ -10,7 +10,8 @@ namespace game_framework {
 
 	CGameMap::CGameMap()
 	{
-		sx = sy = 0;//
+		sx = 0;
+		sy = 1500;
 		int init[40][40] =
 		{
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -76,6 +77,14 @@ namespace game_framework {
 		background1.LoadBitmap(IDB_BACKGROUND1);
 		background2.LoadBitmap(IDB_BACKGROUND2);
 		background3.LoadBitmap(IDB_BACKGROUND3);
+		hill.LoadBitmap(IDB_hill, RGB(0, 0, 0));
+		stone1.LoadBitmap(IDB_stone1, RGB(0, 0, 0));
+		stone2.LoadBitmap(IDB_stone2, RGB(0, 0, 0));
+		stone3.LoadBitmap(IDB_stone3, RGB(0, 0, 0));
+		arrowleft.LoadBitmap(IDB_arrowleft, RGB(255,255,255));
+		arrowright.LoadBitmap(IDB_arrowright, RGB(255,255,255));
+		box.LoadBitmap(IDB_bigbox, RGB(255, 255, 255));
+		candle.LoadBitmap(IDB_candle, RGB(255, 255, 255));
 	}
 	void CGameMap::OnShow()
 	{
@@ -105,6 +114,70 @@ namespace game_framework {
 					ASSERT(1);
 				}
 			}
+		//hill//
+		hill.SetTopLeft(150 - sx, 200 - sy);
+		hill.ShowBitmap();
+		hill.SetTopLeft(150 - sx, 300 - sy);
+		hill.ShowBitmap();
+		hill.SetTopLeft(150 - sx, 400 - sy);
+		hill.ShowBitmap();
+		hill.SetTopLeft(150 - sx, 500 - sy);
+		hill.ShowBitmap();
+		hill.SetTopLeft(150 - sx, 600 - sy);
+		hill.ShowBitmap();
+		hill.SetTopLeft(650 - sx, 200 - sy);
+		hill.ShowBitmap();
+		hill.SetTopLeft(650 - sx, 400 - sy);
+		hill.ShowBitmap();
+		hill.SetTopLeft(650 - sx, 500 - sy);
+		hill.ShowBitmap();
+		hill.SetTopLeft(650 - sx, 600 - sy);
+		hill.ShowBitmap();
+		// stone //
+		stone1.SetTopLeft(400 - sx, 1300 - sy);
+		stone1.ShowBitmap();
+		stone2.SetTopLeft(200 - sx, 1300 - sy);
+		stone2.ShowBitmap();
+		stone3.SetTopLeft(1200 - sx, 250 - sy);
+		stone3.ShowBitmap();
+		stone3.SetTopLeft(1800 - sx, 250 - sy);
+		stone3.ShowBitmap();
+		// arrow //
+		arrowleft.SetTopLeft(400 - sx, 1400 - sy);
+		arrowleft.ShowBitmap();
+		arrowleft.SetTopLeft(400 - sx, 1500 - sy);
+		arrowleft.ShowBitmap();
+		arrowleft.SetTopLeft(400 - sx, 1600 - sy);
+		arrowleft.ShowBitmap();
+		arrowright.SetTopLeft(200 - sx, 1400 - sy);
+		arrowright.ShowBitmap();
+		arrowright.SetTopLeft(200 - sx, 1500 - sy);
+		arrowright.ShowBitmap();
+		arrowright.SetTopLeft(200 - sx, 1600 - sy);
+		arrowright.ShowBitmap();
+		// candle box //
+		box.SetTopLeft(1350 - sx, 250 - sy);
+		box.ShowBitmap();
+		box.SetTopLeft(1500 - sx, 250 - sy);
+		box.ShowBitmap();
+		box.SetTopLeft(1650 - sx, 250 - sy);
+		box.ShowBitmap();
+		candle.SetTopLeft(750 - sx, 225 - sy);
+		candle.ShowBitmap();
+		candle.SetTopLeft(850 - sx, 225 - sy);
+		candle.ShowBitmap();
+		candle.SetTopLeft(950 - sx, 225 - sy);
+		candle.ShowBitmap();
+		candle.SetTopLeft(800 - sx, 225 - sy);
+		candle.ShowBitmap();
+		candle.SetTopLeft(900 - sx, 225 - sy);
+		candle.ShowBitmap();
+		candle.SetTopLeft(1000 - sx, 225 - sy);
+		candle.ShowBitmap();
+
+
+
+
 	}
 	void CGameMap::SetSX(int nx)
 	{

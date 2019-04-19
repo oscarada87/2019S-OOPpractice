@@ -218,6 +218,32 @@ IDB_EMPTY_HEART         BITMAP                  "..\\RES\\emptyheart.bmp"
 
 IDB_HEART               BITMAP                  "..\\RES\\heart.bmp"
 
+IDB_STORE               BITMAP                  "..\\RES\\feature\\store2.bmp"
+
+IDB_hill                BITMAP                  "..\\RES\\feature\\hill.bmp"
+
+IDB_aman                BITMAP                  "..\\RES\\feature\\aman.bmp"
+
+IDB_stone1              BITMAP                  "..\\RES\\feature\\stone1.bmp"
+
+IDB_stone2              BITMAP                  "..\\RES\\feature\\stone2.bmp"
+
+IDB_stone3              BITMAP                  "..\\RES\\feature\\stone3.bmp"
+
+IDB_bigbox              BITMAP                  "..\\RES\\feature\\box.bmp"
+
+IDB_cpot                BITMAP                  "..\\RES\\feature\\feature2.bmp"
+
+IDB_arrowright          BITMAP                  "..\\RES\\feature\\feature5.bmp"
+
+IDB_arrowleft           BITMAP                  "..\\RES\\feature\\feature7.bmp"
+
+IDB_pottree             BITMAP                  "..\\RES\\feature\\stree.bmp"
+
+IDB_tree                BITMAP                  "..\\RES\\feature\\tree.bmp"
+
+IDB_candle              BITMAP                  "..\\RES\\feature\\candle.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
