@@ -446,7 +446,6 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN = 0x28; // keyboard下箭頭
 	const char KEY_SHIFT = 0x10; // keyboard SHIFT
-<<<<<<< HEAD
 	const char KEY_Z = 0x5A; //keyboard Z
 	const char KEY_SPACE = 0x20; //keyboard Space 火球
 
