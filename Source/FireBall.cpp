@@ -25,7 +25,7 @@ namespace game_framework {
 		_start_img.LoadBitmapA(IDB_FIREBALL, RGB(255, 255, 255));
 	}
 
-	void FireBall::OnShow(CGameMap * m)
+	void FireBall::OnShow(CGameMap *m)
 	{
 		_start_img.SetTopLeft(m->ScreenX(_initX), m->ScreenY(_initY));
 		_start_img.ShowBitmap();
@@ -42,12 +42,12 @@ namespace game_framework {
 		}
 	}
 
-	/*
+	
 	bool FireBall::HitSomething(CMonster *monster)
 	{
-
+		return HitRectangle(monster->GetX1(), monster->GetY1(), monster->GetX2(), monster->GetY2());
 	}
-	*/
+	
 
 	bool FireBall::HitRectangle(int tx1, int ty1, int tx2, int ty2)
 	{

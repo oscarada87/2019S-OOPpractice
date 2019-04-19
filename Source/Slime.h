@@ -17,7 +17,6 @@ namespace game_framework {
 		int GetY2();
 		void SetHitted(bool flag);
 		bool GetHitted();
-		void DmgToSlime(int dmg);
 	protected:
 		CAnimation still;			 // ¤£°Ê
 		CAnimation move;			 //²¾°Ê§ðÀ»

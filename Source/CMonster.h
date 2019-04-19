@@ -18,7 +18,7 @@ namespace game_framework {
 		virtual void Initialize() = 0;				// 設定怪物為初始值
 		virtual void LoadBitmap() = 0;				// 載入圖形
 		int GetHP() { return _hp; };
-		void SetHP(int hp) { _hp = hp; };
+		void MinusHP(int dmg) { _hp -= dmg; };
 		int GetX1() { return _x; };
 		void SetX1(int x) { _x = x; };
 		int GetY1() { return _y; };

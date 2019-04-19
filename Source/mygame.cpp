@@ -243,7 +243,9 @@ CGameStateRun::~CGameStateRun()
 {
 	delete [] ball;
 	spells.clear();
+	spells.shrink_to_fit();
 	heart.clear();
+	heart.shrink_to_fit();
 }
 
 void CGameStateRun::OnBeginState()
@@ -278,6 +280,55 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		(*it)->OnMove();
 	}
 
+<<<<<<< HEAD
+=======
+	// 判斷技能是否打中怪物
+
+	for (auto it = spells.begin(); it != spells.end();) {
+		if ((*it)->HitSomething(&slime)) 
+		{
+			delete *it;
+			it = spells.erase(it);
+			try 
+			{
+				slime.MinusHP(1);
+				heart.pop_back();
+			}
+			catch (...) {
+
+			}
+		}
+		else 
+		{
+			it++;
+		}
+	}
+	if (slime.GetHP() <= 0)
+		GotoGameState(GAME_STATE_OVER);
+	//
+	// 判斷擦子是否碰到球
+	//
+	/*
+	for (i=0; i < NUMBALLS; i++)
+		if (ball[i].IsAlive() && ball[i].HitEraser(&eraser)) {
+			ball[i].SetIsAlive(false);
+			CAudio::Instance()->Play(AUDIO_DING);
+			hits_left.Add(-1);
+			//
+			// 若剩餘碰撞次數為0，則跳到Game Over狀態
+			//
+			if (hits_left.GetInteger() <= 0) {
+				CAudio::Instance()->Stop(AUDIO_LAKE);	// 停止 WAVE
+				CAudio::Instance()->Stop(AUDIO_NTUT);	// 停止 MIDI
+				GotoGameState(GAME_STATE_OVER);
+			}
+		}
+	*/
+	//
+	// 移動彈跳的球
+	//
+	//bball.OnMove();
+>>>>>>> aa0db87b7e17a66ec5c610b94a11a4189db69dd5
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -394,7 +445,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
 		if (slime.GetHitted())
 		{
-			slime.DmgToSlime(1);
+			slime.MinusHP(1);
 			slime.SetHitted(false);
 			if (slime.GetHP() <= 0)
 				GotoGameState(GAME_STATE_OVER);
@@ -515,8 +566,26 @@ void CGameStateRun::OnShow()
 		(*it)->ShowBitmap();
 	}
 	for (auto it = spells.begin(); it != spells.end(); it++) {
-		(*it)->OnShow(&gamemap);
+		try
+		{
+			(*it)->OnShow(&gamemap);
+		}
+		catch (...)
+		{
+
+		}
 	}
 
+<<<<<<< HEAD
+=======
+
+	//
+	//  貼上左上及右下角落的圖
+	//
+	//corner.SetTopLeft(0,0);
+	//corner.ShowBitmap();
+	//corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
+	//corner.ShowBitmap();
+>>>>>>> aa0db87b7e17a66ec5c610b94a11a4189db69dd5
 }
 }
