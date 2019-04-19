@@ -7,6 +7,7 @@
 #define IDR_MAINFRAME                   128
 #define IDR_GAMETYPE                    129
 #define IDB_BALL                        130
+#define IDB_FIREBALL                    130
 #define IDB_RACKET                      131
 #define IDB_ERASER1                     131
 #define IDB_BITMAP1                     132

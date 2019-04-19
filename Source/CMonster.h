@@ -27,6 +27,8 @@ namespace game_framework {
 		virtual int GetY2() = 0;
 		int GetSpeed() { return _speed; };
 		void SetSpeed(int speed) { _speed = speed; };
+		//virtual int GetX2() = 0;
+		//virtual int GetY2() = 0;
 
 	protected:
 		int _hp;					// ¦å¶q

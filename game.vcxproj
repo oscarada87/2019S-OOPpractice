@@ -263,6 +263,7 @@
     <ClCompile Include="Source\CBouncingBall.cpp" />
     <ClCompile Include="Source\CHero.cpp" />
     <ClCompile Include="Source\CGameMap.cpp" />
+    <ClCompile Include="Source\FireBall.cpp" />
     <ClCompile Include="Source\Slime.cpp" />
     <ClCompile Include="Source\game.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -312,12 +313,14 @@
     <ClInclude Include="Source\CHero.h" />
     <ClInclude Include="Source\CGameMap.h" />
     <ClInclude Include="Source\CMonster.h" />
+    <ClInclude Include="Source\FireBall.h" />
     <ClInclude Include="Source\game.h" />
     <ClInclude Include="Source\gameDoc.h" />
     <ClInclude Include="Source\gameView.h" />
     <ClInclude Include="Source\MainFrm.h" />
     <ClInclude Include="Source\Resource.h" />
     <ClInclude Include="Source\Slime.h" />
+    <ClInclude Include="Source\CSpell.h" />
     <ClInclude Include="Source\StdAfx.h" />
     <ClInclude Include="Source\gamelib.h" />
     <ClInclude Include="Source\mygame.h" />

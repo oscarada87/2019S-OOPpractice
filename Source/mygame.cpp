@@ -242,7 +242,8 @@ CGameStateRun::CGameStateRun(CGame *g)
 
 CGameStateRun::~CGameStateRun()
 {
-	delete[] ball;
+	delete [] ball;
+	spells.clear();
 	heart.clear();
 }
 
@@ -310,6 +311,9 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	gamemap.OnMove();//地圖
 	eraser.OnMove(&gamemap);
 	slime.OnMove(eraser.GetX1(), eraser.GetY1(), &gamemap);
+	for (auto it = spells.begin(); it != spells.end(); it++) {
+		(*it)->OnMove();
+	}
 	//
 	// 判斷擦子是否碰到球
 	//
@@ -364,6 +368,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//bball.LoadBitmap();										// 載入圖形
 	//hits_left.LoadBitmap();	
 	//hp_left.LoadBitmap();
+
 	eraser.LoadBitmap();
 	gamemap.LoadBitmap();	//地圖
 	slime.LoadBitmap();
@@ -374,6 +379,11 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	CAudio::Instance()->Load(AUDIO_RUN, "sounds\\run.mp3");
 	CAudio::Instance()->Load(AUDIO_KNIFE, "sounds\\knife.mp3");
 	CAudio::Instance()->Load(AUDIO_KNIFEHIT, "sounds\\knifehit.mp3");
+
+	for (auto it = spells.begin(); it != spells.end(); it++) {
+		(*it)->LoadBitmap();
+	}
+
 	//
 	// 此OnInit動作會接到CGameStaterOver::OnInit()，所以進度還沒到100%
 	//
@@ -385,8 +395,9 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_UP = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN = 0x28; // keyboard下箭頭
-	const char KEY_SHIFT = 0x10; // keyboard SHIFT
 	const char KEY_Z = 0x5A; //keyboard Z
+	const char KEY_SHIFT = 0x10; // keyboard Shift 加速
+	const char KEY_SPACE = 0x20; //keyboard Space 火球
 
 
 	if (nChar == KEY_Z)
@@ -399,6 +410,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 			slime.SetHitted(true);
 		}
 	}
+
 	if (nChar == KEY_LEFT)
 	{
 		CAudio::Instance()->Play(AUDIO_STEP, true);
@@ -434,8 +446,9 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN = 0x28; // keyboard下箭頭
 	const char KEY_SHIFT = 0x10; // keyboard SHIFT
+<<<<<<< HEAD
 	const char KEY_Z = 0x5A; //keyboard Z
-
+	const char KEY_SPACE = 0x20; //keyboard Space 火球
 
 	if (nChar == KEY_Z)
 	{
@@ -455,6 +468,15 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		}
 		eraser.SetHit(false);
 	}
+
+	if (nChar == KEY_SPACE)
+	{
+		int tempX = (eraser.GetX1() + eraser.GetX2()) / 2;
+		int tempY = (eraser.GetY1() + eraser.GetY2()) / 2;
+		spells.push_back(new FireBall(eraser.GetX1(), eraser.GetY1()));
+		spells.back()->LoadBitmap();
+	}
+
 	if (nChar == KEY_LEFT)
 	{
 		CAudio::Instance()->Stop(AUDIO_STEP);
@@ -527,6 +549,7 @@ void CGameStateRun::OnShow()
 	//for (int i=0; i < NUMBALLS; i++)
 	//	ball[i].OnShow();				// 貼上第i號球
 	//bball.OnShow();						// 貼上彈跳的球
+
 	gamemap.OnShow();				//地圖
 	eraser.OnShow(&gamemap);					// 貼上擦子
 	slime.OnShow(eraser.GetX1(), eraser.GetY1(), &gamemap);
@@ -535,6 +558,10 @@ void CGameStateRun::OnShow()
 	{
 		(*it)->ShowBitmap();
 	}
+	for (auto it = spells.begin(); it != spells.end(); it++) {
+		(*it)->OnShow(&gamemap);
+	}
+
 	//
 	//  貼上左上及右下角落的圖
 	//

@@ -38,12 +38,21 @@
  *      3. Use ShowInitProgress(percent) to display loading progress.
 */
 
+#include <vector>
 #include "CGameMap.h"
 #include "CHero.h"
 #include "CBall.h"
+#include "CMonster.h"
+#include "CSpell.h"
 #include "CBouncingBall.h"
 #include "CMonster.h"
+
+//法術
+#include "FireBall.h"
+
+//怪物
 #include "Slime.h"
+
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// Constants
@@ -110,6 +119,7 @@ namespace game_framework {
 		CMovingBitmap	background;	
 		CMovingBitmap	help;		
 		CBall			*ball;		// 球的陣列
+		vector<CSpell*> spells;    // 法術陣列
 		CGameMap        gamemap;    // 背景圖
 		CMovingBitmap	corner;		// 角落圖
 		vector<CMovingBitmap*> heart; // 生命
