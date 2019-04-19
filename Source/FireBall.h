@@ -10,11 +10,11 @@ namespace game_framework {
 		FireBall(int x, int y);
 		void LoadBitmap();
 		void Initialize();
-		void OnShow(CGameMap * m);
+		void OnShow(CGameMap *m);
 		void OnMove();
 		bool HitSomething(CHero *hero);
 		bool HitRectangle(int tx1, int ty1, int tx2, int ty2);
-		//bool HitSomething(CMonster *monster);
+		bool HitSomething(CMonster *monster);
 	private:
 		string _direction;
 	};

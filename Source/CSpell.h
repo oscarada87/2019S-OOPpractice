@@ -19,10 +19,10 @@ namespace game_framework {
 		}
 		virtual void LoadBitmap() = 0;
 		virtual void Initialize() = 0;
-		virtual void OnShow(CGameMap * m) = 0;
+		virtual void OnShow(CGameMap *m) = 0;
 		virtual void OnMove() = 0;
 		virtual bool HitSomething(CHero *hero) = 0;
-		//virtual bool HitSomething(CMonster *monster) = 0;
+		virtual bool HitSomething(CMonster *monster) = 0;
 	protected :
 		int _initX;
 	    int _initY;

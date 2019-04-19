@@ -314,6 +314,29 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	for (auto it = spells.begin(); it != spells.end(); it++) {
 		(*it)->OnMove();
 	}
+
+	// 判斷技能是否打中怪物
+
+	for (auto it = spells.begin(); it != spells.end();) {
+		if ((*it)->HitSomething(&slime)) 
+		{
+			it = spells.erase(it);
+			try 
+			{
+				slime.MinusHP(1);
+				heart.pop_back();
+			}
+			catch (...) {
+
+			}
+		}
+		else 
+		{
+			it++;
+		}
+	}
+	if (slime.GetHP() <= 0)
+		GotoGameState(GAME_STATE_OVER);
 	//
 	// 判斷擦子是否碰到球
 	//
@@ -455,7 +478,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
 		if (slime.GetHitted())
 		{
-			slime.DmgToSlime(1);
+			slime.MinusHP(1);
 			slime.SetHitted(false);
 			if (slime.GetHP() <= 0)
 				GotoGameState(GAME_STATE_OVER);
@@ -558,8 +581,16 @@ void CGameStateRun::OnShow()
 		(*it)->ShowBitmap();
 	}
 	for (auto it = spells.begin(); it != spells.end(); it++) {
-		(*it)->OnShow(&gamemap);
+		try
+		{
+			(*it)->OnShow(&gamemap);
+		}
+		catch (...)
+		{
+
+		}
 	}
+
 
 	//
 	//  貼上左上及右下角落的圖

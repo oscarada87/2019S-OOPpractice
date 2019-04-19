@@ -26,11 +26,6 @@ namespace game_framework {
 		return isHitted;
 	}
 
-	void Slime::DmgToSlime(int dmg)
-	{
-		_hp -= dmg;
-	}
-
 	int Slime::GetX2()
 	{
 		return _x + move.Width();
