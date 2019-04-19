@@ -280,8 +280,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		(*it)->OnMove();
 	}
 
-<<<<<<< HEAD
-=======
+
 	// 判斷技能是否打中怪物
 
 	for (auto it = spells.begin(); it != spells.end();) {
@@ -328,7 +327,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	// 移動彈跳的球
 	//
 	//bball.OnMove();
->>>>>>> aa0db87b7e17a66ec5c610b94a11a4189db69dd5
+
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -576,8 +575,7 @@ void CGameStateRun::OnShow()
 		}
 	}
 
-<<<<<<< HEAD
-=======
+
 
 	//
 	//  貼上左上及右下角落的圖
@@ -586,6 +584,5 @@ void CGameStateRun::OnShow()
 	//corner.ShowBitmap();
 	//corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
 	//corner.ShowBitmap();
->>>>>>> aa0db87b7e17a66ec5c610b94a11a4189db69dd5
 }
 }
