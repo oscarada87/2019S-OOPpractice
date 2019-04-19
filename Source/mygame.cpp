@@ -244,7 +244,9 @@ CGameStateRun::~CGameStateRun()
 {
 	delete [] ball;
 	spells.clear();
+	spells.shrink_to_fit();
 	heart.clear();
+	heart.shrink_to_fit();
 }
 
 void CGameStateRun::OnBeginState()
@@ -320,6 +322,7 @@ void CGameStateRun::OnMove()							// ²¾°Ê¹CÀ¸¤¸¯À
 	for (auto it = spells.begin(); it != spells.end();) {
 		if ((*it)->HitSomething(&slime)) 
 		{
+			delete *it;
 			it = spells.erase(it);
 			try 
 			{
