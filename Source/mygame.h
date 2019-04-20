@@ -121,9 +121,10 @@ namespace game_framework {
 		CBall			*ball;		// 球的陣列
 		vector<CSpell*> spells;    // 法術陣列
 		CGameMap        gamemap;    // 背景圖
+		CMovingBitmap	background2; //背景覆蓋
 		CMovingBitmap	corner;		// 角落圖
 		vector<CMovingBitmap*> heart; // 生命
-		CHero			eraser;		// 拍子
+		CHero			hero;
 		CInteger		hits_left;	// 剩下的撞擊數
 		CInteger        hp_left;
 		CBouncingBall   bball;		// 反覆彈跳的球

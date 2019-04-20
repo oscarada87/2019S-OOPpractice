@@ -252,7 +252,7 @@ void CGameStateRun::OnBeginState()
 {
 
 	//hp_left.SetTopLeft(HITS_LEFT_X, HITS_LEFT_Y);
-	eraser.Initialize();
+	hero.Initialize();
 	slime.Initialize();
 	//hp_left.SetInteger(slime.GetHP());
 	for (int i = 0; i != slime.GetHP(); i++)
@@ -274,8 +274,8 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 
 	gamemap.OnMove();//地圖
 	
-	eraser.OnMove(&gamemap);
-	slime.OnMove(eraser.GetX1(), eraser.GetY1(), &gamemap);
+	hero.OnMove(&gamemap);
+	slime.OnMove(hero.GetX1(), hero.GetY1(), &gamemap);
 	for (auto it = spells.begin(); it != spells.end(); it++) {
 		(*it)->OnMove();
 	}
@@ -352,12 +352,13 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//hits_left.LoadBitmap();	
 	//hp_left.LoadBitmap();
 
-	eraser.LoadBitmap();
+	hero.LoadBitmap();
 	aman.LoadBitmap(IDB_aman, RGB(255, 255, 255));
 	tree.LoadBitmap(IDB_tree, RGB(255, 255, 255));
 	treepot.LoadBitmap(IDB_pottree, RGB(255, 255, 255));
 	candle.LoadBitmap(IDB_candle, RGB(255, 255, 255));
 	gamemap.LoadBitmap();	//地圖
+	background2.LoadBitmap(IDB_BACKGROUND2);
 	slime.LoadBitmap();
 	store.LoadBitmap(IDB_STORE, RGB(255, 255, 255));
 	CAudio::Instance()->Load(AUDIO_DING, "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
@@ -392,8 +393,8 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == KEY_Z)
 	{
 		CAudio::Instance()->Play(AUDIO_KNIFE, true);
-		eraser.SetHit(true);
-		if (eraser.HitMonster(& slime))
+		hero.SetHit(true);
+		if (hero.HitMonster(& slime))
 		{
 			CAudio::Instance()->Play(AUDIO_KNIFEHIT, true);
 			slime.SetHitted(true);
@@ -403,27 +404,27 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == KEY_LEFT)
 	{
 		CAudio::Instance()->Play(AUDIO_STEP, true);
-		eraser.SetMovingLeft(true);
+		hero.SetMovingLeft(true);
 	}
 	if (nChar == KEY_RIGHT)
 	{
 		CAudio::Instance()->Play(AUDIO_STEP, true);
-		eraser.SetMovingRight(true);
+		hero.SetMovingRight(true);
 	}
 	if (nChar == KEY_UP)
 	{
 		CAudio::Instance()->Play(AUDIO_STEP, true);
-		eraser.SetMovingUp(true);
+		hero.SetMovingUp(true);
 	}
 	if (nChar == KEY_DOWN)
 	{
 		CAudio::Instance()->Play(AUDIO_STEP, true);
-		eraser.SetMovingDown(true);
+		hero.SetMovingDown(true);
 	}
 	if (nChar == KEY_SHIFT)
 	{
 		CAudio::Instance()->Play(AUDIO_RUN, true);
-		eraser.SpeedUp();
+		hero.SpeedUp();
 
 	}
 }
@@ -454,56 +455,56 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 				heart.pop_back();
 			}
 		}
-		eraser.SetHit(false);
+		hero.SetHit(false);
 	}
 
 	if (nChar == KEY_SPACE)
 	{
-		int tempX = (eraser.GetX1() + eraser.GetX2()) / 2;
-		int tempY = (eraser.GetY1() + eraser.GetY2()) / 2;
-		spells.push_back(new FireBall(eraser.GetX1(), eraser.GetY1()));
+		int tempX = (hero.GetX1() + hero.GetX2()) / 2;
+		int tempY = (hero.GetY1() + hero.GetY2()) / 2;
+		spells.push_back(new FireBall(hero.GetX1(), hero.GetY1()));
 		spells.back()->LoadBitmap();
 	}
 
 	if (nChar == KEY_LEFT)
 	{
 		CAudio::Instance()->Stop(AUDIO_STEP);
-		eraser.SetMovingLeft(false);
-		eraser.Set_format_state(3);
+		hero.SetMovingLeft(false);
+		hero.Set_format_state(3);
 	}
 	if (nChar == KEY_RIGHT)
 	{
 		CAudio::Instance()->Stop(AUDIO_STEP);
-		eraser.SetMovingRight(false);
-		eraser.Set_format_state(4);
+		hero.SetMovingRight(false);
+		hero.Set_format_state(4);
 	}
 	if (nChar == KEY_UP)
 	{
 		CAudio::Instance()->Stop(AUDIO_STEP);
-		eraser.SetMovingUp(false);
-		eraser.Set_format_state(1);
+		hero.SetMovingUp(false);
+		hero.Set_format_state(1);
 	}
 	if (nChar == KEY_DOWN)
 	{
 		CAudio::Instance()->Stop(AUDIO_STEP);
-		eraser.SetMovingDown(false);
-		eraser.Set_format_state(2);
+		hero.SetMovingDown(false);
+		hero.Set_format_state(2);
 	}
 	if (nChar == KEY_SHIFT)
 	{
 		CAudio::Instance()->Stop(AUDIO_RUN);
-		eraser.SpeedInit();
+		hero.SpeedInit();
 	}
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	eraser.SetMovingLeft(true);
+	hero.SetMovingLeft(true);
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	eraser.SetMovingLeft(false);
+	hero.SetMovingLeft(false);
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -513,25 +514,36 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	eraser.SetMovingRight(true);
+	hero.SetMovingRight(true);
 }
 
 void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	eraser.SetMovingRight(false);
+	hero.SetMovingRight(false);
 }
 
 void CGameStateRun::OnShow()
 {
-
-
 	gamemap.OnShow();				//地圖
 
 	//商店//
 	store.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
 	store.ShowBitmap();
 	
-	eraser.OnShow(&gamemap);					// 貼上擦子
+	hero.OnShow(&gamemap);// 主角
+	// 地圖圖層 //
+	for (int i = 2; i <= 12; i++) {
+		background2.SetTopLeft(gamemap.ScreenX(i * 50), gamemap.ScreenY(1900));
+		background2.ShowBitmap();
+	}
+	for (int i = 19; i <= 23; i++) {
+		background2.SetTopLeft(gamemap.ScreenX(i * 50), gamemap.ScreenY(1600));
+		background2.ShowBitmap();
+	}
+	for (int i = 24; i <= 37; i++) {
+		background2.SetTopLeft(gamemap.ScreenX(i * 50), gamemap.ScreenY(1750));
+		background2.ShowBitmap();
+	}
 	// aman tree//
 	aman.SetTopLeft(gamemap.ScreenX(550), gamemap.ScreenY(1800));
 	aman.ShowBitmap();
@@ -558,7 +570,7 @@ void CGameStateRun::OnShow()
 	candle.SetTopLeft(gamemap.ScreenX(900), gamemap.ScreenY(1550));
 	candle.ShowBitmap();
 
-	slime.OnShow(eraser.GetX1(), eraser.GetY1(), &gamemap);
+	slime.OnShow(hero.GetX1(), hero.GetY1(), &gamemap);
 	//hp_left.ShowBitmap();
 	for (auto it = heart.begin(); it != heart.end(); it++)
 	{
