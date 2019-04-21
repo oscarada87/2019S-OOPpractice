@@ -234,15 +234,17 @@ IDB_bigbox              BITMAP                  "..\\RES\\feature\\box.bmp"
 
 IDB_cpot                BITMAP                  "..\\RES\\feature\\feature2.bmp"
 
-IDB_arrowright          BITMAP                  "..\\RES\\feature\\feature5.bmp"
-
-IDB_arrowleft           BITMAP                  "..\\RES\\feature\\feature7.bmp"
-
 IDB_pottree             BITMAP                  "..\\RES\\feature\\stree.bmp"
 
 IDB_tree                BITMAP                  "..\\RES\\feature\\tree.bmp"
 
 IDB_candle              BITMAP                  "..\\RES\\feature\\candle.bmp"
+
+IDB_arrowleft           BITMAP                  "..\\RES\\feature\\arrleft.bmp"
+
+IDB_arrowright          BITMAP                  "..\\RES\\feature\\arrright.bmp"
+
+IDB_post                BITMAP                  "..\\RES\\feature\\feature5_1.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

@@ -81,8 +81,8 @@ namespace game_framework {
 		stone1.LoadBitmap(IDB_stone1, RGB(0, 0, 0));
 		stone2.LoadBitmap(IDB_stone2, RGB(0, 0, 0));
 		stone3.LoadBitmap(IDB_stone3, RGB(0, 0, 0));
-		arrowleft.LoadBitmap(IDB_arrowleft, RGB(255,255,255));
-		arrowright.LoadBitmap(IDB_arrowright, RGB(255,255,255));
+		arrowleft.LoadBitmap(IDB_arrowleft, RGB(255, 255, 255));
+		arrowright.LoadBitmap(IDB_arrowright, RGB(255, 255, 255));
 		box.LoadBitmap(IDB_bigbox, RGB(255, 255, 255));
 		candle.LoadBitmap(IDB_candle, RGB(255, 255, 255));
 	}
@@ -222,11 +222,22 @@ namespace game_framework {
 	{
 		return background0.Height() * 40;
 	}
+	bool CGameMap::monsterIsEmpty(int x, int y, CMonster *monster) /*y1根本沒有那麼高 臨時處理 monster->GetY1() + 50,還要處理*/
+	{
+		/*hero*/
+		int x1 = x + 20;
+		int x2 = x + 60;
+		int y1 = y;
+		int y2 = y + 74;
+		bool mos = (monster->GetX2() >= x1 && monster->GetX1() <= x2 && monster->GetY2() >= y1 && (monster->GetY1() + 50) <= y2);
+		return IsEmpty(x, y) && mos == false;
+	}
 	bool CGameMap::IsEmpty(int x, int y) // (x, y) 為地圖的點座標
 	{
 		int gx = (x + 60) / 50; // 轉換為格座標(整數除法)
 		int gy = (y + 84) / 50; // 轉換為格座標(整數除法)
 		int ox = (x + 20) / 50;
+
 		return map[gx][gy] == 0 && map[ox][gy] == 0;// 0 代表空的
 	}
 

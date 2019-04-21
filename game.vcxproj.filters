@@ -454,5 +454,14 @@
     <Image Include="RES\feature\candle.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\feature\arrleft.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\arrright.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\feature5_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -338,10 +338,13 @@
     <Image Include="RES\down.bmp" />
     <Image Include="RES\emptyheart.bmp" />
     <Image Include="RES\feature\aman.bmp" />
+    <Image Include="RES\feature\arrleft.bmp" />
+    <Image Include="RES\feature\arrright.bmp" />
     <Image Include="RES\feature\box.bmp" />
     <Image Include="RES\feature\candle.bmp" />
     <Image Include="RES\feature\feature2.bmp" />
     <Image Include="RES\feature\feature5.bmp" />
+    <Image Include="RES\feature\feature5_1.bmp" />
     <Image Include="RES\feature\feature7.bmp" />
     <Image Include="RES\feature\hill.bmp" />
     <Image Include="RES\feature\sfire.bmp" />

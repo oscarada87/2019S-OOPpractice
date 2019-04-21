@@ -73,18 +73,21 @@ namespace game_framework {
 		}
 	}
 
-	void Slime::OnShow(int x,int y, CGameMap * m)
+	void Slime::OnShow(int x,int y, CGameMap * m, CHero *hero)
 	{
 		if (!isHitted) 
 		{
-			if (abs(x - _x) < 200 && abs(y - _y) < 200) 
-			{
+			if (hero->HitSomething(_x, _y, _x + move.Width(), _y + move.Height())) {
+				ismove = false;
+				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				still.OnShow();
+			}
+			else if (abs(x - _x) < 200 && abs(y - _y) < 200) {
 				ismove = true;
 				move.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				move.OnShow();
 			}
-			else  
-			{
+			else  {
 				ismove = false;
 				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				still.OnShow();
@@ -101,4 +104,5 @@ namespace game_framework {
 	{
 		isHitted = flag;
 	}
+
 }

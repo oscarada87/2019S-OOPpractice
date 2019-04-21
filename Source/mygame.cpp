@@ -274,7 +274,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 
 	gamemap.OnMove();//地圖
 	
-	hero.OnMove(&gamemap);
+	hero.OnMove(&gamemap, &slime);
 	slime.OnMove(hero.GetX1(), hero.GetY1(), &gamemap);
 	for (auto it = spells.begin(); it != spells.end(); it++) {
 		(*it)->OnMove();
@@ -570,7 +570,7 @@ void CGameStateRun::OnShow()
 	candle.SetTopLeft(gamemap.ScreenX(900), gamemap.ScreenY(1550));
 	candle.ShowBitmap();
 
-	slime.OnShow(hero.GetX1(), hero.GetY1(), &gamemap);
+	slime.OnShow(hero.GetX1(), hero.GetY1(), &gamemap,& hero);
 	//hp_left.ShowBitmap();
 	for (auto it = heart.begin(); it != heart.end(); it++)
 	{
@@ -586,15 +586,5 @@ void CGameStateRun::OnShow()
 
 		}
 	}
-
-
-
-	//
-	//  貼上左上及右下角落的圖
-	//
-	//corner.SetTopLeft(0,0);
-	//corner.ShowBitmap();
-	//corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
-	//corner.ShowBitmap();
 }
 }

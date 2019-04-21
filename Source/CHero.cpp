@@ -115,7 +115,7 @@ namespace game_framework {
 		down_hit_format.SetDelayCount(5);
 	}
 
-	void CHero::OnMove(CGameMap * m)
+	void CHero::OnMove(CGameMap * m, CMonster *monster)
 	{
 		//animation.OnMove();
 		if (isMovingUp == false && isMovingDown == false && isMovingLeft == false && isMovingRight == false && isHitting == true)
@@ -144,7 +144,7 @@ namespace game_framework {
 			else {
 				animation3.OnMove();
 			}
-			if (m->IsEmpty(x - speed, y)) {
+			if (m->monsterIsEmpty(x - speed, y, monster)) {
 				x -= speed;
 				if (m->GetSX() > 0) {
 					m->SetSX(-speed);
@@ -158,7 +158,7 @@ namespace game_framework {
 			else {
 				animation4.OnMove();
 			}
-			if (m->IsEmpty(x + speed, y)) {
+			if (m->monsterIsEmpty(x + speed, y, monster)) {
 				x += speed;
 				if (m->GetSX() < m->Getmapx() - SIZE_X) {
 					m->SetSX(speed);
@@ -172,7 +172,7 @@ namespace game_framework {
 			else {
 				animation1.OnMove();
 			}
-			if (m->IsEmpty(x, y - speed)) {
+			if (m->monsterIsEmpty(x, y - speed, monster)) {
 				y -= speed;
 				if (m->GetSY() > 0) {
 					m->SetSY(-speed);
@@ -186,7 +186,7 @@ namespace game_framework {
 			else {
 				animation2.OnMove();
 			}
-			if (m->IsEmpty(x, y + speed)) {
+			if (m->monsterIsEmpty(x, y + speed, monster)) {
 				y += speed;
 				if (m->GetSY() < m->Getmapy() - SIZE_Y) {
 					m->SetSY(speed);

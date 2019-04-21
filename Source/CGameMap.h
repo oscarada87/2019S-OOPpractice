@@ -1,6 +1,6 @@
 #ifndef CGAMEMAP_H
 #define CGAMEMAP_H
-
+#include "CMonster.h"
 namespace game_framework {
 	class CGameMap {
 	public:
@@ -16,6 +16,7 @@ namespace game_framework {
 		int Getmapy();
 		int ScreenX(int x);
 		int ScreenY(int y);
+		bool monsterIsEmpty(int x, int y, CMonster *monster);
 		bool IsEmpty(int x, int y);
 	private:
 		CMovingBitmap background0;

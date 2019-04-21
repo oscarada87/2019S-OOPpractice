@@ -12,7 +12,7 @@ namespace game_framework {
 	{
 	public:
 		CHero();
-		void OnMove(CGameMap * m);					// 移動擦子
+		void OnMove(CGameMap * m, CMonster *monster);					// 移動擦子
 		void OnShow(CGameMap * m);					// 將擦子圖形貼到畫面
 		int  GetX1();					// 擦子左上角 x 座標
 		int  GetY1();					// 擦子左上角 y 座標
