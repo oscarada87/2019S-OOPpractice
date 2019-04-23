@@ -246,6 +246,18 @@ IDB_arrowright          BITMAP                  "..\\RES\\feature\\arrright.bmp"
 
 IDB_post                BITMAP                  "..\\RES\\feature\\feature5_1.bmp"
 
+IDB_final0              BITMAP                  "..\\RES\\feature\\final.bmp"
+
+IDB_final2              BITMAP                  "..\\RES\\feature\\finalw.bmp"
+
+IDB_final3              BITMAP                  "..\\RES\\feature\\finalwell.bmp"
+
+IDB_stage20             BITMAP                  "..\\RES\\feature\\ground.bmp"
+
+IDB_stage3              BITMAP                  "..\\RES\\feature\\ice2.bmp"
+
+IDB_stage2              BITMAP                  "..\\RES\\feature\\icewell.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

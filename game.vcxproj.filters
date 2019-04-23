@@ -463,5 +463,23 @@
     <Image Include="RES\feature\feature5_1.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\feature\final.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\finalw.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\finalwell.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\ground.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\ice2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\icewell.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
