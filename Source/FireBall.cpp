@@ -8,7 +8,7 @@
 #include "FireBall.h"
 
 namespace game_framework {
-	FireBall::FireBall(int x, int y):CSpell(x, y)
+	FireBall::FireBall(int x, int y, int time):CSpell(x, y, time)
 	{
 		Initialize();
 	}
@@ -17,7 +17,7 @@ namespace game_framework {
 	{
 		_speed = 2;
 		_damage = 2;
-		_duration = 3;
+		_duration = 30 * 5;
 		_direction = "right";
 	}
 	void FireBall::LoadBitmap()
@@ -33,12 +33,9 @@ namespace game_framework {
 
 	void FireBall::OnMove()
 	{
-		if (_duration > 0)
+		if (_direction == "right")
 		{
-			if (_direction == "right")
-			{
-				_initX = _initX + _speed;
-			}
+			_initX = _initX + _speed;
 		}
 	}
 
@@ -61,5 +58,17 @@ namespace game_framework {
 	bool FireBall::HitSomething(CHero *hero)
 	{
 		return HitRectangle(hero->GetX1(), hero->GetY1(), hero->GetX2(), hero->GetY2());
+	}
+
+	bool FireBall::CheckDuration(int time) 
+	{
+		if ((time - _initTime) > _duration)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 }

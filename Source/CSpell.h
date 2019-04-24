@@ -12,20 +12,23 @@ namespace game_framework {
 		{
 			throw("This Spell Don't Have Location!");
 		}
-		CSpell(int x, int y)
+		CSpell(int x, int y, int time)
 		{
 			_initX = x;
 			_initY = y;
+			_initTime = time;
 		}
 		virtual void LoadBitmap() = 0;
 		virtual void Initialize() = 0;
 		virtual void OnShow(CGameMap *m) = 0;
 		virtual void OnMove() = 0;
+		virtual bool CheckDuration(int time) = 0;
 		virtual bool HitSomething(CHero *hero) = 0;
 		virtual bool HitSomething(CMonster *monster) = 0;
 	protected :
 		int _initX;
 	    int _initY;
+		int _initTime;
 		int _duration;
 		int _damage;
 		int _speed;

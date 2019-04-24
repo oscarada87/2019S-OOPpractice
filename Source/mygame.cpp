@@ -274,8 +274,17 @@ void CGameStateRun::OnMove()							// ²¾°Ê¹CÀ¸¤¸¯À
 	
 	hero.OnMove(&gamemap, &slime);
 	slime.OnMove(hero.GetX1(), hero.GetY1(), &gamemap);
-	for (auto it = spells.begin(); it != spells.end(); it++) {
-		(*it)->OnMove();
+	for (auto it = spells.begin(); it != spells.end();) {
+		if ((*it)->CheckDuration(counter))
+		{
+			(*it)->OnMove();
+			it++;
+		}
+		else 
+		{
+			delete *it;
+			it = spells.erase(it);
+		}
 	}
 
 
@@ -460,7 +469,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
 		int tempX = (hero.GetX1() + hero.GetX2()) / 2;
 		int tempY = (hero.GetY1() + hero.GetY2()) / 2;
-		spells.push_back(new FireBall(hero.GetX1(), hero.GetY1()));
+		spells.push_back(new FireBall(hero.GetX1(), hero.GetY1(), counter));
 		spells.back()->LoadBitmap();
 	}
 
