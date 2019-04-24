@@ -250,11 +250,9 @@ CGameStateRun::~CGameStateRun()
 
 void CGameStateRun::OnBeginState()
 {
-
-	//hp_left.SetTopLeft(HITS_LEFT_X, HITS_LEFT_Y);
+	counter = 0;
 	hero.Initialize();
 	slime.Initialize();
-	//hp_left.SetInteger(slime.GetHP());
 	for (int i = 0; i != slime.GetHP(); i++)
 	{
 		heart.push_back(new CMovingBitmap());
@@ -271,7 +269,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	// SetCursor(AfxGetApp()->LoadCursor(IDC_GAMECURSOR));
 	//
-
+	counter++;
 	gamemap.OnMove();//地圖
 	
 	hero.OnMove(&gamemap, &slime);

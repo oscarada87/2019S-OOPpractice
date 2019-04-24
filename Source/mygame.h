@@ -134,6 +134,7 @@ namespace game_framework {
 		CMovingBitmap   tree;
 		CMovingBitmap   treepot;
 		CMovingBitmap   candle;
+		int				counter;	//­p®É¾¹
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
