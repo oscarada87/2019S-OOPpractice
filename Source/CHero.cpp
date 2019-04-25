@@ -35,6 +35,11 @@ namespace game_framework {
 		return y + animation1.Height();
 	}
 
+	int CHero::Get_format_state()
+	{
+		return format_state;
+	}
+
 	void CHero::Initialize()
 	{
 		const int X_POS = 300;

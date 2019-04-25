@@ -8,17 +8,16 @@
 #include "FireBall.h"
 
 namespace game_framework {
-	FireBall::FireBall(int x, int y, int time):CSpell(x, y, time)
+	FireBall::FireBall(int x, int y, int time, int direction):CSpell(x, y, time, direction)
 	{
 		Initialize();
 	}
 
 	void FireBall::Initialize()
 	{
-		_speed = 2;
-		_damage = 2;
+		_speed = 10;
+		_damage = 1;
 		_duration = 30 * 5;
-		_direction = "right";
 	}
 	void FireBall::LoadBitmap()
 	{
@@ -33,7 +32,20 @@ namespace game_framework {
 
 	void FireBall::OnMove()
 	{
-		if (_direction == "right")
+		// 靜止方向(1上2下3左4右)
+		if (_direction == 1)
+		{
+			_initY = _initY - _speed;
+		}
+		else if (_direction == 2)
+		{
+			_initY = _initY + _speed;
+		}
+		else if (_direction == 3)
+		{
+			_initX = _initX - _speed;
+		}
+		else if (_direction == 4)
 		{
 			_initX = _initX + _speed;
 		}

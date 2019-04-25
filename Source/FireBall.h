@@ -7,7 +7,7 @@ namespace game_framework {
 	class FireBall : public CSpell 
 	{
 	public:
-		FireBall(int x, int y, int time);
+		FireBall(int x, int y, int time, int direction);
 		void LoadBitmap();
 		void Initialize();
 		void OnShow(CGameMap *m);
@@ -16,8 +16,6 @@ namespace game_framework {
 		bool HitSomething(CHero *hero);
 		bool HitRectangle(int tx1, int ty1, int tx2, int ty2);
 		bool HitSomething(CMonster *monster);
-	private:
-		string _direction;
 	};
 
 }

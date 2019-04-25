@@ -12,11 +12,12 @@ namespace game_framework {
 		{
 			throw("This Spell Don't Have Location!");
 		}
-		CSpell(int x, int y, int time)
+		CSpell(int x, int y, int time,int direction)
 		{
 			_initX = x;
 			_initY = y;
 			_initTime = time;
+			_direction = direction;
 		}
 		virtual void LoadBitmap() = 0;
 		virtual void Initialize() = 0;
@@ -33,6 +34,7 @@ namespace game_framework {
 		int _damage;
 		int _speed;
 		CMovingBitmap _start_img;
+		int _direction; // 靜止方向(1上2下3左4右)
 	};
 }
 
