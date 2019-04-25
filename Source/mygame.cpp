@@ -367,7 +367,14 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	gamemap.LoadBitmap();	//地圖
 	background2.LoadBitmap(IDB_BACKGROUND2);
 	slime.LoadBitmap();
-	store.LoadBitmap(IDB_STORE, RGB(255, 255, 255));
+
+	store.LoadBitmap(IDB_store, RGB(255, 255, 255));
+	storebus.LoadBitmap(IDB_bus, RGB(255, 255, 255));
+	storemazu.LoadBitmap(IDB_mazu, RGB(255, 255, 255));
+	storemoney.LoadBitmap(IDB_money, RGB(255, 255, 255));
+	storeoil.LoadBitmap(IDB_oil, RGB(255, 255, 255));
+	storezing.LoadBitmap(IDB_zingping, RGB(255, 255, 255));
+
 	CAudio::Instance()->Load(AUDIO_DING, "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
 	CAudio::Instance()->Load(AUDIO_LAKE, "sounds\\lake.mp3");	// 載入編號1的聲音lake.mp3
 	CAudio::Instance()->Load(AUDIO_NTUT, "sounds\\ntut.mid");	// 載入編號2的聲音ntut.mid
@@ -534,9 +541,30 @@ void CGameStateRun::OnShow()
 	gamemap.OnShow();				//地圖
 
 	//商店//
-	store.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
-	store.ShowBitmap();
-	
+	if (250 <= hero.GetX2() && hero.GetX2() <= 350 && 200 <= hero.GetY2() && hero.GetY2() < 300) {
+		storebus.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+		storebus.ShowBitmap();
+	}
+	else if(250 <= hero.GetX2() && hero.GetX2() <= 350 && 300 <= hero.GetY2() && hero.GetY2() < 400){
+		storezing.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+		storezing.ShowBitmap();
+	}
+	else if (350 < hero.GetX2() && hero.GetX2() <= 500 && 350 <= hero.GetY2() && hero.GetY2() < 450) {
+		storemazu.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+		storemazu.ShowBitmap();
+	}
+	else if (500 < hero.GetX1() && hero.GetX1() <= 600 && 300 <= hero.GetY2() && hero.GetY2() < 400) {
+		storeoil.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+		storeoil.ShowBitmap();
+	}
+	else if (500 < hero.GetX1() && hero.GetX1() <= 600 && 200 <= hero.GetY2() && hero.GetY2() < 300) {
+		storemoney.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+		storemoney.ShowBitmap();
+	}
+	else {
+		store.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+		store.ShowBitmap();
+	}
 	hero.OnShow(&gamemap);// 主角
 	// 地圖圖層 //
 	for (int i = 2; i <= 12; i++) {

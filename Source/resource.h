@@ -96,7 +96,6 @@
 #define IDB_EMPTY_HEART                 229
 #define IDB_BITMAP5                     230
 #define IDB_HEART                       230
-#define IDB_STORE                       233
 #define IDB_hill                        235
 #define IDB_aman                        236
 #define IDB_stone1                      237
@@ -115,8 +114,22 @@
 #define IDB_final3                      253
 #define IDB_stage20                     254
 #define IDB_stage3                      255
-#define IDB_BITMAP10                    256
 #define IDB_stage2                      256
+#define IDB_PNG1                        257
+#define IDB_PNG2                        258
+#define IDB_PNG3                        259
+#define IDB_PNG4                        260
+#define IDB_PNG5                        261
+#define IDB_PNG6                        262
+#define IDB_PNG7                        263
+#define IDB_bus                         264
+#define IDB_mazu                        265
+#define IDB_money                       266
+#define IDB_oil                         267
+#define IDB_BITMAP9                     268
+#define IDB_sold                        268
+#define IDB_store                       269
+#define IDB_zingping                    270
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -129,7 +142,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        257
+#define _APS_NEXT_RESOURCE_VALUE        271
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

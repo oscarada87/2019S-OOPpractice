@@ -218,8 +218,6 @@ IDB_EMPTY_HEART         BITMAP                  "..\\RES\\emptyheart.bmp"
 
 IDB_HEART               BITMAP                  "..\\RES\\heart.bmp"
 
-IDB_STORE               BITMAP                  "..\\RES\\feature\\store2.bmp"
-
 IDB_hill                BITMAP                  "..\\RES\\feature\\hill.bmp"
 
 IDB_aman                BITMAP                  "..\\RES\\feature\\aman.bmp"
@@ -258,6 +256,20 @@ IDB_stage3              BITMAP                  "..\\RES\\feature\\ice2.bmp"
 
 IDB_stage2              BITMAP                  "..\\RES\\feature\\icewell.bmp"
 
+IDB_bus                 BITMAP                  "..\\RES\\feature\\bus.bmp"
+
+IDB_mazu                BITMAP                  "..\\RES\\feature\\mazu.bmp"
+
+IDB_money               BITMAP                  "..\\RES\\feature\\money.bmp"
+
+IDB_oil                 BITMAP                  "..\\RES\\feature\\oil.bmp"
+
+IDB_sold                BITMAP                  "..\\RES\\feature\\sold.bmp"
+
+IDB_store               BITMAP                  "..\\RES\\feature\\store.bmp"
+
+IDB_zingping            BITMAP                  "..\\RES\\feature\\zingping.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -275,6 +287,12 @@ IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDI_ICON1               ICON                    "..\\RES\\game.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// PNG
+//
 
 #endif    // 中文 (繁體，台灣) resources
 /////////////////////////////////////////////////////////////////////////////

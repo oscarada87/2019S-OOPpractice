@@ -129,7 +129,14 @@ namespace game_framework {
 		CInteger        hp_left;
 		CBouncingBall   bball;		// 反覆彈跳的球
 		Slime           slime;		// 史萊姆
+
 		CMovingBitmap   store;		// 商店
+		CMovingBitmap   storemoney;		// 商店
+		CMovingBitmap   storezing;		// 商店
+		CMovingBitmap   storeoil;		// 商店
+		CMovingBitmap   storebus;		// 商店
+		CMovingBitmap   storemazu;		// 商店
+
 		CMovingBitmap   aman;
 		CMovingBitmap   tree;
 		CMovingBitmap   treepot;
