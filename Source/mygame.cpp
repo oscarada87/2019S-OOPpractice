@@ -469,7 +469,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
 		int tempX = (hero.GetX1() + hero.GetX2()) / 2;
 		int tempY = (hero.GetY1() + hero.GetY2()) / 2;
-		spells.push_back(new FireBall(hero.GetX1(), hero.GetY1(), counter));
+		spells.push_back(new FireBall(hero.GetX1(), hero.GetY1(), counter, hero.Get_format_state()));
 		spells.back()->LoadBitmap();
 	}
 
