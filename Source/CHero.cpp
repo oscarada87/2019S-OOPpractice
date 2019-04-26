@@ -48,6 +48,10 @@ namespace game_framework {
 		y = Y_POS;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = isHitting = false;
 		speed = 5;
+		for (int i = 0; i < 3; i++) 
+		{
+			castTime.push_back(-100);
+		}
 	}
 
 	void CHero::SpeedUp() 
@@ -230,9 +234,9 @@ namespace game_framework {
 		isHitting = flag;
 	}
 
-	void CHero::Hit()
+	bool CHero::GetHit()
 	{
-		isHitting = true;
+		return isHitting;
 	}
 
 	bool CHero::HitMonster(CMonster *monster)
@@ -241,6 +245,7 @@ namespace game_framework {
 		return HitSomething(monster->GetX1(), monster->GetY1(),
 			monster->GetX2(), monster->GetY2());
 	}
+
 	bool CHero::HitSomething(int tx1, int ty1, int tx2, int ty2)	//GetX,GetY,GetX2,GetY2
 	{
 		int x1 = x ;				// 左上角x座標
@@ -249,6 +254,19 @@ namespace game_framework {
 		int y2 = y1 + animation1.Height();	// 右下角y座標
 
 		return (tx2 >= x1 && tx1 <= x2 && ty2 >= y1 && ty1 <= y2);
+	}
+
+	void CHero::SetCastTime(int number, int time)
+	{
+		castTime.at(number - 1) = time;
+	}
+
+	bool CHero::CheckCooldown(int number, int counter, int cooldown)
+	{
+		if (counter - castTime.at(number - 1) >= cooldown)
+			return true;
+		else
+			return false;
 	}
 
 	void CHero::what_format_show(int x,int y)
@@ -298,18 +316,16 @@ namespace game_framework {
 				right_hit_format.SetTopLeft(x, y);
 				right_hit_format.OnShow();
 			}
-			//Sleep(500);
-			//isHitting = false;
 		}
 	}
+
 	void CHero::Set_format_state(int x)
 	{
 		format_state = x;
 	}
+
 	void CHero::OnShow(CGameMap * m)
 	{
-		//animation.SetTopLeft(x, y);
-		//animation.OnShow();
 		if (isMovingUp == false && isMovingDown == false && isMovingLeft == false && isMovingRight == false)
 		{
 			what_format_show(m->ScreenX(x), m->ScreenY(y));

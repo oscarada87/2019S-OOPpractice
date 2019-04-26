@@ -17,6 +17,7 @@ namespace game_framework {
 		virtual void Attack() = 0;					// 攻擊
 		virtual void Initialize() = 0;				// 設定怪物為初始值
 		virtual void LoadBitmap() = 0;				// 載入圖形
+		virtual void HitAnimation(int counter) = 0;	// 被攻擊特效
 		int GetHP() { return _hp; };
 		void MinusHP(int dmg) { _hp -= dmg; };
 		int GetX1() { return _x; };
@@ -35,6 +36,8 @@ namespace game_framework {
 		int format_state;			// 靜止方向(1上2下3左4右)
 		int _x, _y;					// 擦子左上角座標
 		int _speed;					// 移動速度
+		int _hittime;				// 被攻擊時間
+		vector <int> _castTime;		// 施放時間
 	};
 }
 

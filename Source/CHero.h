@@ -12,20 +12,20 @@ namespace game_framework {
 	{
 	public:
 		CHero();
-		void OnMove(CGameMap * m, CMonster *monster);					// 移動擦子
-		void OnShow(CGameMap * m);					// 將擦子圖形貼到畫面
-		int  GetX1();					// 擦子左上角 x 座標
-		int  GetY1();					// 擦子左上角 y 座標
-		int  GetX2();					// 擦子右下角 x 座標
-		int  GetY2();					// 擦子右下角 y 座標
+		void OnMove(CGameMap * m, CMonster *monster);					// 移動英雄
+		void OnShow(CGameMap * m);					// 將英雄圖形貼到畫面
+		int  GetX1();					// 英雄左上角 x 座標
+		int  GetY1();					// 英雄左上角 y 座標
+		int  GetX2();					// 英雄右下角 x 座標
+		int  GetY2();					// 英雄右下角 y 座標
 		int	 Get_format_state();		// 靜止方向(1上2下3左4右)
-		void Initialize();				// 設定擦子為初始值
+		void Initialize();				// 設定英雄為初始值
 		void LoadBitmap();				// 載入圖形
 		void SetMovingDown(bool flag);	// 設定是否正在往下移動
 		void SetMovingLeft(bool flag);	// 設定是否正在往左移動
 		void SetMovingRight(bool flag); // 設定是否正在往右移動
 		void SetMovingUp(bool flag);	// 設定是否正在往上移動
-		void SetXY(int nx, int ny);		// 設定擦子左上角座標
+		void SetXY(int nx, int ny);		// 設定英雄左上角座標
 		void what_format_show(int x, int y);		// 顯示哪個方向
 		void Set_format_state(int x);		// 設定方向
 		void SpeedUp();					// 加速
@@ -33,7 +33,9 @@ namespace game_framework {
 		bool HitMonster(CMonster *monster);
 		bool HitSomething(int tx1, int ty1, int tx2, int ty2);	// 是否碰到東西(輸入左上右下座標)
 		void SetHit(bool flag);
-		void Hit();						// 攻擊
+		bool GetHit();						// 設定攻擊型態
+		void SetCastTime(int number, int time);		//設定冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
+		bool CheckCooldown(int number, int counter, int cooldown);	//檢查冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
 	protected:
 		CAnimation animation1;		// 擦子的動畫
 		CAnimation animation2;		// 擦子的動畫
@@ -55,6 +57,7 @@ namespace game_framework {
 		bool isMovingRight;			// 是否正在往右移動
 		bool isMovingUp;			// 是否正在往上移動
 		bool isHitting;				// 是否正在攻擊
+		vector <int> castTime;		// 冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
 	};
 }
 

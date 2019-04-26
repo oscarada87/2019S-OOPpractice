@@ -16,6 +16,7 @@ namespace game_framework {
 		_y = Y_POS;
 		ismove = isHitted = false;
 		_hp = 5;
+		_hittime = 0;
 	}
 	
 	void Slime::Attack()
@@ -48,6 +49,14 @@ namespace game_framework {
 		move.AddBitmap(IDB_SLIMEJUMP5, RGB(255, 255, 255));
 		move.SetDelayCount(5);
 		hitted.LoadBitmap(IDB_SLIME_HIT, RGB(255, 255, 255));
+	}
+
+	void Slime::HitAnimation(int counter)
+	{
+		if (counter - _hittime >= 10)
+		{
+			isHitted = false;
+		}
 	}
 
 	void Slime::OnMove(int x, int y, CGameMap * m)
@@ -100,9 +109,14 @@ namespace game_framework {
 		}
 	}
 
-	void Slime::SetHitted(bool flag)
+	void Slime::SetHitted(int dmg, int time)
 	{
-		isHitted = flag;
+		if (!isHitted)
+		{
+			isHitted = true;
+			_hittime = time;
+			_hp -= dmg;
+		}
 	}
 
 }

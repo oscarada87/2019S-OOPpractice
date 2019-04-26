@@ -295,10 +295,11 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 			it = spells.erase(it);
 			try 
 			{
-				slime.MinusHP(1);
+				slime.SetHitted(1, counter);
 				heart.pop_back();
 			}
-			catch (...) {
+			catch (...) 
+			{
 
 			}
 		}
@@ -309,30 +310,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	}
 	if (slime.GetHP() <= 0)
 		GotoGameState(GAME_STATE_OVER);
-	//
-	// 判斷擦子是否碰到球
-	//
-	/*
-	for (i=0; i < NUMBALLS; i++)
-		if (ball[i].IsAlive() && ball[i].HitEraser(&eraser)) {
-			ball[i].SetIsAlive(false);
-			CAudio::Instance()->Play(AUDIO_DING);
-			hits_left.Add(-1);
-			//
-			// 若剩餘碰撞次數為0，則跳到Game Over狀態
-			//
-			if (hits_left.GetInteger() <= 0) {
-				CAudio::Instance()->Stop(AUDIO_LAKE);	// 停止 WAVE
-				CAudio::Instance()->Stop(AUDIO_NTUT);	// 停止 MIDI
-				GotoGameState(GAME_STATE_OVER);
-			}
-		}
-	*/
-	//
-	// 移動彈跳的球
-	//
-	//bball.OnMove();
-
+	slime.HitAnimation(counter);
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -352,10 +330,6 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//
 	// 繼續載入其他資料
 	//
-	//help.LoadBitmap(IDB_HELP,RGB(255,255,255));				// 載入說明的圖形
-	//bball.LoadBitmap();										// 載入圖形
-	//hits_left.LoadBitmap();	
-	//hp_left.LoadBitmap();
 
 	hero.LoadBitmap();
 	gamemap.LoadBitmap();	//地圖
@@ -399,32 +373,41 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_Z)
 	{
-		CAudio::Instance()->Play(AUDIO_KNIFE, true);
-		hero.SetHit(true);
-		if (hero.HitMonster(& slime))
+		if (hero.CheckCooldown(1, counter, 15)) 
 		{
-			CAudio::Instance()->Play(AUDIO_KNIFEHIT, true);
-			slime.SetHitted(true);
+			hero.SetCastTime(1, counter);
+			CAudio::Instance()->Play(AUDIO_KNIFE, true);
+			hero.SetHit(true);
+			if (hero.HitMonster(&slime))
+			{
+				CAudio::Instance()->Play(AUDIO_KNIFEHIT, true);
+				slime.SetHitted(1, counter);
+				heart.pop_back();
+			}
 		}
 	}
 
 	if (nChar == KEY_LEFT)
 	{
+		hero.Set_format_state(3);
 		CAudio::Instance()->Play(AUDIO_STEP, true);
 		hero.SetMovingLeft(true);
 	}
 	if (nChar == KEY_RIGHT)
 	{
+		hero.Set_format_state(4);
 		CAudio::Instance()->Play(AUDIO_STEP, true);
 		hero.SetMovingRight(true);
 	}
 	if (nChar == KEY_UP)
 	{
+		hero.Set_format_state(1);
 		CAudio::Instance()->Play(AUDIO_STEP, true);
 		hero.SetMovingUp(true);
 	}
 	if (nChar == KEY_DOWN)
 	{
+		hero.Set_format_state(2);
 		CAudio::Instance()->Play(AUDIO_STEP, true);
 		hero.SetMovingDown(true);
 	}
@@ -432,7 +415,6 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
 		CAudio::Instance()->Play(AUDIO_RUN, true);
 		hero.SpeedUp();
-
 	}
 }
 
@@ -448,29 +430,22 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_Z)
 	{
-		CAudio::Instance()->Stop(AUDIO_KNIFE);
-		CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
-		if (slime.GetHitted())
+		if (hero.GetHit()) 
 		{
-			slime.MinusHP(1);
-			slime.SetHitted(false);
-			if (slime.GetHP() <= 0)
-				GotoGameState(GAME_STATE_OVER);
-			else
-			{
-				//hp_left.SetInteger(slime.GetHP());
-				heart.pop_back();
-			}
+			CAudio::Instance()->Stop(AUDIO_KNIFE);
+			CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
+			hero.SetHit(false);
 		}
-		hero.SetHit(false);
 	}
 
 	if (nChar == KEY_SPACE)
 	{
-		int tempX = (hero.GetX1() + hero.GetX2()) / 2;
-		int tempY = (hero.GetY1() + hero.GetY2()) / 2;
-		spells.push_back(new FireBall(hero.GetX1(), hero.GetY1(), counter, hero.Get_format_state()));
-		spells.back()->LoadBitmap();
+		if (hero.CheckCooldown(2, counter, 150))
+		{
+			hero.SetCastTime(2, counter);
+			spells.push_back(new FireBall(hero.GetX1(), hero.GetY1(), counter, hero.Get_format_state()));
+			spells.back()->LoadBitmap();
+		}
 	}
 
 	if (nChar == KEY_LEFT)
