@@ -10,8 +10,6 @@ namespace game_framework {
 
 	CGameMap::CGameMap()
 	{
-		sx = 0;
-		sy = 1500;
 		int init[40][40] =
 		{
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -58,6 +56,13 @@ namespace game_framework {
 		for (int i = 0; i < 40; i++)
 			for (int j = 0; j < 40; j++)
 				map[j][i] = init[i][j];
+	}
+	void CGameMap::Initialize()
+	{
+		const int X_POS = 0;
+		const int Y_POS = 1500;
+		sx = X_POS;
+		sy = Y_POS;
 	}
 	void CGameMap::OnMove()
 	{

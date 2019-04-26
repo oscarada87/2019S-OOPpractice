@@ -251,6 +251,7 @@ void CGameStateRun::OnBeginState()
 	counter = 0;
 	hero.Initialize();
 	slime.Initialize();
+	gamemap.Initialize();
 	for (int i = 0; i != slime.GetHP(); i++)
 	{
 		heart.push_back(new CMovingBitmap());

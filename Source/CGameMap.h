@@ -5,6 +5,7 @@ namespace game_framework {
 	class CGameMap {
 	public:
 		CGameMap();
+		void Initialize();
 		void LoadBitmap();
 		void OnMove();
 		void OnShow();
