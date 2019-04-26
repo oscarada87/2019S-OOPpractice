@@ -236,12 +236,10 @@ void CGameStateOver::OnShow()
 CGameStateRun::CGameStateRun(CGame *g)
 	: CGameState(g), NUMBALLS(28)
 {
-	ball = new CBall[NUMBALLS];
 }
 
 CGameStateRun::~CGameStateRun()
 {
-	delete [] ball;
 	spells.clear();
 	spells.shrink_to_fit();
 	heart.clear();
@@ -360,12 +358,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//hp_left.LoadBitmap();
 
 	hero.LoadBitmap();
-	aman.LoadBitmap(IDB_aman, RGB(255, 255, 255));
-	tree.LoadBitmap(IDB_tree, RGB(255, 255, 255));
-	treepot.LoadBitmap(IDB_pottree, RGB(255, 255, 255));
-	candle.LoadBitmap(IDB_candle, RGB(255, 255, 255));
 	gamemap.LoadBitmap();	//地圖
-	background2.LoadBitmap(IDB_BACKGROUND2);
 	slime.LoadBitmap();
 
 	store.LoadBitmap(IDB_store, RGB(255, 255, 255));
@@ -566,44 +559,8 @@ void CGameStateRun::OnShow()
 		store.ShowBitmap();
 	}
 	hero.OnShow(&gamemap);// 主角
-	// 地圖圖層 //
-	for (int i = 2; i <= 12; i++) {
-		background2.SetTopLeft(gamemap.ScreenX(i * 50), gamemap.ScreenY(1900));
-		background2.ShowBitmap();
-	}
-	for (int i = 19; i <= 23; i++) {
-		background2.SetTopLeft(gamemap.ScreenX(i * 50), gamemap.ScreenY(1600));
-		background2.ShowBitmap();
-	}
-	for (int i = 24; i <= 37; i++) {
-		background2.SetTopLeft(gamemap.ScreenX(i * 50), gamemap.ScreenY(1750));
-		background2.ShowBitmap();
-	}
-	// aman tree//
-	aman.SetTopLeft(gamemap.ScreenX(550), gamemap.ScreenY(1800));
-	aman.ShowBitmap();
-	aman.SetTopLeft(gamemap.ScreenX(400), gamemap.ScreenY(1800));
-	aman.ShowBitmap();
-	aman.SetTopLeft(gamemap.ScreenX(250), gamemap.ScreenY(1800));
-	aman.ShowBitmap();
-	aman.SetTopLeft(gamemap.ScreenX(100), gamemap.ScreenY(1800));
-	aman.ShowBitmap();
-	tree.SetTopLeft(gamemap.ScreenX(1650), gamemap.ScreenY(1350));
-	tree.ShowBitmap();
-	treepot.SetTopLeft(gamemap.ScreenX(1600), gamemap.ScreenY(1650));
-	treepot.ShowBitmap();
-	candle.SetTopLeft(gamemap.ScreenX(950), gamemap.ScreenY(1550));
-	candle.ShowBitmap();
-	candle.SetTopLeft(gamemap.ScreenX(1050), gamemap.ScreenY(1550));
-	candle.ShowBitmap();
-	candle.SetTopLeft(gamemap.ScreenX(1150), gamemap.ScreenY(1550));
-	candle.ShowBitmap();
-	candle.SetTopLeft(gamemap.ScreenX(1000), gamemap.ScreenY(1550));
-	candle.ShowBitmap();
-	candle.SetTopLeft(gamemap.ScreenX(1100), gamemap.ScreenY(1550));
-	candle.ShowBitmap();
-	candle.SetTopLeft(gamemap.ScreenX(900), gamemap.ScreenY(1550));
-	candle.ShowBitmap();
+	gamemap.OnShowonhero();
+
 
 	slime.OnShow(hero.GetX1(), hero.GetY1(), &gamemap,& hero);
 	//hp_left.ShowBitmap();

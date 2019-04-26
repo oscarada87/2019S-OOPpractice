@@ -85,6 +85,9 @@ namespace game_framework {
 		arrowright.LoadBitmap(IDB_arrowright, RGB(255, 255, 255));
 		box.LoadBitmap(IDB_bigbox, RGB(255, 255, 255));
 		candle.LoadBitmap(IDB_candle, RGB(255, 255, 255));
+		aman.LoadBitmap(IDB_aman, RGB(255, 255, 255));
+		tree.LoadBitmap(IDB_tree, RGB(255, 255, 255));
+		treepot.LoadBitmap(IDB_pottree, RGB(255, 255, 255));
 	}
 	void CGameMap::OnShow()
 	{
@@ -179,9 +182,48 @@ namespace game_framework {
 		candle.SetTopLeft(1000 - sx, 225 - sy);
 		candle.ShowBitmap();
 
+	}
+	void CGameMap::OnShowonhero()
+	{
+		// aman tree//
+		aman.SetTopLeft(550 - sx, 1800 - sy);
+		aman.ShowBitmap();
+		aman.SetTopLeft(400 - sx, 1800 - sy);
+		aman.ShowBitmap();
+		aman.SetTopLeft(250 - sx, 1800 - sy);
+		aman.ShowBitmap();
+		aman.SetTopLeft(100 - sx, 1800 - sy);
+		aman.ShowBitmap();
+		tree.SetTopLeft(1650 - sx, 1350 - sy);
+		tree.ShowBitmap();
+		treepot.SetTopLeft(1600 - sx, 1650 - sy);
+		treepot.ShowBitmap();
+		candle.SetTopLeft(950 - sx, 1550 - sy);
+		candle.ShowBitmap();
+		candle.SetTopLeft(1050 - sx, 1550 - sy);
+		candle.ShowBitmap();
+		candle.SetTopLeft(1150 - sx, 1550 - sy);
+		candle.ShowBitmap();
+		candle.SetTopLeft(1000 - sx, 1550 - sy);
+		candle.ShowBitmap();
+		candle.SetTopLeft(1100 - sx, 1550 - sy);
+		candle.ShowBitmap();
+		candle.SetTopLeft(900 - sx, 1550 - sy);
+		candle.ShowBitmap();
 
-
-
+		// ¦a¹Ï¹Ï¼h //
+		for (int i = 2; i <= 12; i++) {
+			background2.SetTopLeft((i * 50) - sx, 1900 - sy);
+			background2.ShowBitmap();
+		}
+		for (int i = 19; i <= 23; i++) {
+			background2.SetTopLeft((i * 50) - sx, 1600 - sy);
+			background2.ShowBitmap();
+		}
+		for (int i = 24; i <= 37; i++) {
+			background2.SetTopLeft((i * 50) - sx, 1750 - sy);
+			background2.ShowBitmap();
+		}
 	}
 	void CGameMap::SetSX(int nx)
 	{

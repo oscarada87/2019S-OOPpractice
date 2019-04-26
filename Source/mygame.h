@@ -121,7 +121,6 @@ namespace game_framework {
 		CBall			*ball;		// 球的陣列
 		vector<CSpell*> spells;    // 法術陣列
 		CGameMap        gamemap;    // 背景圖
-		CMovingBitmap	background2; //背景覆蓋
 		CMovingBitmap	corner;		// 角落圖
 		vector<CMovingBitmap*> heart; // 生命
 		CHero			hero;
@@ -136,11 +135,6 @@ namespace game_framework {
 		CMovingBitmap   storeoil;		// 商店
 		CMovingBitmap   storebus;		// 商店
 		CMovingBitmap   storemazu;		// 商店
-
-		CMovingBitmap   aman;
-		CMovingBitmap   tree;
-		CMovingBitmap   treepot;
-		CMovingBitmap   candle;
 		int				counter;	//計時器
 	};
 

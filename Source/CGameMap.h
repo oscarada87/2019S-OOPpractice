@@ -8,6 +8,7 @@ namespace game_framework {
 		void LoadBitmap();
 		void OnMove();
 		void OnShow();
+		void OnShowonhero();
 		void SetSX(int nx);
 		void SetSY(int ny);
 		int GetSX();
@@ -31,6 +32,11 @@ namespace game_framework {
 		CMovingBitmap arrowleft;
 		CMovingBitmap box;
 		CMovingBitmap candle;
+
+		CMovingBitmap aman;
+		CMovingBitmap tree;
+		CMovingBitmap treepot;
+
 		int map[40][40];
 		int sx, sy; // (sx, sy)為螢幕(的左上角)在地圖上的點座標
 	};
