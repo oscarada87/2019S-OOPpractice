@@ -297,10 +297,11 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 			it = spells.erase(it);
 			try 
 			{
-				slime.MinusHP(1);
+				slime.SetHitted(1, counter);
 				heart.pop_back();
 			}
-			catch (...) {
+			catch (...) 
+			{
 
 			}
 		}
@@ -311,6 +312,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	}
 	if (slime.GetHP() <= 0)
 		GotoGameState(GAME_STATE_OVER);
+	slime.HitAnimation(counter);
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -386,7 +388,8 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 			if (hero.HitMonster(&slime))
 			{
 				CAudio::Instance()->Play(AUDIO_KNIFEHIT, true);
-				slime.SetHitted(true);
+				slime.SetHitted(1, counter);
+				heart.pop_back();
 			}
 		}
 	}
@@ -438,18 +441,6 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		{
 			CAudio::Instance()->Stop(AUDIO_KNIFE);
 			CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
-			if (slime.GetHitted())
-			{
-				slime.MinusHP(1);
-				slime.SetHitted(false);
-				if (slime.GetHP() <= 0)
-					GotoGameState(GAME_STATE_OVER);
-				else
-				{
-					//hp_left.SetInteger(slime.GetHP());
-					heart.pop_back();
-				}
-			}
 			hero.SetHit(false);
 		}
 	}

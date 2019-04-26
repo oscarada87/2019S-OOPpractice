@@ -11,12 +11,13 @@ namespace game_framework {
 		Slime() : CMonster() {}
 		void Initialize();
 		void LoadBitmap();
+		void HitAnimation(int counter);
 		void Attack();
 		void OnShow(int x,int y, CGameMap * m, CHero *hero);    //主角現在位置x y
 		void OnMove(int x, int y, CGameMap * m);
 		int GetX2();					//右下角座標
 		int GetY2();
-		void SetHitted(bool flag);
+		void SetHitted(int dmg, int time);				//被打到
 		bool GetHitted();
 	protected:
 		CAnimation still;			 // 不動
