@@ -374,18 +374,14 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_Z)
 	{
-		if (hero.CheckCooldown(1, counter, 15)) 
+		CAudio::Instance()->Play(AUDIO_KNIFE, true);
+		hero.SetHit(true);
+		if (hero.HitMonster(&slime))
 		{
-			hero.SetCastTime(1, counter);
-			CAudio::Instance()->Play(AUDIO_KNIFE, true);
-			hero.SetHit(true);
-			if (hero.HitMonster(&slime))
-			{
-				CAudio::Instance()->Play(AUDIO_KNIFEHIT, true);
-				slime.SetHitted(1, counter);
-				heart.pop_back();
-			}
-		}
+			CAudio::Instance()->Play(AUDIO_KNIFEHIT, true);
+			slime.SetHitted(1, counter);
+			heart.pop_back();
+		}	
 	}
 
 	if (nChar == KEY_LEFT)
