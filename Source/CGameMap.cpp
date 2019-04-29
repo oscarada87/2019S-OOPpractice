@@ -8,8 +8,12 @@
 
 namespace game_framework {
 
-	CGameMap::CGameMap()
+	void CGameMap::Initialize()
 	{
+		const int X_POS = 0;
+		const int Y_POS = 1500;
+		sx = X_POS;
+		sy = Y_POS;
 		int init[40][40] =
 		{
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -57,13 +61,7 @@ namespace game_framework {
 			for (int j = 0; j < 40; j++)
 				map[j][i] = init[i][j];
 	}
-	void CGameMap::Initialize()
-	{
-		const int X_POS = 0;
-		const int Y_POS = 1500;
-		sx = X_POS;
-		sy = Y_POS;
-	}
+	/*
 	void CGameMap::OnMove()
 	{
 
@@ -75,7 +73,7 @@ namespace game_framework {
 		//			sx = sy = 0;
 		//		}
 
-	}
+	}*/
 	void CGameMap::LoadBitmap()
 	{
 		background0.LoadBitmap(IDB_BACKGROUND0);
@@ -230,6 +228,7 @@ namespace game_framework {
 			background2.ShowBitmap();
 		}
 	}
+	/*
 	void CGameMap::SetSX(int nx)
 	{
 		sx = sx + nx;
@@ -259,7 +258,7 @@ namespace game_framework {
 	int CGameMap::GetSY()
 	{
 		return sy;
-	}
+	}*/
 	int CGameMap::Getmapx()
 	{
 		return background0.Width() * 40;
@@ -269,30 +268,34 @@ namespace game_framework {
 	{
 		return background0.Height() * 40;
 	}
-	bool CGameMap::monsterIsEmpty(int x, int y, CMonster *monster) /*y1根本沒有那麼高 臨時處理 monster->GetY1() + 50,還要處理*/
-	{
-		/*hero*/
-		int x1 = x + 20;
-		int x2 = x + 60;
-		int y1 = y;
-		int y2 = y + 74;
-		bool mos = (monster->GetX2() >= x1 && monster->GetX1() <= x2 && monster->GetY2() >= y1 && (monster->GetY1() + 50) <= y2);
-		return IsEmpty(x, y) && mos == false;
-	}
-	bool CGameMap::IsEmpty(int x, int y) // (x, y) 為地圖的點座標
-	{
-		int gx = (x + 60) / 50; // 轉換為格座標(整數除法)
-		int gy = (y + 84) / 50; // 轉換為格座標(整數除法)
-		int ox = (x + 20) / 50;
+	//
+	//bool CGameMap::monsterIsEmpty(int x, int y, CMonster *monster) /*y1根本沒有那麼高 臨時處理 monster->GetY1() + 50,還要處理*/
+	//{
+	//	/*hero*/
+	//	int x1 = x + 20;
+	//	int x2 = x + 60;
+	//	int y1 = y;
+	//	int y2 = y + 74;
+	//	bool mos = (monster->GetX2() >= x1 && monster->GetX1() <= x2 && monster->GetY2() >= y1 && (monster->GetY1() + 50) <= y2);
+	//	return IsEmpty(x, y) && mos == false;
+	//}
+	//bool CGameMap::IsEmpty(int x, int y) // (x, y) 為地圖的點座標
+	//{
+	//	int gx = (x + 60) / 50; // 轉換為格座標(整數除法)
+	//	int gy = (y + 84) / 50; // 轉換為格座標(整數除法)
+	//	int ox = (x + 20) / 50;
+	//
+	//	return map[gx][gy] == 0 && map[ox][gy] == 0;// 0 代表空的
+	//} 
 
-		return map[gx][gy] == 0 && map[ox][gy] == 0;// 0 代表空的
-	}
 
 
-	CGameMap2::CGameMap2()
+	void CGameMap2::Initialize()
 	{
-		sx = 0;/*要改*/
-		sy = 1500;
+		const int X_POS = 0;/*要改*/
+		const int Y_POS = 1500;
+		sx = X_POS;
+		sy = Y_POS;
 		int init[40][40] =
 		{
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -340,18 +343,6 @@ namespace game_framework {
 			for (int j = 0; j < 40; j++)
 				map[j][i] = init[i][j];
 	}
-	void CGameMap2::OnMove()
-	{
-
-		//		if (sy <= SIZE_Y) {
-		//			sx += 3;
-		//			sy += 3;
-		//		}
-		//		else {
-		//			sx = sy = 0;
-		//		}
-
-	}
 	void CGameMap2::LoadBitmap()
 	{
 		background0.LoadBitmap(IDB_stage20);
@@ -396,35 +387,7 @@ namespace game_framework {
 		candle.ShowBitmap();*/
 
 	}
-	void CGameMap2::SetSX(int nx)
-	{
-		sx = sx + nx;
-		OnShow();
-		//pic.SetTopLeft(-sx, -sy);
-	}
-	void CGameMap2::SetSY(int ny)
-	{
-		sy = sy + ny;
-		OnShow();
-		//pic.SetTopLeft(-sx, -sy);
-	}
-	int CGameMap2::ScreenX(int x) // x 為地圖的點座標
-	{
-		return x - sx; // 回傳螢幕的 x 點座標
-	}
-	int CGameMap2::ScreenY(int y) // y 為地圖的 y 點座標
-	{
-		return y - sy; // 回傳螢幕的點座標
-	}
-	int CGameMap2::GetSX()
-	{
-		return sx;
-	}
 
-	int CGameMap2::GetSY()
-	{
-		return sy;
-	}
 	int CGameMap2::Getmapx()
 	{
 		return background0.Width() * 40;
@@ -434,29 +397,13 @@ namespace game_framework {
 	{
 		return background0.Height() * 40;
 	}
-	bool CGameMap2::monsterIsEmpty(int x, int y, CMonster *monster) /*y1根本沒有那麼高 臨時處理 monster->GetY1() + 50,還要處理*/
-	{
-		/*hero*/
-		int x1 = x + 20;
-		int x2 = x + 60;
-		int y1 = y;
-		int y2 = y + 74;
-		bool mos = (monster->GetX2() >= x1 && monster->GetX1() <= x2 && monster->GetY2() >= y1 && (monster->GetY1() + 50) <= y2);
-		return IsEmpty(x, y) && mos == false;
-	}
-	bool CGameMap2::IsEmpty(int x, int y) // (x, y) 為地圖的點座標
-	{
-		int gx = (x + 60) / 50; // 轉換為格座標(整數除法)
-		int gy = (y + 84) / 50; // 轉換為格座標(整數除法)
-		int ox = (x + 20) / 50;
 
-		return map[gx][gy] == 0 && map[ox][gy] == 0;// 0 代表空的
-	}
-
-	CGameMap3::CGameMap3()
+	void CGameMap3::Initialize()
 	{
-		sx = 0;/*要改*/
-		sy = 1500;
+		const int X_POS = 0;/*要改*/
+		const int Y_POS = 1500;
+		sx = X_POS;
+		sy = Y_POS;
 		int init[40][40] =
 		{
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -504,18 +451,6 @@ namespace game_framework {
 			for (int j = 0; j < 40; j++)
 				map[j][i] = init[i][j];
 	}
-	void CGameMap3::OnMove()
-	{
-
-		//		if (sy <= SIZE_Y) {
-		//			sx += 3;
-		//			sy += 3;
-		//		}
-		//		else {
-		//			sx = sy = 0;
-		//		}
-
-	}
 	void CGameMap3::LoadBitmap()
 	{
 		background0.LoadBitmap(IDB_final0);
@@ -560,35 +495,6 @@ namespace game_framework {
 		candle.ShowBitmap();*/
 
 	}
-	void CGameMap3::SetSX(int nx)
-	{
-		sx = sx + nx;
-		OnShow();
-		//pic.SetTopLeft(-sx, -sy);
-	}
-	void CGameMap3::SetSY(int ny)
-	{
-		sy = sy + ny;
-		OnShow();
-		//pic.SetTopLeft(-sx, -sy);
-	}
-	int CGameMap3::ScreenX(int x) // x 為地圖的點座標
-	{
-		return x - sx; // 回傳螢幕的 x 點座標
-	}
-	int CGameMap3::ScreenY(int y) // y 為地圖的 y 點座標
-	{
-		return y - sy; // 回傳螢幕的點座標
-	}
-	int CGameMap3::GetSX()
-	{
-		return sx;
-	}
-
-	int CGameMap3::GetSY()
-	{
-		return sy;
-	}
 	int CGameMap3::Getmapx()
 	{
 		return background0.Width() * 40;
@@ -597,24 +503,6 @@ namespace game_framework {
 	int CGameMap3::Getmapy()
 	{
 		return background0.Height() * 40;
-	}
-	bool CGameMap3::monsterIsEmpty(int x, int y, CMonster *monster) /*y1根本沒有那麼高 臨時處理 monster->GetY1() + 50,還要處理*/
-	{
-		/*hero*/
-		int x1 = x + 20;
-		int x2 = x + 60;
-		int y1 = y;
-		int y2 = y + 74;
-		bool mos = (monster->GetX2() >= x1 && monster->GetX1() <= x2 && monster->GetY2() >= y1 && (monster->GetY1() + 50) <= y2);
-		return IsEmpty(x, y) && mos == false;
-	}
-	bool CGameMap3::IsEmpty(int x, int y) // (x, y) 為地圖的點座標
-	{
-		int gx = (x + 60) / 50; // 轉換為格座標(整數除法)
-		int gy = (y + 84) / 50; // 轉換為格座標(整數除法)
-		int ox = (x + 20) / 50;
-
-		return map[gx][gy] == 0 && map[ox][gy] == 0;// 0 代表空的
 	}
 
 }

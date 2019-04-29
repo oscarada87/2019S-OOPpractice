@@ -86,6 +86,7 @@ void CGameStateInit::OnInit()
 	CAudio::Instance()->Load(AUDIO_HELP, "sounds\\HELP.mp3");
 	if (CAudio::Instance()->Load(AUDIO_STARTOST, "sounds\\startost.mp3"))
 		CAudio::Instance()->Play(AUDIO_STARTOST, true);
+		
 	//
 	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
 	//
@@ -310,7 +311,12 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		}
 	}
 	if (slime.GetHP() <= 0)
+	{
+		CAudio::Instance()->Stop(AUDIO_KNIFE);
+		CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
+		CAudio::Instance()->Stop(AUDIO_EARTH);
 		GotoGameState(GAME_STATE_OVER);
+	}
 	slime.HitAnimation(counter);
 }
 
@@ -427,10 +433,10 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_Z)
 	{
+		CAudio::Instance()->Stop(AUDIO_KNIFE);
+		CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
 		if (hero.GetHit()) 
 		{
-			CAudio::Instance()->Stop(AUDIO_KNIFE);
-			CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
 			hero.SetHit(false);
 		}
 	}
