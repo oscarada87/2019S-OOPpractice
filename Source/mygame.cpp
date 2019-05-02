@@ -292,14 +292,20 @@ void CGameStateRun::OnMove()							// ²¾°Ê¹CÀ¸¤¸¯À
 		slime.MinusHP(-1);
 		break;
 	case 2:
-		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter, 1));
+		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter));
 		monsterSpells.back()->LoadBitmap();
+		monsterSpells.back()->CalculateUnitVector(hero.GetX1(), hero.GetY1());
+		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter));
+		monsterSpells.back()->LoadBitmap();
+		monsterSpells.back()->CalculateUnitVector(hero.GetX2(), hero.GetY2());
+		/*
 		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter, 2));
 		monsterSpells.back()->LoadBitmap();
 		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter, 3));
 		monsterSpells.back()->LoadBitmap();
 		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter, 4));
 		monsterSpells.back()->LoadBitmap();
+		*/
 		break;
 	default:
 		break;
@@ -493,7 +499,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		if (hero.CheckCooldown(2, counter, 150))
 		{
 			hero.SetCastTime(2, counter);
-			heroSpells.push_back(new FireBall(hero.GetX1(), hero.GetY1(), counter, hero.Get_format_state()));
+			heroSpells.push_back(new FireBall(hero.GetX1(), hero.GetY1(), counter));
 			heroSpells.back()->LoadBitmap();
 		}
 	}

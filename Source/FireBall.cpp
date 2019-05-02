@@ -8,7 +8,7 @@
 #include "FireBall.h"
 
 namespace game_framework {
-	FireBall::FireBall(int x, int y, int time, int direction):CSpell(x, y, time, direction)
+	FireBall::FireBall(int x, int y, int time):CSpell(x, y, time)
 	{
 		Initialize();
 	}
@@ -33,22 +33,8 @@ namespace game_framework {
 	void FireBall::OnMove()
 	{
 		// 靜止方向(1上2下3左4右)
-		if (_direction == 1)
-		{
-			_initY = _initY - _speed;
-		}
-		else if (_direction == 2)
-		{
-			_initY = _initY + _speed;
-		}
-		else if (_direction == 3)
-		{
-			_initX = _initX - _speed;
-		}
-		else if (_direction == 4)
-		{
-			_initX = _initX + _speed;
-		}
+		_initX += _unitVectorX;
+		_initY += _unitVectorY;
 	}
 
 	
@@ -82,5 +68,16 @@ namespace game_framework {
 		{
 			return true;
 		}
+	}
+
+	void FireBall::CalculateUnitVector(int x2, int y2)
+	{
+		int tempX = int(pow((x2 - _initX), 2));
+		int tempY = int(pow((y2 - _initY), 2));
+		int temp1 = tempX + tempY;
+		double temp2 = sqrt(temp1);
+		temp2 = _speed / temp2;
+		_unitVectorX = int((x2 - _initX) / temp2 + 0.5);
+		_unitVectorY = int((y2 - _initY) / temp2 + 0.5);
 	}
 }
