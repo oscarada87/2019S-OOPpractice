@@ -241,8 +241,8 @@ CGameStateRun::CGameStateRun(CGame *g)
 
 CGameStateRun::~CGameStateRun()
 {
-	spells.clear();
-	spells.shrink_to_fit();
+	heroSpells.clear();
+	heroSpells.shrink_to_fit();
 	heart.clear();
 	heart.shrink_to_fit();
 }
@@ -271,10 +271,42 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	counter++;
 	gamemap.OnMove();//地圖
-	
+
+	//判斷史萊姆血量
+	if (slime.GetHP() <= 0)
+	{
+		CAudio::Instance()->Stop(AUDIO_KNIFE);
+		CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
+		CAudio::Instance()->Stop(AUDIO_EARTH);
+		GotoGameState(GAME_STATE_OVER);
+	}
+
 	hero.OnMove(&gamemap, &slime);
 	slime.OnMove(hero.GetX1(), hero.GetY1(), &gamemap);
-	for (auto it = spells.begin(); it != spells.end();) {
+	// 怪物攻擊
+	switch (slime.Skill(counter))
+	{
+	case 0:
+		break;
+	case 1:
+		slime.MinusHP(-1);
+		break;
+	case 2:
+		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter, 1));
+		monsterSpells.back()->LoadBitmap();
+		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter, 2));
+		monsterSpells.back()->LoadBitmap();
+		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter, 3));
+		monsterSpells.back()->LoadBitmap();
+		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter, 4));
+		monsterSpells.back()->LoadBitmap();
+		break;
+	default:
+		break;
+	}
+
+	// 技能移動
+	for (auto it = heroSpells.begin(); it != heroSpells.end();) {
 		if ((*it)->CheckDuration(counter))
 		{
 			(*it)->OnMove();
@@ -283,22 +315,34 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		else 
 		{
 			delete *it;
-			it = spells.erase(it);
+			it = heroSpells.erase(it);
 		}
 	}
 
+	for (auto it = monsterSpells.begin(); it != monsterSpells.end();) {
+		if ((*it)->CheckDuration(counter))
+		{
+			(*it)->OnMove();
+			it++;
+		}
+		else
+		{
+			delete *it;
+			it = monsterSpells.erase(it);
+		}
+	}
 
 	// 判斷技能是否打中怪物
 
-	for (auto it = spells.begin(); it != spells.end();) {
-		if ((*it)->HitSomething(&slime)) 
+	for (auto it = heroSpells.begin(); it != heroSpells.end();) {
+		if ((*it)->HitSomething(&slime) && slime.GetHP() > 0)
 		{
 			delete *it;
-			it = spells.erase(it);
+			it = heroSpells.erase(it);
 			try 
 			{
 				slime.SetHitted(1, counter);
-				heart.pop_back();
+				//heart.pop_back();
 			}
 			catch (...) 
 			{
@@ -310,14 +354,15 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 			it++;
 		}
 	}
-	if (slime.GetHP() <= 0)
-	{
-		CAudio::Instance()->Stop(AUDIO_KNIFE);
-		CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
-		CAudio::Instance()->Stop(AUDIO_EARTH);
-		GotoGameState(GAME_STATE_OVER);
-	}
 	slime.HitAnimation(counter);
+
+	// 怪物血量
+	for (int i = heart.size(); i <= slime.GetHP(); i++)
+	{
+		heart.push_back(new CMovingBitmap());
+		heart.at(i)->LoadBitmap(IDB_HEART, RGB(255, 255, 255));
+		heart.at(i)->SetTopLeft(0 + 28 * i, 0);
+	}
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -357,10 +402,12 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	CAudio::Instance()->Load(AUDIO_KNIFE, "sounds\\knife.mp3");
 	CAudio::Instance()->Load(AUDIO_KNIFEHIT, "sounds\\knifehit.mp3");
 	CAudio::Instance()->Load(AUDIO_EARTH, "sounds\\earth.mp3");
-
-	for (auto it = spells.begin(); it != spells.end(); it++) {
+	
+	/*
+	for (auto it = heroSpells.begin(); it != heroSpells.end(); it++) {
 		(*it)->LoadBitmap();
 	}
+	*/
 
 	//
 	// 此OnInit動作會接到CGameStaterOver::OnInit()，所以進度還沒到100%
@@ -382,11 +429,11 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
 		CAudio::Instance()->Play(AUDIO_KNIFE, true);
 		hero.SetHit(true);
-		if (hero.HitMonster(&slime))
+		if (hero.HitMonster(&slime) && slime.GetHP() > 0)
 		{
 			CAudio::Instance()->Play(AUDIO_KNIFEHIT, true);
 			slime.SetHitted(1, counter);
-			heart.pop_back();
+			//heart.pop_back();	
 		}	
 	}
 
@@ -446,8 +493,8 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		if (hero.CheckCooldown(2, counter, 150))
 		{
 			hero.SetCastTime(2, counter);
-			spells.push_back(new FireBall(hero.GetX1(), hero.GetY1(), counter, hero.Get_format_state()));
-			spells.back()->LoadBitmap();
+			heroSpells.push_back(new FireBall(hero.GetX1(), hero.GetY1(), counter, hero.Get_format_state()));
+			heroSpells.back()->LoadBitmap();
 		}
 	}
 
@@ -541,12 +588,22 @@ void CGameStateRun::OnShow()
 
 
 	slime.OnShow(hero.GetX1(), hero.GetY1(), &gamemap,& hero);
-	//hp_left.ShowBitmap();
+
 	for (auto it = heart.begin(); it != heart.end(); it++)
 	{
 		(*it)->ShowBitmap();
 	}
-	for (auto it = spells.begin(); it != spells.end(); it++) {
+	for (auto it = heroSpells.begin(); it != heroSpells.end(); it++) {
+		try
+		{
+			(*it)->OnShow(&gamemap);
+		}
+		catch (...)
+		{
+
+		}
+	}
+	for (auto it = monsterSpells.begin(); it != monsterSpells.end(); it++) {
 		try
 		{
 			(*it)->OnShow(&gamemap);

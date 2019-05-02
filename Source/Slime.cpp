@@ -7,6 +7,7 @@
 #include "Slime.h"
 #include "math.h" 
 #include "CGameMap.h"
+
 namespace game_framework {
 	void Slime::Initialize()
 	{
@@ -19,9 +20,21 @@ namespace game_framework {
 		_hittime = 0;
 	}
 	
-	void Slime::Attack()
+	
+	int Slime::Skill(int counter)
 	{
+		if (counter % 30 == 0 && ismove)
+		{
+			int result = getRandomNumber(1, 2);
+			if (result == 1 && _hp >= 10)
+				return 2;
+			return result;
+		}
+			
+		else
+			return 0;
 	}
+
 	bool Slime::GetHitted()
 	{
 		return isHitted;
@@ -62,7 +75,8 @@ namespace game_framework {
 	void Slime::OnMove(int x, int y, CGameMap * m)
 	{
 		int speed = 2;
-		if (ismove) {
+		if (ismove) 
+		{
 			move.OnMove();
 			if (x > _x && m->IsEmpty(_x + speed, _y)) {
 				_x += speed;
@@ -77,7 +91,8 @@ namespace game_framework {
 				_y -= speed;
 			}
 		}
-		else {
+		else 
+		{
 			still.OnMove();
 		}
 	}
@@ -91,16 +106,18 @@ namespace game_framework {
 				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				still.OnShow();
 			}
-			else if (abs(x - _x) < 200 && abs(y - _y) < 200) {
+			else /*if (abs(x - _x) < 200 && abs(y - _y) < 200)*/ {
 				ismove = true;
 				move.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				move.OnShow();
 			}
+			/*
 			else  {
 				ismove = false;
 				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				still.OnShow();
 			}
+			*/
 		}
 		else
 		{

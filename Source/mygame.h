@@ -119,7 +119,8 @@ namespace game_framework {
 		CMovingBitmap	background;	
 		CMovingBitmap	help;		
 		CBall			*ball;		// 球的陣列
-		vector<CSpell*> spells;    // 法術陣列
+		vector<CSpell*> heroSpells;		// 英雄法術陣列
+		vector<CSpell*> monsterSpells;	// 怪物法術陣列
 		CGameMap        gamemap;    // 背景圖
 		CMovingBitmap	corner;		// 角落圖
 		vector<CMovingBitmap*> heart; // 生命
@@ -128,7 +129,6 @@ namespace game_framework {
 		CInteger        hp_left;
 		CBouncingBall   bball;		// 反覆彈跳的球
 		Slime           slime;		// 史萊姆
-
 		CMovingBitmap   store;		// 商店
 		CMovingBitmap   storemoney;		// 商店
 		CMovingBitmap   storezing;		// 商店

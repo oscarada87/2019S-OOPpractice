@@ -1,6 +1,8 @@
 #ifndef CMONSTER_H
 #define CMONSTER_H
 
+#include <random>
+
 namespace game_framework {
 	class CMonster
 	{
@@ -14,7 +16,7 @@ namespace game_framework {
 			_hp = hp;
 		};
 		~CMonster() {};
-		virtual void Attack() = 0;					// 攻擊
+		virtual int Skill(int counter) = 0;					// 攻擊
 		virtual void Initialize() = 0;				// 設定怪物為初始值
 		virtual void LoadBitmap() = 0;				// 載入圖形
 		virtual void HitAnimation(int counter) = 0;	// 被攻擊特效
@@ -38,6 +40,13 @@ namespace game_framework {
 		int _speed;					// 移動速度
 		int _hittime;				// 被攻擊時間
 		vector <int> _castTime;		// 施放時間
+		int getRandomNumber(int min, int max)
+		{
+			std::random_device rd;  //隨機引擎
+			std::mt19937 gen(rd()); //種子
+			std::uniform_int_distribution<> dis(min, max);
+			return dis(gen);
+		};
 	};
 }
 
