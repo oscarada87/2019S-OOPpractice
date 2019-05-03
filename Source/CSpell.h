@@ -1,6 +1,7 @@
 #ifndef CSPELL_H
 #define CSPELL_H
 
+#include <cmath>
 #include "CHero.h"
 #include "CGameMap.h"
 

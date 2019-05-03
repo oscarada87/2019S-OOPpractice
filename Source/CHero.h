@@ -18,6 +18,8 @@ namespace game_framework {
 		int  GetY1();					// 璣动オà y 畒夹
 		int  GetX2();					// 璣动à x 畒夹
 		int  GetY2();					// 璣动à y 畒夹
+		int  GetCenterX();					// 璣动いみ x 畒夹
+		int  GetCenterY();					// 璣动いみ y 畒夹
 		int	 Get_format_state();		// 繰ゎよ(123オ4)
 		void Initialize();				// 砞﹚璣动﹍
 		void LoadBitmap();				// 更瓜

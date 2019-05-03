@@ -35,6 +35,16 @@ namespace game_framework {
 		return y + animation1.Height();
 	}
 
+	int CHero::GetCenterX()
+	{
+		return x + 42;
+	}
+
+	int CHero::GetCenterY()
+	{
+		return y + 42;
+	}
+
 	int CHero::Get_format_state()
 	{
 		return format_state;

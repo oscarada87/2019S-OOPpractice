@@ -292,20 +292,18 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		slime.MinusHP(-1);
 		break;
 	case 2:
-		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter));
+		monsterSpells.push_back(new FireBall(slime.GetCenterX(), slime.GetCenterY(), counter));
 		monsterSpells.back()->LoadBitmap();
 		monsterSpells.back()->CalculateUnitVector(hero.GetX1(), hero.GetY1());
-		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter));
+		monsterSpells.push_back(new FireBall(slime.GetCenterX(), slime.GetCenterY(), counter));
 		monsterSpells.back()->LoadBitmap();
 		monsterSpells.back()->CalculateUnitVector(hero.GetX2(), hero.GetY2());
-		/*
-		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter, 2));
+		monsterSpells.push_back(new FireBall(slime.GetCenterX(), slime.GetCenterY(), counter));
 		monsterSpells.back()->LoadBitmap();
-		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter, 3));
+		monsterSpells.back()->CalculateUnitVector(hero.GetX2(), hero.GetY2());
+		monsterSpells.push_back(new FireBall(slime.GetCenterX(), slime.GetCenterY(), counter));
 		monsterSpells.back()->LoadBitmap();
-		monsterSpells.push_back(new FireBall(slime.GetX1(), slime.GetY1(), counter, 4));
-		monsterSpells.back()->LoadBitmap();
-		*/
+		monsterSpells.back()->CalculateUnitVector(hero.GetX2(), hero.GetY2());
 		break;
 	default:
 		break;
@@ -496,12 +494,14 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_SPACE)
 	{
+		/*
 		if (hero.CheckCooldown(2, counter, 150))
 		{
 			hero.SetCastTime(2, counter);
 			heroSpells.push_back(new FireBall(hero.GetX1(), hero.GetY1(), counter));
 			heroSpells.back()->LoadBitmap();
 		}
+		*/
 	}
 
 	if (nChar == KEY_LEFT)
@@ -537,12 +537,22 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	hero.SetMovingLeft(true);
+	if (hero.CheckCooldown(2, counter, 150))
+	{
+		hero.SetCastTime(2, counter);
+		heroSpells.push_back(new FireBall(hero.GetCenterX(), hero.GetCenterY(), counter));
+		heroSpells.back()->LoadBitmap();
+		heroSpells.back()->CalculateUnitVector(point.x + gamemap.GetSX(), point.y + gamemap.GetSY());
+		//TRACE("HeroX: %d", hero.GetCenterX());
+		//TRACE("HeroY: %d", hero.GetCenterY());
+		//TRACE("X: %d", point.x);
+		//TRACE("Y: %d", point.y);
+	}
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	hero.SetMovingLeft(false);
+
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -552,12 +562,12 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	hero.SetMovingRight(true);
+
 }
 
 void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	hero.SetMovingRight(false);
+
 }
 
 void CGameStateRun::OnShow()

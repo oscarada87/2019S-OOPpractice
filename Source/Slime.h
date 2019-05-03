@@ -22,6 +22,8 @@ namespace game_framework {
 		int GetY2();
 		void SetHitted(int dmg, int time);				//被打到
 		bool GetHitted();
+		int GetCenterX();
+		int GetCenterY();
 	protected:
 		CAnimation still;			 // 不動
 		CAnimation move;			 //移動攻擊

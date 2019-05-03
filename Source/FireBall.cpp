@@ -72,12 +72,14 @@ namespace game_framework {
 
 	void FireBall::CalculateUnitVector(int x2, int y2)
 	{
-		int tempX = int(pow((x2 - _initX), 2));
-		int tempY = int(pow((y2 - _initY), 2));
-		int temp1 = tempX + tempY;
-		double temp2 = sqrt(temp1);
-		temp2 = _speed / temp2;
-		_unitVectorX = int((x2 - _initX) / temp2 + 0.5);
-		_unitVectorY = int((y2 - _initY) / temp2 + 0.5);
+		double tempX = pow((x2 - _initX), 2);
+		double tempY = pow((y2 - _initY), 2);
+		double temp1 = tempX + tempY;
+		int temp2 = int(sqrt(temp1));
+		_unitVectorX = int(((x2 - _initX) * _speed) / temp2);
+		_unitVectorY = int(((y2 - _initY) * _speed) / temp2);
+		//TRACE("temp2: %d", temp2);
+		//TRACE("X: %d", _unitVectorX);
+		//TRACE("Y: %d", _unitVectorY);
 	}
 }

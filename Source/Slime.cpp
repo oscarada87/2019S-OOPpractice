@@ -50,6 +50,16 @@ namespace game_framework {
 		return _y + move.Height();
 	}
 
+	int Slime::GetCenterX()
+	{
+		return _x + move.Width()/2;
+	}
+
+	int Slime::GetCenterY()
+	{
+		return _y + move.Height()/2;
+	}
+
 	void Slime::LoadBitmap()
 	{
 		still.AddBitmap(IDB_SLIME1, RGB(255, 255, 255));
