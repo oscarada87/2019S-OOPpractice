@@ -135,7 +135,7 @@ namespace game_framework {
 		down_hit_format.SetDelayCount(5);
 	}
 
-	void CHero::OnMove(CGameMap * m, CMonster *monster)
+	void CHero::OnMove(Gamemap * m, CMonster *monster)
 	{
 		//animation.OnMove();
 		if (isMovingUp == false && isMovingDown == false && isMovingLeft == false && isMovingRight == false && isHitting == true)
@@ -342,7 +342,7 @@ namespace game_framework {
 		format_state = x;
 	}
 
-	void CHero::OnShow(CGameMap * m)
+	void CHero::OnShow(Gamemap * m)
 	{
 		if (isMovingUp == false && isMovingDown == false && isMovingLeft == false && isMovingRight == false)
 		{

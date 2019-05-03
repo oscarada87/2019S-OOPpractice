@@ -61,19 +61,6 @@ namespace game_framework {
 			for (int j = 0; j < 40; j++)
 				map[j][i] = init[i][j];
 	}
-	/*
-	void CGameMap::OnMove()
-	{
-
-		//		if (sy <= SIZE_Y) {
-		//			sx += 3;
-		//			sy += 3;
-		//		}
-		//		else {
-		//			sx = sy = 0;
-		//		}
-
-	}*/
 	void CGameMap::LoadBitmap()
 	{
 		background0.LoadBitmap(IDB_BACKGROUND0);
@@ -228,37 +215,6 @@ namespace game_framework {
 			background2.ShowBitmap();
 		}
 	}
-	/*
-	void CGameMap::SetSX(int nx)
-	{
-		sx = sx + nx;
-		OnShow();
-		//pic.SetTopLeft(-sx, -sy);
-	}
-	void CGameMap::SetSY(int ny)
-	{
-		sy = sy + ny;
-		OnShow();
-		//pic.SetTopLeft(-sx, -sy);
-	}
-	int CGameMap::ScreenX(int x) // x 為地圖的點座標
-	{
-		return x - sx; // 回傳螢幕的 x 點座標
-	}
-	int CGameMap::ScreenY(int y) // y 為地圖的 y 點座標
-	{
-		return y - sy; // 回傳螢幕的點座標
-	}
-	int CGameMap::GetSX()
-	{
-
-		return sx;
-	}
-
-	int CGameMap::GetSY()
-	{
-		return sy;
-	}*/
 	int CGameMap::Getmapx()
 	{
 		return background0.Width() * 40;
@@ -268,31 +224,13 @@ namespace game_framework {
 	{
 		return background0.Height() * 40;
 	}
-	//
-	//bool CGameMap::monsterIsEmpty(int x, int y, CMonster *monster) /*y1根本沒有那麼高 臨時處理 monster->GetY1() + 50,還要處理*/
-	//{
-	//	/*hero*/
-	//	int x1 = x + 20;
-	//	int x2 = x + 60;
-	//	int y1 = y;
-	//	int y2 = y + 74;
-	//	bool mos = (monster->GetX2() >= x1 && monster->GetX1() <= x2 && monster->GetY2() >= y1 && (monster->GetY1() + 50) <= y2);
-	//	return IsEmpty(x, y) && mos == false;
-	//}
-	//bool CGameMap::IsEmpty(int x, int y) // (x, y) 為地圖的點座標
-	//{
-	//	int gx = (x + 60) / 50; // 轉換為格座標(整數除法)
-	//	int gy = (y + 84) / 50; // 轉換為格座標(整數除法)
-	//	int ox = (x + 20) / 50;
-	//
-	//	return map[gx][gy] == 0 && map[ox][gy] == 0;// 0 代表空的
-	//} 
+
 
 
 
 	void CGameMap2::Initialize()
 	{
-		const int X_POS = 0;/*要改*/
+		const int X_POS = 800;/*要改*/
 		const int Y_POS = 1500;
 		sx = X_POS;
 		sy = Y_POS;
@@ -387,7 +325,10 @@ namespace game_framework {
 		candle.ShowBitmap();*/
 
 	}
+	void CGameMap2::OnShowonhero()
+	{
 
+	}
 	int CGameMap2::Getmapx()
 	{
 		return background0.Width() * 40;
@@ -400,7 +341,7 @@ namespace game_framework {
 
 	void CGameMap3::Initialize()
 	{
-		const int X_POS = 0;/*要改*/
+		const int X_POS = 800;/*要改*/
 		const int Y_POS = 1500;
 		sx = X_POS;
 		sy = Y_POS;
@@ -493,6 +434,10 @@ namespace game_framework {
 			}
 		/*candle.SetTopLeft(1000 - sx, 225 - sy);
 		candle.ShowBitmap();*/
+
+	}
+	void CGameMap3::OnShowonhero()
+	{
 
 	}
 	int CGameMap3::Getmapx()

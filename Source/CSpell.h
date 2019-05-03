@@ -21,7 +21,7 @@ namespace game_framework {
 		}
 		virtual void LoadBitmap() = 0;
 		virtual void Initialize() = 0;
-		virtual void OnShow(CGameMap *m) = 0;
+		virtual void OnShow(Gamemap *m) = 0;
 		virtual void OnMove() = 0;
 		virtual bool CheckDuration(int time) = 0;
 		virtual bool HitSomething(CHero *hero) = 0;

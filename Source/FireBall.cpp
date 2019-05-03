@@ -24,7 +24,7 @@ namespace game_framework {
 		_start_img.LoadBitmapA(IDB_FIREBALL, RGB(255, 255, 255));
 	}
 
-	void FireBall::OnShow(CGameMap *m)
+	void FireBall::OnShow(Gamemap *m)
 	{
 		_start_img.SetTopLeft(m->ScreenX(_initX), m->ScreenY(_initY));
 		_start_img.ShowBitmap();

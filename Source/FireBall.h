@@ -10,7 +10,7 @@ namespace game_framework {
 		FireBall(int x, int y, int time);
 		void LoadBitmap();
 		void Initialize();
-		void OnShow(CGameMap *m);
+		void OnShow(Gamemap *m);
 		void OnMove();
 		bool CheckDuration(int time);
 		bool HitSomething(CHero *hero);

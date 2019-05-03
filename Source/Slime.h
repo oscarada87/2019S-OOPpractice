@@ -16,8 +16,8 @@ namespace game_framework {
 		void LoadBitmap();
 		void HitAnimation(int counter);
 		int Skill(int counter);
-		void OnShow(int x,int y, CGameMap * m, CHero *hero);    //主角現在位置x y
-		void OnMove(int x, int y, CGameMap * m);
+		void OnShow(int x,int y, Gamemap * m, CHero *hero);    //主角現在位置x y
+		void OnMove(int x, int y, Gamemap * m);
 		int GetX2();					//右下角座標
 		int GetY2();
 		void SetHitted(int dmg, int time);				//被打到

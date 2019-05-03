@@ -121,7 +121,7 @@ namespace game_framework {
 		CBall			*ball;		// 球的陣列
 		vector<CSpell*> heroSpells;		// 英雄法術陣列
 		vector<CSpell*> monsterSpells;	// 怪物法術陣列
-		CGameMap        gamemap;    // 背景圖
+		vector<Gamemap*>        gamemap;    // 背景圖
 		CMovingBitmap	corner;		// 角落圖
 		vector<CMovingBitmap*> heart; // 生命
 		CHero			hero;

@@ -12,8 +12,8 @@ namespace game_framework {
 	{
 	public:
 		CHero();
-		void OnMove(CGameMap * m, CMonster *monster);					// 移動英雄
-		void OnShow(CGameMap * m);					// 將英雄圖形貼到畫面
+		void OnMove(Gamemap * m, CMonster *monster);					// 移動英雄
+		void OnShow(Gamemap * m);					// 將英雄圖形貼到畫面
 		int  GetX1();					// 英雄左上角 x 座標
 		int  GetY1();					// 英雄左上角 y 座標
 		int  GetX2();					// 英雄右下角 x 座標

@@ -93,6 +93,7 @@ namespace game_framework {
 		void Initialize();
 		void LoadBitmap();
 		void OnShow();
+		void OnShowonhero();
 		int Getmapx();
 		int Getmapy();
 	private:
@@ -108,6 +109,7 @@ namespace game_framework {
 		void Initialize();
 		void LoadBitmap();
 		void OnShow();
+		void OnShowonhero();
 		int Getmapx();
 		int Getmapy();
 	private:

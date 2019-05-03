@@ -82,7 +82,7 @@ namespace game_framework {
 		}
 	}
 
-	void Slime::OnMove(int x, int y, CGameMap * m)
+	void Slime::OnMove(int x, int y, Gamemap * m)
 	{
 		int speed = 2;
 		if (active && isNear) 
@@ -114,7 +114,7 @@ namespace game_framework {
 		}
 	}
 
-	void Slime::OnShow(int x,int y, CGameMap * m, CHero *hero)
+	void Slime::OnShow(int x,int y, Gamemap * m, CHero *hero)
 	{
 		if (!isHitted) 
 		{

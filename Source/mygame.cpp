@@ -237,6 +237,7 @@ void CGameStateOver::OnShow()
 CGameStateRun::CGameStateRun(CGame *g)
 	: CGameState(g), NUMBALLS(28)
 {
+	stage = 0;
 }
 
 CGameStateRun::~CGameStateRun()
@@ -247,6 +248,9 @@ CGameStateRun::~CGameStateRun()
 	monsterSpells.shrink_to_fit();
 	heart.clear();
 	heart.shrink_to_fit();
+	gamemap.clear();
+	gamemap.shrink_to_fit();
+	//_CrtDumpMemoryLeaks();
 }
 
 void CGameStateRun::OnBeginState()
@@ -254,7 +258,11 @@ void CGameStateRun::OnBeginState()
 	counter = 0;
 	hero.Initialize();
 	slime.Initialize();
-	gamemap.Initialize();
+
+	for (int i = 0; i < 3; i++)/*hero 位置改*/
+	{
+		gamemap.at(i)->Initialize();
+	}
 	hp_left.SetInteger(hero.Gethp());
 	hp_left.SetTopLeft(565,0);
 	for (int i = 0; i != slime.GetHP(); i++)
@@ -274,7 +282,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	// SetCursor(AfxGetApp()->LoadCursor(IDC_GAMECURSOR));
 	//
 	counter++;
-	gamemap.OnMove();//地圖
+	gamemap.at(stage)->OnMove();//地圖
 
 	//判斷史萊姆血量
 	if (slime.GetHP() <= 0)
@@ -284,9 +292,8 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		CAudio::Instance()->Stop(AUDIO_EARTH);
 		GotoGameState(GAME_STATE_OVER);
 	}
-
-	hero.OnMove(&gamemap, &slime);
-	slime.OnMove(hero.GetX1(), hero.GetY1(), &gamemap);
+	hero.OnMove(gamemap.at(stage), &slime);
+	slime.OnMove(hero.GetX1(), hero.GetY1(), gamemap.at(stage));
 	// 怪物攻擊
 	switch (slime.Skill(counter))
 	{
@@ -393,7 +400,14 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//
 
 	hero.LoadBitmap();
-	gamemap.LoadBitmap();	//地圖
+	/*gamemap*/
+	gamemap.push_back(new CGameMap());
+	gamemap.push_back(new CGameMap2());
+	gamemap.push_back(new CGameMap3());
+	for (int i = 0; i < 3; i++)
+	{
+		gamemap.at(i)->LoadBitmap();	//地圖
+	}
 	slime.LoadBitmap();
 	hp_left.LoadBitmap();
 
@@ -433,7 +447,13 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_Z = 0x5A; //keyboard Z
 	const char KEY_SHIFT = 0x10; // keyboard Shift 加速
 	const char KEY_SPACE = 0x20; //keyboard Space 火球
-
+	const char KEY_W = 0x57; //地圖測試用
+	if (nChar == KEY_W)
+	{
+		stage = stage + 1;
+		gamemap.at(stage)->Initialize();
+		hero.SetXY(1000,1750);
+	}
 
 	if (nChar == KEY_Z)
 	{
@@ -548,7 +568,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 		hero.SetCastTime(2, counter);
 		heroSpells.push_back(new FireBall(hero.GetCenterX(), hero.GetCenterY(), counter));
 		heroSpells.back()->LoadBitmap();
-		heroSpells.back()->CalculateUnitVector(point.x + gamemap.GetSX(), point.y + gamemap.GetSY());
+		heroSpells.back()->CalculateUnitVector(point.x + gamemap.at(stage)->GetSX(), point.y + gamemap.at(stage)->GetSY());
 		//TRACE("HeroX: %d", hero.GetCenterX());
 		//TRACE("HeroY: %d", hero.GetCenterY());
 		//TRACE("X: %d", point.x);
@@ -578,38 +598,38 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 void CGameStateRun::OnShow()
 {
-	gamemap.OnShow();				//地圖
+	gamemap.at(stage)->OnShow();				//地圖
 
 	//商店//
 	if (250 <= hero.GetX2() && hero.GetX2() <= 350 && 200 <= hero.GetY2() && hero.GetY2() < 300) {
-		storebus.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+		storebus.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
 		storebus.ShowBitmap();
 	}
 	else if(250 <= hero.GetX2() && hero.GetX2() <= 350 && 300 <= hero.GetY2() && hero.GetY2() < 400){
-		storezing.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+		storezing.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
 		storezing.ShowBitmap();
 	}
 	else if (350 < hero.GetX2() && hero.GetX2() <= 500 && 350 <= hero.GetY2() && hero.GetY2() < 450) {
-		storemazu.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+		storemazu.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
 		storemazu.ShowBitmap();
 	}
 	else if (500 < hero.GetX1() && hero.GetX1() <= 600 && 300 <= hero.GetY2() && hero.GetY2() < 400) {
-		storeoil.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+		storeoil.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
 		storeoil.ShowBitmap();
 	}
 	else if (500 < hero.GetX1() && hero.GetX1() <= 600 && 200 <= hero.GetY2() && hero.GetY2() < 300) {
-		storemoney.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+		storemoney.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
 		storemoney.ShowBitmap();
 	}
 	else {
-		store.SetTopLeft(gamemap.ScreenX(300), gamemap.ScreenY(0));
+		store.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
 		store.ShowBitmap();
 	}
-	hero.OnShow(&gamemap);// 主角
-	gamemap.OnShowonhero();
+	hero.OnShow(gamemap.at(stage));// 主角
+	gamemap.at(stage)->OnShowonhero();
 
 
-	slime.OnShow(hero.GetX1(), hero.GetY1(), &gamemap,& hero);
+	slime.OnShow(hero.GetX1(), hero.GetY1(), gamemap.at(stage),& hero);
 
 	for (auto it = heart.begin(); it != heart.end(); it++)
 	{
@@ -618,7 +638,7 @@ void CGameStateRun::OnShow()
 	for (auto it = heroSpells.begin(); it != heroSpells.end(); it++) {
 		try
 		{
-			(*it)->OnShow(&gamemap);
+			(*it)->OnShow(gamemap.at(stage));
 		}
 		catch (...)
 		{
@@ -628,7 +648,7 @@ void CGameStateRun::OnShow()
 	for (auto it = monsterSpells.begin(); it != monsterSpells.end(); it++) {
 		try
 		{
-			(*it)->OnShow(&gamemap);
+			(*it)->OnShow(gamemap.at(stage));
 		}
 		catch (...)
 		{
