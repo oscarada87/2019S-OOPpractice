@@ -243,6 +243,8 @@ CGameStateRun::~CGameStateRun()
 {
 	heroSpells.clear();
 	heroSpells.shrink_to_fit();
+	monsterSpells.clear();
+	monsterSpells.shrink_to_fit();
 	heart.clear();
 	heart.shrink_to_fit();
 }

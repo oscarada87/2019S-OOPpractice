@@ -136,6 +136,7 @@ namespace game_framework {
 		CMovingBitmap   storebus;		// 商店
 		CMovingBitmap   storemazu;		// 商店
 		int				counter;	//計時器
+		int				stage;		//第幾張地圖/第幾隻怪物
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
