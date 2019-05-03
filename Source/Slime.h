@@ -29,7 +29,8 @@ namespace game_framework {
 		CAnimation move;			 //²¾°Ê§ðÀ»
 		CMovingBitmap hitted;
 		bool isHitted;
-		bool ismove;
+		bool active;
+		bool isNear;
 	};
 }
 

@@ -15,7 +15,7 @@ namespace game_framework {
 		const int Y_POS = 500;
 		_x = X_POS;
 		_y = Y_POS;
-		ismove = isHitted = false;
+		active = isNear = isHitted = false;
 		_hp = 5;
 		_hittime = 0;
 	}
@@ -23,7 +23,7 @@ namespace game_framework {
 	
 	int Slime::Skill(int counter)
 	{
-		if (counter % 30 == 0 && ismove)
+		if (counter % 30 == 0 && active &&isNear)
 		{
 			int result = getRandomNumber(1, 2);
 			if (result == 1 && _hp >= 10)
@@ -85,7 +85,7 @@ namespace game_framework {
 	void Slime::OnMove(int x, int y, CGameMap * m)
 	{
 		int speed = 2;
-		if (ismove) 
+		if (active && isNear) 
 		{
 			move.OnMove();
 			if (x > _x && m->IsEmpty(_x + speed, _y)) {
@@ -101,6 +101,13 @@ namespace game_framework {
 				_y -= speed;
 			}
 		}
+		/*
+		else if (!isNear) {
+			move.OnMove();
+			_x += getRandomNumber(-10, 10);
+			_y += getRandomNumber(-10, 10);
+		}
+		*/
 		else 
 		{
 			still.OnMove();
@@ -112,12 +119,21 @@ namespace game_framework {
 		if (!isHitted) 
 		{
 			if (hero->HitSomething(_x, _y, _x + move.Width(), _y + move.Height())) {
-				ismove = false;
+				active = false;
 				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				still.OnShow();
 			}
-			else /*if (abs(x - _x) < 200 && abs(y - _y) < 200)*/ {
-				ismove = true;
+			else if (abs(x - _x) < 200 && abs(y - _y) < 200) {
+				isNear = active = true;
+				move.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				move.OnShow();
+			}
+			else if (abs(x - _x) > 500 && abs(y - _y) > 500){
+				active = false;
+				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				still.OnShow();
+			}
+			else {
 				move.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				move.OnShow();
 			}

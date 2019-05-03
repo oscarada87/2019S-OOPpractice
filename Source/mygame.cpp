@@ -243,6 +243,8 @@ CGameStateRun::~CGameStateRun()
 {
 	heroSpells.clear();
 	heroSpells.shrink_to_fit();
+	monsterSpells.clear();
+	monsterSpells.shrink_to_fit();
 	heart.clear();
 	heart.shrink_to_fit();
 }
@@ -363,7 +365,8 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	slime.HitAnimation(counter);
 
 	// 怪物血量
-	for (int i = heart.size(); i <= slime.GetHP(); i++)
+	heart.clear();
+	for (int i = 0; i < slime.GetHP(); i++)
 	{
 		heart.push_back(new CMovingBitmap());
 		heart.at(i)->LoadBitmap(IDB_HEART, RGB(255, 255, 255));
