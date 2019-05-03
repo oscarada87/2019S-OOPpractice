@@ -119,6 +119,7 @@ namespace game_framework {
 		if (!isHitted) 
 		{
 			if (hero->HitSomething(_x, _y, _x + move.Width(), _y + move.Height())) {
+				active = false;
 				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				still.OnShow();
 			}
