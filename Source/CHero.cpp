@@ -58,6 +58,7 @@ namespace game_framework {
 		y = Y_POS;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = isHitting = false;
 		speed = 5;
+		hp = 100;
 		for (int i = 0; i < 3; i++) 
 		{
 			castTime.push_back(-100);
@@ -248,7 +249,14 @@ namespace game_framework {
 	{
 		return isHitting;
 	}
-
+	void CHero::Sethp(int attack)
+	{
+		hp = hp - attack;
+	}
+	int  CHero::Gethp()
+	{
+		return hp;
+	}
 	bool CHero::HitMonster(CMonster *monster)
 	{
 		// 檢測英雄是否打到怪物

@@ -36,6 +36,8 @@ namespace game_framework {
 		bool HitSomething(int tx1, int ty1, int tx2, int ty2);	// 是否碰到東西(輸入左上右下座標)
 		void SetHit(bool flag);
 		bool GetHit();						// 設定攻擊型態
+		void Sethp(int attack);				// 扣多少血
+		int  Gethp();					// 得到血量
 		void SetCastTime(int number, int time);		//設定冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
 		bool CheckCooldown(int number, int counter, int cooldown);	//檢查冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
 	protected:
@@ -60,6 +62,7 @@ namespace game_framework {
 		bool isMovingUp;			// 是否正在往上移動
 		bool isHitting;				// 是否正在攻擊
 		vector <int> castTime;		// 冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
+		int  hp;					// 血量
 	};
 }
 

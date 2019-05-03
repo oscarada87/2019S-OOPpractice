@@ -253,6 +253,8 @@ void CGameStateRun::OnBeginState()
 	hero.Initialize();
 	slime.Initialize();
 	gamemap.Initialize();
+	hp_left.SetInteger(hero.Gethp());
+	hp_left.SetTopLeft(565,0);
 	for (int i = 0; i != slime.GetHP(); i++)
 	{
 		heart.push_back(new CMovingBitmap());
@@ -390,6 +392,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	hero.LoadBitmap();
 	gamemap.LoadBitmap();	//地圖
 	slime.LoadBitmap();
+	hp_left.LoadBitmap();
 
 	store.LoadBitmap(IDB_store, RGB(255, 255, 255));
 	storebus.LoadBitmap(IDB_bus, RGB(255, 255, 255));
@@ -629,5 +632,6 @@ void CGameStateRun::OnShow()
 
 		}
 	}
+	hp_left.ShowBitmap();
 }
 }

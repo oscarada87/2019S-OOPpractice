@@ -126,7 +126,7 @@ namespace game_framework {
 		vector<CMovingBitmap*> heart; // 生命
 		CHero			hero;
 		CInteger		hits_left;	// 剩下的撞擊數
-		CInteger        hp_left;
+		CInteger        hp_left;	// 英雄血量
 		CBouncingBall   bball;		// 反覆彈跳的球
 		Slime           slime;		// 史萊姆
 		CMovingBitmap   store;		// 商店
