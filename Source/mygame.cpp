@@ -537,7 +537,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	if (hero.CheckCooldown(2, counter, 150))
+	if (hero.CheckCooldown(2, counter, 30))
 	{
 		hero.SetCastTime(2, counter);
 		heroSpells.push_back(new FireBall(hero.GetCenterX(), hero.GetCenterY(), counter));
