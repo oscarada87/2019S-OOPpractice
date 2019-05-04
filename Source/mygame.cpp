@@ -250,7 +250,7 @@ CGameStateRun::~CGameStateRun()
 	heart.shrink_to_fit();
 	gamemap.clear();
 	gamemap.shrink_to_fit();
-	//_CrtDumpMemoryLeaks();
+
 }
 
 void CGameStateRun::OnBeginState()
