@@ -8,7 +8,7 @@ namespace game_framework {
 	{
 	public:
 		FireBall(int x, int y, int time);
-		void LoadBitmap();
+		void LoadBitmap(int number);
 		void Initialize();
 		void OnShow(Gamemap *m);
 		void OnMove();

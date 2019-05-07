@@ -19,9 +19,17 @@ namespace game_framework {
 		_damage = 1;
 		_duration = 30 * 5;
 	}
-	void FireBall::LoadBitmap()
+	void FireBall::LoadBitmap(int number)
 	{
-		_start_img.LoadBitmapA(IDB_FIREBALL, RGB(255, 255, 255));
+		switch (number)
+		{
+		case 0:
+			_start_img.LoadBitmapA(IDB_FIREBALL_BLUE, RGB(255, 255, 255));
+			break;
+		case 1:
+			_start_img.LoadBitmapA(IDB_FIREBALL_RED, RGB(255, 255, 255));
+			break;
+		}
 	}
 
 	void FireBall::OnShow(Gamemap *m)

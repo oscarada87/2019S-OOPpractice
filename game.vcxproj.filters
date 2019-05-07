@@ -509,5 +509,11 @@
     <Image Include="RES\feature\zingping.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\fireball(blue).bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\fireball(red).bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

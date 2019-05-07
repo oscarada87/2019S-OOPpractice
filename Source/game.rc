@@ -64,8 +64,6 @@ END
 
 IDB_FIREBALL            BITMAP                  "..\\res\\ball.bmp"
 
-IDB_ERASER1             BITMAP                  "..\\res\\eraser1.bmp"
-
 IDB_BACKGROUND          BITMAP                  "..\\res\\ntutcsie.bmp"
 
 IDB_CORNER              BITMAP                  "..\\res\\corner.bmp"
@@ -93,10 +91,6 @@ IDB_9                   BITMAP                  "..\\res\\bmp9.bmp"
 IDB_MINUS               BITMAP                  "..\\res\\bmp10.bmp"
 
 IDB_CENTER              BITMAP                  "..\\res\\center.bmp"
-
-IDB_ERASER2             BITMAP                  "..\\res\\eraser2.bmp"
-
-IDB_ERASER3             BITMAP                  "..\\res\\eraser3.bmp"
 
 IDB_CONTINUE            BITMAP                  "..\\res\\continue.bmp"
 
@@ -270,6 +264,10 @@ IDB_store               BITMAP                  "..\\RES\\feature\\store.bmp"
 
 IDB_zingping            BITMAP                  "..\\RES\\feature\\zingping.bmp"
 
+IDB_FIREBALL_BLUE       BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\fireball(blue).bmp"
+
+IDB_FIREBALL_RED        BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\fireball(red).bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -287,12 +285,6 @@ IDC_GAMECURSOR          CURSOR                  "..\\res\\gamecurs.cur"
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDI_ICON1               ICON                    "..\\RES\\game.ico"
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// PNG
-//
 
 #endif    // 中文 (繁體，台灣) resources
 /////////////////////////////////////////////////////////////////////////////

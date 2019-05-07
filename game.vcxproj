@@ -374,6 +374,8 @@
     <Image Include="RES\feature\tree.bmp" />
     <Image Include="RES\feature\zingping.bmp" />
     <Image Include="RES\feature\zingping.png" />
+    <Image Include="RES\fireball(blue).bmp" />
+    <Image Include="RES\fireball(red).bmp" />
     <Image Include="RES\game.ico" />
     <Image Include="RES\heart.bmp" />
     <Image Include="RES\helpbar.bmp" />

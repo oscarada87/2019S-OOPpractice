@@ -19,7 +19,7 @@ namespace game_framework {
 			_initY = y1;
 			_initTime = time;
 		}
-		virtual void LoadBitmap() = 0;
+		virtual void LoadBitmap(int number) = 0;
 		virtual void Initialize() = 0;
 		virtual void OnShow(Gamemap *m) = 0;
 		virtual void OnMove() = 0;

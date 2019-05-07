@@ -304,10 +304,10 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		break;
 	case 2:
 		monsterSpells.push_back(new FireBall(slime.GetCenterX(), slime.GetCenterY(), counter));
-		monsterSpells.back()->LoadBitmap();
+		monsterSpells.back()->LoadBitmap(1);
 		monsterSpells.back()->CalculateUnitVector(hero.GetX1(), hero.GetY1());
 		monsterSpells.push_back(new FireBall(slime.GetCenterX(), slime.GetCenterY(), counter));
-		monsterSpells.back()->LoadBitmap();
+		monsterSpells.back()->LoadBitmap(1);
 		monsterSpells.back()->CalculateUnitVector(hero.GetX2(), hero.GetY2());
 		break;
 	default:
@@ -585,7 +585,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 	{
 		hero.SetCastTime(2, counter);
 		heroSpells.push_back(new FireBall(hero.GetCenterX(), hero.GetCenterY(), counter));
-		heroSpells.back()->LoadBitmap();
+		heroSpells.back()->LoadBitmap(0);
 		heroSpells.back()->CalculateUnitVector(point.x + gamemap.at(stage)->GetSX(), point.y + gamemap.at(stage)->GetSY());
 		//TRACE("HeroX: %d", hero.GetCenterX());
 		//TRACE("HeroY: %d", hero.GetCenterY());
