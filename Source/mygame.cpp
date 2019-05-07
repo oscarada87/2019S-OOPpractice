@@ -285,7 +285,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	gamemap.at(stage)->OnMove();//地圖
 
 	//判斷史萊姆血量
-	if (slime.GetHP() <= 0)
+	if (slime.GetHP() <= 0 || hero.Gethp() <= 0)
 	{
 		CAudio::Instance()->Stop(AUDIO_KNIFE);
 		CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
@@ -306,12 +306,6 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		monsterSpells.push_back(new FireBall(slime.GetCenterX(), slime.GetCenterY(), counter));
 		monsterSpells.back()->LoadBitmap();
 		monsterSpells.back()->CalculateUnitVector(hero.GetX1(), hero.GetY1());
-		monsterSpells.push_back(new FireBall(slime.GetCenterX(), slime.GetCenterY(), counter));
-		monsterSpells.back()->LoadBitmap();
-		monsterSpells.back()->CalculateUnitVector(hero.GetX2(), hero.GetY2());
-		monsterSpells.push_back(new FireBall(slime.GetCenterX(), slime.GetCenterY(), counter));
-		monsterSpells.back()->LoadBitmap();
-		monsterSpells.back()->CalculateUnitVector(hero.GetX2(), hero.GetY2());
 		monsterSpells.push_back(new FireBall(slime.GetCenterX(), slime.GetCenterY(), counter));
 		monsterSpells.back()->LoadBitmap();
 		monsterSpells.back()->CalculateUnitVector(hero.GetX2(), hero.GetY2());
@@ -352,7 +346,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	for (auto it = heroSpells.begin(); it != heroSpells.end();) {
 		if ((*it)->HitSomething(&slime) && slime.GetHP() > 0)
 		{
-			delete *it;
+			//delete *it;
 			it = heroSpells.erase(it);
 			try 
 			{
@@ -371,6 +365,27 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	}
 	slime.HitAnimation(counter);
 
+	// 判斷技能是否打中英雄
+	for (auto it = monsterSpells.begin(); it != monsterSpells.end();) {
+		if ((*it)->HitSomething(&hero) && hero.Gethp() > 0)
+		{
+			//delete *it;
+			it = monsterSpells.erase(it);
+			try
+			{
+				hero.Sethp(1);
+			}
+			catch (...)
+			{
+
+			}
+		}
+		else
+		{
+			it++;
+		}
+	}
+
 	// 怪物血量
 	heart.clear();
 	for (int i = 0; i < slime.GetHP(); i++)
@@ -379,6 +394,9 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		heart.at(i)->LoadBitmap(IDB_HEART, RGB(255, 255, 255));
 		heart.at(i)->SetTopLeft(0 + 28 * i, 0);
 	}
+
+	//	英雄血量
+	hp_left.SetInteger(hero.Gethp());
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定

@@ -57,8 +57,8 @@ namespace game_framework {
 		x = X_POS;
 		y = Y_POS;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = isHitting = false;
-		speed = 5;
-		hp = 100;
+		speed = 10;
+		hp = 10;
 		for (int i = 0; i < 3; i++) 
 		{
 			castTime.push_back(-100);
@@ -67,12 +67,12 @@ namespace game_framework {
 
 	void CHero::SpeedUp() 
 	{
-		speed = 15;
+		speed = 20;
 	}
 
 	void CHero::SpeedInit()
 	{
-		speed = 5;
+		speed = 10;
 	}
 
 	void CHero::LoadBitmap()
