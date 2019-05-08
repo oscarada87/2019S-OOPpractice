@@ -264,9 +264,9 @@ IDB_store               BITMAP                  "..\\RES\\feature\\store.bmp"
 
 IDB_zingping            BITMAP                  "..\\RES\\feature\\zingping.bmp"
 
-IDB_FIREBALL_BLUE       BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\fireball(blue).bmp"
+IDB_FIREBALL_BLUE       BITMAP                  "..\\RES\\fireball(blue).bmp"
 
-IDB_FIREBALL_RED        BITMAP                  "D:\\Users\\Oscar\\Desktop\\code\\c++\\2019S-OOPpractice\\RES\\fireball(red).bmp"
+IDB_FIREBALL_RED        BITMAP                  "..\\RES\\fireball(red).bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

@@ -15,7 +15,7 @@ namespace game_framework {
 
 	void FireBall::Initialize()
 	{
-		_speed = 10;
+		_speed = 7;
 		_damage = 1;
 		_duration = 30 * 5;
 	}
@@ -24,10 +24,10 @@ namespace game_framework {
 		switch (number)
 		{
 		case 0:
-			_start_img.LoadBitmapA(IDB_FIREBALL_BLUE, RGB(255, 255, 255));
+			_start_img.LoadBitmapA(IDB_FIREBALL_BLUE, RGB(0, 0, 0));
 			break;
 		case 1:
-			_start_img.LoadBitmapA(IDB_FIREBALL_RED, RGB(255, 255, 255));
+			_start_img.LoadBitmapA(IDB_FIREBALL_RED, RGB(0, 0, 0));
 			break;
 		}
 	}

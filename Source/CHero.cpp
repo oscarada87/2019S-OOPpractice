@@ -287,6 +287,31 @@ namespace game_framework {
 			return false;
 	}
 
+	void CHero::Teleport()
+	{
+
+		if (format_state == 1)
+		{
+			y -= 100;
+			//up_format.ShowBitmap();
+		}
+		if (format_state == 2)
+		{
+			y += 100;
+			//down_format.ShowBitmap();
+		}
+		if (format_state == 3)
+		{
+			x -= 100;
+			//left_format.ShowBitmap();
+		}
+		if (format_state == 4)
+		{
+			x += 100;
+			//right_format.ShowBitmap();
+		}
+	}
+
 	void CHero::what_format_show(int x,int y)
 	{
 		if (!isHitting) 

@@ -466,11 +466,19 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_SHIFT = 0x10; // keyboard Shift 加速
 	const char KEY_SPACE = 0x20; //keyboard Space 火球
 	const char KEY_W = 0x57; //地圖測試用
+	const char KEY_X = 0x58; //keyboard X 順移
+
 	if (nChar == KEY_W)
 	{
 		stage = stage + 1;
 		gamemap.at(stage)->Initialize();
 		hero.SetXY(1000,1750);
+	}
+
+	if (nChar == KEY_X)
+	{
+		Sleep(200);
+		hero.Teleport();
 	}
 
 	if (nChar == KEY_Z)
@@ -522,9 +530,9 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_UP = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN = 0x28; // keyboard下箭頭
-	const char KEY_SHIFT = 0x10; // keyboard SHIFT
-	const char KEY_Z = 0x5A; //keyboard Z
-	const char KEY_SPACE = 0x20; //keyboard Space 火球
+	const char KEY_SHIFT = 0x10; // keyboard SHIFT 加速
+	const char KEY_Z = 0x5A; //keyboard Z 普通攻擊
+	const char KEY_SPACE = 0x20; //keyboard Space 治療
 
 	if (nChar == KEY_Z)
 	{
@@ -538,14 +546,14 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_SPACE)
 	{
-		/*
 		if (hero.CheckCooldown(2, counter, 150))
 		{
 			hero.SetCastTime(2, counter);
-			heroSpells.push_back(new FireBall(hero.GetX1(), hero.GetY1(), counter));
-			heroSpells.back()->LoadBitmap();
+			if (hero.Gethp() == 9)
+				hero.Sethp(-1);
+			else if (hero.Gethp() < 9)
+				hero.Sethp(-2);
 		}
-		*/
 	}
 
 	if (nChar == KEY_LEFT)
@@ -581,9 +589,9 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	if (hero.CheckCooldown(2, counter, 30))
+	if (hero.CheckCooldown(1, counter, 30))
 	{
-		hero.SetCastTime(2, counter);
+		hero.SetCastTime(1, counter);
 		heroSpells.push_back(new FireBall(hero.GetCenterX(), hero.GetCenterY(), counter));
 		heroSpells.back()->LoadBitmap(0);
 		heroSpells.back()->CalculateUnitVector(point.x + gamemap.at(stage)->GetSX(), point.y + gamemap.at(stage)->GetSY());
