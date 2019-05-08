@@ -37,6 +37,7 @@ namespace game_framework {
 		void SetHit(bool flag);
 		bool GetHit();						// 設定攻擊型態
 		void Sethp(int attack);				// 扣多少血
+		void SetHeal(bool flag);			// 設定是否正在回血
 		int  Gethp();						// 得到血量
 		void Teleport();					//順移
 		void SetCastTime(int number, int time);		//設定冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
@@ -54,6 +55,7 @@ namespace game_framework {
 		CAnimation down_hit_format;// 下攻擊位置
 		CAnimation left_hit_format;// 左攻擊位置
 		CAnimation right_hit_format;// 右攻擊位置
+		CAnimation heal_format;		// 回血動畫
 		int format_state;			// 靜止方向(1上2下3左4右)
 		int x, y;					// 擦子左上角座標
 		int speed;					// 移動速度
@@ -64,6 +66,7 @@ namespace game_framework {
 		bool isHitting;				// 是否正在攻擊
 		vector <int> castTime;		// 冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
 		int  hp;					// 血量
+		bool heal;
 	};
 }
 

@@ -56,7 +56,7 @@ namespace game_framework {
 		const int Y_POS = 1600;
 		x = X_POS;
 		y = Y_POS;
-		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = isHitting = false;
+		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = isHitting = heal = false;
 		speed = 10;
 		hp = 10;
 		for (int i = 0; i < 3; i++) 
@@ -108,6 +108,7 @@ namespace game_framework {
 		animation3.SetDelayCount(5);
 		animation4.SetDelayCount(5);
 
+
 		down_format.LoadBitmap(IDB_DOWN, RGB(255, 255, 255));
 		right_format.LoadBitmap(IDB_RIGHT, RGB(255, 255, 255));
 		left_format.LoadBitmap(IDB_LEFT, RGB(255, 255, 255));
@@ -133,6 +134,12 @@ namespace game_framework {
 		left_hit_format.SetDelayCount(5);
 		up_hit_format.SetDelayCount(5);
 		down_hit_format.SetDelayCount(5);
+
+		heal_format.AddBitmap(IDB_HEAL1, RGB(0, 0, 0));
+		heal_format.AddBitmap(IDB_HEAL2, RGB(0, 0, 0));
+		heal_format.AddBitmap(IDB_HEAL3, RGB(0, 0, 0));
+
+		heal_format.SetDelayCount(5);
 	}
 
 	void CHero::OnMove(Gamemap * m, CMonster *monster)
@@ -257,6 +264,12 @@ namespace game_framework {
 	{
 		return hp;
 	}
+
+	void CHero::SetHeal(bool flag)
+	{
+		heal = flag;
+	}
+
 	bool CHero::HitMonster(CMonster *monster)
 	{
 		// 檢測英雄是否打到怪物
@@ -420,6 +433,11 @@ namespace game_framework {
 				animation1.SetTopLeft(m->ScreenX(x), m->ScreenY(y));
 				animation1.OnShow();
 			}
+		}
+		if (heal)
+		{
+			heal_format.SetTopLeft(m->ScreenX(x + 60), m->ScreenY(y));
+			heal_format.OnShow();
 		}
 	}
 }

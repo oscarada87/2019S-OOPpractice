@@ -384,6 +384,9 @@
     <Image Include="RES\hero\down_hit_0.bmp" />
     <Image Include="RES\hero\down_hit_1.bmp" />
     <Image Include="RES\hero\down_hit_2.bmp" />
+    <Image Include="RES\hero\heal1.bmp" />
+    <Image Include="RES\hero\heal2.bmp" />
+    <Image Include="RES\hero\heal3.bmp" />
     <Image Include="res\hero\left.bmp" />
     <Image Include="RES\hero\left_hit.bmp" />
     <Image Include="RES\hero\left_hit_0.bmp" />

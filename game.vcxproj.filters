@@ -515,5 +515,14 @@
     <Image Include="RES\fireball(red).bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\hero\heal1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\heal2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\hero\heal3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
