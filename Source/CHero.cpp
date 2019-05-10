@@ -59,9 +59,10 @@ namespace game_framework {
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = isHitting = heal = false;
 		speed = 10;
 		hp = 10;
+		castTime.clear();
 		for (int i = 0; i < 3; i++) 
 		{
-			castTime.push_back(-100);
+			castTime.push_back(-1000);
 		}
 	}
 
