@@ -471,7 +471,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_W)
 	{
-		stage = stage + 1;
+		stage = (stage + 1) % 3;
 		gamemap.at(stage)->Initialize();
 		hero.SetXY(1000,1750);
 	}
@@ -629,29 +629,31 @@ void CGameStateRun::OnShow()
 	gamemap.at(stage)->OnShow();				//地圖
 
 	//商店//
-	if (250 <= hero.GetX2() && hero.GetX2() <= 350 && 200 <= hero.GetY2() && hero.GetY2() < 300) {
-		storebus.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
-		storebus.ShowBitmap();
-	}
-	else if(250 <= hero.GetX2() && hero.GetX2() <= 350 && 300 <= hero.GetY2() && hero.GetY2() < 400){
-		storezing.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
-		storezing.ShowBitmap();
-	}
-	else if (350 < hero.GetX2() && hero.GetX2() <= 500 && 350 <= hero.GetY2() && hero.GetY2() < 450) {
-		storemazu.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
-		storemazu.ShowBitmap();
-	}
-	else if (500 < hero.GetX1() && hero.GetX1() <= 600 && 300 <= hero.GetY2() && hero.GetY2() < 400) {
-		storeoil.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
-		storeoil.ShowBitmap();
-	}
-	else if (500 < hero.GetX1() && hero.GetX1() <= 600 && 200 <= hero.GetY2() && hero.GetY2() < 300) {
-		storemoney.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
-		storemoney.ShowBitmap();
-	}
-	else {
-		store.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
-		store.ShowBitmap();
+	if (stage == 0) {
+		if (250 <= hero.GetX2() && hero.GetX2() <= 350 && 200 <= hero.GetY2() && hero.GetY2() < 300) {
+			storebus.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
+			storebus.ShowBitmap();
+		}
+		else if (250 <= hero.GetX2() && hero.GetX2() <= 350 && 300 <= hero.GetY2() && hero.GetY2() < 400) {
+			storezing.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
+			storezing.ShowBitmap();
+		}
+		else if (350 < hero.GetX2() && hero.GetX2() <= 500 && 350 <= hero.GetY2() && hero.GetY2() < 450) {
+			storemazu.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
+			storemazu.ShowBitmap();
+		}
+		else if (500 < hero.GetX1() && hero.GetX1() <= 600 && 300 <= hero.GetY2() && hero.GetY2() < 400) {
+			storeoil.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
+			storeoil.ShowBitmap();
+		}
+		else if (500 < hero.GetX1() && hero.GetX1() <= 600 && 200 <= hero.GetY2() && hero.GetY2() < 300) {
+			storemoney.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
+			storemoney.ShowBitmap();
+		}
+		else {
+			store.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
+			store.ShowBitmap();
+		}
 	}
 	hero.OnShow(gamemap.at(stage));// 主角
 	gamemap.at(stage)->OnShowonhero();
