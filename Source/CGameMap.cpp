@@ -394,9 +394,9 @@ namespace game_framework {
 	}
 	void CGameMap3::LoadBitmap()
 	{
-		background0.LoadBitmap(IDB_final0);
+		background0.LoadBitmap(IDB_final2);
 		background1.LoadBitmap(IDB_BACKGROUND1);
-		background2.LoadBitmap(IDB_final2);
+		background2.LoadBitmap(IDB_final0);
 		background3.LoadBitmap(IDB_final3);
 		/*candle.LoadBitmap(IDB_candle, RGB(255, 255, 255));*/
 	}
