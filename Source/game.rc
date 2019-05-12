@@ -274,6 +274,26 @@ IDB_final2              BITMAP                  "..\\RES\\feature\\finalw.bmp"
 
 IDB_stage20             BITMAP                  "..\\RES\\feature\\ground.bmp"
 
+IDB_n0                  BITMAP                  "..\\RES\\number\\bmp0.bmp"
+
+IDB_n1                  BITMAP                  "..\\RES\\number\\bmp1.bmp"
+
+IDB_n2                  BITMAP                  "..\\RES\\number\\bmp2.bmp"
+
+IDB_n3                  BITMAP                  "..\\RES\\number\\bmp3.bmp"
+
+IDB_n4                  BITMAP                  "..\\RES\\number\\bmp4.bmp"
+
+IDB_n5                  BITMAP                  "..\\RES\\number\\bmp5.bmp"
+
+IDB_n6                  BITMAP                  "..\\RES\\number\\bmp6.bmp"
+
+IDB_n7                  BITMAP                  "..\\RES\\number\\bmp7.bmp"
+
+IDB_n8                  BITMAP                  "..\\RES\\number\\bmp8.bmp"
+
+IDB_n9                  BITMAP                  "..\\RES\\number\\bmp9.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

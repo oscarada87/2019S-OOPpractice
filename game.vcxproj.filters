@@ -524,5 +524,35 @@
     <Image Include="RES\hero\heal3.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\number\bmp0.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\number\bmp1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\number\bmp2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\number\bmp3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\number\bmp4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\number\bmp5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\number\bmp6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\number\bmp7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\number\bmp8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\number\bmp9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
