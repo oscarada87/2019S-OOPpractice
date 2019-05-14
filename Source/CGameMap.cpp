@@ -283,10 +283,13 @@ namespace game_framework {
 	}
 	void CGameMap2::LoadBitmap()
 	{
+		snowtree.LoadBitmap(IDB_snow, RGB(255,255,255));
+		snoww.LoadBitmap(IDB_snoww, RGB(255, 255, 255));
 		background0.LoadBitmap(IDB_stage20);
 		background1.LoadBitmap(IDB_BACKGROUND1);
 		background2.LoadBitmap(IDB_stage2);
 		background3.LoadBitmap(IDB_stage3);
+		
 		/*candle.LoadBitmap(IDB_candle, RGB(255, 255, 255));*/
 	}
 	void CGameMap2::OnShow()
@@ -323,11 +326,36 @@ namespace game_framework {
 			}
 		/*candle.SetTopLeft(1000 - sx, 225 - sy);
 		candle.ShowBitmap();*/
+		snoww.SetTopLeft(100 - sx, 1350 - sy);
+		snoww.ShowBitmap();
+		snoww.SetTopLeft(300 - sx, 1350 - sy);
+		snoww.ShowBitmap();
+		snoww.SetTopLeft(400 - sx, 1350 - sy);
+		snoww.ShowBitmap();
+		snoww.SetTopLeft(900 - sx, 1350 - sy);
+		snoww.ShowBitmap();
+		snoww.SetTopLeft(1200 - sx, 1350 - sy);
+		snoww.ShowBitmap();
+		snoww.SetTopLeft(1500 - sx, 1350 - sy);
+		snoww.ShowBitmap();
+		snoww.SetTopLeft(600 - sx, 950 - sy);
+		snoww.ShowBitmap();
+		snoww.SetTopLeft(700 - sx, 950 - sy);
+		snoww.ShowBitmap();
+		snoww.SetTopLeft(1000 - sx, 950 - sy);
+		snoww.ShowBitmap();
 
 	}
 	void CGameMap2::OnShowonhero()
 	{
-
+		snowtree.SetTopLeft(100 - sx, 1800 - sy);
+		snowtree.ShowBitmap();
+		snowtree.SetTopLeft(1800 - sx, 1800 - sy);
+		snowtree.ShowBitmap();
+		snowtree.SetTopLeft(1700 - sx, 700 - sy);
+		snowtree.ShowBitmap();
+		snowtree.SetTopLeft(1400 - sx, 700 - sy);
+		snowtree.ShowBitmap();
 	}
 	int CGameMap2::Getmapx()
 	{

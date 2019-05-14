@@ -101,6 +101,8 @@ namespace game_framework {
 		CMovingBitmap background1;
 		CMovingBitmap background2;
 		CMovingBitmap background3;
+		CMovingBitmap snowtree;
+		CMovingBitmap snoww;
 	};
 
 	class CGameMap3 : public Gamemap {

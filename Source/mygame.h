@@ -127,6 +127,7 @@ namespace game_framework {
 		CHero			hero;
 		CInteger		hits_left;	// 剩下的撞擊數
 		CInteger        hp_left;	// 英雄血量
+		CMovingBitmap   smallhero;  // 示意
 		CBouncingBall   bball;		// 反覆彈跳的球
 		Slime           slime;		// 史萊姆
 		CMovingBitmap   store;		// 商店
@@ -135,6 +136,9 @@ namespace game_framework {
 		CMovingBitmap   storeoil;		// 商店
 		CMovingBitmap   storebus;		// 商店
 		CMovingBitmap   storemazu;		// 商店
+		CMovingBitmap   lazer;			//lazer
+		int				counterlazer;
+		bool            lazeropen;
 		int				counter;	//計時器
 		int				stage;		//第幾張地圖/第幾隻怪物
 	};

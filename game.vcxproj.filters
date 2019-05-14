@@ -554,5 +554,20 @@
     <Image Include="RES\number\bmp9.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\feature\heroinhp.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\snowtree.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\snow.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\snoww.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\lazer.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

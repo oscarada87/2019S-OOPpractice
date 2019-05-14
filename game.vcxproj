@@ -352,6 +352,7 @@
     <Image Include="RES\feature\finalw.bmp" />
     <Image Include="RES\feature\finalwell.bmp" />
     <Image Include="RES\feature\ground.bmp" />
+    <Image Include="RES\feature\heroinhp.bmp" />
     <Image Include="RES\feature\hill.bmp" />
     <Image Include="RES\feature\ice2.bmp" />
     <Image Include="RES\feature\icewell.bmp" />
@@ -362,6 +363,9 @@
     <Image Include="RES\feature\oil.bmp" />
     <Image Include="RES\feature\oil.png" />
     <Image Include="RES\feature\sfire.bmp" />
+    <Image Include="RES\feature\snow.bmp" />
+    <Image Include="RES\feature\snowtree.bmp" />
+    <Image Include="RES\feature\snoww.bmp" />
     <Image Include="RES\feature\sold.bmp" />
     <Image Include="RES\feature\sold.png" />
     <Image Include="RES\feature\stone1.bmp" />
@@ -424,6 +428,7 @@
     <Image Include="RES\hero\up_hit_0.bmp" />
     <Image Include="RES\hero\up_hit_1.bmp" />
     <Image Include="RES\hero\up_hit_2.bmp" />
+    <Image Include="RES\lazer.bmp" />
     <Image Include="RES\left.bmp" />
     <Image Include="RES\monster\bmp1.bmp" />
     <Image Include="RES\monster\slime1.bmp" />

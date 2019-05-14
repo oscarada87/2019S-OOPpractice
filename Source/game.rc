@@ -294,6 +294,14 @@ IDB_n8                  BITMAP                  "..\\RES\\number\\bmp8.bmp"
 
 IDB_n9                  BITMAP                  "..\\RES\\number\\bmp9.bmp"
 
+IDB_hphero              BITMAP                  "..\\RES\\feature\\heroinhp.bmp"
+
+IDB_snow                BITMAP                  "..\\RES\\feature\\snow.bmp"
+
+IDB_snoww               BITMAP                  "..\\RES\\feature\\snoww.bmp"
+
+IDB_lazer               BITMAP                  "..\\RES\\lazer.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

@@ -258,7 +258,8 @@ void CGameStateRun::OnBeginState()
 	counter = 0;
 	hero.Initialize();
 	slime.Initialize();
-
+	counterlazer = 30 * 2; // 5 seconds
+	lazeropen = false;
 	for (int i = 0; i < 3; i++)/*hero 位置改*/
 	{
 		gamemap.at(i)->Initialize();
@@ -284,6 +285,17 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	counter++;
 	gamemap.at(stage)->OnMove();//地圖
 
+	counterlazer--; //雷射開關
+	if (counterlazer < 0) {
+		if (lazeropen == true) {
+			lazeropen = false;
+			counterlazer = 30 * 2;
+		}
+		else {
+			lazeropen = true;
+			counterlazer = 30 * 2;
+		}
+	}
 	//判斷史萊姆血量
 	if (slime.GetHP() <= 0 || hero.Gethp() <= 0)
 	{
@@ -429,7 +441,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	}
 	slime.LoadBitmap();
 	hp_left.LoadBitmap();
-
+	lazer.LoadBitmap(IDB_lazer, RGB(255, 255, 255));
+	smallhero.LoadBitmap(IDB_hphero, RGB(255, 255, 255));
 	store.LoadBitmap(IDB_store, RGB(255, 255, 255));
 	storebus.LoadBitmap(IDB_bus, RGB(255, 255, 255));
 	storemazu.LoadBitmap(IDB_mazu, RGB(255, 255, 255));
@@ -627,7 +640,7 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 void CGameStateRun::OnShow()
 {
 	gamemap.at(stage)->OnShow();				//地圖
-
+	hero.OnShow(gamemap.at(stage));// 主角
 	//商店//
 	if (stage == 0) {
 		if (250 <= hero.GetX2() && hero.GetX2() <= 350 && 200 <= hero.GetY2() && hero.GetY2() < 300) {
@@ -654,8 +667,21 @@ void CGameStateRun::OnShow()
 			store.SetTopLeft(gamemap.at(stage)->ScreenX(300), gamemap.at(stage)->ScreenY(0));
 			store.ShowBitmap();
 		}
+		if (lazeropen == true) {
+			for (int i = 0; i < 5; i++) {
+				lazer.SetTopLeft(gamemap.at(stage)->ScreenX(1200), gamemap.at(stage)->ScreenY(500 + (i * 200)));
+				lazer.ShowBitmap();
+			}
+		}
+		else {
+			for (int i = 0; i < 5; i++) {
+				lazer.SetTopLeft(gamemap.at(stage)->ScreenX(1500), gamemap.at(stage)->ScreenY(600 + (i * 200)));
+				lazer.ShowBitmap();
+			}
+		}
+
 	}
-	hero.OnShow(gamemap.at(stage));// 主角
+	
 	gamemap.at(stage)->OnShowonhero();
 
 
@@ -686,5 +712,7 @@ void CGameStateRun::OnShow()
 		}
 	}
 	hp_left.ShowBitmap();
+	smallhero.SetTopLeft(615, 0);
+	smallhero.ShowBitmap();
 }
 }
