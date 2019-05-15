@@ -282,9 +282,20 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	// SetCursor(AfxGetApp()->LoadCursor(IDC_GAMECURSOR));
 	//
-	counter++;
+	
 	gamemap.at(stage)->OnMove();//地圖
+	/*lazer(要加東西)*/
+	if (lazeropen == true && (hero.HitSomething(1200, 500, 1600, 501) || hero.HitSomething(1200, 750, 1600, 751)
+		|| hero.HitSomething(1200, 1000, 1600, 1001) || hero.HitSomething(1200, 1250, 1600, 1251))) {
+		hero.Sethp(1);
+		counterlazer = 0;
+	}else if (lazeropen == false && (hero.HitSomething(1500, 600, 1900, 601) || hero.HitSomething(1500, 850, 1900, 851)
+		|| hero.HitSomething(1500, 1100, 1900, 1101) || hero.HitSomething(1500, 1350, 1900, 1351))) {
+		hero.Sethp(1);
+		counterlazer = 0;
+	}
 
+	counter++;
 	counterlazer--; //雷射開關
 	if (counterlazer < 0) {
 		if (lazeropen == true) {
@@ -640,7 +651,7 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 void CGameStateRun::OnShow()
 {
 	gamemap.at(stage)->OnShow();				//地圖
-	hero.OnShow(gamemap.at(stage));// 主角
+	
 	//商店//
 	if (stage == 0) {
 		if (250 <= hero.GetX2() && hero.GetX2() <= 350 && 200 <= hero.GetY2() && hero.GetY2() < 300) {
@@ -668,20 +679,20 @@ void CGameStateRun::OnShow()
 			store.ShowBitmap();
 		}
 		if (lazeropen == true) {
-			for (int i = 0; i < 5; i++) {
-				lazer.SetTopLeft(gamemap.at(stage)->ScreenX(1200), gamemap.at(stage)->ScreenY(500 + (i * 200)));
+			for (int i = 0; i < 4; i++) {
+				lazer.SetTopLeft(gamemap.at(stage)->ScreenX(1200), gamemap.at(stage)->ScreenY(500 + (i * 250)));
 				lazer.ShowBitmap();
 			}
 		}
 		else {
-			for (int i = 0; i < 5; i++) {
-				lazer.SetTopLeft(gamemap.at(stage)->ScreenX(1500), gamemap.at(stage)->ScreenY(600 + (i * 200)));
+			for (int i = 0; i < 4; i++) {
+				lazer.SetTopLeft(gamemap.at(stage)->ScreenX(1500), gamemap.at(stage)->ScreenY(600 + (i * 250)));
 				lazer.ShowBitmap();
 			}
 		}
 
 	}
-	
+	hero.OnShow(gamemap.at(stage));// 主角
 	gamemap.at(stage)->OnShowonhero();
 
 
