@@ -569,5 +569,11 @@
     <Image Include="RES\lazer.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\feature\heartstage2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\shield.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

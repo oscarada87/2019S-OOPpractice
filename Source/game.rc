@@ -302,6 +302,10 @@ IDB_snoww               BITMAP                  "..\\RES\\feature\\snoww.bmp"
 
 IDB_lazer               BITMAP                  "..\\RES\\lazer.bmp"
 
+IDB_stage2heart         BITMAP                  "..\\RES\\feature\\heartstage2.bmp"
+
+IDB_shield              BITMAP                  "..\\RES\\feature\\shield.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

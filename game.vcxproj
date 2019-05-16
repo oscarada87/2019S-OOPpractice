@@ -352,6 +352,7 @@
     <Image Include="RES\feature\finalw.bmp" />
     <Image Include="RES\feature\finalwell.bmp" />
     <Image Include="RES\feature\ground.bmp" />
+    <Image Include="RES\feature\heartstage2.bmp" />
     <Image Include="RES\feature\heroinhp.bmp" />
     <Image Include="RES\feature\hill.bmp" />
     <Image Include="RES\feature\ice2.bmp" />
@@ -363,6 +364,7 @@
     <Image Include="RES\feature\oil.bmp" />
     <Image Include="RES\feature\oil.png" />
     <Image Include="RES\feature\sfire.bmp" />
+    <Image Include="RES\feature\shield.bmp" />
     <Image Include="RES\feature\snow.bmp" />
     <Image Include="RES\feature\snowtree.bmp" />
     <Image Include="RES\feature\snoww.bmp" />

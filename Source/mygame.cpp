@@ -260,6 +260,8 @@ void CGameStateRun::OnBeginState()
 	slime.Initialize();
 	counterlazer = 30 * 2; // 5 seconds
 	lazeropen = false;
+	shieldon = true;
+	heart2on = true;
 	for (int i = 0; i < 3; i++)/*hero 位置改*/
 	{
 		gamemap.at(i)->Initialize();
@@ -284,29 +286,41 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	
 	gamemap.at(stage)->OnMove();//地圖
-	/*lazer(要加東西)*/
-	if (lazeropen == true && (hero.HitSomething(1200, 500, 1600, 501) || hero.HitSomething(1200, 750, 1600, 751)
-		|| hero.HitSomething(1200, 1000, 1600, 1001) || hero.HitSomething(1200, 1250, 1600, 1251))) {
-		hero.Sethp(1);
-		counterlazer = 0;
-	}else if (lazeropen == false && (hero.HitSomething(1500, 600, 1900, 601) || hero.HitSomething(1500, 850, 1900, 851)
-		|| hero.HitSomething(1500, 1100, 1900, 1101) || hero.HitSomething(1500, 1350, 1900, 1351))) {
-		hero.Sethp(1);
-		counterlazer = 0;
+	if (stage == 0) {
+		counterlazer--; //雷射開關
+		/*lazer(要加東西)*/
+		if (lazeropen == true && (hero.HitSomething(1200, 500, 1600, 501) || hero.HitSomething(1200, 750, 1600, 751)
+			|| hero.HitSomething(1200, 1000, 1600, 1001) || hero.HitSomething(1200, 1250, 1600, 1251))) {
+			hero.Sethp(1);
+			counterlazer = 0;
+		}
+		else if (lazeropen == false && (hero.HitSomething(1500, 600, 1900, 601) || hero.HitSomething(1500, 850, 1900, 851)
+			|| hero.HitSomething(1500, 1100, 1900, 1101) || hero.HitSomething(1500, 1350, 1900, 1351))) {
+			hero.Sethp(1);
+			counterlazer = 0;
+		}
+		if (counterlazer < 0) {
+			if (lazeropen == true) {
+				lazeropen = false;
+				counterlazer = 30 * 2;
+			}
+			else {
+				lazeropen = true;
+				counterlazer = 30 * 2;
+			}
+		}
 	}
-
+	if (stage == 1) {
+		if (hero.HitSomething(600, 200, 625, 230) && shieldon == true) {
+			shieldon = false;
+			/*可以防禦*/
+		}
+		if (hero.HitSomething(1700, 1850, 1725, 1880) && heart2on == true) {
+			heart2on = false;
+			hero.Sethp(-1);
+		}
+	}
 	counter++;
-	counterlazer--; //雷射開關
-	if (counterlazer < 0) {
-		if (lazeropen == true) {
-			lazeropen = false;
-			counterlazer = 30 * 2;
-		}
-		else {
-			lazeropen = true;
-			counterlazer = 30 * 2;
-		}
-	}
 	//判斷史萊姆血量
 	if (slime.GetHP() <= 0 || hero.Gethp() <= 0)
 	{
@@ -453,6 +467,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	slime.LoadBitmap();
 	hp_left.LoadBitmap();
 	lazer.LoadBitmap(IDB_lazer, RGB(255, 255, 255));
+	heart2.LoadBitmap(IDB_stage2heart, RGB(255, 255, 255));
+	shield.LoadBitmap(IDB_shield, RGB(255, 255, 255));
 	smallhero.LoadBitmap(IDB_hphero, RGB(255, 255, 255));
 	store.LoadBitmap(IDB_store, RGB(255, 255, 255));
 	storebus.LoadBitmap(IDB_bus, RGB(255, 255, 255));
@@ -691,6 +707,16 @@ void CGameStateRun::OnShow()
 			}
 		}
 
+	}
+	if (stage == 1) {
+		if (shieldon) {
+			shield.SetTopLeft(gamemap.at(stage)->ScreenX(600), gamemap.at(stage)->ScreenY(200));
+			shield.ShowBitmap();
+		}
+		if (heart2on) {
+			heart2.SetTopLeft(gamemap.at(stage)->ScreenX(1700), gamemap.at(stage)->ScreenY(1850));
+			heart2.ShowBitmap();
+		}
 	}
 	hero.OnShow(gamemap.at(stage));// 主角
 	gamemap.at(stage)->OnShowonhero();

@@ -141,6 +141,11 @@ namespace game_framework {
 		bool            lazeropen;
 		int				counter;	//計時器
 		int				stage;		//第幾張地圖/第幾隻怪物
+		/*stage2 shield&heart*/
+		CMovingBitmap   shield;
+		CMovingBitmap   heart2;
+		bool			shieldon;
+		bool			heart2on;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
