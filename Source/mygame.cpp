@@ -291,13 +291,13 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		/*lazer(要加東西)*/
 		if (lazeropen == true && (hero.HitSomething(1200, 500, 1600, 501) || hero.HitSomething(1200, 750, 1600, 751)
 			|| hero.HitSomething(1200, 1000, 1600, 1001) || hero.HitSomething(1200, 1250, 1600, 1251))) {
-			hero.Sethp(1);
 			counterlazer = 0;
+			hero.Sethp(1);
 		}
 		else if (lazeropen == false && (hero.HitSomething(1500, 600, 1900, 601) || hero.HitSomething(1500, 850, 1900, 851)
 			|| hero.HitSomething(1500, 1100, 1900, 1101) || hero.HitSomething(1500, 1350, 1900, 1351))) {
-			hero.Sethp(1);
 			counterlazer = 0;
+			hero.Sethp(1);
 		}
 		if (counterlazer <= 0) {
 			if (lazeropen == true) {
