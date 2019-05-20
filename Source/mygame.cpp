@@ -250,7 +250,6 @@ CGameStateRun::~CGameStateRun()
 	heart.shrink_to_fit();
 	gamemap.clear();
 	gamemap.shrink_to_fit();
-
 }
 
 void CGameStateRun::OnBeginState()
@@ -268,6 +267,7 @@ void CGameStateRun::OnBeginState()
 	}
 	hp_left.SetInteger(hero.Gethp());
 	hp_left.SetTopLeft(565,0);
+	heart.clear();
 	for (int i = 0; i != slime.GetHP(); i++)
 	{
 		heart.push_back(new CMovingBitmap());
@@ -299,7 +299,7 @@ void CGameStateRun::OnMove()							// ²¾°Ê¹CÀ¸¤¸¯À
 			hero.Sethp(1);
 			counterlazer = 0;
 		}
-		if (counterlazer < 0) {
+		if (counterlazer <= 0) {
 			if (lazeropen == true) {
 				lazeropen = false;
 				counterlazer = 30 * 2;

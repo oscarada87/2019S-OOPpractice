@@ -13,6 +13,10 @@ namespace game_framework {
 		{
 			throw("This Spell Don't Have Location!");
 		}
+		~CSpell()
+		{
+		
+		}
 		CSpell(int x1, int y1, int time)
 		{
 			_initX = x1;

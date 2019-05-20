@@ -23,7 +23,7 @@ namespace game_framework {
 	
 	int Slime::Skill(int counter)
 	{
-		if (counter % 30 == 0 && active &&isNear)
+		if (counter % 30 == 0 && isNear)
 		{
 			int result = getRandomNumber(1, 2);
 			if (result == 1 && _hp >= 10)
