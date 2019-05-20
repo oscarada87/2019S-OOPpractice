@@ -5,8 +5,10 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "Slime.h"
-#include "math.h" 
+#include "math.h"
+
 #include "CGameMap.h"
+#include "CHero.h"
 
 namespace game_framework {
 	void Slime::Initialize()

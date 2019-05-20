@@ -3,6 +3,12 @@
 
 #include <random>
 
+//#include "CGameMap.h"
+//#include "CHero.h"
+
+class Gamemap;
+class CHero;
+
 namespace game_framework {
 	class CMonster
 	{
@@ -16,10 +22,13 @@ namespace game_framework {
 			_hp = hp;
 		};
 		~CMonster() {};
-		virtual int Skill(int counter) = 0;					// 攻擊
+		virtual int Skill(int counter) = 0;			// 技能
 		virtual void Initialize() = 0;				// 設定怪物為初始值
 		virtual void LoadBitmap() = 0;				// 載入圖形
 		virtual void HitAnimation(int counter) = 0;	// 被攻擊特效
+		virtual void OnMove(int x, int y, Gamemap * m) = 0;
+		virtual void OnShow(int x, int y, Gamemap * m, CHero *hero) = 0;
+		virtual void SetHitted(int dmg, int time) = 0; // 被打到
 		int GetHP() { return _hp; };
 		void MinusHP(int dmg) { _hp -= dmg; };
 		int GetX1() { return _x; };

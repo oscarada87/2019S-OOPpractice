@@ -2,10 +2,9 @@
 #define SLIME_H
 
 #include "CMonster.h"
-#include "CGameMap.h"
-#include "CHero.h"
-#include "CSpell.h"
-#include "FireBall.h"
+
+class Gamemap;
+class Chero;
 
 namespace game_framework {
 	class Slime : public CMonster {
@@ -16,7 +15,7 @@ namespace game_framework {
 		void LoadBitmap();
 		void HitAnimation(int counter);
 		int Skill(int counter);
-		void OnShow(int x,int y, Gamemap * m, CHero *hero);    //主角現在位置x y
+		void OnShow(int x, int y, Gamemap * m, CHero *hero);    //主角現在位置x y
 		void OnMove(int x, int y, Gamemap * m);
 		int GetX2();					//右下角座標
 		int GetY2();
