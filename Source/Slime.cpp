@@ -7,8 +7,8 @@
 #include "Slime.h"
 #include "math.h"
 
-#include "CGameMap.h"
-#include "CHero.h"
+//#include "CGameMap.h"
+//#include "CHero.h"
 
 namespace game_framework {
 	void Slime::Initialize()

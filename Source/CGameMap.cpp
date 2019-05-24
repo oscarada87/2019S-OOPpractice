@@ -5,6 +5,7 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "CGameMap.h"
+//#include "CMonster.h"
 
 namespace game_framework {
 

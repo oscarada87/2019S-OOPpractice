@@ -2,9 +2,8 @@
 #define SLIME_H
 
 #include "CMonster.h"
-
-class Gamemap;
-class Chero;
+#include "CGameMap.h"
+#include "CHero.h"
 
 namespace game_framework {
 	class Slime : public CMonster {

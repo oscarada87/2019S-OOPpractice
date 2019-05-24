@@ -1,6 +1,9 @@
 #ifndef CGAMEMAP_H
 #define CGAMEMAP_H
+
 #include "CMonster.h"
+//class CMonster;
+
 namespace game_framework {
 	class Gamemap
 	{
