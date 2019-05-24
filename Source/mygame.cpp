@@ -331,7 +331,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	}
 	hero.OnMove(gamemap.at(stage), &slime);
 	slime.OnMove(hero.GetX1(), hero.GetY1(), gamemap.at(stage));
-	hero.SetHeal(!hero.CheckCooldown(2, counter, 150));
+	hero.SetHeal(!hero.CheckCooldown(2, counter, 20));
 	// 怪物攻擊
 	switch (slime.Skill(counter))
 	{
@@ -587,7 +587,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_SPACE)
 	{
-		if (hero.CheckCooldown(2, counter, 150))
+		if (hero.CheckCooldown(2, counter, 20))
 		{
 			hero.SetCastTime(2, counter);
 			if (hero.Gethp() == 9)
