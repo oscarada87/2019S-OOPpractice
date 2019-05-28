@@ -126,7 +126,7 @@ namespace game_framework {
 		CInteger        hp_left;	// 英雄血量
 		CMovingBitmap   smallhero;  // 示意
 		CBouncingBall   bball;		// 反覆彈跳的球
-		vector<vector<CMonster*>> monsters; // 怪物二維陣列
+		vector<CMonster*> monsters; // 怪物二維陣列
 		Slime           slime;		// 史萊姆
 		CMovingBitmap   store;		// 商店
 		CMovingBitmap   storemoney;		// 商店
