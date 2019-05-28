@@ -2,7 +2,7 @@
 #define CHERO_H
 
 #include "CGameMap.h"
-#include "CMonster.h"
+//#include "CMonster.h"
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// 這個class提供可以用鍵盤或滑鼠控制的擦子
@@ -12,7 +12,7 @@ namespace game_framework {
 	{
 	public:
 		CHero();
-		void OnMove(Gamemap * m, CMonster *monster);					// 移動英雄
+		void OnMove(Gamemap * m, vector<int> monsterloc);					// 移動英雄
 		void OnShow(Gamemap * m);					// 將英雄圖形貼到畫面
 		int  GetX1();					// 英雄左上角 x 座標
 		int  GetY1();					// 英雄左上角 y 座標
@@ -32,7 +32,7 @@ namespace game_framework {
 		void Set_format_state(int x);		// 設定方向
 		void SpeedUp();					// 加速
 		void SpeedInit();				// 回到原本
-		bool HitMonster(CMonster *monster);
+		bool HitMonster(vector<int> monsterloc);
 		bool HitSomething(int tx1, int ty1, int tx2, int ty2);	// 是否碰到東西(輸入左上右下座標)
 		void SetHit(bool flag);
 		bool GetHit();						// 設定攻擊型態
@@ -67,6 +67,7 @@ namespace game_framework {
 		vector <int> castTime;		// 冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
 		int  hp;					// 血量
 		bool heal;
+		bool monsterIsEmpty(int x, int y, vector<int> monsterloc, Gamemap *map);
 	};
 }
 

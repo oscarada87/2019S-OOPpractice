@@ -4,6 +4,8 @@
 #include <ddraw.h>
 #include "audio.h"
 #include "gamelib.h"
+#include "CGameMap.h"
+#include "CHero.h"
 #include "Slime.h"
 #include "math.h"
 

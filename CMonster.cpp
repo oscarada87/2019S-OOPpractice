@@ -1,9 +1,0 @@
-#include "stdafx.h"
-#include "Resource.h"
-#include <mmsystem.h>
-#include <ddraw.h>
-#include "audio.h"
-#include "gamelib.h"
-#include "CMonster.h"
-#include "CGameMap.h"
-#include "CHero.h"

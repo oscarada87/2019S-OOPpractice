@@ -334,7 +334,12 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		CAudio::Instance()->Stop(AUDIO_EARTH);
 		GotoGameState(GAME_STATE_OVER);
 	}
-	hero.OnMove(gamemap.at(stage), monsters[0][0]);
+	vector <int> monsterloc;
+	monsterloc.push_back(monsters[0][0]->GetX1());
+	monsterloc.push_back(monsters[0][0]->GetY1());
+	monsterloc.push_back(monsters[0][0]->GetX2());
+	monsterloc.push_back(monsters[0][0]->GetY2());
+	hero.OnMove(gamemap.at(stage), monsterloc);
 	//slime.OnMove(hero.GetX1(), hero.GetY1(), gamemap.at(stage));
 	for (auto it = monsters[stage].begin(); it != monsters[stage].end(); it++) {
 		(*it)->OnMove(hero.GetX1(), hero.GetY1(), gamemap.at(stage));
@@ -471,6 +476,13 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//
 
 	hero.LoadBitmap();
+
+	vector<CMonster*> stage1, stage2, stage3;
+	stage1.push_back(new Slime(5));
+	monsters.push_back(stage1);
+	monsters.push_back(stage2);
+	monsters.push_back(stage3);
+	monsters[0][0]->LoadBitmap();
 	/*gamemap*/
 	gamemap.push_back(new CGameMap());
 	gamemap.push_back(new CGameMap2());
@@ -479,11 +491,13 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	{
 		gamemap.at(i)->LoadBitmap();	//地圖
 	}
+	/*
 	for (int i = 0; i < 3; i++) {
 		for (auto it = monsters[stage].begin(); it != monsters[stage].end(); it++) {
 			(*it)->LoadBitmap();
 		}
 	}
+	*/
 	//slime.LoadBitmap();
 	hp_left.LoadBitmap();
 	lazer.LoadBitmap(IDB_lazer, RGB(255, 255, 255));
@@ -505,12 +519,6 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	CAudio::Instance()->Load(AUDIO_KNIFE, "sounds\\knife.mp3");
 	CAudio::Instance()->Load(AUDIO_KNIFEHIT, "sounds\\knifehit.mp3");
 	CAudio::Instance()->Load(AUDIO_EARTH, "sounds\\earth.mp3");
-	
-	vector<CMonster*> stage1, stage2, stage3;
-	stage1.push_back(new Slime(5));
-	monsters.push_back(stage1);
-	monsters.push_back(stage2);
-	monsters.push_back(stage3);
 
 	//
 	// 此OnInit動作會接到CGameStaterOver::OnInit()，所以進度還沒到100%
@@ -547,7 +555,12 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		CAudio::Instance()->Play(AUDIO_KNIFE, true);
 		hero.SetHit(true);
 		for (auto it = monsters[stage].begin(); it != monsters[stage].end(); it++) {
-			if (hero.HitMonster(*it) && (*it)->GetHP() > 0)
+			vector<int> monsterloc;
+			monsterloc.push_back((*it)->GetX1());
+			monsterloc.push_back((*it)->GetY1());
+			monsterloc.push_back((*it)->GetX2());
+			monsterloc.push_back((*it)->GetY2());
+			if (hero.HitMonster(monsterloc) && (*it)->GetHP() > 0)
 			{
 				CAudio::Instance()->Play(AUDIO_KNIFEHIT, true);
 				(*it)->SetHitted(1, counter);

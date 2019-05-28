@@ -3,11 +3,11 @@
 
 #include <random>
 
-//#include "CGameMap.h"
-//#include "CHero.h"
+#include "CGameMap.h"
+#include "CHero.h"
 
-class Gamemap;
-class CHero;
+//class Gamemap;
+//class CHero;
 
 namespace game_framework {
 	class CMonster
