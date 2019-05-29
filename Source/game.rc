@@ -114,23 +114,23 @@ IDB_BACKGROUND2         BITMAP                  "..\\res\\well.bmp"
 
 IDB_BACKGROUND3         BITMAP                  "..\\res\\wwell.bmp"
 
-IDB_SLIME1              BITMAP                  "..\\RES\\monster\\slime1.bmp"
+IDB_SLIME1              BITMAP                  "..\\RES\\monster\\slime\\slime1.bmp"
 
-IDB_SLIME2              BITMAP                  "..\\RES\\monster\\slime2.bmp"
+IDB_SLIME2              BITMAP                  "..\\RES\\monster\\slime\\slime2.bmp"
 
-IDB_SLIME3              BITMAP                  "..\\RES\\monster\\slime3.bmp"
+IDB_SLIME3              BITMAP                  "..\\RES\\monster\\slime\\slime3.bmp"
 
-IDB_SLIMEJUMP1          BITMAP                  "..\\RES\\monster\\slimejump1.bmp"
+IDB_SLIMEJUMP1          BITMAP                  "..\\RES\\monster\\slime\\slimejump1.bmp"
 
-IDB_SLIMEJUMP2          BITMAP                  "..\\RES\\monster\\slimejump2.bmp"
+IDB_SLIMEJUMP2          BITMAP                  "..\\RES\\monster\\slime\\slimejump2.bmp"
 
-IDB_SLIMEJUMP3          BITMAP                  "..\\RES\\monster\\slimejump3.bmp"
+IDB_SLIMEJUMP3          BITMAP                  "..\\RES\\monster\\slime\\slimejump3.bmp"
 
-IDB_SLIMEJUMP4          BITMAP                  "..\\RES\\monster\\slimejump4.bmp"
+IDB_SLIMEJUMP4          BITMAP                  "..\\RES\\monster\\slime\\slimejump4.bmp"
 
-IDB_SLIMEJUMP5          BITMAP                  "..\\RES\\monster\\slimejump5.bmp"
+IDB_SLIMEJUMP5          BITMAP                  "..\\RES\\monster\\slime\\slimejump5.bmp"
 
-IDB_SLIME_HIT           BITMAP                  "..\\RES\\monster\\slimehit.bmp"
+IDB_SLIME_HIT           BITMAP                  "..\\RES\\monster\\slime\\slimehit.bmp"
 
 IDB_MOVEDOWN0           BITMAP                  "..\\RES\\hero\\movedown_0.bmp"
 
@@ -305,6 +305,8 @@ IDB_lazer               BITMAP                  "..\\RES\\lazer.bmp"
 IDB_stage2heart         BITMAP                  "..\\RES\\feature\\heartstage2.bmp"
 
 IDB_shield              BITMAP                  "..\\RES\\feature\\shield.bmp"
+
+IDB_COW_LEFT_HIT1       BITMAP                  "..\\RES\\monster\\cow\\left_hit\\left_hit1.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

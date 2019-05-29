@@ -433,6 +433,7 @@
     <Image Include="RES\lazer.bmp" />
     <Image Include="RES\left.bmp" />
     <Image Include="RES\monster\bmp1.bmp" />
+    <Image Include="RES\monster\cow\left_hit\Minotaur - Sprite Sheet_137.bmp" />
     <Image Include="RES\monster\slime1.bmp" />
     <Image Include="RES\monster\slime2.bmp" />
     <Image Include="RES\monster\slime3.bmp" />
@@ -442,6 +443,15 @@
     <Image Include="RES\monster\slimejump3.bmp" />
     <Image Include="RES\monster\slimejump4.bmp" />
     <Image Include="RES\monster\slimejump5.bmp" />
+    <Image Include="RES\monster\slime\slime1.bmp" />
+    <Image Include="RES\monster\slime\slime2.bmp" />
+    <Image Include="RES\monster\slime\slime3.bmp" />
+    <Image Include="RES\monster\slime\slimehit.bmp" />
+    <Image Include="RES\monster\slime\slimejump1.bmp" />
+    <Image Include="RES\monster\slime\slimejump2.bmp" />
+    <Image Include="RES\monster\slime\slimejump3.bmp" />
+    <Image Include="RES\monster\slime\slimejump4.bmp" />
+    <Image Include="RES\monster\slime\slimejump5.bmp" />
     <Image Include="RES\movedown.bmp" />
     <Image Include="RES\moveleft.bmp" />
     <Image Include="RES\moveright.bmp" />

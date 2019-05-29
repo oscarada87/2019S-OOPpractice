@@ -143,7 +143,7 @@ namespace game_framework {
 		heal_format.SetDelayCount(5);
 	}
 
-	void CHero::OnMove(Gamemap * m, CMonster *monster)
+	void CHero::OnMove(Gamemap * m, vector<int> monsterloc)
 	{
 		//animation.OnMove();
 		if (isMovingUp == false && isMovingDown == false && isMovingLeft == false && isMovingRight == false && isHitting == true)
@@ -172,7 +172,7 @@ namespace game_framework {
 			else {
 				animation3.OnMove();
 			}
-			if (m->monsterIsEmpty(x - speed, y, monster)) {
+			if (monsterIsEmpty(x - speed, y, monsterloc, m)) {
 				x -= speed;
 				if (m->GetSX() > 0) {
 					m->SetSX(-speed);
@@ -186,7 +186,7 @@ namespace game_framework {
 			else {
 				animation4.OnMove();
 			}
-			if (m->monsterIsEmpty(x + speed, y, monster)) {
+			if (monsterIsEmpty(x + speed, y, monsterloc, m)) {
 				x += speed;
 				if (m->GetSX() < m->Getmapx() - SIZE_X) {
 					m->SetSX(speed);
@@ -200,7 +200,7 @@ namespace game_framework {
 			else {
 				animation1.OnMove();
 			}
-			if (m->monsterIsEmpty(x, y - speed, monster)) {
+			if (monsterIsEmpty(x, y - speed, monsterloc, m)) {
 				y -= speed;
 				if (m->GetSY() > 0) {
 					m->SetSY(-speed);
@@ -214,7 +214,7 @@ namespace game_framework {
 			else {
 				animation2.OnMove();
 			}
-			if (m->monsterIsEmpty(x, y + speed, monster)) {
+			if (monsterIsEmpty(x, y + speed, monsterloc, m)) {
 				y += speed;
 				if (m->GetSY() < m->Getmapy() - SIZE_Y) {
 					m->SetSY(speed);
@@ -271,11 +271,12 @@ namespace game_framework {
 		heal = flag;
 	}
 
-	bool CHero::HitMonster(CMonster *monster)
+	bool CHero::HitMonster(vector<int> monsterloc)
 	{
 		// 檢測英雄是否打到怪物
-		return HitSomething(monster->GetX1(), monster->GetY1(),
-			monster->GetX2(), monster->GetY2());
+		//return HitSomething(monster->GetX1(), monster->GetY1(),
+			//monster->GetX2(), monster->GetY2());
+		return HitSomething(monsterloc[0], monsterloc[1], monsterloc[2], monsterloc[3]);
 	}
 
 	bool CHero::HitSomething(int tx1, int ty1, int tx2, int ty2)	//GetX,GetY,GetX2,GetY2
@@ -440,5 +441,16 @@ namespace game_framework {
 			heal_format.SetTopLeft(m->ScreenX(x + 60), m->ScreenY(y));
 			heal_format.OnShow();
 		}
+	}
+
+	bool CHero::monsterIsEmpty(int x, int y, vector<int> monsterloc, Gamemap *map) 
+	{
+		int x1 = x + 20;
+		int x2 = x + 60;
+		int y1 = y;
+		int y2 = y + 74;
+		//bool mos = (monster->GetX2() >= x1 && monster->GetX1() <= x2 && monster->GetY2() >= y1 && (monster->GetY1() + 50) <= y2);
+		bool mos = (monsterloc[2] >= x1 && monsterloc[0] <= x2 && monsterloc[3] >= y1 && monsterloc[1] <= y2);
+		return map->IsEmpty(x, y) && mos == false;
 	}
 }

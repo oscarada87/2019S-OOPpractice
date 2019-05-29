@@ -45,7 +45,6 @@
 #include "CMonster.h"
 #include "CSpell.h"
 #include "CBouncingBall.h"
-#include "CMonster.h"
 
 //法術
 #include "FireBall.h"
@@ -115,20 +114,19 @@ namespace game_framework {
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
-		const int		NUMBALLS;	// 球的總數
 		CMovingBitmap	background;	
 		CMovingBitmap	help;		
-		CBall			*ball;		// 球的陣列
 		vector<CSpell*> heroSpells;		// 英雄法術陣列
 		vector<CSpell*> monsterSpells;	// 怪物法術陣列
-		vector<Gamemap*>        gamemap;    // 背景圖
-		CMovingBitmap	corner;		// 角落圖
-		vector<CMovingBitmap*> heart; // 生命
+		vector<Gamemap*>gamemap;		// 背景圖
+		CMovingBitmap	corner;			// 角落圖
+		vector<CMovingBitmap*> heart;	// 生命
 		CHero			hero;
 		CInteger		hits_left;	// 剩下的撞擊數
 		CInteger        hp_left;	// 英雄血量
 		CMovingBitmap   smallhero;  // 示意
 		CBouncingBall   bball;		// 反覆彈跳的球
+		vector<CMonster*> monsters; // 怪物二維陣列
 		Slime           slime;		// 史萊姆
 		CMovingBitmap   store;		// 商店
 		CMovingBitmap   storemoney;		// 商店
