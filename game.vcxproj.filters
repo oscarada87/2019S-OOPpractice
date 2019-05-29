@@ -575,5 +575,35 @@
     <Image Include="RES\feature\shield.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\monster\cow\left_hit\Minotaur - Sprite Sheet_137.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slime\slime1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slime\slime2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slime\slime3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slime\slimejump1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slime\slimejump2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slime\slimejump3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slime\slimejump4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slime\slimejump5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\slime\slimehit.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

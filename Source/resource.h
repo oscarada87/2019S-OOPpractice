@@ -154,6 +154,8 @@
 #define IDB_stage2heart                 297
 #define IDB_BITMAP8                     298
 #define IDB_shield                      298
+#define IDB_COW_LEFT_HIT                299
+#define IDB_COW_LEFT_HIT1               299
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -166,7 +168,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        299
+#define _APS_NEXT_RESOURCE_VALUE        300
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
