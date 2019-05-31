@@ -264,7 +264,7 @@ void CGameStateRun::OnBeginState()
 	lazeropen = false;
 	shieldon = true;
 	heart2on = true;
-	for (int i = 0; i < 3; i++)/*hero 位置改*/
+	for (int i = 0; i < 3; i++)
 	{
 		gamemap.at(i)->Initialize();
 	}
@@ -325,7 +325,21 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	}
 	counter++;
 	//判斷史萊姆血量
-	if (monsters[stage]->GetHP() <= 0 || hero.Gethp() <= 0)
+	if (monsters[stage]->GetHP() <= 0 && stage < 2)
+	{
+		//這邊要加怪物死亡動畫
+		gamemap.at(stage)->Initialize();
+		hero.SetXY(1000, 1750);
+		stage++;
+	}
+	else if (monsters[stage]->GetHP() <= 0 && stage == 2)
+	{
+		CAudio::Instance()->Stop(AUDIO_KNIFE);
+		CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
+		CAudio::Instance()->Stop(AUDIO_EARTH);
+		GotoGameState(GAME_STATE_OVER);
+	}
+	else if (hero.Gethp() <= 0) 
 	{
 		CAudio::Instance()->Stop(AUDIO_KNIFE);
 		CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
@@ -434,13 +448,28 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	}
 
 	// 怪物血量
-	heart.clear();
-	for (int i = 0; i < monsters[0]->GetHP(); i++)
+	//heart.clear();
+	while ((size_t)monsters[stage]->GetHP() != heart.size())
+	{
+		if ((size_t)monsters[stage]->GetHP() > heart.size())
+		{
+			heart.push_back(new CMovingBitmap());
+			heart.back()->LoadBitmap(IDB_HEART, RGB(255, 255, 255));
+			heart.back()->SetTopLeft(0 + 28 * ((int)heart.size()-1), 0);
+		}
+		else if ((size_t)monsters[stage]->GetHP() < heart.size())
+		{
+			heart.erase(heart.end() - 1);
+		}
+	}
+	/*
+	for (int i = 0; i < monsters[stage]->GetHP(); i++)
 	{
 		heart.push_back(new CMovingBitmap());
 		heart.at(i)->LoadBitmap(IDB_HEART, RGB(255, 255, 255));
 		heart.at(i)->SetTopLeft(0 + 28 * i, 0);
 	}
+	*/
 
 	//	英雄血量
 	hp_left.SetInteger(hero.Gethp());
@@ -467,8 +496,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	hero.LoadBitmap();
 
 	monsters.push_back(new Slime(5));
-	monsters.push_back(new Slime(15));
 	monsters.push_back(new Slime(10));
+	monsters.push_back(new Slime(8));
 	//monsters[0][0]->LoadBitmap();
 	/*gamemap*/
 	gamemap.push_back(new CGameMap());

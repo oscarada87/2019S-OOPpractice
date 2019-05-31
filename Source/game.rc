@@ -306,7 +306,7 @@ IDB_stage2heart         BITMAP                  "..\\RES\\feature\\heartstage2.b
 
 IDB_shield              BITMAP                  "..\\RES\\feature\\shield.bmp"
 
-IDB_COW_LEFT_HIT1       BITMAP                  "..\\RES\\monster\\cow\\left_hit\\left_hit1.bmp"
+IDB_COW_LEFT_HIT1       BITMAP                  "..\\RES\\monster\\cow\\atk_1_left\\atk_1_left1.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

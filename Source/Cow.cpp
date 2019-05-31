@@ -6,25 +6,23 @@
 #include "gamelib.h"
 #include "CGameMap.h"
 #include "CHero.h"
-#include "Slime.h"
+#include "Cow.h"
 #include "math.h"
 
-//#include "CGameMap.h"
-//#include "CHero.h"
-
 namespace game_framework {
-	void Slime::Initialize()
+	void Cow::Initialize()
 	{
 		const int X_POS = 1600;
 		const int Y_POS = 500;
 		_x = X_POS;
 		_y = Y_POS;
 		active = isNear = isHitted = false;
+		_hp = 5;
 		_hittime = 0;
 	}
 	
 	
-	int Slime::Skill(int counter)
+	int Cow::Skill(int counter)
 	{
 		if (counter % 30 == 0 && isNear)
 		{
@@ -38,46 +36,37 @@ namespace game_framework {
 			return 0;
 	}
 
-	bool Slime::GetHitted()
+	bool Cow::GetHitted()
 	{
 		return isHitted;
 	}
 
-	int Slime::GetX2()
+	int Cow::GetX2()
 	{
-		return _x + move.Width();
+		return _x; //+ move.Width();
 	}
 
-	int Slime::GetY2()
+	int Cow::GetY2()
 	{
-		return _y + move.Height();
+		return _y; //+ move.Height();
 	}
 
-	int Slime::GetCenterX()
+	int Cow::GetCenterX()
 	{
-		return _x + move.Width()/2;
+		return _x; //+ move.Width()/2;
 	}
 
-	int Slime::GetCenterY()
+	int Cow::GetCenterY()
 	{
-		return _y + move.Height()/2;
+		return _y; //+ move.Height()/2;
 	}
 
-	void Slime::LoadBitmap()
+	void Cow::LoadBitmap()
 	{
-		still.AddBitmap(IDB_SLIME1, RGB(255, 255, 255));
-		still.AddBitmap(IDB_SLIME2, RGB(255, 255, 255));
-		still.AddBitmap(IDB_SLIME3, RGB(255, 255, 255));
-		move.AddBitmap(IDB_SLIMEJUMP1, RGB(255, 255, 255));
-		move.AddBitmap(IDB_SLIMEJUMP2, RGB(255, 255, 255));
-		move.AddBitmap(IDB_SLIMEJUMP3, RGB(255, 255, 255));
-		move.AddBitmap(IDB_SLIMEJUMP4, RGB(255, 255, 255));
-		move.AddBitmap(IDB_SLIMEJUMP5, RGB(255, 255, 255));
-		move.SetDelayCount(5);
 		hitted.LoadBitmap(IDB_SLIME_HIT, RGB(255, 255, 255));
 	}
 
-	void Slime::HitAnimation(int counter)
+	void Cow::HitAnimation(int counter)
 	{
 		if (counter - _hittime >= 10)
 		{
@@ -85,17 +74,24 @@ namespace game_framework {
 		}
 	}
 
-	void Slime::OnMove(int x, int y, Gamemap * m)
+	void Cow::OnMove(int x, int y, Gamemap * m)
 	{
+		const int LEFT = 0;
+		const int RIGHT = 1;
 		int speed = 2;
+		int judgeX = _x + 20;
+		int judgeY = _y + 40;
+		/*
 		if (active && isNear) 
 		{
 			move.OnMove();
 			if (x > _x && m->IsEmpty(_x + speed, _y)) {
 				_x += speed;
+				format = RIGHT;
 			}
 			else if(x <= _x && m->IsEmpty(_x - speed, _y)) {
 				_x -= speed;
+				format = LEFT;
 			}
 			if (y > _y && m->IsEmpty(_x, _y + speed)) {
 				_y += speed;
@@ -104,21 +100,16 @@ namespace game_framework {
 				_y -= speed;
 			}
 		}
-		/*
-		else if (!isNear) {
-			move.OnMove();
-			_x += getRandomNumber(-10, 10);
-			_y += getRandomNumber(-10, 10);
-		}
-		*/
 		else 
 		{
 			still.OnMove();
 		}
+		*/
 	}
 
-	void Slime::OnShow(int x,int y, Gamemap * m, CHero *hero)
+	void Cow::OnShow(int x,int y, Gamemap * m, CHero *hero)
 	{
+		/*
 		if (!isHitted) 
 		{
 			if (hero->HitSomething(_x, _y, _x + move.Width(), _y + move.Height())) {
@@ -140,22 +131,16 @@ namespace game_framework {
 				move.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				move.OnShow();
 			}
-			/*
-			else  {
-				ismove = false;
-				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-				still.OnShow();
-			}
-			*/
 		}
 		else
 		{
 			hitted.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 			hitted.ShowBitmap();
 		}
+		*/
 	}
 
-	void Slime::SetHitted(int dmg, int time)
+	void Cow::SetHitted(int dmg, int time)
 	{
 		if (!isHitted)
 		{

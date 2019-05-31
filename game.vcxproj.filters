@@ -136,6 +136,9 @@
     <ClCompile Include="Source\FireBall.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Cow.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h">
@@ -187,6 +190,9 @@
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\FireBall.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Cow.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>
