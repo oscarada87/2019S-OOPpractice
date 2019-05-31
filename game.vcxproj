@@ -22,7 +22,7 @@
     <ProjectGuid>{DDD280D7-4B85-4B03-BBC4-C46CA9BECCCB}</ProjectGuid>
     <RootNamespace>game</RootNamespace>
     <Keyword>MFCProj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
     <ProjectName />
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -344,7 +344,6 @@
     <Image Include="RES\feature\arrright.bmp" />
     <Image Include="RES\feature\box.bmp" />
     <Image Include="RES\feature\bus.bmp" />
-    <Image Include="RES\feature\bus.png" />
     <Image Include="RES\feature\candle.bmp" />
     <Image Include="RES\feature\feature2.bmp" />
     <Image Include="RES\feature\feature5.bmp" />
@@ -360,28 +359,22 @@
     <Image Include="RES\feature\ice2.bmp" />
     <Image Include="RES\feature\icewell.bmp" />
     <Image Include="RES\feature\mazu.bmp" />
-    <Image Include="RES\feature\mazu.png" />
     <Image Include="RES\feature\money.bmp" />
-    <Image Include="RES\feature\money.png" />
     <Image Include="RES\feature\oil.bmp" />
-    <Image Include="RES\feature\oil.png" />
     <Image Include="RES\feature\sfire.bmp" />
     <Image Include="RES\feature\shield.bmp" />
     <Image Include="RES\feature\snow.bmp" />
     <Image Include="RES\feature\snowtree.bmp" />
     <Image Include="RES\feature\snoww.bmp" />
     <Image Include="RES\feature\sold.bmp" />
-    <Image Include="RES\feature\sold.png" />
     <Image Include="RES\feature\stone1.bmp" />
     <Image Include="RES\feature\stone2.bmp" />
     <Image Include="RES\feature\stone3.bmp" />
     <Image Include="RES\feature\store.bmp" />
-    <Image Include="RES\feature\store.png" />
     <Image Include="RES\feature\store2.bmp" />
     <Image Include="RES\feature\stree.bmp" />
     <Image Include="RES\feature\tree.bmp" />
     <Image Include="RES\feature\zingping.bmp" />
-    <Image Include="RES\feature\zingping.png" />
     <Image Include="RES\fireball(blue).bmp" />
     <Image Include="RES\fireball(red).bmp" />
     <Image Include="RES\game.ico" />

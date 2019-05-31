@@ -560,8 +560,13 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_X)
 	{
-		Sleep(200);
-		hero.Teleport();
+		//Sleep(200);
+		vector<int> monsterloc;
+		monsterloc.push_back(monsters[stage]->GetX1());
+		monsterloc.push_back(monsters[stage]->GetY1());
+		monsterloc.push_back(monsters[stage]->GetX2());
+		monsterloc.push_back(monsters[stage]->GetY2());
+		hero.Teleport(gamemap.at(stage), monsterloc);
 	}
 
 	if (nChar == KEY_Z)

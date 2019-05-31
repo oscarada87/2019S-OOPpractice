@@ -487,13 +487,6 @@
     <Image Include="RES\feature\icewell.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="RES\feature\bus.png" />
-    <Image Include="RES\feature\mazu.png" />
-    <Image Include="RES\feature\money.png" />
-    <Image Include="RES\feature\oil.png" />
-    <Image Include="RES\feature\sold.png" />
-    <Image Include="RES\feature\store.png" />
-    <Image Include="RES\feature\zingping.png" />
     <Image Include="RES\feature\bus.bmp">
       <Filter>Resource Files</Filter>
     </Image>

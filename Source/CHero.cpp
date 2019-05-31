@@ -302,27 +302,46 @@ namespace game_framework {
 			return false;
 	}
 
-	void CHero::Teleport()
+	void CHero::Teleport(Gamemap * m, vector<int> monsterloc)
 	{
-
-		if (format_state == 1)
+		if (format_state == 1 )
 		{
-			y -= 100;
+			if (monsterIsEmpty(x, y - 100, monsterloc, m)) {
+				y -= 100;
+				if (m->GetSY() > 0) {
+					m->SetSY(-100);
+				}
+			}
 			//up_format.ShowBitmap();
 		}
 		if (format_state == 2)
 		{
-			y += 100;
+			if (monsterIsEmpty(x, y + 100, monsterloc, m)) {
+				y += 100;
+				if (m->GetSY() < m->Getmapy() - SIZE_Y) {
+					m->SetSY(100);
+				}
+			}
 			//down_format.ShowBitmap();
 		}
 		if (format_state == 3)
 		{
-			x -= 100;
+			if (monsterIsEmpty(x - 100, y, monsterloc, m)) {
+				x -= 100;
+				if (m->GetSX() > 0) {
+					m->SetSX(-100);
+				}
+			}
 			//left_format.ShowBitmap();
 		}
 		if (format_state == 4)
 		{
-			x += 100;
+			if (monsterIsEmpty(x + 100, y, monsterloc, m)) {
+				x += 100;
+				if (m->GetSX() < m->Getmapx() - SIZE_X) {
+					m->SetSX(100);
+				}
+			}
 			//right_format.ShowBitmap();
 		}
 	}
