@@ -39,7 +39,7 @@ namespace game_framework {
 		void Sethp(int attack);				// 扣多少血
 		void SetHeal(bool flag);			// 設定是否正在回血
 		int  Gethp();						// 得到血量
-		void Teleport();					//順移
+		void Teleport(Gamemap * m, vector<int> monsterloc);					//順移
 		void SetCastTime(int number, int time);		//設定冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
 		bool CheckCooldown(int number, int counter, int cooldown);	//檢查冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
 	protected:
