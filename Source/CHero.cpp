@@ -131,10 +131,10 @@ namespace game_framework {
 		up_hit_format.AddBitmap(IDB_UP_HIT1, RGB(255, 255, 255));
 		up_hit_format.AddBitmap(IDB_UP_HIT2, RGB(255, 255, 255));
 
-		right_hit_format.SetDelayCount(5);
-		left_hit_format.SetDelayCount(5);
-		up_hit_format.SetDelayCount(5);
-		down_hit_format.SetDelayCount(5);
+		right_hit_format.SetDelayCount(8);
+		left_hit_format.SetDelayCount(8);
+		up_hit_format.SetDelayCount(8);
+		down_hit_format.SetDelayCount(8);
 
 		heal_format.AddBitmap(IDB_HEAL1, RGB(0, 0, 0));
 		heal_format.AddBitmap(IDB_HEAL2, RGB(0, 0, 0));

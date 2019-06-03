@@ -164,5 +164,8 @@ namespace game_framework {
 			_hp -= dmg;
 		}
 	}
-
+	void Slime::setactive()
+	{
+		active = false;
+	}
 }

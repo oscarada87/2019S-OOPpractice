@@ -20,6 +20,7 @@ namespace game_framework {
 		bool GetHitted();
 		int GetCenterX();
 		int GetCenterY();
+		void setactive();	// setfalse
 	protected:
 		CAnimation still;			 // ¤£°Ê
 		CAnimation move;			 //²¾°Ê§ðÀ»

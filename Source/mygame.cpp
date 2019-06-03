@@ -204,11 +204,14 @@ void CGameStateOver::OnInit()
 }
 void CGameStateOver::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
+	const char KEY_ESC = 27;
 	const char KEY_SPACE = ' ';
 	if (nChar == KEY_SPACE) {
 		CAudio::Instance()->Stop(AUDIO_END);
 		GotoGameState(GAME_STATE_INIT);						// 切換至GAME_STATE_INIT
 	}
+	else if (nChar == KEY_ESC)								// Demo 關閉遊戲的方法
+		PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE, 0, 0);	// 關閉遊戲
 }
 void CGameStateOver::OnShow()
 {
@@ -556,6 +559,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		stage = (stage + 1) % 3;
 		gamemap.at(stage)->Initialize();
 		hero.SetXY(1000,1750);
+		//monsters[stage]->setactive();要讓怪物靜止的話(把active共用)
 	}
 
 	if (nChar == KEY_X)
