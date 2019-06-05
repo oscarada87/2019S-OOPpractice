@@ -344,6 +344,7 @@
     <Image Include="RES\feature\arrright.bmp" />
     <Image Include="RES\feature\box.bmp" />
     <Image Include="RES\feature\bus.bmp" />
+    <Image Include="RES\feature\buscard.bmp" />
     <Image Include="RES\feature\candle.bmp" />
     <Image Include="RES\feature\feature2.bmp" />
     <Image Include="RES\feature\feature5.bmp" />
@@ -359,8 +360,11 @@
     <Image Include="RES\feature\ice2.bmp" />
     <Image Include="RES\feature\icewell.bmp" />
     <Image Include="RES\feature\mazu.bmp" />
+    <Image Include="RES\feature\mazucard.bmp" />
     <Image Include="RES\feature\money.bmp" />
+    <Image Include="RES\feature\moneycard.bmp" />
     <Image Include="RES\feature\oil.bmp" />
+    <Image Include="RES\feature\oilcard.bmp" />
     <Image Include="RES\feature\sfire.bmp" />
     <Image Include="RES\feature\shield.bmp" />
     <Image Include="RES\feature\snow.bmp" />
@@ -375,6 +379,7 @@
     <Image Include="RES\feature\stree.bmp" />
     <Image Include="RES\feature\tree.bmp" />
     <Image Include="RES\feature\zingping.bmp" />
+    <Image Include="RES\feature\zingpingcard.bmp" />
     <Image Include="RES\fireball(blue).bmp" />
     <Image Include="RES\fireball(red).bmp" />
     <Image Include="RES\game.ico" />
@@ -428,6 +433,7 @@
     <Image Include="RES\lazer.bmp" />
     <Image Include="RES\left.bmp" />
     <Image Include="RES\monster\bmp1.bmp" />
+    <Image Include="RES\monster\cow\atk_1_left\atk_1_left1.bmp" />
     <Image Include="RES\monster\cow\left_hit\Minotaur - Sprite Sheet_137.bmp" />
     <Image Include="RES\monster\slime1.bmp" />
     <Image Include="RES\monster\slime2.bmp" />

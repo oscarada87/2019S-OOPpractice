@@ -604,5 +604,23 @@
     <Image Include="RES\monster\slime\slimehit.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\feature\buscard.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\mazucard.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\moneycard.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\oilcard.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\zingpingcard.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_1_left\atk_1_left1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

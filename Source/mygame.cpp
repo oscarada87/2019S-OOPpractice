@@ -241,6 +241,8 @@ CGameStateRun::CGameStateRun(CGame *g)
 	: CGameState(g)
 {
 	stage = 0;
+	buy = 0;
+	showdescription = false;
 }
 
 CGameStateRun::~CGameStateRun()
@@ -527,6 +529,11 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	storemoney.LoadBitmap(IDB_money, RGB(255, 255, 255));
 	storeoil.LoadBitmap(IDB_oil, RGB(255, 255, 255));
 	storezing.LoadBitmap(IDB_zingping, RGB(255, 255, 255));
+	storebuscard.LoadBitmap(IDB_buscard, RGB(255, 255, 255));
+	storemazucard.LoadBitmap(IDB_mazucard, RGB(255, 255, 255));
+	storemoneycard.LoadBitmap(IDB_moneycard, RGB(255, 255, 255));
+	storeoilcard.LoadBitmap(IDB_oilcard, RGB(255, 255, 255));
+	storezingcard.LoadBitmap(IDB_zingpingcard, RGB(255, 255, 255));
 
 	CAudio::Instance()->Load(AUDIO_DING, "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
 	CAudio::Instance()->Load(AUDIO_LAKE, "sounds\\lake.mp3");	// 載入編號1的聲音lake.mp3
@@ -553,7 +560,28 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_SPACE = 0x20; //keyboard Space 火球
 	const char KEY_W = 0x57; //地圖測試用
 	const char KEY_X = 0x58; //keyboard X 順移
-
+	const char KEY_B = 0x42; //buy
+	if (nChar == KEY_B)
+	{
+		if (stage == 0) {
+			if (250 <= hero.GetX2() && hero.GetX2() <= 350 && 200 <= hero.GetY2() && hero.GetY2() < 300) {
+				buy = 1;
+			}
+			else if (250 <= hero.GetX2() && hero.GetX2() <= 350 && 300 <= hero.GetY2() && hero.GetY2() < 400) {
+				buy = 2;
+			}
+			else if (350 < hero.GetX2() && hero.GetX2() <= 500 && 350 <= hero.GetY2() && hero.GetY2() < 450) {
+				buy = 3;
+			}
+			else if (500 < hero.GetX1() && hero.GetX1() <= 600 && 300 <= hero.GetY2() && hero.GetY2() < 400) {
+				buy = 4;
+			}
+			else if (500 < hero.GetX1() && hero.GetX1() <= 600 && 200 <= hero.GetY2() && hero.GetY2() < 300) {
+				buy = 5;
+			}
+		}
+		showdescription = true;
+	}
 	if (nChar == KEY_W)
 	{
 		stage = (stage + 1) % 3;
@@ -631,7 +659,11 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_SHIFT = 0x10; // keyboard SHIFT 加速
 	const char KEY_Z = 0x5A; //keyboard Z 普通攻擊
 	const char KEY_SPACE = 0x20; //keyboard Space 治療
-
+	const char KEY_B = 0x42; //buy
+	if (nChar == KEY_B)
+	{
+		showdescription = false;
+	}
 	if (nChar == KEY_Z)
 	{
 		CAudio::Instance()->Stop(AUDIO_KNIFE);
@@ -808,5 +840,27 @@ void CGameStateRun::OnShow()
 	hp_left.ShowBitmap();
 	smallhero.SetTopLeft(615, 0);
 	smallhero.ShowBitmap();
+	if (showdescription == true) {
+		if (buy == 1) {
+			storebuscard.SetTopLeft(116, 0);
+			storebuscard.ShowBitmap();
+		}
+		else if (buy == 2) {
+			storezingcard.SetTopLeft(116, 0);
+			storezingcard.ShowBitmap();
+		}
+		else if (buy == 3) {
+			storemazucard.SetTopLeft(116, 0);
+			storemazucard.ShowBitmap();
+		}
+		else if (buy == 4) {
+			storeoilcard.SetTopLeft(116, 0);
+			storeoilcard.ShowBitmap();
+		}
+		else if (buy == 5) {
+			storemoneycard.SetTopLeft(116, 0);
+			storemoneycard.ShowBitmap();
+		}
+	}
 }
 }

@@ -128,12 +128,22 @@ namespace game_framework {
 		CBouncingBall   bball;		// 反覆彈跳的球
 		vector<CMonster*> monsters; // 怪物二維陣列
 		Slime           slime;		// 史萊姆
+		/*商店*/
 		CMovingBitmap   store;		// 商店
 		CMovingBitmap   storemoney;		// 商店
 		CMovingBitmap   storezing;		// 商店
 		CMovingBitmap   storeoil;		// 商店
 		CMovingBitmap   storebus;		// 商店
 		CMovingBitmap   storemazu;		// 商店
+		/*卡牌*/
+		CMovingBitmap   storemoneycard;		// card
+		CMovingBitmap   storezingcard;		// card
+		CMovingBitmap   storeoilcard;		// card
+		CMovingBitmap   storebuscard;		// card
+		CMovingBitmap   storemazucard;		// card
+		int buy;
+		bool showdescription;
+
 		CMovingBitmap   lazer;			//lazer
 		int				counterlazer;
 		bool            lazeropen;

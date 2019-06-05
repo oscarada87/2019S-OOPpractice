@@ -308,6 +308,16 @@ IDB_shield              BITMAP                  "..\\RES\\feature\\shield.bmp"
 
 IDB_COW_LEFT_HIT1       BITMAP                  "..\\RES\\monster\\cow\\atk_1_left\\atk_1_left1.bmp"
 
+IDB_buscard             BITMAP                  "..\\RES\\feature\\buscard.bmp"
+
+IDB_mazucard            BITMAP                  "..\\RES\\feature\\mazucard.bmp"
+
+IDB_moneycard           BITMAP                  "..\\RES\\feature\\moneycard.bmp"
+
+IDB_oilcard             BITMAP                  "..\\RES\\feature\\oilcard.bmp"
+
+IDB_zingpingcard        BITMAP                  "..\\RES\\feature\\zingpingcard.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
