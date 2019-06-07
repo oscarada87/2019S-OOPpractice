@@ -259,7 +259,19 @@ CGameStateRun::~CGameStateRun()
 
 void CGameStateRun::OnBeginState()
 {
+	hero.SetXY(1000, 1750);
+	stage = 0;
+	gamemap.at(0)->Initialize();
 	counter = 0;
+	monsters.clear();
+	monsters.push_back(new Slime(5));
+	monsters.push_back(new Slime(10));
+	monsters.push_back(new Slime(8));
+
+	for (int i = 0; (size_t)i < monsters.size(); i++) {
+		monsters[i]->LoadBitmap();
+	}
+
 	for (int i = 0; (size_t)i < monsters.size(); i++) {
 		monsters[i]->Initialize();
 	}
@@ -500,9 +512,6 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 
 	hero.LoadBitmap();
 
-	monsters.push_back(new Slime(5));
-	monsters.push_back(new Slime(10));
-	monsters.push_back(new Slime(8));
 	//monsters[0][0]->LoadBitmap();
 	/*gamemap*/
 	gamemap.push_back(new CGameMap());
@@ -512,11 +521,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	{
 		gamemap.at(i)->LoadBitmap();	//地圖
 	}
-	
-	for (int i = 0; (size_t)i < monsters.size(); i++) {
-		monsters[i]->LoadBitmap();
-	}
-	
+
 	//slime.LoadBitmap();
 	hp_left.LoadBitmap();
 	lazer.LoadBitmap(IDB_lazer, RGB(255, 255, 255));
