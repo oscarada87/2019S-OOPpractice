@@ -63,7 +63,20 @@ namespace game_framework {
 
 	void Cow::LoadBitmap()
 	{
-		hitted.LoadBitmap(IDB_SLIME_HIT, RGB(255, 255, 255));
+		atk_1_left.AddBitmap(IDB_COW_ATK_1_LEFT1, RGB(0, 0, 0));
+		atk_1_left.AddBitmap(IDB_COW_ATK_1_LEFT2, RGB(0, 0, 0));
+		atk_1_left.AddBitmap(IDB_COW_ATK_1_LEFT3, RGB(0, 0, 0));
+		atk_1_left.AddBitmap(IDB_COW_ATK_1_LEFT4, RGB(0, 0, 0));
+		atk_1_left.AddBitmap(IDB_COW_ATK_1_LEFT5, RGB(0, 0, 0));
+		atk_1_left.AddBitmap(IDB_COW_ATK_1_LEFT6, RGB(0, 0, 0));
+		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT1, RGB(0, 0, 0));
+		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT2, RGB(0, 0, 0));
+		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT3, RGB(0, 0, 0));
+		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT4, RGB(0, 0, 0));
+		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT5, RGB(0, 0, 0));
+		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT6, RGB(0, 0, 0));
+		
+		//hitted.LoadBitmap(IDB_SLIME_HIT, RGB(255, 255, 255));
 	}
 
 	void Cow::HitAnimation(int counter)
@@ -81,6 +94,7 @@ namespace game_framework {
 		int speed = 2;
 		int judgeX = _x + 20;
 		int judgeY = _y + 40;
+		atk_1_right.OnMove();
 		/*
 		if (active && isNear) 
 		{
@@ -109,6 +123,8 @@ namespace game_framework {
 
 	void Cow::OnShow(int x,int y, Gamemap * m, CHero *hero)
 	{
+		atk_1_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+		atk_1_right.OnShow();
 		/*
 		if (!isHitted) 
 		{
@@ -142,12 +158,14 @@ namespace game_framework {
 
 	void Cow::SetHitted(int dmg, int time)
 	{
+		/*
 		if (!isHitted)
 		{
 			isHitted = true;
 			_hittime = time;
 			_hp -= dmg;
 		}
+		*/
 	}
 
 }

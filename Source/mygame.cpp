@@ -265,7 +265,7 @@ void CGameStateRun::OnBeginState()
 	counter = 0;
 	monsters.clear();
 	monsters.push_back(new Slime(5));
-	monsters.push_back(new Slime(10));
+	monsters.push_back(new Cow(10));
 	monsters.push_back(new Slime(8));
 
 	for (int i = 0; (size_t)i < monsters.size(); i++) {

@@ -306,7 +306,103 @@ IDB_stage2heart         BITMAP                  "..\\RES\\feature\\heartstage2.b
 
 IDB_shield              BITMAP                  "..\\RES\\feature\\shield.bmp"
 
-IDB_COW_LEFT_HIT1       BITMAP                  "..\\RES\\monster\\cow\\atk_1_left\\atk_1_left1.bmp"
+IDB_COW_ATK_1_LEFT1     BITMAP                  "..\\RES\\monster\\cow\\atk_1_left\\atk_1_left1.bmp"
+
+IDB_COW_ATK_1_LEFT2     BITMAP                  "..\\RES\\monster\\cow\\atk_1_left\\atk_1_left2.bmp"
+
+IDB_COW_ATK_1_LEFT3     BITMAP                  "..\\RES\\monster\\cow\\atk_1_left\\atk_1_left3.bmp"
+
+IDB_COW_ATK_1_LEFT4     BITMAP                  "..\\RES\\monster\\cow\\atk_1_left\\atk_1_left4.bmp"
+
+IDB_COW_ATK_1_LEFT5     BITMAP                  "..\\RES\\monster\\cow\\atk_1_left\\atk_1_left5.bmp"
+
+IDB_COW_ATK_1_LEFT6     BITMAP                  "..\\RES\\monster\\cow\\atk_1_left\\atk_1_left6.bmp"
+
+IDB_COW_ATK_1_RIGHT1    BITMAP                  "..\\RES\\monster\\cow\\atk_1_right\\atk_1_right1.bmp"
+
+IDB_COW_ATK_1_RIGHT2    BITMAP                  "..\\RES\\monster\\cow\\atk_1_right\\atk_1_right2.bmp"
+
+IDB_COW_ATK_1_RIGHT3    BITMAP                  "..\\RES\\monster\\cow\\atk_1_right\\atk_1_right3.bmp"
+
+IDB_COW_ATK_1_RIGHT4    BITMAP                  "..\\RES\\monster\\cow\\atk_1_right\\atk_1_right4.bmp"
+
+IDB_COW_ATK_1_RIGHT5    BITMAP                  "..\\RES\\monster\\cow\\atk_1_right\\atk_1_right5.bmp"
+
+IDB_COW_ATK_1_RIGHT6    BITMAP                  "..\\RES\\monster\\cow\\atk_1_right\\atk_1_right6.bmp"
+
+IDB_COW_ATK_2_LEFT1     BITMAP                  "..\\RES\\monster\\cow\\atk_2_left\\atk_2_left1.bmp"
+
+IDB_COW_ATK_2_LEFT2     BITMAP                  "..\\RES\\monster\\cow\\atk_2_left\\atk_2_left2.bmp"
+
+IDB_COW_ATK_2_LEFT3     BITMAP                  "..\\RES\\monster\\cow\\atk_2_left\\atk_2_left3.bmp"
+
+IDB_COW_ATK_2_LEFT4     BITMAP                  "..\\RES\\monster\\cow\\atk_2_left\\atk_2_left4.bmp"
+
+IDB_COW_ATK_2_LEFT5     BITMAP                  "..\\RES\\monster\\cow\\atk_2_left\\atk_2_left5.bmp"
+
+IDB_COW_ATK_2_LEFT6     BITMAP                  "..\\RES\\monster\\cow\\atk_2_left\\atk_2_left6.bmp"
+
+IDB_COW_ATK_2_RIGHT1    BITMAP                  "..\\RES\\monster\\cow\\atk_2_right\\atk_2_right1.bmp"
+
+IDB_COW_ATK_2_RIGHT2    BITMAP                  "..\\RES\\monster\\cow\\atk_2_right\\atk_2_right2.bmp"
+
+IDB_COW_ATK_2_RIGHT3    BITMAP                  "..\\RES\\monster\\cow\\atk_2_right\\atk_2_right3.bmp"
+
+IDB_COW_ATK_2_RIGHT4    BITMAP                  "..\\RES\\monster\\cow\\atk_2_right\\atk_2_right4.bmp"
+
+IDB_COW_ATK_2_RIGHT5    BITMAP                  "..\\RES\\monster\\cow\\atk_2_right\\atk_2_right5.bmp"
+
+IDB_COW_ATK_2_RIGHT6    BITMAP                  "..\\RES\\monster\\cow\\atk_2_right\\atk_2_right6.bmp"
+
+IDB_COW_DEATH_LEFT1     BITMAP                  "..\\RES\\monster\\cow\\death_left\\death_left1.bmp"
+
+IDB_COW_DEATH_LEFT2     BITMAP                  "..\\RES\\monster\\cow\\death_left\\death_left2.bmp"
+
+IDB_COW_DEATH_LEFT3     BITMAP                  "..\\RES\\monster\\cow\\death_left\\death_left3.bmp"
+
+IDB_COW_DEATH_LEFT4     BITMAP                  "..\\RES\\monster\\cow\\death_left\\death_left4.bmp"
+
+IDB_COW_DEATH_LEFT5     BITMAP                  "..\\RES\\monster\\cow\\death_left\\death_left5.bmp"
+
+IDB_COW_DEATH_RIGHT1    BITMAP                  "..\\RES\\monster\\cow\\death_right\\death_right1.bmp"
+
+IDB_COW_DEATH_RIGHT2    BITMAP                  "..\\RES\\monster\\cow\\death_right\\death_right2.bmp"
+
+IDB_COW_DEATH_RIGHT3    BITMAP                  "..\\RES\\monster\\cow\\death_right\\death_right3.bmp"
+
+IDB_COW_DEATH_RIGHT4    BITMAP                  "..\\RES\\monster\\cow\\death_right\\death_right4.bmp"
+
+IDB_COW_DEATH_RIGHT5    BITMAP                  "..\\RES\\monster\\cow\\death_right\\death_right5.bmp"
+
+IDB_COW_MOVE_LEFT1      BITMAP                  "..\\RES\\monster\\cow\\move_left\\move_left1.bmp"
+
+IDB_COW_MOVE_LEFT2      BITMAP                  "..\\RES\\monster\\cow\\move_left\\move_left2.bmp"
+
+IDB_COW_MOVE_LEFT3      BITMAP                  "..\\RES\\monster\\cow\\move_left\\move_left3.bmp"
+
+IDB_COW_MOVE_LEFT4      BITMAP                  "..\\RES\\monster\\cow\\move_left\\move_left4.bmp"
+
+IDB_COW_MOVE_LEFT5      BITMAP                  "..\\RES\\monster\\cow\\move_left\\move_left5.bmp"
+
+IDB_COW_MOVE_RIGHT1     BITMAP                  "..\\RES\\monster\\cow\\move_right\\move_right1.bmp"
+
+IDB_COW_MOVE_RIGHT2     BITMAP                  "..\\RES\\monster\\cow\\move_right\\move_right2.bmp"
+
+IDB_COW_MOVE_RIGHT3     BITMAP                  "..\\RES\\monster\\cow\\move_right\\move_right3.bmp"
+
+IDB_COW_MOVE_RIGHT4     BITMAP                  "..\\RES\\monster\\cow\\move_right\\move_right4.bmp"
+
+IDB_COW_NORMAL_LEFT1    BITMAP                  "..\\RES\\monster\\cow\\normal_left\\normal_left1.bmp"
+
+IDB_COW_NORMAL_LEFT2    BITMAP                  "..\\RES\\monster\\cow\\normal_left\\normal_left2.bmp"
+
+IDB_COW_NORMAL_LEFT3    BITMAP                  "..\\RES\\monster\\cow\\normal_left\\normal_left3.bmp"
+
+IDB_COW_NORMAL_RIGHT1   BITMAP                  "..\\RES\\monster\\cow\\normal_right\\normal_right1.bmp"
+
+IDB_COW_NORMAL_RIGHT2   BITMAP                  "..\\RES\\monster\\cow\\normal_right\\normal_right2.bmp"
+
+IDB_COW_NORMAL_RIGHT3   BITMAP                  "..\\RES\\monster\\cow\\normal_right\\normal_right3.bmp"
 
 IDB_buscard             BITMAP                  "..\\RES\\feature\\buscard.bmp"
 

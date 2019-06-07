@@ -622,5 +622,149 @@
     <Image Include="RES\monster\cow\atk_1_left\atk_1_left1.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\monster\cow\atk_1_left\atk_1_left2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_1_left\atk_1_left3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_1_left\atk_1_left4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_1_left\atk_1_left5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_1_left\atk_1_left6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_1_right\atk_1_right1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_1_right\atk_1_right2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_1_right\atk_1_right3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_1_right\atk_1_right4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_1_right\atk_1_right5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_1_right\atk_1_right6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_2_left\atk_2_left1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_2_left\atk_2_left2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_2_left\atk_2_left3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_2_left\atk_2_left4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_2_left\atk_2_left5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_2_left\atk_2_left6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_2_right\atk_2_right1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_2_right\atk_2_right2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_2_right\atk_2_right3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_2_right\atk_2_right4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_2_right\atk_2_right5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\atk_2_right\atk_2_right6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\death_left\death_left1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\death_left\death_left2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\death_left\death_left3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\death_left\death_left4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\death_left\death_left5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\death_right\death_right1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\death_right\death_right2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\death_right\death_right3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\death_right\death_right4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\death_right\death_right5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\move_left\move_left1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\move_left\move_left2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\move_left\move_left3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\move_left\move_left4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\move_left\move_left5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\move_right\move_right1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\move_right\move_right2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\move_right\move_right3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\move_right\move_right4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\normal_left\normal_left1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\normal_left\normal_left2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\normal_left\normal_left3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\normal_right\normal_right1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\normal_right\normal_right2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monster\cow\normal_right\normal_right3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
