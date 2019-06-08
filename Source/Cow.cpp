@@ -14,10 +14,13 @@ namespace game_framework {
 	{
 		const int X_POS = 1600;
 		const int Y_POS = 500;
+		const int LEFT = 0;
+		const int RIGHT = 1;
 		_x = X_POS;
 		_y = Y_POS;
-		active = isNear = isHitted = false;
-		_hp = 5;
+		active = isNear = true;
+		isattacking = false;
+		format = RIGHT;
 		_hittime = 0;
 	}
 	
@@ -38,7 +41,8 @@ namespace game_framework {
 
 	bool Cow::GetHitted()
 	{
-		return isHitted;
+		return false;
+		//return isHitted;
 	}
 
 	int Cow::GetX2()
@@ -75,7 +79,44 @@ namespace game_framework {
 		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT4, RGB(0, 0, 0));
 		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT5, RGB(0, 0, 0));
 		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT6, RGB(0, 0, 0));
-		
+		atk_2_left.AddBitmap(IDB_COW_ATK_2_LEFT1, RGB(0, 0, 0));
+		atk_2_left.AddBitmap(IDB_COW_ATK_2_LEFT2, RGB(0, 0, 0));
+		atk_2_left.AddBitmap(IDB_COW_ATK_2_LEFT3, RGB(0, 0, 0));
+		atk_2_left.AddBitmap(IDB_COW_ATK_2_LEFT4, RGB(0, 0, 0));
+		atk_2_left.AddBitmap(IDB_COW_ATK_2_LEFT5, RGB(0, 0, 0));
+		atk_2_left.AddBitmap(IDB_COW_ATK_2_LEFT6, RGB(0, 0, 0));
+		atk_2_right.AddBitmap(IDB_COW_ATK_2_RIGHT1, RGB(0, 0, 0));
+		atk_2_right.AddBitmap(IDB_COW_ATK_2_RIGHT2, RGB(0, 0, 0));
+		atk_2_right.AddBitmap(IDB_COW_ATK_2_RIGHT3, RGB(0, 0, 0));
+		atk_2_right.AddBitmap(IDB_COW_ATK_2_RIGHT4, RGB(0, 0, 0));
+		atk_2_right.AddBitmap(IDB_COW_ATK_2_RIGHT5, RGB(0, 0, 0));
+		atk_2_right.AddBitmap(IDB_COW_ATK_2_RIGHT6, RGB(0, 0, 0));
+		normal_left.AddBitmap(IDB_COW_NORMAL_LEFT1, RGB(0, 0, 0));
+		normal_left.AddBitmap(IDB_COW_NORMAL_LEFT2, RGB(0, 0, 0));
+		normal_left.AddBitmap(IDB_COW_NORMAL_LEFT3, RGB(0, 0, 0));
+		normal_right.AddBitmap(IDB_COW_NORMAL_RIGHT1, RGB(0, 0, 0));
+		normal_right.AddBitmap(IDB_COW_NORMAL_RIGHT2, RGB(0, 0, 0));
+		normal_right.AddBitmap(IDB_COW_NORMAL_RIGHT3, RGB(0, 0, 0));
+		move_left.AddBitmap(IDB_COW_MOVE_LEFT1, RGB(0, 0, 0));
+		move_left.AddBitmap(IDB_COW_MOVE_LEFT2, RGB(0, 0, 0));
+		move_left.AddBitmap(IDB_COW_MOVE_LEFT3, RGB(0, 0, 0));
+		move_left.AddBitmap(IDB_COW_MOVE_LEFT4, RGB(0, 0, 0));
+		move_left.AddBitmap(IDB_COW_MOVE_LEFT5, RGB(0, 0, 0));
+		move_right.AddBitmap(IDB_COW_MOVE_RIGHT1, RGB(0, 0, 0));
+		move_right.AddBitmap(IDB_COW_MOVE_RIGHT2, RGB(0, 0, 0));
+		move_right.AddBitmap(IDB_COW_MOVE_RIGHT3, RGB(0, 0, 0));
+		move_right.AddBitmap(IDB_COW_MOVE_RIGHT4, RGB(0, 0, 0));
+		death_left.AddBitmap(IDB_COW_DEATH_LEFT1, RGB(0, 0, 0));
+		death_left.AddBitmap(IDB_COW_DEATH_LEFT2, RGB(0, 0, 0));
+		death_left.AddBitmap(IDB_COW_DEATH_LEFT3, RGB(0, 0, 0));
+		death_left.AddBitmap(IDB_COW_DEATH_LEFT4, RGB(0, 0, 0));
+		death_left.AddBitmap(IDB_COW_DEATH_LEFT5, RGB(0, 0, 0));
+		death_right.AddBitmap(IDB_COW_DEATH_RIGHT1, RGB(0, 0, 0));
+		death_right.AddBitmap(IDB_COW_DEATH_RIGHT2, RGB(0, 0, 0));
+		death_right.AddBitmap(IDB_COW_DEATH_RIGHT3, RGB(0, 0, 0));
+		death_right.AddBitmap(IDB_COW_DEATH_RIGHT4, RGB(0, 0, 0));
+		death_right.AddBitmap(IDB_COW_DEATH_RIGHT5, RGB(0, 0, 0));
+
 		//hitted.LoadBitmap(IDB_SLIME_HIT, RGB(255, 255, 255));
 	}
 
@@ -83,77 +124,155 @@ namespace game_framework {
 	{
 		if (counter - _hittime >= 10)
 		{
-			isHitted = false;
+			//isHitted = false;
+		}
+	}
+
+	void Cow::DecideFormat(int x, int y, Gamemap * m)
+	{
+		const int NMR = 0;
+		const int NML = 1;
+		const int MR = 2;
+		const int ML = 3;
+		const int ATK1R = 4;
+		const int ATK1L = 5;
+		const int ATK2R = 6;
+		const int ATK2L = 7;
+		const int DL = 8;
+		const int DR = 9;
+		int speed = 2;
+		int judgeX = _x + 20;
+		int judgeY = _y + 40;
+
+		if (active && isNear && !isattacking)
+		{
+			if (x > _x && m->IsEmpty(_x + speed, _y)) {
+				_x += speed;
+				format = MR;
+			}
+			else if (x < _x && m->IsEmpty(_x - speed, _y)) {
+				_x -= speed;
+				format = ML;
+			}
+			if (y > _y && m->IsEmpty(_x, _y + speed)) {
+				_y += speed;
+			}
+			else if (y < _y && m->IsEmpty(_x, _y - speed)) {
+				_y -= speed;
+			}
+			if (x == _x && y == _y) {
+				format = NML;
+			}
+		}
+		else
+		{
+			format = NML;
 		}
 	}
 
 	void Cow::OnMove(int x, int y, Gamemap * m)
 	{
-		const int LEFT = 0;
-		const int RIGHT = 1;
-		int speed = 2;
-		int judgeX = _x + 20;
-		int judgeY = _y + 40;
-		atk_1_right.OnMove();
-		/*
-		if (active && isNear) 
+		DecideFormat(x, y, m);
+		const int NMR = 0;
+		const int NML = 1;
+		const int MR = 2;
+		const int ML = 3;
+		const int ATK1R = 4;
+		const int ATK1L = 5;
+		const int ATK2R = 6;
+		const int ATK2L = 7;
+		const int DL = 8;
+		const int DR = 9;
+		switch (format)
 		{
-			move.OnMove();
-			if (x > _x && m->IsEmpty(_x + speed, _y)) {
-				_x += speed;
-				format = RIGHT;
-			}
-			else if(x <= _x && m->IsEmpty(_x - speed, _y)) {
-				_x -= speed;
-				format = LEFT;
-			}
-			if (y > _y && m->IsEmpty(_x, _y + speed)) {
-				_y += speed;
-			}
-			else if(y <= _y && m->IsEmpty(_x, _y - speed)) {
-				_y -= speed;
-			}
+		case NMR:
+			normal_right.OnMove();
+			break;
+		case NML:
+			normal_left.OnMove();
+			break;
+		case MR:
+			move_right.OnMove();
+			break;
+		case ML:
+			move_left.OnMove();
+			break;
+		case ATK1R:
+			atk_1_right.OnMove();
+			break;
+		case ATK1L:
+			atk_1_left.OnMove();
+			break;
+		case ATK2R:
+			atk_2_right.OnMove();
+			break;
+		case ATK2L:
+			atk_2_left.OnMove();
+			break;
+		case DR:
+			death_right.OnMove();
+			break;
+		case DL:
+			death_left.OnMove();
+			break;
 		}
-		else 
-		{
-			still.OnMove();
-		}
-		*/
 	}
 
 	void Cow::OnShow(int x,int y, Gamemap * m, CHero *hero)
 	{
-		atk_1_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-		atk_1_right.OnShow();
-		/*
-		if (!isHitted) 
+		const int NMR = 0;
+		const int NML = 1;
+		const int MR = 2;
+		const int ML = 3;
+		const int ATK1R = 4;
+		const int ATK1L = 5;
+		const int ATK2R = 6;
+		const int ATK2L = 7;
+		const int DL = 8;
+		const int DR = 9;
+		switch (format)
 		{
-			if (hero->HitSomething(_x, _y, _x + move.Width(), _y + move.Height())) {
-				active = false;
-				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-				still.OnShow();
-			}
-			else if (abs(x - _x) < 200 && abs(y - _y) < 200) {
-				isNear = active = true;
-				move.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-				move.OnShow();
-			}
-			else if (abs(x - _x) > 500 && abs(y - _y) > 500){
-				active = false;
-				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-				still.OnShow();
-			}
-			else {
-				move.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-				move.OnShow();
-			}
+		case NMR:
+			normal_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+			normal_right.OnShow();
+			break;
+		case NML:
+			normal_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+			normal_left.OnShow();
+			break;
+		case MR:
+			move_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+			move_right.OnShow();
+			break;
+		case ML:
+			move_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+			move_left.OnShow();
+			break;
+		case ATK1R:
+			atk_1_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+			atk_1_right.OnShow();
+			break;
+		case ATK1L:
+			atk_1_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+			atk_1_left.OnShow();
+			break;
+		case ATK2R:
+			atk_2_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+			atk_2_right.OnShow();
+			break;
+		case ATK2L:
+			atk_2_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+			atk_2_left.OnShow();
+			break;
+		case DR:
+			death_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+			death_right.OnShow();
+			break;
+		case DL:
+			death_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+			death_left.OnShow();
+			break;
 		}
-		else
-		{
-			hitted.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-			hitted.ShowBitmap();
-		}
-		*/
 	}
 
 	void Cow::SetHitted(int dmg, int time)
