@@ -45,12 +45,12 @@ namespace game_framework {
 
 	int Slime::GetX2()
 	{
-		return _x + move.Width();
+		return _x + move.Width() - 30;
 	}
 
 	int Slime::GetY2()
 	{
-		return _y + move.Height();
+		return _y + move.Height() - 30;
 	}
 
 	int Slime::GetCenterX()
@@ -85,7 +85,7 @@ namespace game_framework {
 		}
 	}
 
-	void Slime::OnMove(int x, int y, Gamemap * m)
+	void Slime::OnMove(int x, int y, Gamemap * m, int counter)
 	{
 		int speed = 2;
 		if (active && isNear) 
@@ -94,13 +94,13 @@ namespace game_framework {
 			if (x > _x && m->IsEmpty(_x + speed, _y)) {
 				_x += speed;
 			}
-			else if(x <= _x && m->IsEmpty(_x - speed, _y)) {
+			else if(x < _x && m->IsEmpty(_x - speed, _y)) {
 				_x -= speed;
 			}
 			if (y > _y && m->IsEmpty(_x, _y + speed)) {
 				_y += speed;
 			}
-			else if(y <= _y && m->IsEmpty(_x, _y - speed)) {
+			else if(y < _y && m->IsEmpty(_x, _y - speed)) {
 				_y -= speed;
 			}
 		}

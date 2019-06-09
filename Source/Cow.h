@@ -13,14 +13,16 @@ namespace game_framework {
 		void HitAnimation(int counter);
 		int Skill(int counter);
 		void OnShow(int x, int y, Gamemap * m, CHero *hero);    //主角現在位置x y
-		void OnMove(int x, int y, Gamemap * m);
-		int GetX2();					
+		void OnMove(int x, int y, Gamemap * m, int counter);
+		int GetX1() { return _x + 30; };
+		int GetY1() { return _y + 60; };
+		int GetX2();
 		int GetY2();
 		void SetHitted(int dmg, int time);				//被打到
 		bool GetHitted();
 		int GetCenterX();
 		int GetCenterY();
-		void DecideFormat(int x, int y, Gamemap * m);
+		void DecideFormat(int x, int y, Gamemap * m, int counter);
 
 	protected:
 		CAnimation normal_left;
@@ -39,6 +41,7 @@ namespace game_framework {
 		bool isNear;
 		int format;
 		bool isattacking;
+		int attacktimer;
 	};
 }
 

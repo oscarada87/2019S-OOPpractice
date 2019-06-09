@@ -13,7 +13,9 @@ namespace game_framework {
 		void HitAnimation(int counter);
 		int Skill(int counter);
 		void OnShow(int x, int y, Gamemap * m, CHero *hero);    //主角現在位置x y
-		void OnMove(int x, int y, Gamemap * m);
+		void OnMove(int x, int y, Gamemap * m, int counter);
+		int GetX1() { return _x + 20; };
+		int GetY1() { return _y + 50; };
 		int GetX2();					//右下角座標
 		int GetY2();
 		void SetHitted(int dmg, int time);				//被打到

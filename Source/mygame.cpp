@@ -370,15 +370,15 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	monsterloc.push_back(monsters[stage]->GetY2());
 	hero.OnMove(gamemap.at(stage), monsterloc);
 	//slime.OnMove(hero.GetX1(), hero.GetY1(), gamemap.at(stage));
-	monsters[stage]->OnMove(hero.GetX1(), hero.GetY1(), gamemap.at(stage));
+	monsters[stage]->OnMove(hero.GetX1(), hero.GetY1(), gamemap.at(stage), counter);
 	// 怪物攻擊
 	if (stage == 0) {
-		switch (monsters[0]->Skill(counter))
+		switch (monsters[stage]->Skill(counter))
 		{
 		case 0:
 			break;
 		case 1:
-			monsters[0]->MinusHP(-1);
+			monsters[stage]->MinusHP(-1);
 			break;
 		case 2:
 			monsterSpells.push_back(new FireBall(monsters[0]->GetCenterX(), monsters[0]->GetCenterY(), counter));
@@ -387,6 +387,19 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 			monsterSpells.push_back(new FireBall(monsters[0]->GetCenterX(), monsters[0]->GetCenterY(), counter));
 			monsterSpells.back()->LoadBitmap(1);
 			monsterSpells.back()->CalculateUnitVector(hero.GetX2(), hero.GetY2());
+			break;
+		default:
+			break;
+		}
+	}
+	else if (stage == 1) {
+		switch (monsters[stage]->Skill(counter)) 
+		{
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
 			break;
 		default:
 			break;

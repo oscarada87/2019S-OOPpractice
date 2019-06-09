@@ -27,11 +27,34 @@ namespace game_framework {
 	
 	int Cow::Skill(int counter)
 	{
-		if (counter % 30 == 0 && isNear)
+		const int NMR = 0;
+		const int NML = 1;
+		const int MR = 2;
+		const int ML = 3;
+		const int ATK1R = 4;
+		const int ATK1L = 5;
+		const int ATK2R = 6;
+		const int ATK2L = 7;
+		if (counter % 150 == 0 && isNear)
 		{
 			int result = getRandomNumber(1, 2);
-			if (result == 1 && _hp >= 10)
-				return 2;
+			if (result == 1) {
+				if (format == NMR || format == MR) {
+					format = ATK1R;
+				}
+				else if (format == NML || format == ML) {
+					format = ATK1L;
+				}
+			}
+			else if (result == 2) {
+				if (format == NMR || format == MR) {
+					format = ATK2R;
+				}
+				else if (format == NML || format == ML) {
+					format = ATK2L;
+				}
+			}
+			attacktimer = counter;
 			return result;
 		}
 			
@@ -47,22 +70,22 @@ namespace game_framework {
 
 	int Cow::GetX2()
 	{
-		return _x; //+ move.Width();
+		return _x + 150;
 	}
 
 	int Cow::GetY2()
 	{
-		return _y; //+ move.Height();
+		return _y + 140; 
 	}
 
 	int Cow::GetCenterX()
 	{
-		return _x; //+ move.Width()/2;
+		return _x + 100;
 	}
 
 	int Cow::GetCenterY()
 	{
-		return _y; //+ move.Height()/2;
+		return _y + 100;
 	}
 
 	void Cow::LoadBitmap()
@@ -73,24 +96,28 @@ namespace game_framework {
 		atk_1_left.AddBitmap(IDB_COW_ATK_1_LEFT4, RGB(0, 0, 0));
 		atk_1_left.AddBitmap(IDB_COW_ATK_1_LEFT5, RGB(0, 0, 0));
 		atk_1_left.AddBitmap(IDB_COW_ATK_1_LEFT6, RGB(0, 0, 0));
+		atk_1_left.SetDelayCount(10);
 		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT1, RGB(0, 0, 0));
 		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT2, RGB(0, 0, 0));
 		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT3, RGB(0, 0, 0));
 		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT4, RGB(0, 0, 0));
 		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT5, RGB(0, 0, 0));
 		atk_1_right.AddBitmap(IDB_COW_ATK_1_RIGHT6, RGB(0, 0, 0));
+		atk_1_right.SetDelayCount(10);
 		atk_2_left.AddBitmap(IDB_COW_ATK_2_LEFT1, RGB(0, 0, 0));
 		atk_2_left.AddBitmap(IDB_COW_ATK_2_LEFT2, RGB(0, 0, 0));
 		atk_2_left.AddBitmap(IDB_COW_ATK_2_LEFT3, RGB(0, 0, 0));
 		atk_2_left.AddBitmap(IDB_COW_ATK_2_LEFT4, RGB(0, 0, 0));
 		atk_2_left.AddBitmap(IDB_COW_ATK_2_LEFT5, RGB(0, 0, 0));
 		atk_2_left.AddBitmap(IDB_COW_ATK_2_LEFT6, RGB(0, 0, 0));
+		atk_2_left.SetDelayCount(10);
 		atk_2_right.AddBitmap(IDB_COW_ATK_2_RIGHT1, RGB(0, 0, 0));
 		atk_2_right.AddBitmap(IDB_COW_ATK_2_RIGHT2, RGB(0, 0, 0));
 		atk_2_right.AddBitmap(IDB_COW_ATK_2_RIGHT3, RGB(0, 0, 0));
 		atk_2_right.AddBitmap(IDB_COW_ATK_2_RIGHT4, RGB(0, 0, 0));
 		atk_2_right.AddBitmap(IDB_COW_ATK_2_RIGHT5, RGB(0, 0, 0));
 		atk_2_right.AddBitmap(IDB_COW_ATK_2_RIGHT6, RGB(0, 0, 0));
+		atk_2_right.SetDelayCount(10);
 		normal_left.AddBitmap(IDB_COW_NORMAL_LEFT1, RGB(0, 0, 0));
 		normal_left.AddBitmap(IDB_COW_NORMAL_LEFT2, RGB(0, 0, 0));
 		normal_left.AddBitmap(IDB_COW_NORMAL_LEFT3, RGB(0, 0, 0));
@@ -128,7 +155,7 @@ namespace game_framework {
 		}
 	}
 
-	void Cow::DecideFormat(int x, int y, Gamemap * m)
+	void Cow::DecideFormat(int x, int y, Gamemap * m, int counter)
 	{
 		const int NMR = 0;
 		const int NML = 1;
@@ -144,7 +171,10 @@ namespace game_framework {
 		int judgeX = _x + 20;
 		int judgeY = _y + 40;
 
-		if (active && isNear && !isattacking)
+		if ((counter - attacktimer) < 60) {
+			
+		}
+		else if (active && isNear && !isattacking)
 		{
 			if (x > _x && m->IsEmpty(_x + speed, _y)) {
 				_x += speed;
@@ -170,9 +200,9 @@ namespace game_framework {
 		}
 	}
 
-	void Cow::OnMove(int x, int y, Gamemap * m)
+	void Cow::OnMove(int x, int y, Gamemap * m, int counter)
 	{
-		DecideFormat(x, y, m);
+		DecideFormat(x, y, m, counter);
 		const int NMR = 0;
 		const int NML = 1;
 		const int MR = 2;
@@ -230,6 +260,16 @@ namespace game_framework {
 		const int ATK2L = 7;
 		const int DL = 8;
 		const int DR = 9;
+
+		if (hero->HitSomething(_x + 30, _y + 60, _x + 150, _y + 140)) {
+			active = false;
+		}
+		else if (abs(x - _x) < 300 && abs(y - _y) < 300) {
+			isNear = active = true;
+		}
+		else if (abs(x - _x) > 500 && abs(y - _y) > 500) {
+			active = false;
+		}
 		switch (format)
 		{
 		case NMR:

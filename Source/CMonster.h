@@ -26,14 +26,14 @@ namespace game_framework {
 		virtual void Initialize() = 0;				// 設定怪物為初始值
 		virtual void LoadBitmap() = 0;				// 載入圖形
 		virtual void HitAnimation(int counter) = 0;	// 被攻擊特效
-		virtual void OnMove(int x, int y, Gamemap * m) = 0;
+		virtual void OnMove(int x, int y, Gamemap * m, int counter) = 0;
 		virtual void OnShow(int x, int y, Gamemap * m, CHero *hero) = 0;
 		virtual void SetHitted(int dmg, int time) = 0; // 被打到
 		int GetHP() { return _hp; };
 		void MinusHP(int dmg) { _hp -= dmg; };
-		int GetX1() { return _x; };
+		virtual int GetX1() = 0;
 		void SetX1(int x) { _x = x; };
-		int GetY1() { return _y; };
+		virtual int GetY1() = 0;
 		void SetY1(int y) { _y = y; };
 		virtual int GetX2() = 0;
 		virtual int GetY2() = 0;
@@ -47,7 +47,7 @@ namespace game_framework {
 	protected:
 		int _hp;					// 血量
 		int format_state;			// 靜止方向(1上2下3左4右)
-		int _x, _y;					// 擦子左上角座標
+		int _x, _y;					// 怪物左上角座標
 		int _speed;					// 移動速度
 		int _hittime;				// 被攻擊時間
 		vector <int> _castTime;		// 施放時間
