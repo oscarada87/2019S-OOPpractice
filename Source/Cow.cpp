@@ -35,7 +35,7 @@ namespace game_framework {
 		const int ATK1L = 5;
 		const int ATK2R = 6;
 		const int ATK2L = 7;
-		if (counter % 150 == 0 && isNear)
+		if (counter % 180 == 0 && isNear && !isHitted)
 		{
 			int result = getRandomNumber(1, 2);
 			if (result == 1) {
@@ -80,12 +80,12 @@ namespace game_framework {
 
 	int Cow::GetCenterX()
 	{
-		return _x + 100;
+		return _x + 10;
 	}
 
 	int Cow::GetCenterY()
 	{
-		return _y + 100;
+		return _y + 30;
 	}
 
 	void Cow::LoadBitmap()
@@ -138,20 +138,22 @@ namespace game_framework {
 		death_left.AddBitmap(IDB_COW_DEATH_LEFT3, RGB(0, 0, 0));
 		death_left.AddBitmap(IDB_COW_DEATH_LEFT4, RGB(0, 0, 0));
 		death_left.AddBitmap(IDB_COW_DEATH_LEFT5, RGB(0, 0, 0));
+		death_left.SetDelayCount(5);
 		death_right.AddBitmap(IDB_COW_DEATH_RIGHT1, RGB(0, 0, 0));
 		death_right.AddBitmap(IDB_COW_DEATH_RIGHT2, RGB(0, 0, 0));
 		death_right.AddBitmap(IDB_COW_DEATH_RIGHT3, RGB(0, 0, 0));
 		death_right.AddBitmap(IDB_COW_DEATH_RIGHT4, RGB(0, 0, 0));
 		death_right.AddBitmap(IDB_COW_DEATH_RIGHT5, RGB(0, 0, 0));
+		death_right.SetDelayCount(5);
 
-		//hitted.LoadBitmap(IDB_SLIME_HIT, RGB(255, 255, 255));
+		hitted.LoadBitmap(IDB_COW_DEATH_LEFT3, RGB(0, 0, 0));
 	}
 
 	void Cow::HitAnimation(int counter)
 	{
 		if (counter - _hittime >= 10)
 		{
-			//isHitted = false;
+			isHitted = false;
 		}
 	}
 
@@ -174,7 +176,7 @@ namespace game_framework {
 		if ((counter - attacktimer) < 60) {
 			
 		}
-		else if (active && isNear && !isattacking)
+		else if (active && isNear && !isHitted &&!isattacking)
 		{
 			if (x > _x && m->IsEmpty(_x + speed, _y)) {
 				_x += speed;
@@ -194,7 +196,7 @@ namespace game_framework {
 				format = NML;
 			}
 		}
-		else
+		else if (!isHitted)
 		{
 			format = NML;
 		}
@@ -213,38 +215,41 @@ namespace game_framework {
 		const int ATK2L = 7;
 		const int DL = 8;
 		const int DR = 9;
-		switch (format)
+		if (!isHitted)
 		{
-		case NMR:
-			normal_right.OnMove();
-			break;
-		case NML:
-			normal_left.OnMove();
-			break;
-		case MR:
-			move_right.OnMove();
-			break;
-		case ML:
-			move_left.OnMove();
-			break;
-		case ATK1R:
-			atk_1_right.OnMove();
-			break;
-		case ATK1L:
-			atk_1_left.OnMove();
-			break;
-		case ATK2R:
-			atk_2_right.OnMove();
-			break;
-		case ATK2L:
-			atk_2_left.OnMove();
-			break;
-		case DR:
-			death_right.OnMove();
-			break;
-		case DL:
-			death_left.OnMove();
-			break;
+			switch (format)
+			{
+			case NMR:
+				normal_right.OnMove();
+				break;
+			case NML:
+				normal_left.OnMove();
+				break;
+			case MR:
+				move_right.OnMove();
+				break;
+			case ML:
+				move_left.OnMove();
+				break;
+			case ATK1R:
+				atk_1_right.OnMove();
+				break;
+			case ATK1L:
+				atk_1_left.OnMove();
+				break;
+			case ATK2R:
+				atk_2_right.OnMove();
+				break;
+			case ATK2L:
+				atk_2_left.OnMove();
+				break;
+			case DR:
+				death_right.OnMove();
+				break;
+			case DL:
+				death_left.OnMove();
+				break;
+			}
 		}
 	}
 
@@ -270,61 +275,67 @@ namespace game_framework {
 		else if (abs(x - _x) > 500 && abs(y - _y) > 500) {
 			active = false;
 		}
-		switch (format)
+		if (!isHitted)
 		{
-		case NMR:
-			normal_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-			normal_right.OnShow();
-			break;
-		case NML:
-			normal_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-			normal_left.OnShow();
-			break;
-		case MR:
-			move_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-			move_right.OnShow();
-			break;
-		case ML:
-			move_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-			move_left.OnShow();
-			break;
-		case ATK1R:
-			atk_1_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-			atk_1_right.OnShow();
-			break;
-		case ATK1L:
-			atk_1_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-			atk_1_left.OnShow();
-			break;
-		case ATK2R:
-			atk_2_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-			atk_2_right.OnShow();
-			break;
-		case ATK2L:
-			atk_2_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-			atk_2_left.OnShow();
-			break;
-		case DR:
-			death_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-			death_right.OnShow();
-			break;
-		case DL:
-			death_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-			death_left.OnShow();
-			break;
+			switch (format)
+			{
+			case NMR:
+				normal_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				normal_right.OnShow();
+				break;
+			case NML:
+				normal_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				normal_left.OnShow();
+				break;
+			case MR:
+				move_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				move_right.OnShow();
+				break;
+			case ML:
+				move_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				move_left.OnShow();
+				break;
+			case ATK1R:
+				atk_1_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				atk_1_right.OnShow();
+				break;
+			case ATK1L:
+				atk_1_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				atk_1_left.OnShow();
+				break;
+			case ATK2R:
+				atk_2_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				atk_2_right.OnShow();
+				break;
+			case ATK2L:
+				atk_2_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				atk_2_left.OnShow();
+				break;
+			case DR:
+				death_right.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				death_right.OnShow();
+				break;
+			case DL:
+				death_left.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+				death_left.OnShow();
+				break;
+			}
+		}
+		else {
+			hitted.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
+			hitted.ShowBitmap();
 		}
 	}
 
 	void Cow::SetHitted(int dmg, int time)
 	{
-		/*
 		if (!isHitted)
 		{
 			isHitted = true;
+			//format = 8;
 			_hittime = time;
 			_hp -= dmg;
 		}
-		*/
 	}
 
 }

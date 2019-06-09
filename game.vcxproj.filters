@@ -139,6 +139,9 @@
     <ClCompile Include="Source\Cow.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Maneuver.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h">
@@ -193,6 +196,9 @@
       <Filter>MyGame</Filter>
     </ClInclude>
     <ClInclude Include="Source\Cow.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Maneuver.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>
@@ -764,6 +770,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="RES\monster\cow\normal_right\normal_right3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\hero\bitmap10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\maneuver.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

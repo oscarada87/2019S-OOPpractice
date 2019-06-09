@@ -265,6 +265,7 @@
     <ClCompile Include="Source\CGameMap.cpp" />
     <ClCompile Include="Source\Cow.cpp" />
     <ClCompile Include="Source\FireBall.cpp" />
+    <ClCompile Include="Source\Maneuver.cpp" />
     <ClCompile Include="Source\Slime.cpp" />
     <ClCompile Include="Source\game.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -320,6 +321,7 @@
     <ClInclude Include="Source\gameDoc.h" />
     <ClInclude Include="Source\gameView.h" />
     <ClInclude Include="Source\MainFrm.h" />
+    <ClInclude Include="Source\Maneuver.h" />
     <ClInclude Include="Source\Resource.h" />
     <ClInclude Include="Source\Slime.h" />
     <ClInclude Include="Source\CSpell.h" />
@@ -385,6 +387,7 @@
     <Image Include="RES\game.ico" />
     <Image Include="RES\heart.bmp" />
     <Image Include="RES\helpbar.bmp" />
+    <Image Include="res\hero\bitmap10.bmp" />
     <Image Include="res\hero\down.bmp" />
     <Image Include="RES\hero\down_hit.bmp" />
     <Image Include="RES\hero\down_hit_0.bmp" />
@@ -432,6 +435,7 @@
     <Image Include="RES\hero\up_hit_2.bmp" />
     <Image Include="RES\lazer.bmp" />
     <Image Include="RES\left.bmp" />
+    <Image Include="RES\maneuver.bmp" />
     <Image Include="RES\monster\bmp1.bmp" />
     <Image Include="RES\monster\cow\atk_1_left\atk_1_left1.bmp" />
     <Image Include="RES\monster\cow\atk_1_left\atk_1_left2.bmp" />

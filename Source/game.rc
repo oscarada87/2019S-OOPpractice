@@ -414,6 +414,8 @@ IDB_oilcard             BITMAP                  "..\\RES\\feature\\oilcard.bmp"
 
 IDB_zingpingcard        BITMAP                  "..\\RES\\feature\\zingpingcard.bmp"
 
+IDB_MANEUVER            BITMAP                  "..\\RES\\maneuver.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

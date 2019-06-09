@@ -35,8 +35,8 @@ namespace game_framework {
 		CAnimation atk_2_right;
 		CAnimation death_left;
 		CAnimation death_right;
-		//CMovingBitmap hitted;
-		//bool isHitted;
+		CMovingBitmap hitted;
+		bool isHitted;
 		bool active;
 		bool isNear;
 		int format;

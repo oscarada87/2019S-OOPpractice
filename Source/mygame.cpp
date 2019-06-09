@@ -398,8 +398,13 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		case 0:
 			break;
 		case 1:
+			monsterSpells.push_back(new FireBall(monsters[1]->GetCenterX() + 50, monsters[1]->GetCenterY() + 50, counter));
+			monsterSpells.back()->LoadBitmap(1);
+			monsterSpells.back()->CalculateUnitVector(hero.GetX1(), hero.GetY1());
 			break;
 		case 2:
+			monsterSpells.push_back(new Maneuver(monsters[1]->GetCenterX(), monsters[1]->GetCenterY(), counter));
+			monsterSpells.back()->LoadBitmap(0);
 			break;
 		default:
 			break;
@@ -825,16 +830,6 @@ void CGameStateRun::OnShow()
 			heart2.ShowBitmap();
 		}
 	}
-	hero.OnShow(gamemap.at(stage));// 主角
-	gamemap.at(stage)->OnShowonhero();
-
-	
-	monsters[stage]->OnShow(hero.GetX1(), hero.GetY1(), gamemap.at(stage), &hero);
-	
-	for (auto it = heart.begin(); it != heart.end(); it++)
-	{
-		(*it)->ShowBitmap();
-	}
 	for (auto it = heroSpells.begin(); it != heroSpells.end(); it++) {
 		try
 		{
@@ -854,6 +849,16 @@ void CGameStateRun::OnShow()
 		{
 
 		}
+	}
+	hero.OnShow(gamemap.at(stage));// 主角
+	gamemap.at(stage)->OnShowonhero();
+
+	
+	monsters[stage]->OnShow(hero.GetX1(), hero.GetY1(), gamemap.at(stage), &hero);
+	
+	for (auto it = heart.begin(); it != heart.end(); it++)
+	{
+		(*it)->ShowBitmap();
 	}
 	hp_left.ShowBitmap();
 	smallhero.SetTopLeft(615, 0);
