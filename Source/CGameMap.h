@@ -48,7 +48,14 @@ namespace game_framework {
 			int gy = (y + 84) / 50; // 轉換為格座標(整數除法)
 			int ox = (x + 20) / 50;
 
-			return map[gx][gy] == 0 && map[ox][gy] == 0;// 0 代表空的
+			//return map[gx][gy] == 0 && map[ox][gy] == 0 || map[gx][gy] == 4 && map[ox][gy] == 4;// 0 代表空的
+			return (map[gx][gy] == 0 || map[gx][gy] == 4) && (map[ox][gy] == 0 || map[ox][gy] == 4);
+		};
+		bool Istrap(int x, int y) {
+			int gx = (x + 60) / 50; // 轉換為格座標(整數除法)
+			int gy = (y + 84) / 50; // 轉換為格座標(整數除法)
+			int ox = (x + 20) / 50;
+			return  map[gx][gy] == 4 && map[ox][gy] == 4;
 		};
 	protected:
 		int map[40][40];
@@ -125,6 +132,7 @@ namespace game_framework {
 		CMovingBitmap background1;
 		CMovingBitmap background2;
 		CMovingBitmap background3;
+		CMovingBitmap background4;
 	};
 
 }

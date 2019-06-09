@@ -156,6 +156,7 @@ namespace game_framework {
 		CMovingBitmap   heart2;
 		bool			shieldon;
 		bool			heart2on;
+		int             attacktrap;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

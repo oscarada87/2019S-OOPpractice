@@ -242,6 +242,7 @@ CGameStateRun::CGameStateRun(CGame *g)
 {
 	stage = 0;
 	buy = 0;
+	attacktrap = 0;
 	showdescription = false;
 }
 
@@ -338,6 +339,20 @@ void CGameStateRun::OnMove()							// ²¾°Ê¹CÀ¸¤¸¯À
 		if (hero.HitSomething(1700, 1850, 1725, 1880) && heart2on == true) {
 			heart2on = false;
 			hero.Sethp(-1);
+		}
+	}
+	if (stage == 2) {
+		if (gamemap.at(stage)->Istrap(hero.GetX1(), hero.GetY1())) {
+			attacktrap = attacktrap + 5;
+			//hero.Sethp(1);
+			hero.Speeddown();
+		}
+		else {
+			hero.SpeedInit();
+		}
+		if (attacktrap == 100) {
+			hero.Sethp(1);
+			attacktrap = 0;
 		}
 	}
 	counter++;
