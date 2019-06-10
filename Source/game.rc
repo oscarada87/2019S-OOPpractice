@@ -416,6 +416,8 @@ IDB_zingpingcard        BITMAP                  "..\\RES\\feature\\zingpingcard.
 
 IDB_MANEUVER            BITMAP                  "..\\RES\\maneuver.bmp"
 
+IDB_trap                BITMAP                  "..\\RES\\feature\\trap.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

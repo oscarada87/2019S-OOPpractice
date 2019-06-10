@@ -70,7 +70,10 @@ namespace game_framework {
 	{
 		speed = 20;
 	}
-
+	void CHero::Speeddown()
+	{
+		speed = 1;
+	}
 	void CHero::SpeedInit()
 	{
 		speed = 10;

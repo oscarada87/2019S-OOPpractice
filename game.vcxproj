@@ -22,7 +22,7 @@
     <ProjectGuid>{DDD280D7-4B85-4B03-BBC4-C46CA9BECCCB}</ProjectGuid>
     <RootNamespace>game</RootNamespace>
     <Keyword>MFCProj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
     <ProjectName />
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -379,6 +379,7 @@
     <Image Include="RES\feature\store.bmp" />
     <Image Include="RES\feature\store2.bmp" />
     <Image Include="RES\feature\stree.bmp" />
+    <Image Include="RES\feature\trap.bmp" />
     <Image Include="RES\feature\tree.bmp" />
     <Image Include="RES\feature\zingping.bmp" />
     <Image Include="RES\feature\zingpingcard.bmp" />
