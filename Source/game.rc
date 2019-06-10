@@ -418,6 +418,26 @@ IDB_MANEUVER            BITMAP                  "..\\RES\\maneuver.bmp"
 
 IDB_trap                BITMAP                  "..\\RES\\feature\\trap.bmp"
 
+IDB_WIZARD_NORMAL1      BITMAP                  "..\\RES\\monster\\wizard\\normal\\normal1.bmp"
+
+IDB_WIZARD_NORMAL2      BITMAP                  "..\\RES\\monster\\wizard\\normal\\normal2.bmp"
+
+IDB_WIZARD_NORMAL3      BITMAP                  "..\\RES\\monster\\wizard\\normal\\normal3.bmp"
+
+IDB_WIZARD_NORMAL4      BITMAP                  "..\\RES\\monster\\wizard\\normal\\normal4.bmp"
+
+IDB_WIZARD_NORMAL5      BITMAP                  "..\\RES\\monster\\wizard\\normal\\normal5.bmp"
+
+IDB_WIZARD_NORMAL6      BITMAP                  "..\\RES\\monster\\wizard\\normal\\normal6.bmp"
+
+IDB_WIZARD_NORMAL7      BITMAP                  "..\\RES\\monster\\wizard\\normal\\normal7.bmp"
+
+IDB_WIZARD_NORMAL8      BITMAP                  "..\\RES\\monster\\wizard\\normal\\normal8.bmp"
+
+IDB_WIZARD_NORMAL9      BITMAP                  "..\\RES\\monster\\wizard\\normal\\normal9.bmp"
+
+IDB_WIZARD_NORMAL10     BITMAP                  "..\\RES\\monster\\wizard\\normal\\normal10.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
