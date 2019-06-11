@@ -362,6 +362,7 @@
     <Image Include="RES\feature\heroinhp.bmp" />
     <Image Include="RES\feature\hill.bmp" />
     <Image Include="RES\feature\ice2.bmp" />
+    <Image Include="RES\feature\icetrap.bmp" />
     <Image Include="RES\feature\icewell.bmp" />
     <Image Include="RES\feature\mazu.bmp" />
     <Image Include="RES\feature\mazucard.bmp" />
@@ -382,6 +383,7 @@
     <Image Include="RES\feature\store2.bmp" />
     <Image Include="RES\feature\stree.bmp" />
     <Image Include="RES\feature\trap.bmp" />
+    <Image Include="RES\feature\trapzone.bmp" />
     <Image Include="RES\feature\tree.bmp" />
     <Image Include="RES\feature\zingping.bmp" />
     <Image Include="RES\feature\zingpingcard.bmp" />

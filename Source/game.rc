@@ -470,6 +470,11 @@ IDB_WIZARD_DEATH2	    BITMAP                  "..\\RES\\monster\\wizard\\death\\
 
 IDB_FIREBALL_GREEN	    BITMAP                  "..\\RES\\fireball(green).bmp"
 
+IDB_trapzone            BITMAP                  "..\\RES\\feature\\trapzone.bmp"
+
+IDB_icetrap             BITMAP                  "..\\RES\\feature\\icetrap.bmp"
+
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

@@ -114,6 +114,7 @@ namespace game_framework {
 		CMovingBitmap background1;
 		CMovingBitmap background2;
 		CMovingBitmap background3;
+		CMovingBitmap background4;
 		CMovingBitmap snowtree;
 		CMovingBitmap snoww;
 	};

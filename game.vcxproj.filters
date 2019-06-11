@@ -787,5 +787,11 @@
     <Image Include="RES\feature\trap.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\feature\trapzone.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\feature\icetrap.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

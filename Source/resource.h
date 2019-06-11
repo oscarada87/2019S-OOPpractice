@@ -239,6 +239,8 @@
 #define IDB_WIZARD_ATK8					380
 #define IDB_WIZARD_DEATH2				381
 #define IDB_FIREBALL_GREEN				382
+#define IDB_trapzone                    383
+#define IDB_icetrap                     384
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -251,7 +253,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        357
+#define _APS_NEXT_RESOURCE_VALUE        359
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
