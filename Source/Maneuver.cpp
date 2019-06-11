@@ -4,9 +4,7 @@
 #include <ddraw.h>
 #include "audio.h"
 #include "gamelib.h"
-
 #include "Maneuver.h"
-
 namespace game_framework {
 	Maneuver::Maneuver(int x, int y, int time):CSpell(x, y, time)
 	{
@@ -39,14 +37,10 @@ namespace game_framework {
 	{
 
 	}
-
-	
 	bool Maneuver::HitSomething(CMonster *monster)
 	{
 		return HitRectangle(monster->GetX1(), monster->GetY1(), monster->GetX2(), monster->GetY2());
 	}
-	
-
 	bool Maneuver::HitRectangle(int tx1, int ty1, int tx2, int ty2)
 	{
 		int x1 = _initX;				// ¥ª¤W¨¤x®y¼Ð
@@ -72,7 +66,6 @@ namespace game_framework {
 			return true;
 		}
 	}
-
 	void Maneuver::CalculateUnitVector(int x2, int y2)
 	{
 	}

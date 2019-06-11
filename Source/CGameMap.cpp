@@ -232,7 +232,7 @@ namespace game_framework {
 
 	void CGameMap2::Initialize()
 	{
-		const int X_POS = 800;/*要改*/
+		const int X_POS = 800;
 		const int Y_POS = 1500;
 		sx = X_POS;
 		sy = Y_POS;
@@ -292,7 +292,6 @@ namespace game_framework {
 		background2.LoadBitmap(IDB_stage2);
 		background3.LoadBitmap(IDB_stage3);
 		background4.LoadBitmap(IDB_icetrap);
-		/*candle.LoadBitmap(IDB_candle, RGB(255, 255, 255));*/
 	}
 	void CGameMap2::OnShow()
 	{
@@ -331,8 +330,6 @@ namespace game_framework {
 					ASSERT(1);
 				}
 			}
-		/*candle.SetTopLeft(1000 - sx, 225 - sy);
-		candle.ShowBitmap();*/
 		snoww.SetTopLeft(100 - sx, 1350 - sy);
 		snoww.ShowBitmap();
 		snoww.SetTopLeft(300 - sx, 1350 - sy);
@@ -376,7 +373,7 @@ namespace game_framework {
 
 	void CGameMap3::Initialize()
 	{
-		const int X_POS = 800;/*要改*/
+		const int X_POS = 800;
 		const int Y_POS = 1500;
 		sx = X_POS;
 		sy = Y_POS;
@@ -434,7 +431,6 @@ namespace game_framework {
 		background2.LoadBitmap(IDB_final0);
 		background3.LoadBitmap(IDB_final3);
 		background4.LoadBitmap(IDB_trap);
-		/*candle.LoadBitmap(IDB_candle, RGB(255, 255, 255));*/
 	}
 	void CGameMap3::OnShow()
 	{
@@ -473,8 +469,6 @@ namespace game_framework {
 					ASSERT(1);
 				}
 			}
-		/*candle.SetTopLeft(1000 - sx, 225 - sy);
-		candle.ShowBitmap();*/
 
 	}
 	void CGameMap3::OnShowonhero()

@@ -8,10 +8,8 @@
 #include "CHero.h"
 #include "Slime.h"
 #include "math.h"
-
 //#include "CGameMap.h"
 //#include "CHero.h"
-
 namespace game_framework {
 	void Slime::Initialize()
 	{
@@ -104,13 +102,6 @@ namespace game_framework {
 				_y -= speed;
 			}
 		}
-		/*
-		else if (!isNear) {
-			move.OnMove();
-			_x += getRandomNumber(-10, 10);
-			_y += getRandomNumber(-10, 10);
-		}
-		*/
 		else 
 		{
 			still.OnMove();
@@ -140,13 +131,6 @@ namespace game_framework {
 				move.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				move.OnShow();
 			}
-			/*
-			else  {
-				ismove = false;
-				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-				still.OnShow();
-			}
-			*/
 		}
 		else
 		{

@@ -1,8 +1,6 @@
 #ifndef FIREBALL_H
 #define FIREBALL_H
-
 #include "CSpell.h"
-
 namespace game_framework {
 	class FireBall : public CSpell 
 	{
@@ -20,6 +18,4 @@ namespace game_framework {
 	};
 
 }
-
-
 #endif

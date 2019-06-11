@@ -72,24 +72,13 @@ CGameStateInit::CGameStateInit(CGame *g)
 
 void CGameStateInit::OnInit()
 {
-	//
-	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
-	//
 	ShowInitProgress(0);	// 一開始的loading進度為0%
-	//
-	// 開始載入資料
-	//
 	gamestart.LoadBitmap(IDB_GAMESTART);
 	helpbar.LoadBitmap(IDB_HELPBAR);
 	Sleep(100);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	CAudio::Instance()->Load(AUDIO_HELP, "sounds\\HELP.mp3");
 	if (CAudio::Instance()->Load(AUDIO_STARTOST, "sounds\\startost.mp3"))
 		CAudio::Instance()->Play(AUDIO_STARTOST, true);
-		
-	//
-	// 此OnInit動作會接到CGameStaterRun::OnInit()，所以進度還沒到100%
-	//
 }
 
 void CGameStateInit::OnBeginState()
@@ -127,28 +116,10 @@ void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	//CAudio::Instance()->Stop(AUDIO_STARTOST);
-	//GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
 }
 
 void CGameStateInit::OnShow()
 {
-	//
-	// Demo螢幕字型的使用，不過開發時請盡量避免直接使用字型，改用CMovingBitmap比較好
-	//
-	//CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
-	//CFont f,*fp;
-	//f.CreatePointFont(160,"Times New Roman");	// 產生 font f; 160表示16 point的字
-	//fp=pDC->SelectObject(&f);					// 選用 font f
-	//pDC->SetBkColor(RGB(0,0,0));
-	//pDC->SetTextColor(RGB(255,255,0));
-	//pDC->TextOut(120,220,"Please click mouse or press SPACE to begin.");
-	//pDC->TextOut(5,395,"Press Ctrl-F to switch in between window mode and full screen mode.");
-	//if (ENABLE_GAME_PAUSE)
-	//	pDC->TextOut(5,425,"Press Ctrl-Q to pause the Game.");
-	//pDC->TextOut(5,455,"Press Alt-F4 or ESC to Quit.");
-	//pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	//CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
 	//
 	//gamestart
 	//
@@ -171,35 +142,19 @@ CGameStateOver::CGameStateOver(CGame *g)
 
 void CGameStateOver::OnMove()
 {
-	/*
-	counter--;
-	if (counter < 0)
-		GotoGameState(GAME_STATE_INIT);
-	*/
 }
 
 void CGameStateOver::OnBeginState()
 {
-	//counter = 30 * 5; // 5 seconds
 	CAudio::Instance()->Play(AUDIO_END, true);
 }
 
 void CGameStateOver::OnInit()
 {
-	//
-	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
-	//
 	ShowInitProgress(66);	// 接個前一個狀態的進度，此處進度視為66%
-	//
-	// 開始載入資料
-	//
 	gameend.LoadBitmap(IDB_ENDMUSIC);
 	CAudio::Instance()->Load(AUDIO_END, "sounds\\end.mp3");
 	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
-	//
-	// 最終進度為100%
-	//
 	ShowInitProgress(100);
 }
 void CGameStateOver::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -215,20 +170,6 @@ void CGameStateOver::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 }
 void CGameStateOver::OnShow()
 {
-	/*
-	CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
-	CFont f, *fp;
-	f.CreatePointFont(160, "Times New Roman");	// 產生 font f; 160表示16 point的字
-	fp = pDC->SelectObject(&f);					// 選用 font f
-	pDC->SetBkColor(RGB(0, 0, 0));
-	pDC->SetTextColor(RGB(255, 255, 0));
-	char str[80];								// Demo 數字對字串的轉換
-	sprintf(str, "Game Over ! (%d)", counter / 30);
-	pDC->TextOut(240, 210, str);
-	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
-	*/
-
 	gameend.SetTopLeft(0, 0);
 	gameend.ShowBitmap();
 }
@@ -279,7 +220,6 @@ void CGameStateRun::OnBeginState()
 		monsters[i]->Initialize();
 	}
 	hero.Initialize();
-	//slime.Initialize();
 	counterlazer = 30 * 2; // 2 seconds
 	lazeropen = false;
 	shieldon = true;
@@ -303,16 +243,9 @@ void CGameStateRun::OnBeginState()
 
 void CGameStateRun::OnMove()							// 移動遊戲元素
 {
-	//
-	// 如果希望修改cursor的樣式，則將下面程式的commment取消即可
-	//
-	// SetCursor(AfxGetApp()->LoadCursor(IDC_GAMECURSOR));
-	//
-	
 	gamemap.at(stage)->OnMove();//地圖
 	if (stage == 0) {
 		counterlazer--; //雷射開關
-		/*lazer(要加東西)*/
 		if (lazeropen == true && (hero.HitSomething(1200, 500, 1600, 501) || hero.HitSomething(1200, 750, 1600, 751)
 			|| hero.HitSomething(1200, 1000, 1600, 1001) || hero.HitSomething(1200, 1250, 1600, 1251))) {
 			counterlazer = 0;
@@ -335,10 +268,9 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		}
 	}
 	if (stage == 1) {
-		counterlazer--; //借用
+		counterlazer--; //借用計時器
 		if (hero.HitSomething(600, 200, 625, 230) && shieldon == true) {
-			shieldon = false;
-			/*可以防禦*/
+			shieldon = false;//防禦
 		}
 		if (hero.HitSomething(1700, 1850, 1725, 1880) && heart2on == true) {
 			heart2on = false;
@@ -374,7 +306,6 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	if (stage == 2) {
 		if (gamemap.at(stage)->Istrap(hero.GetX1(), hero.GetY1())) {
 			attacktrap = attacktrap + 5;
-			//hero.Sethp(1);
 			hero.Speeddown();
 		}else if(shift){
 			hero.SpeedUp();
@@ -390,7 +321,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//判斷史萊姆血量
 	if (monsters[stage]->GetHP() <= 0 && stage < 2)
 	{
-		//這邊要加怪物死亡動畫
+		//怪物死亡動畫
 		gamemap.at(stage)->Initialize();
 		hero.SetXY(1000, 1750);
 		stage++;
@@ -415,7 +346,6 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	monsterloc.push_back(monsters[stage]->GetX2());
 	monsterloc.push_back(monsters[stage]->GetY2());
 	hero.OnMove(gamemap.at(stage), monsterloc);
-	//slime.OnMove(hero.GetX1(), hero.GetY1(), gamemap.at(stage));
 	monsters[stage]->OnMove(hero.GetX1(), hero.GetY1(), gamemap.at(stage), counter);
 	// 怪物攻擊
 	if (stage == 0) {
@@ -521,12 +451,10 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	for (auto it = heroSpells.begin(); it != heroSpells.end();) {
 		if ((*it)->HitSomething(monsters[stage]) && monsters[stage]->GetHP() > 0)
 		{
-			//delete *it;
 			it = heroSpells.erase(it);
 			try
 			{
 				monsters[stage]->SetHitted(1, counter);
-				//heart.pop_back();
 			}
 			catch (...)
 			{
@@ -544,7 +472,6 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	for (auto it = monsterSpells.begin(); it != monsterSpells.end();) {
 		if ((*it)->HitSomething(&hero) && hero.Gethp() > 0)
 		{
-			//delete *it;
 			it = monsterSpells.erase(it);
 			try
 			{
@@ -562,7 +489,6 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	}
 
 	// 怪物血量
-	//heart.clear();
 	while ((size_t)monsters[stage]->GetHP() != heart.size())
 	{
 		if ((size_t)monsters[stage]->GetHP() > heart.size())
@@ -576,40 +502,18 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 			heart.erase(heart.end() - 1);
 		}
 	}
-	/*
-	for (int i = 0; i < monsters[stage]->GetHP(); i++)
-	{
-		heart.push_back(new CMovingBitmap());
-		heart.at(i)->LoadBitmap(IDB_HEART, RGB(255, 255, 255));
-		heart.at(i)->SetTopLeft(0 + 28 * i, 0);
-	}
-	*/
-
 	//	英雄血量
 	hp_left.SetInteger(hero.Gethp());
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 {
-	//
-	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
-	//
 	ShowInitProgress(33);	// 接個前一個狀態的進度，此處進度視為33%
-	//
-	// 開始載入資料
-	//
-	// 完成部分Loading動作，提高進度
-	//
 	ShowInitProgress(50);
 	Sleep(300); // 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
-	//
-	// 繼續載入其他資料
-	//
 
 	hero.LoadBitmap();
 
-	//monsters[0][0]->LoadBitmap();
 	/*gamemap*/
 	gamemap.push_back(new CGameMap());
 	gamemap.push_back(new CGameMap2());
@@ -618,8 +522,6 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	{
 		gamemap.at(i)->LoadBitmap();	//地圖
 	}
-
-	//slime.LoadBitmap();
 	hp_left.LoadBitmap();
 	lazer.LoadBitmap(IDB_lazer, RGB(255, 255, 255));
 	trapzone.LoadBitmap(IDB_trapzone, RGB(255, 255, 255));
@@ -646,10 +548,6 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	CAudio::Instance()->Load(AUDIO_KNIFE, "sounds\\knife.mp3");
 	CAudio::Instance()->Load(AUDIO_KNIFEHIT, "sounds\\knifehit.mp3");
 	CAudio::Instance()->Load(AUDIO_EARTH, "sounds\\earth.mp3");
-
-	//
-	// 此OnInit動作會接到CGameStaterOver::OnInit()，所以進度還沒到100%
-	//
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -695,7 +593,6 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 	if (nChar == KEY_X)
 	{
-		//Sleep(200);
 		vector<int> monsterloc;
 		monsterloc.push_back(monsters[stage]->GetX1());
 		monsterloc.push_back(monsters[stage]->GetY1());
@@ -717,7 +614,6 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		{
 			CAudio::Instance()->Play(AUDIO_KNIFEHIT, true);
 			monsters[stage]->SetHitted(1, counter);
-			//heart.pop_back();	
 		}
 			
 	}
@@ -783,7 +679,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		if (hero.CheckCooldown(2, counter, 20))
 		{
 			hero.SetCastTime(2, counter);
-			if (hero.Gethp() == 95)
+			if (hero.Gethp() < 95 && hero.Gethp() >= 85)
 				hero.Sethp(-1);
 			else if (hero.Gethp() < 85)
 				hero.Sethp(-2);
@@ -831,10 +727,6 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 		heroSpells.push_back(new FireBall(hero.GetCenterX(), hero.GetCenterY(), counter));
 		heroSpells.back()->LoadBitmap(0);
 		heroSpells.back()->CalculateUnitVector(point.x + gamemap.at(stage)->GetSX(), point.y + gamemap.at(stage)->GetSY());
-		//TRACE("HeroX: %d", hero.GetCenterX());
-		//TRACE("HeroY: %d", hero.GetCenterY());
-		//TRACE("X: %d", point.x);
-		//TRACE("Y: %d", point.y);
 	}
 }
 
@@ -845,7 +737,6 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	// 沒事。如果需要處理滑鼠移動的話，寫code在這裡
 }
 
 void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
@@ -860,7 +751,7 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 void CGameStateRun::OnShow()
 {
-	gamemap.at(stage)->OnShow();				//地圖
+	gamemap.at(stage)->OnShow();//地圖
 	
 	//商店//
 	if (stage == 0) {
@@ -940,8 +831,6 @@ void CGameStateRun::OnShow()
 	}
 	hero.OnShow(gamemap.at(stage));// 主角
 	gamemap.at(stage)->OnShowonhero();
-
-	
 	monsters[stage]->OnShow(hero.GetX1(), hero.GetY1(), gamemap.at(stage), &hero);
 
 	for (auto it = heart.begin(); it != heart.end(); it++)

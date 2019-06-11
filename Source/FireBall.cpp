@@ -4,9 +4,7 @@
 #include <ddraw.h>
 #include "audio.h"
 #include "gamelib.h"
-
 #include "FireBall.h"
-
 namespace game_framework {
 	FireBall::FireBall(int x, int y, int time):CSpell(x, y, time)
 	{
@@ -43,7 +41,6 @@ namespace game_framework {
 
 	void FireBall::OnMove()
 	{
-		// 靜止方向(1上2下3左4右)
 		_initX += _unitVectorX;
 		_initY += _unitVectorY;
 	}
@@ -89,8 +86,5 @@ namespace game_framework {
 		int temp2 = int(sqrt(temp1));
 		_unitVectorX = int(((x2 - _initX) * _speed) / temp2);
 		_unitVectorY = int(((y2 - _initY) * _speed) / temp2);
-		//TRACE("temp2: %d", temp2);
-		//TRACE("X: %d", _unitVectorX);
-		//TRACE("Y: %d", _unitVectorY);
 	}
 }

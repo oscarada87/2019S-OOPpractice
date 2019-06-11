@@ -61,10 +61,10 @@ namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 
 	enum AUDIO_ID {				// 定義各種音效的編號
-		AUDIO_DING,				// 0
-		AUDIO_LAKE,				// 1
-		AUDIO_NTUT,				// 2
-		AUDIO_STARTOST,			// 3
+		AUDIO_DING,				
+		AUDIO_LAKE,				
+		AUDIO_NTUT,				
+		AUDIO_STARTOST,			
 		AUDIO_HELP,
 		AUDIO_END,
 		AUDIO_EARTH,
@@ -132,27 +132,26 @@ namespace game_framework {
 		vector<CMonster*> monsters; // 怪物二維陣列
 		Slime           slime;		// 史萊姆
 		/*商店*/
-		CMovingBitmap   store;		// 商店
-		CMovingBitmap   storemoney;		// 商店
-		CMovingBitmap   storezing;		// 商店
-		CMovingBitmap   storeoil;		// 商店
-		CMovingBitmap   storebus;		// 商店
-		CMovingBitmap   storemazu;		// 商店
+		CMovingBitmap   store;		
+		CMovingBitmap   storemoney;		
+		CMovingBitmap   storezing;		
+		CMovingBitmap   storeoil;		
+		CMovingBitmap   storebus;		
+		CMovingBitmap   storemazu;		
 		/*卡牌*/
-		CMovingBitmap   storemoneycard;		// card
-		CMovingBitmap   storezingcard;		// card
-		CMovingBitmap   storeoilcard;		// card
-		CMovingBitmap   storebuscard;		// card
-		CMovingBitmap   storemazucard;		// card
+		CMovingBitmap   storemoneycard;
+		CMovingBitmap   storezingcard;
+		CMovingBitmap   storeoilcard;
+		CMovingBitmap   storebuscard;
+		CMovingBitmap   storemazucard;
 		int buy;
 		bool showdescription;
-
 		CMovingBitmap   lazer;			//lazer
 		int				counterlazer;
 		bool            lazeropen;
 		int				counter;	//計時器
 		int				stage;		//第幾張地圖/第幾隻怪物
-		/*stage2 shield&heart&trapzone*/
+		/*stage2 shield heart trapzone*/
 		CMovingBitmap   shield;
 		CMovingBitmap   heart2;
 		CMovingBitmap   trapzone;
