@@ -244,6 +244,8 @@ CGameStateRun::CGameStateRun(CGame *g)
 	buy = 0;
 	attacktrap = 0;
 	showdescription = false;
+	zattack = true;
+	shift = false;
 }
 
 CGameStateRun::~CGameStateRun()
@@ -278,10 +280,11 @@ void CGameStateRun::OnBeginState()
 	}
 	hero.Initialize();
 	//slime.Initialize();
-	counterlazer = 30 * 2; // 5 seconds
+	counterlazer = 30 * 2; // 2 seconds
 	lazeropen = false;
 	shieldon = true;
 	heart2on = true;
+	trapzoneon = false;
 	for (int i = 0; i < 3; i++)
 	{
 		gamemap.at(i)->Initialize();
@@ -332,6 +335,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		}
 	}
 	if (stage == 1) {
+		counterlazer--; //借用
 		if (hero.HitSomething(600, 200, 625, 230) && shieldon == true) {
 			shieldon = false;
 			/*可以防禦*/
@@ -340,14 +344,41 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 			heart2on = false;
 			hero.Sethp(-1);
 		}
+		if (hero.HitSomething(monsters[stage]->GetX1(), monsters[stage]->GetY1()
+			, monsters[stage]->GetX2(), monsters[stage]->GetY2()) && trapzoneon == true) {
+			zattack = false;
+		}
+		else {
+			zattack = true;
+		}
+		if (counterlazer <= 0) {
+			if (trapzoneon) {
+				trapzoneon = false;
+				counterlazer = 30 * 2;
+			}
+			else {
+				trapzoneon = true;
+				counterlazer = 30 * 2;
+			}
+		}
+		if (gamemap.at(stage)->Istrap(hero.GetX1(), hero.GetY1())) {
+			hero.Speeddown();
+			zattack = false;
+		}else if (shift) {
+			hero.SpeedUp();
+		}else {
+			hero.SpeedInit();
+			zattack = true;
+		}
 	}
 	if (stage == 2) {
 		if (gamemap.at(stage)->Istrap(hero.GetX1(), hero.GetY1())) {
 			attacktrap = attacktrap + 5;
 			//hero.Sethp(1);
 			hero.Speeddown();
-		}
-		else {
+		}else if(shift){
+			hero.SpeedUp();
+		}else {
 			hero.SpeedInit();
 		}
 		if (attacktrap == 100) {
@@ -558,6 +589,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//slime.LoadBitmap();
 	hp_left.LoadBitmap();
 	lazer.LoadBitmap(IDB_lazer, RGB(255, 255, 255));
+	trapzone.LoadBitmap(IDB_trapzone, RGB(255, 255, 255));
 	heart2.LoadBitmap(IDB_stage2heart, RGB(255, 255, 255));
 	shield.LoadBitmap(IDB_shield, RGB(255, 255, 255));
 	smallhero.LoadBitmap(IDB_hphero, RGB(255, 255, 255));
@@ -639,7 +671,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		hero.Teleport(gamemap.at(stage), monsterloc);
 	}
 
-	if (nChar == KEY_Z)
+	if (nChar == KEY_Z && zattack == true)
 	{
 		CAudio::Instance()->Play(AUDIO_KNIFE, true);
 		hero.SetHit(true);
@@ -685,6 +717,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
 		CAudio::Instance()->Play(AUDIO_RUN, true);
 		hero.SpeedUp();
+		shift = true;
 	}
 }
 
@@ -717,9 +750,9 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		if (hero.CheckCooldown(2, counter, 20))
 		{
 			hero.SetCastTime(2, counter);
-			if (hero.Gethp() == 9)
+			if (hero.Gethp() == 95)
 				hero.Sethp(-1);
-			else if (hero.Gethp() < 9)
+			else if (hero.Gethp() < 85)
 				hero.Sethp(-2);
 			hero.SetHeal(true);
 		}
@@ -753,6 +786,7 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
 		CAudio::Instance()->Stop(AUDIO_RUN);
 		hero.SpeedInit();
+		shift = false;
 	}
 }
 
@@ -844,6 +878,11 @@ void CGameStateRun::OnShow()
 			heart2.SetTopLeft(gamemap.at(stage)->ScreenX(1700), gamemap.at(stage)->ScreenY(1850));
 			heart2.ShowBitmap();
 		}
+		if (trapzoneon) {
+			trapzone.SetTopLeft(gamemap.at(stage)->ScreenX(monsters[stage]->GetX1()-50)
+				, gamemap.at(stage)->ScreenY(monsters[stage]->GetY1()-50));
+			trapzone.ShowBitmap();
+		}
 	}
 	for (auto it = heroSpells.begin(); it != heroSpells.end(); it++) {
 		try
@@ -864,13 +903,14 @@ void CGameStateRun::OnShow()
 		{
 
 		}
+		
 	}
 	hero.OnShow(gamemap.at(stage));// 主角
 	gamemap.at(stage)->OnShowonhero();
 
 	
 	monsters[stage]->OnShow(hero.GetX1(), hero.GetY1(), gamemap.at(stage), &hero);
-	
+
 	for (auto it = heart.begin(); it != heart.end(); it++)
 	{
 		(*it)->ShowBitmap();

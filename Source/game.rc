@@ -418,6 +418,10 @@ IDB_MANEUVER            BITMAP                  "..\\RES\\maneuver.bmp"
 
 IDB_trap                BITMAP                  "..\\RES\\feature\\trap.bmp"
 
+IDB_trapzone            BITMAP                  "..\\RES\\feature\\trapzone.bmp"
+
+IDB_icetrap             BITMAP                  "..\\RES\\feature\\icetrap.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
