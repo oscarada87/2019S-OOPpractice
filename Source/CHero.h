@@ -43,6 +43,7 @@ namespace game_framework {
 		void Teleport(Gamemap * m, vector<int> monsterloc);					//順移
 		void SetCastTime(int number, int time);		//設定冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
 		bool CheckCooldown(int number, int counter, int cooldown);	//檢查冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
+		bool monsterIsEmpty(int x, int y, vector<int> monsterloc, Gamemap *map);
 	protected:
 		CAnimation animation1;		// 擦子的動畫
 		CAnimation animation2;		// 擦子的動畫
@@ -68,7 +69,6 @@ namespace game_framework {
 		vector <int> castTime;		// 冷卻時間 (1基本攻擊 2技能A 3技能B 4技能C)
 		int  hp;					// 血量
 		bool heal;
-		bool monsterIsEmpty(int x, int y, vector<int> monsterloc, Gamemap *map);
 	};
 }
 

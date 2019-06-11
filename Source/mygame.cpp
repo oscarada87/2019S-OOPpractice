@@ -267,7 +267,7 @@ void CGameStateRun::OnBeginState()
 	monsters.clear();
 	monsters.push_back(new Slime(5));
 	monsters.push_back(new Cow(10));
-	monsters.push_back(new Slime(8));
+	monsters.push_back(new Wizard(30));
 
 	for (int i = 0; (size_t)i < monsters.size(); i++) {
 		monsters[i]->LoadBitmap();
@@ -420,6 +420,39 @@ void CGameStateRun::OnMove()							// ²¾°Ê¹CÀ¸¤¸¯À
 		case 2:
 			monsterSpells.push_back(new Maneuver(monsters[1]->GetCenterX(), monsters[1]->GetCenterY(), counter));
 			monsterSpells.back()->LoadBitmap(0);
+			break;
+		default:
+			break;
+		}
+	}
+	else if (stage == 2) {
+		switch (monsters[stage]->Skill(counter))
+		{
+		case 0:
+			break;
+		case 1:
+			monsterSpells.push_back(new FireBall(monsters[2]->GetCenterX() + 50, monsters[2]->GetCenterY() + 50, counter));
+			monsterSpells.back()->LoadBitmap(2);
+			monsterSpells.back()->CalculateUnitVector(hero.GetX1(), hero.GetY1());
+			monsterSpells.push_back(new FireBall(monsters[2]->GetCenterX() + 150, monsters[2]->GetCenterY() + 150, counter));
+			monsterSpells.back()->LoadBitmap(2);
+			monsterSpells.back()->CalculateUnitVector(hero.GetX1(), hero.GetY1());
+			monsterSpells.push_back(new FireBall(monsters[2]->GetCenterX(), monsters[2]->GetCenterY(), counter));
+			monsterSpells.back()->LoadBitmap(2);
+			monsterSpells.back()->CalculateUnitVector(hero.GetX1(), hero.GetY1());
+			monsterSpells.push_back(new FireBall(monsters[2]->GetCenterX()-150, monsters[2]->GetCenterY(), counter));
+			monsterSpells.back()->LoadBitmap(2);
+			monsterSpells.back()->CalculateUnitVector(hero.GetX1(), hero.GetY1());
+			monsterSpells.push_back(new FireBall(monsters[2]->GetCenterX(), monsters[2]->GetCenterY() + 100, counter));
+			monsterSpells.back()->LoadBitmap(2);
+			monsterSpells.back()->CalculateUnitVector(hero.GetX1(), hero.GetY1());
+			monsterSpells.push_back(new FireBall(monsters[2]->GetCenterX() - 50, monsters[2]->GetCenterY() - 50, counter));
+			monsterSpells.back()->LoadBitmap(2);
+			monsterSpells.back()->CalculateUnitVector(hero.GetX1(), hero.GetY1());
+			break;
+		case 2:
+			break;
+		case 3:
 			break;
 		default:
 			break;

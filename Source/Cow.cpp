@@ -64,8 +64,7 @@ namespace game_framework {
 
 	bool Cow::GetHitted()
 	{
-		return false;
-		//return isHitted;
+		return isHitted;
 	}
 
 	int Cow::GetX2()

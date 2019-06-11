@@ -49,6 +49,7 @@
 //ªk³N
 #include "FireBall.h"
 #include "Maneuver.h"
+#include "Wizard.h"
 
 //©Çª«
 #include "Slime.h"

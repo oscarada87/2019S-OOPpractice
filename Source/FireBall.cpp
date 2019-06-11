@@ -29,6 +29,9 @@ namespace game_framework {
 		case 1:
 			_start_img.LoadBitmapA(IDB_FIREBALL_RED, RGB(0, 0, 0));
 			break;
+		case 2:
+			_start_img.LoadBitmapA(IDB_FIREBALL_GREEN, RGB(255, 255, 255));
+			break;
 		}
 	}
 

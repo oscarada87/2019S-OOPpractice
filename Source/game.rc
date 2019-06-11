@@ -438,6 +438,38 @@ IDB_WIZARD_NORMAL9      BITMAP                  "..\\RES\\monster\\wizard\\norma
 
 IDB_WIZARD_NORMAL10     BITMAP                  "..\\RES\\monster\\wizard\\normal\\normal10.bmp"
 
+IDB_WIZARD_MOVE1	    BITMAP                  "..\\RES\\monster\\wizard\\move\\move1.bmp"
+
+IDB_WIZARD_MOVE2	    BITMAP                  "..\\RES\\monster\\wizard\\move\\move2.bmp"
+
+IDB_WIZARD_MOVE3	    BITMAP                  "..\\RES\\monster\\wizard\\move\\move3.bmp"
+
+IDB_WIZARD_MOVE4	    BITMAP                  "..\\RES\\monster\\wizard\\move\\move4.bmp"
+
+IDB_WIZARD_MOVE5	    BITMAP                  "..\\RES\\monster\\wizard\\move\\move5.bmp"
+
+IDB_WIZARD_MOVE6	    BITMAP                  "..\\RES\\monster\\wizard\\move\\move6.bmp"
+
+IDB_WIZARD_ATK1		    BITMAP                  "..\\RES\\monster\\wizard\\atk\\atk1.bmp"
+
+IDB_WIZARD_ATK2		    BITMAP                  "..\\RES\\monster\\wizard\\atk\\atk2.bmp"
+
+IDB_WIZARD_ATK3		    BITMAP                  "..\\RES\\monster\\wizard\\atk\\atk3.bmp"
+
+IDB_WIZARD_ATK4		    BITMAP                  "..\\RES\\monster\\wizard\\atk\\atk4.bmp"
+
+IDB_WIZARD_ATK5		    BITMAP                  "..\\RES\\monster\\wizard\\atk\\atk5.bmp"
+
+IDB_WIZARD_ATK6		    BITMAP                  "..\\RES\\monster\\wizard\\atk\\atk6.bmp"
+
+IDB_WIZARD_ATK7		    BITMAP                  "..\\RES\\monster\\wizard\\atk\\atk7.bmp"
+
+IDB_WIZARD_ATK8		    BITMAP                  "..\\RES\\monster\\wizard\\atk\\atk8.bmp"
+
+IDB_WIZARD_DEATH2	    BITMAP                  "..\\RES\\monster\\wizard\\death\\death2.bmp"
+
+IDB_FIREBALL_GREEN	    BITMAP                  "..\\RES\\fireball(green).bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
