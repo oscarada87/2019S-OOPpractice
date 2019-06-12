@@ -4,10 +4,6 @@
 #include "CGameMap.h"
 //#include "CMonster.h"
 namespace game_framework {
-	/////////////////////////////////////////////////////////////////////////////
-	// 這個class提供可以用鍵盤或滑鼠控制的擦子
-	// 看懂就可以改寫成自己的程式了
-	/////////////////////////////////////////////////////////////////////////////
 	class CHero
 	{
 	public:
@@ -59,7 +55,7 @@ namespace game_framework {
 		CAnimation right_hit_format;// 右攻擊位置
 		CAnimation heal_format;		// 回血動畫
 		int format_state;			// 靜止方向(1上2下3左4右)
-		int x, y;					// 擦子左上角座標
+		int x, y;					// 左上角座標
 		int speed;					// 移動速度
 		bool isMovingDown;			// 是否正在往下移動
 		bool isMovingLeft;			// 是否正在往左移動

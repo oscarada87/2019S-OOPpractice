@@ -1,8 +1,6 @@
 #ifndef WIZARD_H
 #define WIZARD_H
-
 #include "CMonster.h"
-
 namespace game_framework {
 	class Wizard : public CMonster {
 	public:

@@ -118,19 +118,15 @@ namespace game_framework {
 		left_format.LoadBitmap(IDB_LEFT, RGB(255, 255, 255));
 		up_format.LoadBitmap(IDB_UP, RGB(255, 255, 255));
 
-		//right_hit_format.AddBitmap(IDB_RIGHT_HIT0, RGB(255, 255, 255));
 		right_hit_format.AddBitmap(IDB_RIGHT_HIT1, RGB(255, 255, 255));
 		right_hit_format.AddBitmap(IDB_RIGHT_HIT2, RGB(255, 255, 255));
 
-		//left_hit_format.AddBitmap(IDB_LEFT_HIT0, RGB(255, 255, 255));
 		left_hit_format.AddBitmap(IDB_LEFT_HIT1, RGB(255, 255, 255));
 		left_hit_format.AddBitmap(IDB_LEFT_HIT2, RGB(255, 255, 255));
 
-		//down_hit_format.AddBitmap(IDB_DOWN_HIT0, RGB(255, 255, 255));
 		down_hit_format.AddBitmap(IDB_DOWN_HIT1, RGB(255, 255, 255));
 		down_hit_format.AddBitmap(IDB_DOWN_HIT2, RGB(255, 255, 255));
 
-		//up_hit_format.AddBitmap(IDB_UP_HIT0, RGB(255, 255, 255));
 		up_hit_format.AddBitmap(IDB_UP_HIT1, RGB(255, 255, 255));
 		up_hit_format.AddBitmap(IDB_UP_HIT2, RGB(255, 255, 255));
 
@@ -148,7 +144,6 @@ namespace game_framework {
 
 	void CHero::OnMove(Gamemap * m, vector<int> monsterloc)
 	{
-		//animation.OnMove();
 		if (isMovingUp == false && isMovingDown == false && isMovingLeft == false && isMovingRight == false && isHitting == true)
 		{
 			if (format_state == 1)
@@ -277,8 +272,6 @@ namespace game_framework {
 	bool CHero::HitMonster(vector<int> monsterloc)
 	{
 		// 檢測英雄是否打到怪物
-		//return HitSomething(monster->GetX1(), monster->GetY1(),
-			//monster->GetX2(), monster->GetY2());
 		return HitSomething(monsterloc[0], monsterloc[1], monsterloc[2], monsterloc[3]);
 	}
 
@@ -315,7 +308,6 @@ namespace game_framework {
 					m->SetSY(-100);
 				}
 			}
-			//up_format.ShowBitmap();
 		}
 		if (format_state == 2)
 		{
@@ -325,7 +317,6 @@ namespace game_framework {
 					m->SetSY(100);
 				}
 			}
-			//down_format.ShowBitmap();
 		}
 		if (format_state == 3)
 		{
@@ -335,7 +326,6 @@ namespace game_framework {
 					m->SetSX(-100);
 				}
 			}
-			//left_format.ShowBitmap();
 		}
 		if (format_state == 4)
 		{
@@ -345,7 +335,6 @@ namespace game_framework {
 					m->SetSX(100);
 				}
 			}
-			//right_format.ShowBitmap();
 		}
 	}
 
@@ -471,7 +460,6 @@ namespace game_framework {
 		int x2 = x + 60;
 		int y1 = y;
 		int y2 = y + 74;
-		//bool mos = (monster->GetX2() >= x1 && monster->GetX1() <= x2 && monster->GetY2() >= y1 && (monster->GetY1() + 50) <= y2);
 		bool mos = (monsterloc[2] >= x1 && monsterloc[0] <= x2 && monsterloc[3] >= y1 && monsterloc[1] <= y2);
 		return map->IsEmpty(x, y) && mos == false;
 	}

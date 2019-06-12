@@ -1,14 +1,10 @@
 #ifndef CMONSTER_H
 #define CMONSTER_H
-
 #include <random>
-
 #include "CGameMap.h"
 #include "CHero.h"
-
 //class Gamemap;
 //class CHero;
-
 namespace game_framework {
 	class CMonster
 	{
@@ -41,8 +37,6 @@ namespace game_framework {
 		virtual int GetCenterY() = 0;
 		int GetSpeed() { return _speed; };
 		void SetSpeed(int speed) { _speed = speed; };
-		//virtual int GetX2() = 0;
-		//virtual int GetY2() = 0;
 
 	protected:
 		int _hp;					// ¦å¶q

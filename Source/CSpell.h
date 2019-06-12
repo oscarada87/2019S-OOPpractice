@@ -1,11 +1,9 @@
 #ifndef CSPELL_H
 #define CSPELL_H
-
 #include <cmath>
 #include "CHero.h"
 #include "CGameMap.h"
 #include "CMonster.h"
-
 namespace game_framework {
 	class CSpell
 	{
@@ -42,7 +40,6 @@ namespace game_framework {
 		int _unitVectorX;
 		int _unitVectorY;
 		CMovingBitmap _start_img;
-		//int _direction; // 靜止方向(1上2下3左4右)
 	};
 }
 

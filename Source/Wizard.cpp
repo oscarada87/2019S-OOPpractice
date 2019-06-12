@@ -23,7 +23,6 @@ namespace game_framework {
 		_speed = 1;
 	}
 	
-	
 	int Wizard::Skill(int counter)
 	{
 		if (counter % 90 == 0 && isNear && !isHitted && !isattacking)
@@ -137,13 +136,6 @@ namespace game_framework {
 				_y -= _speed;
 			}
 		}
-		/*
-		else if (!isNear) {
-			move.OnMove();
-			_x += getRandomNumber(-10, 10);
-			_y += getRandomNumber(-10, 10);
-		}
-		*/
 		else
 		{
 			normal.OnMove();
@@ -177,13 +169,6 @@ namespace game_framework {
 				move.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
 				move.OnShow();
 			}
-			/*
-			else  {
-				ismove = false;
-				still.SetTopLeft(m->ScreenX(_x), m->ScreenY(_y));
-				still.OnShow();
-			}
-			*/
 		}
 		else
 		{
@@ -197,7 +182,6 @@ namespace game_framework {
 		if (!isHitted)
 		{
 			isHitted = true;
-			//format = 8;
 			_hittime = time;
 			_hp -= dmg;
 		}

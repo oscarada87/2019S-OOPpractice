@@ -1,8 +1,6 @@
 #ifndef MANEUVER_H
 #define MANEUVER_H
-
 #include "CSpell.h"
-
 namespace game_framework {
 	class Maneuver : public CSpell 
 	{
@@ -20,6 +18,4 @@ namespace game_framework {
 	};
 
 }
-
-
 #endif
