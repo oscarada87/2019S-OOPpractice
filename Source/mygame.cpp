@@ -139,6 +139,7 @@ CGameStateOver::CGameStateOver(CGame *g)
 	: CGameState(g)
 {
 
+}
 void CGameStateOver::OnMove()
 {
 }
