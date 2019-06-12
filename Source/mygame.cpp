@@ -59,6 +59,7 @@
 #include "gamelib.h"
 #include "mygame.h"
 #include <vector>
+
 namespace game_framework {
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的遊戲開頭畫面物件
@@ -75,7 +76,6 @@ void CGameStateInit::OnInit()
 	ShowInitProgress(0);	// 一開始的loading進度為0%
 	gamestart.LoadBitmap(IDB_GAMESTART);
 	helpbar.LoadBitmap(IDB_HELPBAR);
-	Sleep(100);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	CAudio::Instance()->Load(AUDIO_HELP, "sounds\\HELP.mp3");
 	if (CAudio::Instance()->Load(AUDIO_STARTOST, "sounds\\startost.mp3"))
 		CAudio::Instance()->Play(AUDIO_STARTOST, true);
@@ -154,7 +154,7 @@ void CGameStateOver::OnInit()
 	ShowInitProgress(66);	// 接個前一個狀態的進度，此處進度視為66%
 	gameend.LoadBitmap(IDB_ENDMUSIC);
 	CAudio::Instance()->Load(AUDIO_END, "sounds\\end.mp3");
-	ShowInitProgress(100);
+	ShowInitProgress(82);
 }
 
 void CGameStateOver::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -183,24 +183,14 @@ CGameStateOver2::CGameStateOver2(CGame *g)
 
 void CGameStateOver2::OnBeginState()
 {
-	CAudio::Instance()->Play(AUDIO_END, true);
+	CAudio::Instance()->Play(AUDIO_WIN, true);
 }
 
 void CGameStateOver2::OnInit()
 {
-	//
-	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
-	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
-	//
-	ShowInitProgress(66);	// 接個前一個狀態的進度，此處進度視為66%
-	//
-	// 開始載入資料
-	//
+	ShowInitProgress(82);	// 接個前一個狀態的進度，此處進度視為66%
 	gamewin.LoadBitmap(IDB_GAME_WIN);
-	//CAudio::Instance()->Load(AUDIO_END, "sounds\\end.mp3");
-	//
-	// 最終進度為100%
-	//
+	CAudio::Instance()->Load(AUDIO_WIN, "sounds\\winmusic.mp3");
 	ShowInitProgress(100);
 }
 void CGameStateOver2::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -208,7 +198,7 @@ void CGameStateOver2::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_ESC = 27;
 	const char KEY_SPACE = ' ';
 	if (nChar == KEY_SPACE) {
-		//CAudio::Instance()->Stop(AUDIO_END);
+		CAudio::Instance()->Stop(AUDIO_WIN);
 		GotoGameState(GAME_STATE_INIT);						// 切換至GAME_STATE_INIT
 	}
 	else if (nChar == KEY_ESC)								// Demo 關閉遊戲的方法
@@ -222,7 +212,7 @@ void CGameStateOver2::OnMove()
 
 void CGameStateOver2::OnShow()
 {
-	gamewin.SetTopLeft(0, 0);
+	gamewin.SetTopLeft(0, 80);
 	gamewin.ShowBitmap();
 }
 
@@ -244,25 +234,50 @@ CGameStateRun::CGameStateRun(CGame *g)
 CGameStateRun::~CGameStateRun()
 {
 	for (auto it = heroSpells.begin();it != heroSpells.end(); it++) {
-		delete(*it);
+		if (NULL != *it)
+		{
+			delete *it;
+			*it = NULL;
+		}
 	}
 	for (auto it = monsterSpells.begin();it != monsterSpells.end(); it++) {
-		delete(*it);
+		if (NULL != *it)
+		{
+			delete *it;
+			*it = NULL;
+		}
 	}
 	for (auto it = heart.begin();it != heart.end(); it++) {
-		delete(*it);
+		if (NULL != *it)
+		{
+			delete *it;
+			*it = NULL;
+		}
 	}
 	for (auto it = gamemap.begin();it != gamemap.end(); it++) {
-		delete(*it);
+		if (NULL != *it)
+		{
+			delete *it;
+			*it = NULL;
+		}
 	}
-	//heroSpells.clear();
-	//heroSpells.shrink_to_fit();
-	//monsterSpells.clear();
-	//monsterSpells.shrink_to_fit();
-	//heart.clear();
-	//heart.shrink_to_fit();
-	//gamemap.clear();
-	//gamemap.shrink_to_fit();
+	for (auto it = monsters.begin(); it != monsters.end(); it++) {
+		if (NULL != *it)
+		{
+			delete *it;
+			*it = NULL;
+		}
+	}
+	heroSpells.clear();
+	heroSpells.shrink_to_fit();
+	monsterSpells.clear();
+	monsterSpells.shrink_to_fit();
+	heart.clear();
+	heart.shrink_to_fit();
+	gamemap.clear();
+	gamemap.shrink_to_fit();
+	monsters.clear();
+	monsters.shrink_to_fit();
 }
 
 void CGameStateRun::OnBeginState()
@@ -652,7 +667,6 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		stage = (stage + 1) % 3;
 		gamemap.at(stage)->Initialize();
 		hero.SetXY(1000,1750);
-		//monsters[stage]->setactive();要讓怪物靜止的話(把active共用)
 	}
 
 	if (nChar == KEY_X)
@@ -679,7 +693,6 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 			CAudio::Instance()->Play(AUDIO_KNIFEHIT, true);
 			monsters[stage]->SetHitted(1, counter);
 		}
-			
 	}
 
 	if (nChar == KEY_LEFT)
@@ -743,9 +756,9 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		if (hero.CheckCooldown(2, counter, 20))
 		{
 			hero.SetCastTime(2, counter);
-			if (hero.Gethp() < 95 && hero.Gethp() >= 85)
+			if (hero.Gethp() < 25 && hero.Gethp() >= 15)
 				hero.Sethp(-1);
-			else if (hero.Gethp() < 85)
+			else if (hero.Gethp() < 15)
 				hero.Sethp(-2);
 			hero.SetHeal(true);
 		}

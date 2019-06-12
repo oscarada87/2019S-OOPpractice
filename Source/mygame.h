@@ -71,7 +71,8 @@ namespace game_framework {
 		AUDIO_STEP,
 		AUDIO_RUN,
 		AUDIO_KNIFE,
-		AUDIO_KNIFEHIT
+		AUDIO_KNIFEHIT,
+		AUDIO_WIN,
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

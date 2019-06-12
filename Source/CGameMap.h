@@ -9,6 +9,7 @@ namespace game_framework {
 	{
 	public:
 		Gamemap(){};
+		~Gamemap() {};
 		virtual void Initialize() = 0;
 		virtual void LoadBitmap() = 0;
 		virtual void OnShow() = 0;
