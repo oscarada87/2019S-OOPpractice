@@ -167,15 +167,7 @@ void CGameStateInit::OnShow()
 CGameStateOver::CGameStateOver(CGame *g)
 	: CGameState(g)
 {
-}
 
-void CGameStateOver::OnMove()
-{
-	/*
-	counter--;
-	if (counter < 0)
-		GotoGameState(GAME_STATE_INIT);
-	*/
 }
 
 void CGameStateOver::OnBeginState()
@@ -196,12 +188,12 @@ void CGameStateOver::OnInit()
 	//
 	gameend.LoadBitmap(IDB_ENDMUSIC);
 	CAudio::Instance()->Load(AUDIO_END, "sounds\\end.mp3");
-	Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 	//
 	// 最終進度為100%
 	//
 	ShowInitProgress(100);
 }
+
 void CGameStateOver::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	const char KEY_ESC = 27;
@@ -213,24 +205,65 @@ void CGameStateOver::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	else if (nChar == KEY_ESC)								// Demo 關閉遊戲的方法
 		PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE, 0, 0);	// 關閉遊戲
 }
+void CGameStateOver::OnMove() 
+{
+
+}
 void CGameStateOver::OnShow()
 {
-	/*
-	CDC *pDC = CDDraw::GetBackCDC();			// 取得 Back Plain 的 CDC 
-	CFont f, *fp;
-	f.CreatePointFont(160, "Times New Roman");	// 產生 font f; 160表示16 point的字
-	fp = pDC->SelectObject(&f);					// 選用 font f
-	pDC->SetBkColor(RGB(0, 0, 0));
-	pDC->SetTextColor(RGB(255, 255, 0));
-	char str[80];								// Demo 數字對字串的轉換
-	sprintf(str, "Game Over ! (%d)", counter / 30);
-	pDC->TextOut(240, 210, str);
-	pDC->SelectObject(fp);						// 放掉 font f (千萬不要漏了放掉)
-	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
-	*/
-
 	gameend.SetTopLeft(0, 0);
 	gameend.ShowBitmap();
+}
+
+CGameStateOver2::CGameStateOver2(CGame *g)
+	: CGameState(g)
+{
+
+}
+
+void CGameStateOver2::OnBeginState()
+{
+	CAudio::Instance()->Play(AUDIO_END, true);
+}
+
+void CGameStateOver2::OnInit()
+{
+	//
+	// 當圖很多時，OnInit載入所有的圖要花很多時間。為避免玩遊戲的人
+	//     等的不耐煩，遊戲會出現「Loading ...」，顯示Loading的進度。
+	//
+	ShowInitProgress(66);	// 接個前一個狀態的進度，此處進度視為66%
+	//
+	// 開始載入資料
+	//
+	gamewin.LoadBitmap(IDB_GAME_WIN);
+	//CAudio::Instance()->Load(AUDIO_END, "sounds\\end.mp3");
+	//
+	// 最終進度為100%
+	//
+	ShowInitProgress(100);
+}
+void CGameStateOver2::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	const char KEY_ESC = 27;
+	const char KEY_SPACE = ' ';
+	if (nChar == KEY_SPACE) {
+		//CAudio::Instance()->Stop(AUDIO_END);
+		GotoGameState(GAME_STATE_INIT);						// 切換至GAME_STATE_INIT
+	}
+	else if (nChar == KEY_ESC)								// Demo 關閉遊戲的方法
+		PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE, 0, 0);	// 關閉遊戲
+}
+
+void CGameStateOver2::OnMove()
+{
+
+}
+
+void CGameStateOver2::OnShow()
+{
+	gamewin.SetTopLeft(0, 0);
+	gamewin.ShowBitmap();
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -250,14 +283,26 @@ CGameStateRun::CGameStateRun(CGame *g)
 
 CGameStateRun::~CGameStateRun()
 {
-	heroSpells.clear();
-	heroSpells.shrink_to_fit();
-	monsterSpells.clear();
-	monsterSpells.shrink_to_fit();
-	heart.clear();
-	heart.shrink_to_fit();
-	gamemap.clear();
-	gamemap.shrink_to_fit();
+	for (auto it = heroSpells.begin();it != heroSpells.end(); it++) {
+		delete(*it);
+	}
+	for (auto it = monsterSpells.begin();it != monsterSpells.end(); it++) {
+		delete(*it);
+	}
+	for (auto it = heart.begin();it != heart.end(); it++) {
+		delete(*it);
+	}
+	for (auto it = gamemap.begin();it != gamemap.end(); it++) {
+		delete(*it);
+	}
+	//heroSpells.clear();
+	//heroSpells.shrink_to_fit();
+	//monsterSpells.clear();
+	//monsterSpells.shrink_to_fit();
+	//heart.clear();
+	//heart.shrink_to_fit();
+	//gamemap.clear();
+	//gamemap.shrink_to_fit();
 }
 
 void CGameStateRun::OnBeginState()
@@ -268,7 +313,7 @@ void CGameStateRun::OnBeginState()
 	counter = 0;
 	monsters.clear();
 	monsters.push_back(new Slime(5));
-	monsters.push_back(new Cow(10));
+	monsters.push_back(new Cow(15));
 	monsters.push_back(new Wizard(30));
 
 	for (int i = 0; (size_t)i < monsters.size(); i++) {
@@ -400,7 +445,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		CAudio::Instance()->Stop(AUDIO_KNIFE);
 		CAudio::Instance()->Stop(AUDIO_KNIFEHIT);
 		CAudio::Instance()->Stop(AUDIO_EARTH);
-		GotoGameState(GAME_STATE_OVER);
+		GotoGameState(GAME_STATE_OVER2);
 	}
 	else if (hero.Gethp() <= 0) 
 	{

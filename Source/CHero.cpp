@@ -58,7 +58,7 @@ namespace game_framework {
 		y = Y_POS;
 		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = isHitting = heal = false;
 		speed = 10;
-		hp = 100;
+		hp = 30;
 		castTime.clear();
 		for (int i = 0; i < 3; i++) 
 		{

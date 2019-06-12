@@ -474,6 +474,8 @@ IDB_trapzone            BITMAP                  "..\\RES\\feature\\trapzone.bmp"
 
 IDB_icetrap             BITMAP                  "..\\RES\\feature\\icetrap.bmp"
 
+IDB_GAME_WIN			BITMAP					"..\\RES\\helpbar.bmp"
+
 
 
 /////////////////////////////////////////////////////////////////////////////
