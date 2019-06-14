@@ -664,9 +664,15 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	}
 	if (nChar == KEY_W)
 	{
-		stage = (stage + 1) % 3;
-		gamemap.at(stage)->Initialize();
-		hero.SetXY(1000,1750);
+		if (stage < 2)
+		{
+			stage++;
+			gamemap.at(stage)->Initialize();
+			hero.SetXY(1000, 1750);
+		}
+		else if (stage == 2) {
+			GotoGameState(GAME_STATE_OVER2);
+		}
 	}
 
 	if (nChar == KEY_X)
